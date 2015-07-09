@@ -41,8 +41,27 @@ tk.buildSwatches = function () {
 
 };
 
+// Show Me Code plugin
+// <use xlink:href="#f-icon-notes" /> <use xlink:href="#f-icon-code" />
+
+$.fn.showCode = function() {
+    var obj = $(this);
+    $.each( obj, function(index){
+      var html = $(this).html().replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      $(this).append('<a href="#" class="toggle-code btn btn-default btn-xs">code</a>'+
+                      '<pre class="code-block"><code class="language-markup">'+html+'</code></pre>');
+    });
+    $('.code-block').hide();
+    $('.toggle-code').click(function(e){
+      e.preventDefault();
+      $(this).next('.code-block').slideToggle('fast');
+      // $(this).text(($(this).text() === 'Hide Code') ? 'Show Code' : 'Hide Code');
+    });
+  };
+
 (function () {
 
 	tk.buildSwatches();
+	$('.show-code').showCode();
 
 }());

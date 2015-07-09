@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Dashboard</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  <link rel="stylesheet" href="/prototype/css/main.css">
+  <link rel="canonical" href="https://volometrix.github.io/prototype/index2.html">
+  <link rel="alternate" type="application/rss+xml" title="Personal Dashboard" href="https://volometrix.github.io/prototype/feed.xml" />
+  <link rel="stylesheet" href="/prototype/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/prototype/css/prism.css">
+  <script src="/prototype/javascript/jquery-2.1.3.min.js"></script>
+  <script src="/prototype/javascript/bootstrap.min.js"></script>
+  <script src="/prototype/javascript/highcharts.js"></script>
+  <script src="/prototype/javascript/highcharts-more.js"></script>
+  <script src="/prototype/javascript/d3.v3.4.8.js"></script>
+  <script src="/prototype/javascript/dimple.v2.0.0.min.js"></script>
+  <style>
+    .panel .panel-heading {
+      background: #fff;
+      border-bottom:none;
+      padding-bottom:0;
+    }
+  </style>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/prototype/">Personal Dashboard</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/prototype/dashboard/">Dashboard</a>
+          
+        
+          
+          <a class="page-link" href="/prototype/Email/">Email</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/prototype/team-dashboard/">Team Dashboard</a>
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Styleguide</h1>
+      <p class="lead">Principles, guidelines and assets for designing and building Volometrix products</p>
+      <p><strong>Version:</strong> This version was created for Gene.</p>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      
+      
+        <h5></h5>
+        
+          <article class="sg-component">
+
+  <header class="sg-component__header clearfix">
+    <h2 class="sg-component__title">Colors</h2>
+    <!-- <div class="menu" style="float:right;">
+      <a href="#" class="icon icon--code">
+        <svg viewBox="0 0 32 32">
+          <path fill="#828282" d="M.804 17.143q0-.232.179-.411l8.321-8.321q.179-.179.411-.179t.411.179l.893.893q.179.179.179.411t-.179.411l-7.018 7.018 7.018 7.018q.179.179.179.411t-.179.411l-.893.893q-.179.179-.411.179t-.411-.179l-8.321-8.321q-.179-.179-.179-.411zm11.91 11.214l6.661-23.054q.071-.232.277-.348t.42-.045l1.107.304q.232.071.348.277t.045.438l-6.661 23.054q-.071.232-.277.348t-.42.045l-1.107-.304q-.232-.071-.348-.277t-.045-.438zm10.375-3.786q0-.232.179-.411l7.018-7.018-7.018-7.018q-.179-.179-.179-.411t.179-.411l.893-.893q.179-.179.411-.179t.411.179l8.321 8.321q.179.179.179.411t-.179.411l-8.321 8.321q-.179.179-.411.179t-.411-.179l-.893-.893q-.179-.179-.179-.411z"/>
+        </svg>
+      </a>
+      <a href="#" class="icon icon-comment">
+        <svg viewBox="0 0 32 32">
+          <path fill="#828282" d="M26.667 1.333h-22.667c-2.205 0-4 1.795-4 4v16c0 2.205 2.667 2.667 4 2.667v8l12-8h10.667c2.205 0 4-1.795 4-4v-14.667c0-2.205-1.795-4-4-4zm1.333 18.667c0 .735-.599 1.333-1.333 1.333h-12l-8 6.667v-6.667h-2.667c-.735 0-1.333-.599-1.333-1.333v-14.667c0-.735.599-1.333 1.333-1.333h22.667c.735 0 1.333.599 1.333 1.333v14.667z"/>
+        </svg>
+      </a>
+      
+      <a href="#" class="icon icon--menu">
+        <svg viewBox="0 0 32 32">
+          <path fill="#828282" d="M0 16.571v-3.429q0-.714.5-1.214t1.214-.5h3.429q.714 0 1.214.5t.5 1.214v3.429q0 .714-.5 1.214t-1.214.5h-3.429q-.714 0-1.214-.5t-.5-1.214zm9.143 0v-3.429q0-.714.5-1.214t1.214-.5h3.429q.714 0 1.214.5t.5 1.214v3.429q0 .714-.5 1.214t-1.214.5h-3.429q-.714 0-1.214-.5t-.5-1.214zm9.143 0v-3.429q0-.714.5-1.214t1.214-.5h3.429q.714 0 1.214.5t.5 1.214v3.429q0 .714-.5 1.214t-1.214.5h-3.429q-.714 0-1.214-.5t-.5-1.214z"/>
+        </svg>
+      </a>
+     
+    </div> --> 
+  </header>
+  <div class="sg-component__body">
+    <div class="sg-component__display">
+      <div class="swatches corporate-swatches">
+  <h3>Corporate</h3>
+  <p>This is used in the Volometrix logo.</p>
+  <div class="swatch">
+    <div class="swatch-name">Blue</div>
+    <div class="swatch-color">#05B0E6</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Violet</div>
+    <div class="swatch-color">#181548</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Gray</div>
+    <div class="swatch-color">#4A4A4A</div>
+  </div>
+</div>
+
+<div class="swatches corporate-swatches">
+  <h3>UI</h3>
+  <p>Expanded corporate colors</p>
+  <div class="swatch">
+    <div class="swatch-name">Lt Green</div>
+    <div class="swatch-color">#A6D53A</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Orange</div>
+    <div class="swatch-color">#FC9430</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Blue</div>
+    <div class="swatch-color">#3BBBF3</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Lt Gray</div>
+    <div class="swatch-color">#D7D7D7</div>
+  </div>
+</div>
+
+<div class="swatches corporate-swatches">
+  <h3>10-Class, Qualitative</h3>
+  <p>Expanded corporate colors and <a href="http://colorbrewer2.org/">http://colorbrewer2.org/</a></p>
+  <div class="swatch">
+    <div class="swatch-name">Lt Blue</div>
+    <!-- <div class="swatch-color">#a6cee3</div> -->
+    <div class="swatch-color">#a6cee3</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Brand Blue</div>
+    <!-- <div class="swatch-color">#a6cee3</div> -->
+    <div class="swatch-color">#3bbbf3</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Blue</div>
+    <div class="swatch-color">#1f78b4</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Lt Green</div>
+    <!-- <div class="swatch-color">#b2df8a</div> -->
+    <div class="swatch-color">#a6d53a</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Green</div>
+    <!-- <div class="swatch-color">#33a02c</div> -->
+    <div class="swatch-color">#33a02c</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Lt Red</div>
+    <div class="swatch-color">#fb9a99</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Red</div>
+    <div class="swatch-color">#e31a1c</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Lt Orange</div>
+    <div class="swatch-color">#fdbf6f</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Orange</div>
+    <!-- <div class="swatch-color">#ff7f00</div> -->
+    <div class="swatch-color">#fc9430</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Lt Violet</div>
+    <div class="swatch-color">#cab2d6</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Violet</div>
+    <div class="swatch-color">#6a3d9a</div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-name">Brand Violet</div>
+    <div class="swatch-color">#181548</div>
+  </div>
+</div>
+    </div>
+    <div class="sg-component__source source">
+      <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatches corporate-swatches&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>Corporate<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p&gt;</span>This is used in the Volometrix logo.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#05B0E6<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Violet<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#181548<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Gray<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#4A4A4A<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatches corporate-swatches&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>UI<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Expanded corporate colors<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Lt Green<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#A6D53A<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Orange<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#FC9430<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#3BBBF3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Lt Gray<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#D7D7D7<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatches corporate-swatches&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>10-Class, Qualitative<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Expanded corporate colors and <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://colorbrewer2.org/&quot;</span><span class="nt">&gt;</span>http://colorbrewer2.org/<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Lt Blue<span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- &lt;div class=&quot;swatch-color&quot;&gt;#a6cee3&lt;/div&gt; --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#a6cee3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Brand Blue<span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- &lt;div class=&quot;swatch-color&quot;&gt;#a6cee3&lt;/div&gt; --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#3bbbf3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#1f78b4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Lt Green<span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- &lt;div class=&quot;swatch-color&quot;&gt;#b2df8a&lt;/div&gt; --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#a6d53a<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Green<span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- &lt;div class=&quot;swatch-color&quot;&gt;#33a02c&lt;/div&gt; --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#33a02c<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Lt Red<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#fb9a99<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#e31a1c<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Lt Orange<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#fdbf6f<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Orange<span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- &lt;div class=&quot;swatch-color&quot;&gt;#ff7f00&lt;/div&gt; --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#fc9430<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Lt Violet<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#cab2d6<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Violet<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#6a3d9a<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-name&quot;</span><span class="nt">&gt;</span>Brand Violet<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;swatch-color&quot;</span><span class="nt">&gt;</span>#181548<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+    </div>
+    <p class="notes"><small>
+      These are notes about the component.
+    </small></p>
+  </div>
+
+</article>
+        
+          <article class="sg-component">
+
+  <header class="sg-component__header clearfix">
+    <h2 class="sg-component__title">Grid</h2>
+    <!-- <div class="menu" style="float:right;">
+      <a href="#" class="icon icon--code">
+        <svg viewBox="0 0 32 32">
+          <path fill="#828282" d="M.804 17.143q0-.232.179-.411l8.321-8.321q.179-.179.411-.179t.411.179l.893.893q.179.179.179.411t-.179.411l-7.018 7.018 7.018 7.018q.179.179.179.411t-.179.411l-.893.893q-.179.179-.411.179t-.411-.179l-8.321-8.321q-.179-.179-.179-.411zm11.91 11.214l6.661-23.054q.071-.232.277-.348t.42-.045l1.107.304q.232.071.348.277t.045.438l-6.661 23.054q-.071.232-.277.348t-.42.045l-1.107-.304q-.232-.071-.348-.277t-.045-.438zm10.375-3.786q0-.232.179-.411l7.018-7.018-7.018-7.018q-.179-.179-.179-.411t.179-.411l.893-.893q.179-.179.411-.179t.411.179l8.321 8.321q.179.179.179.411t-.179.411l-8.321 8.321q-.179.179-.411.179t-.411-.179l-.893-.893q-.179-.179-.179-.411z"/>
+        </svg>
+      </a>
+      <a href="#" class="icon icon-comment">
+        <svg viewBox="0 0 32 32">
+          <path fill="#828282" d="M26.667 1.333h-22.667c-2.205 0-4 1.795-4 4v16c0 2.205 2.667 2.667 4 2.667v8l12-8h10.667c2.205 0 4-1.795 4-4v-14.667c0-2.205-1.795-4-4-4zm1.333 18.667c0 .735-.599 1.333-1.333 1.333h-12l-8 6.667v-6.667h-2.667c-.735 0-1.333-.599-1.333-1.333v-14.667c0-.735.599-1.333 1.333-1.333h22.667c.735 0 1.333.599 1.333 1.333v14.667z"/>
+        </svg>
+      </a>
+      
+      <a href="#" class="icon icon--menu">
+        <svg viewBox="0 0 32 32">
+          <path fill="#828282" d="M0 16.571v-3.429q0-.714.5-1.214t1.214-.5h3.429q.714 0 1.214.5t.5 1.214v3.429q0 .714-.5 1.214t-1.214.5h-3.429q-.714 0-1.214-.5t-.5-1.214zm9.143 0v-3.429q0-.714.5-1.214t1.214-.5h3.429q.714 0 1.214.5t.5 1.214v3.429q0 .714-.5 1.214t-1.214.5h-3.429q-.714 0-1.214-.5t-.5-1.214zm9.143 0v-3.429q0-.714.5-1.214t1.214-.5h3.429q.714 0 1.214.5t.5 1.214v3.429q0 .714-.5 1.214t-1.214.5h-3.429q-.714 0-1.214-.5t-.5-1.214z"/>
+        </svg>
+      </a>
+     
+    </div> --> 
+  </header>
+  <div class="sg-component__body">
+    <div class="sg-component__display">
+      <p>A grid system helps keep elements aligned and in proportion. Our grid system is based on 12 columns.</p>
+<h4>Visual</h4>
+<div style="overflow-y:auto;height:300px;text-align:center;">
+  <img src="/prototype/images/grid-example.png" alt="" style="margin:0 auto;">
+</div>
+<h4>Code</h4>
+<style>
+  .demo-grid .row {
+    background: #eee;
+    border: solid 1px #ccc;
+    margin-bottom: 15px;
+    line-height: 50px;
+  }
+  .demo-grid .row div {
+    border-right: solid 1px #ccc;
+  }
+  .demo-grid .row div:last-child {
+    border-right: none;
+  }
+</style>
+<div class="container demo-grid show-code" style="max-width: 960px;">
+    <div class="row">
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">.col-md-8</div>
+      <div class="col-md-4">.col-md-4</div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4">.col-md-4</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">.col-md-6</div>
+      <div class="col-md-6">.col-md-6</div>
+    </div>
+</div>
+    </div>
+    <div class="sg-component__source source">
+      <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>A grid system helps keep elements aligned and in proportion. Our grid system is based on 12 columns.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;h4&gt;</span>Visual<span class="nt">&lt;/h4&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;overflow-y:auto;height:300px;text-align:center;&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/prototype/images/grid-example.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span> <span class="na">style=</span><span class="s">&quot;margin:0 auto;&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;h4&gt;</span>Code<span class="nt">&lt;/h4&gt;</span>
+<span class="nt">&lt;style&gt;</span>
+  <span class="nc">.demo-grid</span> <span class="nc">.row</span> <span class="p">{</span>
+    <span class="k">background</span><span class="o">:</span> <span class="m">#eee</span><span class="p">;</span>
+    <span class="k">border</span><span class="o">:</span> <span class="k">solid</span> <span class="m">1px</span> <span class="m">#ccc</span><span class="p">;</span>
+    <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
+    <span class="k">line-height</span><span class="o">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.demo-grid</span> <span class="nc">.row</span> <span class="nt">div</span> <span class="p">{</span>
+    <span class="k">border-right</span><span class="o">:</span> <span class="k">solid</span> <span class="m">1px</span> <span class="m">#ccc</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.demo-grid</span> <span class="nc">.row</span> <span class="nt">div</span><span class="nd">:last-child</span> <span class="p">{</span>
+    <span class="k">border-right</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container demo-grid show-code&quot;</span> <span class="na">style=</span><span class="s">&quot;max-width: 960px;&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-1&quot;</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-8&quot;</span><span class="nt">&gt;</span>.col-md-8<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-4&quot;</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-4&quot;</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-4&quot;</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-4&quot;</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-6&quot;</span><span class="nt">&gt;</span>.col-md-6<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-6&quot;</span><span class="nt">&gt;</span>.col-md-6<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+    </div>
+    <p class="notes"><small>
+      These are notes about the component.
+    </small></p>
+  </div>
+
+</article>
+        
+          <article class="sg-component">
+
+  <header class="sg-component__header clearfix">
+    <h2 class="sg-component__title">Typography</h2>
+    <!-- <div class="menu" style="float:right;">
+      <a href="#" class="icon icon--code">
+        <svg viewBox="0 0 32 32">
+          <path fill="#828282" d="M.804 17.143q0-.232.179-.411l8.321-8.321q.179-.179.411-.179t.411.179l.893.893q.179.179.179.411t-.179.411l-7.018 7.018 7.018 7.018q.179.179.179.411t-.179.411l-.893.893q-.179.179-.411.179t-.411-.179l-8.321-8.321q-.179-.179-.179-.411zm11.91 11.214l6.661-23.054q.071-.232.277-.348t.42-.045l1.107.304q.232.071.348.277t.045.438l-6.661 23.054q-.071.232-.277.348t-.42.045l-1.107-.304q-.232-.071-.348-.277t-.045-.438zm10.375-3.786q0-.232.179-.411l7.018-7.018-7.018-7.018q-.179-.179-.179-.411t.179-.411l.893-.893q.179-.179.411-.179t.411.179l8.321 8.321q.179.179.179.411t-.179.411l-8.321 8.321q-.179.179-.411.179t-.411-.179l-.893-.893q-.179-.179-.179-.411z"/>
+        </svg>
+      </a>
+      <a href="#" class="icon icon-comment">
+        <svg viewBox="0 0 32 32">
+          <path fill="#828282" d="M26.667 1.333h-22.667c-2.205 0-4 1.795-4 4v16c0 2.205 2.667 2.667 4 2.667v8l12-8h10.667c2.205 0 4-1.795 4-4v-14.667c0-2.205-1.795-4-4-4zm1.333 18.667c0 .735-.599 1.333-1.333 1.333h-12l-8 6.667v-6.667h-2.667c-.735 0-1.333-.599-1.333-1.333v-14.667c0-.735.599-1.333 1.333-1.333h22.667c.735 0 1.333.599 1.333 1.333v14.667z"/>
+        </svg>
+      </a>
+      
+      <a href="#" class="icon icon--menu">
+        <svg viewBox="0 0 32 32">
+          <path fill="#828282" d="M0 16.571v-3.429q0-.714.5-1.214t1.214-.5h3.429q.714 0 1.214.5t.5 1.214v3.429q0 .714-.5 1.214t-1.214.5h-3.429q-.714 0-1.214-.5t-.5-1.214zm9.143 0v-3.429q0-.714.5-1.214t1.214-.5h3.429q.714 0 1.214.5t.5 1.214v3.429q0 .714-.5 1.214t-1.214.5h-3.429q-.714 0-1.214-.5t-.5-1.214zm9.143 0v-3.429q0-.714.5-1.214t1.214-.5h3.429q.714 0 1.214.5t.5 1.214v3.429q0 .714-.5 1.214t-1.214.5h-3.429q-.714 0-1.214-.5t-.5-1.214z"/>
+        </svg>
+      </a>
+     
+    </div> --> 
+  </header>
+  <div class="sg-component__body">
+    <div class="sg-component__display">
+      <h3>Semantic Hierarchy</h3>
+<p>Establish a visual and semantic hierarchy by nesting headings correctly. For example, an H3 follows an H2 when it denotes a section contained within the H2's content. Don't skip to an H4 after an H2, etc. Don't use headings arbitrarily based on their presentation.</p>
+<table class="table">
+  <tr>
+    <th style="width:33.333%">Element</th>
+    <th style="width:33.333%">Size</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><h1 class="page-title" style="font-weight:200;">Page Title</h1></td>
+    <td><h1 style="font-weight:200;">36px</h1></td>
+    <td><p>The main page heading is an H1 element. You should use it once on the page, at the top of the Dashboard</p></td>
+  </tr>
+  <tr>
+    <td><h2 style="font-weight:normal;">Heading</h2></td>
+    <td><h2 style="font-weight:normal;">30px</h2></td>
+    <td>The page heading is an H2, which may be used as a page-level element. More than one may be used on the page.</td>
+  </tr>
+  <tr>
+    <td><h3>Third-level Heading</h3></td>
+    <td><h3>24px Bold</h3></td>
+    <td><p>The heading to the left is an H3 element, which may be used after an H2 heading in the document hierarchy.</p></td>
+  </tr>
+  <tr>
+    <td><h4>Fourth-level Heading</h4></td>
+    <td><h4>18px Bold</h4></td>
+    <td><p>The heading to the left is an H4 element, which may be used after an H3 heading in the document hierarchy.</p></td>
+  </tr>
+  <tr>
+    <td><h5>Fifth-level Heading</h5></td>
+    <td><h5>14px Bold</h5></td>
+    <td><p>The heading to the left is an H5 element, which may be used after an H4 heading in the document hierarchy.</p></td>
+  </tr>
+  <tr>
+    <td><h6 style="text-transform:uppercase;">Sixth-level Heading</h5></td>
+    <td><h6 style="text-transform:uppercase;">12px Uppercase</h6></td>
+    <td><p>The heading to the left is an H6 element, which may be used after an H5 heading in the document hierarchy.</p></td>
+  </tr>
+</table>
+<h3>Text Formatting</h3>
+<table class="table">
+  <tr>
+    <th style="width:33.333%">Element</th>
+    <th style="width:33.333%">Size</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><strong>Bold (strong) text</strong></td>
+    <td>Inherited</td>
+    <td>Use <code>&lt;strong&gt;</code> for <strong>Bold</strong> text.</td>
+  </tr>
+  <tr>
+    <td><em>Italic (emphasized) text</em></td>
+    <td>Inherited</td>
+    <td> Use <code>&lt;em&gt;</code> for <em>italicized</em> text.</td>
+  </tr>
+  <tr>
+    <td><small>Small text</small></td>
+    <td>85% of default size</td>
+    <td>Use <code>&lt;small&gt;</code>  for <small>smaller</small> text.</td>
+  </tr>
+  <tr>
+    <td><a href="#">Hyperlink</a></td>
+    <td>Inherited</td>
+    <td>
+      <p>Unless specified by another component, hyperlinks use the standard hyperlink color <span style="color:#3179C2;">#3179C2</span> and are not underlined except on hover.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>Ordered List</td>
+    <td>
+      <ol>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+      </ol>
+    </td>
+    <td><p>Use ordered lists to semantically group items in a pre-determined order</p></td>
+  </tr>
+  <tr>
+    <td>Unordered List</td>
+    <td>
+      <ul>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+      </ul>
+    </td>
+    <td><p>Use unordered lists to semantically group related items</p></td>
+  </tr>
+</table>
+    </div>
+    <div class="sg-component__source source">
+      <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h3&gt;</span>Semantic Hierarchy<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;p&gt;</span>Establish a visual and semantic hierarchy by nesting headings correctly. For example, an H3 follows an H2 when it denotes a section contained within the H2&#39;s content. Don&#39;t skip to an H4 after an H2, etc. Don&#39;t use headings arbitrarily based on their presentation.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">&quot;width:33.333%&quot;</span><span class="nt">&gt;</span>Element<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">&quot;width:33.333%&quot;</span><span class="nt">&gt;</span>Size<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Description<span class="nt">&lt;/th&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h1</span> <span class="na">class=</span><span class="s">&quot;page-title&quot;</span> <span class="na">style=</span><span class="s">&quot;font-weight:200;&quot;</span><span class="nt">&gt;</span>Page Title<span class="nt">&lt;/h1&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h1</span> <span class="na">style=</span><span class="s">&quot;font-weight:200;&quot;</span><span class="nt">&gt;</span>36px<span class="nt">&lt;/h1&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;p&gt;</span>The main page heading is an H1 element. You should use it once on the page, at the top of the Dashboard<span class="nt">&lt;/p&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h2</span> <span class="na">style=</span><span class="s">&quot;font-weight:normal;&quot;</span><span class="nt">&gt;</span>Heading<span class="nt">&lt;/h2&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h2</span> <span class="na">style=</span><span class="s">&quot;font-weight:normal;&quot;</span><span class="nt">&gt;</span>30px<span class="nt">&lt;/h2&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>The page heading is an H2, which may be used as a page-level element. More than one may be used on the page.<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h3&gt;</span>Third-level Heading<span class="nt">&lt;/h3&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h3&gt;</span>24px Bold<span class="nt">&lt;/h3&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;p&gt;</span>The heading to the left is an H3 element, which may be used after an H2 heading in the document hierarchy.<span class="nt">&lt;/p&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h4&gt;</span>Fourth-level Heading<span class="nt">&lt;/h4&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h4&gt;</span>18px Bold<span class="nt">&lt;/h4&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;p&gt;</span>The heading to the left is an H4 element, which may be used after an H3 heading in the document hierarchy.<span class="nt">&lt;/p&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h5&gt;</span>Fifth-level Heading<span class="nt">&lt;/h5&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h5&gt;</span>14px Bold<span class="nt">&lt;/h5&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;p&gt;</span>The heading to the left is an H5 element, which may be used after an H4 heading in the document hierarchy.<span class="nt">&lt;/p&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h6</span> <span class="na">style=</span><span class="s">&quot;text-transform:uppercase;&quot;</span><span class="nt">&gt;</span>Sixth-level Heading<span class="nt">&lt;/h5&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;h6</span> <span class="na">style=</span><span class="s">&quot;text-transform:uppercase;&quot;</span><span class="nt">&gt;</span>12px Uppercase<span class="nt">&lt;/h6&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;p&gt;</span>The heading to the left is an H6 element, which may be used after an H5 heading in the document hierarchy.<span class="nt">&lt;/p&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;h3&gt;</span>Text Formatting<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">&quot;width:33.333%&quot;</span><span class="nt">&gt;</span>Element<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">&quot;width:33.333%&quot;</span><span class="nt">&gt;</span>Size<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Description<span class="nt">&lt;/th&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;strong&gt;</span>Bold (strong) text<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>Inherited<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>Use <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>strong<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> for <span class="nt">&lt;strong&gt;</span>Bold<span class="nt">&lt;/strong&gt;</span> text.<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;em&gt;</span>Italic (emphasized) text<span class="nt">&lt;/em&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>Inherited<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span> Use <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>em<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> for <span class="nt">&lt;em&gt;</span>italicized<span class="nt">&lt;/em&gt;</span> text.<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;small&gt;</span>Small text<span class="nt">&lt;/small&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>85% of default size<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>Use <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>small<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span>  for <span class="nt">&lt;small&gt;</span>smaller<span class="nt">&lt;/small&gt;</span> text.<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Hyperlink<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>Inherited<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Unless specified by another component, hyperlinks use the standard hyperlink color <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color:#3179C2;&quot;</span><span class="nt">&gt;</span>#3179C2<span class="nt">&lt;/span&gt;</span> and are not underlined except on hover.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>Ordered List<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;ol&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;/ol&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;p&gt;</span>Use ordered lists to semantically group items in a pre-determined order<span class="nt">&lt;/p&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>Unordered List<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Item<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;p&gt;</span>Use unordered lists to semantically group related items<span class="nt">&lt;/p&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+    </div>
+    <p class="notes"><small>
+      These are notes about the component.
+    </small></p>
+  </div>
+
+</article>
+        
+      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Charts</h3>
+      <hr>
+      <h5 id="stacked-bar-chart">Stacked Bar</h5><div class="show-code"><div id="progress-bar-2" style="min-width: 310px; height: 95px; margin: 0 auto">
+    <script>
+    $(function () {
+        Highcharts.setOptions(Highcharts.theme);
+        $('#progress-bar-2').highcharts({
+            chart: {
+                type: 'bar',
+                margin: [5,5,50,5],
+                spacing: [2,2,2,2],
+                backgroundColor: 'rgba(255,255,255,0.1)'
+            },
+            credits:{enabled:false},
+            exporting:{enabled:false},
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: ['your']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: ''
+                }
+            },
+            legend: {
+                reversed: true
+            },
+            tooltip: {
+                borderColor: '#999999',
+                useHTML: true,
+                headerFormat: '<table>',
+                pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
+                '<td style="text-align: right"><b>{point.y}% (00h)</b></td></tr>',
+                footerFormat: '</table>'
+            },
+            plotOptions: {
+                series: {
+                    stacking: 'percent'
+                }
+            },
+            series: [{
+                name: 'Email',
+                data: [50],
+                color: '#6a3d9a'
+            }, {
+                name: 'Meeting',
+                data: [35],
+                color: '#3bbbf3'
+            }, {
+                name: 'Work',
+                data: [25],
+                color: '#1f78b4'
+            }]
+        });
+});
+</script>
+</div></div><hr>
+      <h5 id="area-range-chart">Area Range Line Chart</h5><div class="show-code"><div id="area-range-line-chart" class="source-code">
+    <script>
+    $(function () {
+        Highcharts.setOptions(Highcharts.theme);
+        var ranges = [
+        [1246406400000, 14.3, 27.7],
+        [1246492800000, 14.5, 27.8],
+        [1246579200000, 15.5, 29.6],
+        [1246665600000, 16.7, 30.7],
+        [1246752000000, 16.5, 25.0],
+        [1246838400000, 17.8, 25.7],
+        [1246924800000, 13.5, 24.8],
+        [1247011200000, 10.5, 21.4],
+        [1247097600000, 9.2, 23.8],
+        [1247184000000, 11.6, 21.8],
+        [1247270400000, 10.7, 23.7],
+        [1247356800000, 11.0, 23.3],
+        [1247443200000, 11.6, 23.7],
+        [1247529600000, 11.8, 20.7],
+        [1247616000000, 12.6, 22.4],
+        [1247702400000, 13.6, 19.6],
+        [1247788800000, 11.4, 22.6],
+        [1247875200000, 13.2, 25.0],
+        [1247961600000, 14.2, 21.6],
+        [1248048000000, 13.1, 17.1],
+        [1248134400000, 12.2, 15.5],
+        [1248220800000, 12.0, 20.8],
+        [1248307200000, 12.0, 17.1],
+        [1248393600000, 12.7, 18.3],
+        [1248480000000, 12.4, 19.4],
+        [1248566400000, 12.6, 19.9],
+        [1248652800000, 11.9, 20.2],
+        [1248739200000, 11.0, 19.3],
+        [1248825600000, 10.8, 17.8],
+        [1248912000000, 11.8, 18.5],
+        [1248998400000, 10.8, 16.1]
+        ],
+        averages = [
+        [1246406400000, 21.5],
+        [1246492800000, 22.1],
+        [1246579200000, 23],
+        [1246665600000, 23.8],
+        [1246752000000, 21.4],
+        [1246838400000, 21.3],
+        [1246924800000, 18.3],
+        [1247011200000, 15.4],
+        [1247097600000, 16.4],
+        [1247184000000, 17.7],
+        [1247270400000, 17.5],
+        [1247356800000, 17.6],
+        [1247443200000, 17.7],
+        [1247529600000, 16.8],
+        [1247616000000, 17.7],
+        [1247702400000, 16.3],
+        [1247788800000, 17.8],
+        [1247875200000, 18.1],
+        [1247961600000, 17.2],
+        [1248048000000, 14.4],
+        [1248134400000, 13.7],
+        [1248220800000, 15.7],
+        [1248307200000, 14.6],
+        [1248393600000, 15.3],
+        [1248480000000, 15.3],
+        [1248566400000, 15.8],
+        [1248652800000, 15.2],
+        [1248739200000, 14.8],
+        [1248825600000, 14.4],
+        [1248912000000, 15],
+        [1248998400000, 13.6]
+        ];
+        $('#area-range-line-chart').highcharts({
+            title: {
+                text: 'July temperatures'
+            },
+
+            xAxis: {
+                type: 'datetime'
+            },
+
+            yAxis: {
+                title: {
+                    text: null
+                }
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+                valueSuffix: '°C'
+            },
+
+            legend: {
+            },
+
+            series: [{
+                name: 'Temperature',
+                data: averages,
+                zIndex: 1,
+                marker: {
+                    fillColor: 'white',
+                    lineWidth: 2,
+                    lineColor: Highcharts.getOptions().colors[0]
+                }
+            }, {
+                name: 'Range',
+                data: ranges,
+                type: 'arearange',
+                lineWidth: 0,
+                linkedTo: ':previous',
+                color: Highcharts.getOptions().colors[0],
+                fillOpacity: 0.3,
+                zIndex: 0
+            }]
+        });
+});
+</script>
+</div></div><hr>
+      <h5 id="radar-chart">Radar Chart</h5><div class="show-code"><div id="radar-chart"></div>
+<script>
+	$(function() {
+        Highcharts.setOptions(Highcharts.theme);
+		$('#radar-chart').highcharts({
+        chart: {
+            polar: true
+        },
+        title: {
+            text: 'Highcharts Polar Chart'
+        },
+        pane: {
+            startAngle: 0,
+            endAngle: 360
+        },
+        xAxis: {
+            tickInterval: 45,
+            min: 0,
+            max: 360,
+            labels: {
+                formatter: function () {
+                    return this.value + '°';
+                }
+            }
+        },
+        yAxis: {
+            min: 0
+        },
+        plotOptions: {
+            series: {
+                pointStart: 0,
+                pointInterval: 45
+            },
+            column: {
+                pointPadding: 0,
+                groupPadding: 0
+            }
+        },
+
+        series: [{
+            type: 'column',
+            name: 'Column',
+            data: [8, 7, 6, 5, 4, 3, 2, 1],
+            pointPlacement: 'between'
+        }, {
+            type: 'line',
+            name: 'Line',
+            data: [1, 2, 3, 4, 5, 6, 7, 8]
+        }, {
+            type: 'area',
+            name: 'Area',
+            data: [1, 8, 2, 7, 3, 6, 4, 5]
+        }]
+    });
+});
+</script></div><hr>
+      <h5 id="column-chart">Column Chart</h5><div class="show-code"><div id="column-chart"></div>
+<script>
+$(function () {
+    Highcharts.setOptions(Highcharts.theme);
+    $('#column-chart').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Browser market shares. January, 2015 to May, 2015'
+        },
+        subtitle: {
+            text: 'Click the columns to view versions. Source: <a href="http://netmarketshare.com">netmarketshare.com</a>.'
+        },
+        xAxis: {
+            type: 'category'
+        },
+        yAxis: {
+            title: {
+                text: 'Total percent market share'
+            }
+
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}%'
+                }
+            }
+        },
+
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        },
+
+        series: [{
+            name: "Brands",
+            colorByPoint: true,
+            data: [{
+                name: "Microsoft Internet Explorer",
+                y: 56.33,
+                drilldown: "Microsoft Internet Explorer"
+            }, {
+                name: "Chrome",
+                y: 24.03,
+                drilldown: "Chrome"
+            }, {
+                name: "Firefox",
+                y: 10.38,
+                drilldown: "Firefox"
+            }, {
+                name: "Safari",
+                y: 4.77,
+                drilldown: "Safari"
+            }, {
+                name: "Opera",
+                y: 0.91,
+                drilldown: "Opera"
+            }, {
+                name: "Proprietary or Undetectable",
+                y: 0.2,
+                drilldown: null
+            }]
+        }],
+        drilldown: {
+            series: [{
+                name: "Microsoft Internet Explorer",
+                id: "Microsoft Internet Explorer",
+                data: [
+                    [
+                        "v11.0",
+                        24.13
+                    ],
+                    [
+                        "v8.0",
+                        17.2
+                    ],
+                    [
+                        "v9.0",
+                        8.11
+                    ],
+                    [
+                        "v10.0",
+                        5.33
+                    ],
+                    [
+                        "v6.0",
+                        1.06
+                    ],
+                    [
+                        "v7.0",
+                        0.5
+                    ]
+                ]
+            }, {
+                name: "Chrome",
+                id: "Chrome",
+                data: [
+                    [
+                        "v40.0",
+                        5
+                    ],
+                    [
+                        "v41.0",
+                        4.32
+                    ],
+                    [
+                        "v42.0",
+                        3.68
+                    ],
+                    [
+                        "v39.0",
+                        2.96
+                    ],
+                    [
+                        "v36.0",
+                        2.53
+                    ],
+                    [
+                        "v43.0",
+                        1.45
+                    ],
+                    [
+                        "v31.0",
+                        1.24
+                    ],
+                    [
+                        "v35.0",
+                        0.85
+                    ],
+                    [
+                        "v38.0",
+                        0.6
+                    ],
+                    [
+                        "v32.0",
+                        0.55
+                    ],
+                    [
+                        "v37.0",
+                        0.38
+                    ],
+                    [
+                        "v33.0",
+                        0.19
+                    ],
+                    [
+                        "v34.0",
+                        0.14
+                    ],
+                    [
+                        "v30.0",
+                        0.14
+                    ]
+                ]
+            }, {
+                name: "Firefox",
+                id: "Firefox",
+                data: [
+                    [
+                        "v35",
+                        2.76
+                    ],
+                    [
+                        "v36",
+                        2.32
+                    ],
+                    [
+                        "v37",
+                        2.31
+                    ],
+                    [
+                        "v34",
+                        1.27
+                    ],
+                    [
+                        "v38",
+                        1.02
+                    ],
+                    [
+                        "v31",
+                        0.33
+                    ],
+                    [
+                        "v33",
+                        0.22
+                    ],
+                    [
+                        "v32",
+                        0.15
+                    ]
+                ]
+            }, {
+                name: "Safari",
+                id: "Safari",
+                data: [
+                    [
+                        "v8.0",
+                        2.56
+                    ],
+                    [
+                        "v7.1",
+                        0.77
+                    ],
+                    [
+                        "v5.1",
+                        0.42
+                    ],
+                    [
+                        "v5.0",
+                        0.3
+                    ],
+                    [
+                        "v6.1",
+                        0.29
+                    ],
+                    [
+                        "v7.0",
+                        0.26
+                    ],
+                    [
+                        "v6.2",
+                        0.17
+                    ]
+                ]
+            }, {
+                name: "Opera",
+                id: "Opera",
+                data: [
+                    [
+                        "v12.x",
+                        0.34
+                    ],
+                    [
+                        "v28",
+                        0.24
+                    ],
+                    [
+                        "v27",
+                        0.17
+                    ],
+                    [
+                        "v29",
+                        0.16
+                    ]
+                ]
+            }]
+        }
+    });
+});
+</script></div><hr>
+      <h5 id="area-spline-trend-chart">Area Spline w/ Trend</h5><div class="show-code"><p>When you email your colleagues or invite them to meetings, you take time out of their schedules. This shows how much time you imposed on your coworkers compared to their average.</p>
+<script>
+    $(function(){
+        Highcharts.setOptions(Highcharts.theme);
+        $('#impact-chart').highcharts({
+            chart: {
+                type: 'areaspline',
+                height: 185
+            },
+            title: {
+                text: ''
+            },
+            colors: ['#3BB5EA', '#A6CEE3'],
+            // colors: ['#3BB5EA', '#979797'],
+            xAxis: {
+                categories: ['Week 1', '2', '3', 'Week 4'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Hours Imposed'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: false
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'You',
+                marker: {
+                    radius: 3
+                },
+                data: [400, 200, 400, 800].sort(function(){ return .5 - Math.random() }),
+            }, {
+                name: 'Peers',
+                type: 'spline',
+                marker: {
+                    radius: 0
+                },
+                dashStyle: 'dash',
+                color: '#666',
+                data: [400, 200, 400, 800].sort(function(){ return .5 - Math.random() }),
+            }],
+            exporting: {
+                enabled: false
+            },
+            credits: {
+                enabled: false
+            }
+        });
+    });
+</script>
+<div class="chart-description"><span class="big figure">1.7</span>hours imposed<br><strong>3.5</strong> peer average</div>
+<div id="impact-chart" class="chart"></div>
+<div class="modal fade" id="impactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                 <h5 class="modal-title" id="myModalLabel">Time Demand on Colleagues Detail</h5>
+            </div>
+            <div class="modal-body">
+                 <h5>Be aware of how much of your colleagues time you are taking.</h5>
+                <br>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th>Person</th>
+                            <th>Sent</th>
+                            <th>Received</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div></div><hr>
+      <h5 id="grouped-column-chart">Grouped Column</h5><div class="show-code"><p>Total count of email impact sent after hours .</p>
+<script>
+$(function(){
+    $('#after-hours-email-chart').highcharts({
+        chart: {
+            type: 'column',
+            height: 185
+        },
+        title: {
+            text: ''
+        },
+        colors: ['#3BB5EA', '#A6CEE3'],
+        xAxis: {
+            categories: ['Week 1', '2', '3', 'Week 4'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Email messages'
+            }
+        },
+        legend: {
+            enabled: true
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: false
+                },
+                enableMouseTracking: false
+            },
+            series: {
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+        series: [{
+            name: 'You',
+            data: [66, 70, 56, 37].sort(function(){ return .5 - Math.random() })
+        }, {
+            name: 'Peer',
+            type: 'column',
+            marker: {
+                enabled: true,
+                radius: 2
+            },
+            data: [70, 56, 48, 69].sort(function(){ return .5 - Math.random() })
+        }],
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        }
+    });     
+});
+</script>
+<div class="chart-description">
+    <span class="figure">66</span> emails sent<br>
+    <strong>67</strong> peer average
+</div>
+<div id="after-hours-email-chart" class="chart"></div>
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+
+            </div>
+            <div class="modal-body">
+                <h5>Here are all the meetings you attended this week.</h5>
+
+                <br>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th>Person</th>
+                            <th>Sent</th>
+                            <th>Received</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div><hr>
+      <h5 id="grouped-column-goal-chart">Grouped Column w/ Goal</h5><div class="show-code">
+        <div>
+            <script>
+                $(function(){
+                    $('#hours-worked-chart').highcharts({
+                    chart: {
+                        type: 'column',
+                        height: 185
+                    },
+                    title: {
+                        text: ''
+                    },
+                    colors: ['#3BB5EA', '#A6CEE3'],
+                    xAxis: {
+                        categories: ['Week 1', '2', '3', 'Week 4'],
+                        title : {
+                            text: null
+                        },
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Hours Per Day'
+                        },
+                        plotLines: [{
+                            color: '#000000',
+                            width: 1,
+                            value: 8,
+                            label: {
+                                text: 'Goal',
+                                align: 'right',
+                                x: 0
+                            }
+                        }]
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: false
+                            },
+                            enableMouseTracking: false
+                        }
+                    },
+                    series: [{
+                        name: 'You',
+                        data: [ 2, 9, 10, 6 
+                        // {
+                        //     y: 2, color: '#9ED100' 
+                        // },{
+                        //     y: 9, color: '#FFA91E' 
+                        // },{ 
+                        //     y: 10, color: '#FFA91E',
+                        // },{
+                        //     y: 6, color: '#9ED100',
+                        // }
+                        ].sort(function(){ return .5 - Math.random() }),
+                    }, {
+                        name: 'Peers',
+                        data: [10, 6, 8, 9].sort(function(){ return .5 - Math.random() })
+                    }],
+                    credits: {
+                        enabled: false
+                    },
+                    exporting: {
+                        enabled: false
+                    }
+                });
+            });
+        </script>
+        <div class="chart-description">
+            <span class="figure">10</span> average hours per day<br>
+            <strong>11</strong> peer average
+        </div>
+        <div id="hours-worked-chart" class="chart"></div>
+<!-- Modal -->
+<div class="modal fade" id="hours-worked-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+             <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+
+        </div>
+        <div class="modal-body">
+             <h5>Here are all the meetings you attended this week.</h5>
+
+            <br>
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>Person</th>
+                        <th>Sent</th>
+                        <th>Received</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+</div></div><hr>
+      <h5 id="half-donut-chart">Donut (Half)</h5><div class="show-code">
+<p>Hours spent in recurring meetings.</p>
+<div>
+    <script>
+    $(function () {
+            // Semi Circle Donut
+            $('#reoccurring-meetings-chart-2').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Meeting Types',
+                    align: 'center',
+                    verticalAlign: 'middle',
+                    y: 50
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: -50,
+                            style: {
+                                fontWeight: 'bold',
+                                color: 'white',
+                                textShadow: '0px 1px 2px black'
+                            }
+                        },
+                        startAngle: -90,
+                        endAngle: 90,
+                        center: ['50%', '75%']
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Meeting Type',
+                    innerSize: '50%',
+                    data: [
+                    ['Ad Hoc',   45.0],
+                    ['Reoccurring', 26.8]
+                    ]
+                }],
+                exporting: {
+                    enabled: false
+                },
+                credits: {
+                    enabled: false
+                }
+            });  
+});
+</script>
+<div class="chart-description">
+    <span class="figure">26</span><strong>%</strong> reoccurring meetings
+</div>
+<div id="reoccurring-meetings-chart-2" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="reoccurring-meetings-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+
+            </div>
+            <div class="modal-body">
+               <h5>Here are all the meetings you attended this week.</h5>
+
+               <br>
+               <div>
+                <table class="table">
+                    <tr>
+                        <th>Person</th>
+                        <th>Sent</th>
+                        <th>Received</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+</div></div><hr>
+      <h5 id="line-chart">Line Chart</h5><div class="show-code"><p><small>The average amount of time your  is spending sending and receiving email each week.</small></p>
+<p><span class="figure">7</span> hours worked per day on average <br>
+    9 hours worked on average for the company</p>
+    <div>
+        <script>
+        $(function () {
+            $('#time-chart').highcharts({
+                chart: {
+                    type: 'line',
+                    height: 150
+                },
+                title: {
+                    text: ''
+                },
+// colors: ['#3BB5EA', '#979797'],
+xAxis: {
+    categories: ['Mo', 'Tu', 'We', 'Tr', 'Fr']
+},
+yAxis: {
+    title: {
+        text: ''
+    }
+},
+legend: {
+    enabled: true
+},
+plotOptions: {
+    line: {
+        dataLabels: {
+            enabled: false
+        },
+        enableMouseTracking: false
+    }
+},
+series: [{
+    name: 'team',
+    data: [9, 10, 6, 7, 8]
+}, {
+    name: 'org',
+    data: [10, 6, 8, 9, 7]
+}],
+credits: {
+    enabled: false
+}
+});
+        });
+        </script>
+        <div id="time-chart" class="chart"></div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Meetings</h4>
+
+                </div>
+                <div class="modal-body">
+                    <h5>Here are all the meetings you attended this week.</h5>
+
+                    <br>
+                    <div>
+                        <table class="table">
+                            <th>
+                                <td>Date</td>
+                                <td>Subject</td>
+                                <td>Organizer</td>
+                                <td>Quality</td>
+                                <td>Size</td>
+                                <td>Duration</td>
+                                <td>Exclude</td>
+                            </th>
+                            <tr>
+                                <td><i class="fa fa-circle goal-met-true"></i>
+                                </td>
+                                <td>4/6</td>
+                                <td>Product team weekly planning</td>
+                                <td>Chantrelle, VP Product</td>
+                                <td>67</td>
+                                <td>13</td>
+                                <td>0.8</td>
+                                <td>
+                                    <input type="checkbox" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-circle goal-met-true"></i>
+                                </td>
+                                <td>4/6</td>
+                                <td>Product team weekly planning</td>
+                                <td>Chantrelle, VP Product</td>
+                                <td>67</td>
+                                <td>13</td>
+                                <td>0.8</td>
+                                <td>
+                                    <input type="checkbox" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-circle goal-met-false"></i>
+                                </td>
+                                <td>4/6</td>
+                                <td>Product team weekly planning</td>
+                                <td>Chantrelle, VP Product</td>
+                                <td>67</td>
+                                <td>13</td>
+                                <td>0.8</td>
+                                <td>
+                                    <input type="checkbox" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-circle goal-met-true"></i>
+                                </td>
+                                <td>4/6</td>
+                                <td>Product team weekly planning</td>
+                                <td>Chantrelle, VP Product</td>
+                                <td>67</td>
+                                <td>13</td>
+                                <td>0.8</td>
+                                <td>
+                                    <input type="checkbox" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-circle goal-met-false"></i>
+                                </td>
+                                <td>4/6</td>
+                                <td>Product team weekly planning</td>
+                                <td>Chantrelle, VP Product</td>
+                                <td>67</td>
+                                <td>13</td>
+                                <td>0.8</td>
+                                <td>
+                                    <input type="checkbox" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><hr>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+  <script src="/prototype/javascript/toolkit.js"></script>
+  <script src="/prototype/javascript/personalDashboardHCTheme.js"></script>
+  <script src="/prototype/javascript/tk.js"></script>
+  <script src="/prototype/javascript/prism.js"></script>
+</footer>
+
+  </body>
+
+</html>

@@ -1,129 +1,65 @@
-<!-- Panel -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-         <div class="panel-title">
-            <span class="h5">Actionable Email</span>
-            <!-- <a href="#" data-toggle="modal" data-target="#emailModal" class="pull-right btn btn-default btn-xs">
-                details
-            </a>  -->   
-        </div>
 
-    </div>
-    <div class="panel-body">
         <p>% of emails sent with "Action, Inform and Decide" in title.</p>
         <div>
+            <div class="chart-description">
+                <span class="figure">21</span><strong>%</strong> actionable emails sent
+            </div>
+            <div id="actionable-email-chart-2" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
             <script>
-            $(function () {
-                $('#actionable-email-chart-2').highcharts({
-                    chart: {
-                        plotBackgroundColor: null,
-                        plotBorderWidth: 0,
-                        plotShadow: false
-                    },
-                    title: {
-                        text: 'Email Types',
-                        align: 'center',
-                        verticalAlign: 'middle',
-                        y: 50
-                    },
-                    tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                    },
-                    plotOptions: {
-                        pie: {
-                            dataLabels: {
-                                enabled: true,
-                                distance: -50,
-                                style: {
-                                    fontWeight: 'bold',
-                                    color: 'white',
-                                    textShadow: '0px 1px 2px black'
-                                }
-                            },
-                            startAngle: -90,
-                            endAngle: 90,
-                            center: ['50%', '75%']
+            var hDougnutCart = (function() {
+                $(function(){
+                    $('#actionable-email-chart-2').highcharts({
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: 0,
+                            plotShadow: false
+                        },
+                        title: {
+                            text: 'Email Types',
+                            align: 'center',
+                            verticalAlign: 'middle',
+                            y: 50
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        plotOptions: {
+                            pie: {
+                                dataLabels: {
+                                    enabled: true,
+                                    distance: -50,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: 'white',
+                                        textShadow: '0px 1px 2px black'
+                                    }
+                                },
+                                startAngle: -90,
+                                endAngle: 90,
+                                center: ['50%', '75%']
+                            }
+                        },
+                        series: [{
+                            type: 'pie',
+                            name: 'Email Type',
+                            innerSize: '50%',
+                            data: [
+                                ['General',   94],
+                                ['Actionable', 6]
+                            ]
+                        }],
+                        exporting: {
+                            enabled: false
+                        },
+                        credits: {
+                            enabled: false
                         }
-                    },
-                    series: [{
-                        type: 'pie',
-                        name: 'Email Type',
-                        innerSize: '50%',
-                        data: [
-                            ['General',   94],
-                            ['Actionable', 6]
-                        ]
-                    }],
-                    exporting: {
-                        enabled: false
-                    },
-                    credits: {
-                        enabled: false
-                    }
+                    });
                 });
-
-            // $('#actionable-email-chart').highcharts({
-            //     chart: {
-            //         type: 'bar',
-            //         height: 185
-            //     },
-            //     title: {
-            //         text: ''
-            //     },
-            //     colors: ['#3BB5EA', '#A6CEE3'],
-            //     xAxis: {
-            //         categories: ['Email'],
-            //         title: {
-            //             text: 'Email',
-            //             enabled: false
-            //         }
-            //     },
-            //     yAxis: {
-            //         title: {
-            //             text: 'Percent of total email sent'
-            //         }
-            //     },
-            //     legend: {
-            //         enabled: true
-            //     },
-            //     plotOptions: {
-            //         line: {
-            //             dataLabels: {
-            //                 enabled: false
-            //             },
-            //             enableMouseTracking: false
-            //         },
-            //         series: {
-            //             marker: {
-            //                 enabled: false
-            //             }, 
-            //             stacking: 'percent'       
-            //         }
-            //     },
-            //     series: [{
-            //         name: 'Actionable',
-            //         data: [26]
-            //     }, {
-            //         name: 'Other',
-            //         data: [40]
-            //     }],
-            //     credits: {
-            //         enabled: false
-            //     },
-            //     exporting: {
-            //         enabled: false
-            //     }
-            // });
-        });
+            })();
         </script>
-        <div class="chart-description">
-            <span class="figure">21</span><strong>%</strong> actionable emails sent
         </div>
-        <div id="actionable-email-chart-2" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
-        </div>
-    </div>
-</div>
-</div>
+
 <!-- Modal -->
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">

@@ -1,130 +1,113 @@
-<!-- Panel -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-         <div class="panel-title">
-            <span class="h5">After-hours Email</span>
-            <!-- <a href="#" data-toggle="modal" data-target="#emailModal" class="pull-right btn btn-default btn-xs">
-                details
-            </a>  -->   
-        </div>
-    </div>
-    <div class="panel-body">
-        <p>Total count of email impact sent after hours .</p>
-        <div>
-            <script>
-            $(function () {
-            $('#after-hours-email-chart').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 185
-                },
-                title: {
-                    text: ''
-                },
-                colors: ['#3BB5EA', '#A6CEE3'],
-                xAxis: {
-                    categories: ['Week 1', '2', '3', 'Week 4'],
-                    title: {
-                        text: null
-                    }
-                },
-                yAxis: {
-                    title: {
-                        text: 'Email messages'
-                    }
-                },
-                legend: {
-                    enabled: true
-                },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: false
-                        },
-                        enableMouseTracking: false
-                    },
-                    series: {
-                        marker: {
-                            enabled: false
-                        }
-                    }
-                },
-                series: [{
-                    name: 'You',
-                    data: [66, 70, 56, 37].sort(function(){ return .5 - Math.random() })
-                }, {
-                    name: 'Peer',
-                    type: 'column',
-                    // color: '#666',
-                    marker: {
-                        enabled: true,
-                        radius: 2
-                    },
-                    data: [70, 56, 48, 69].sort(function(){ return .5 - Math.random() })
-                }],
-                credits: {
+<p>Total count of email impact sent after hours .</p>
+<script>
+$(function(){
+    $('#after-hours-email-chart').highcharts({
+        chart: {
+            type: 'column',
+            height: 185
+        },
+        title: {
+            text: ''
+        },
+        colors: ['#3BB5EA', '#A6CEE3'],
+        xAxis: {
+            categories: ['Week 1', '2', '3', 'Week 4'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Email messages'
+            }
+        },
+        legend: {
+            enabled: true
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
                     enabled: false
                 },
-                exporting: {
+                enableMouseTracking: false
+            },
+            series: {
+                marker: {
                     enabled: false
                 }
-            });
-        });
-        </script>
-        <div class="chart-description">
-            <span class="figure">66</span> emails sent<br>
-            <strong>67</strong> peer average
-        </div>
-        <div id="after-hours-email-chart" class="chart"></div>
-        </div>
-    </div>
+            }
+        },
+        series: [{
+            name: 'You',
+            data: [66, 70, 56, 37].sort(function(){ return .5 - Math.random() })
+        }, {
+            name: 'Peer',
+            type: 'column',
+            marker: {
+                enabled: true,
+                radius: 2
+            },
+            data: [70, 56, 48, 69].sort(function(){ return .5 - Math.random() })
+        }],
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        }
+    });     
+});
+</script>
+<div class="chart-description">
+    <span class="figure">66</span> emails sent<br>
+    <strong>67</strong> peer average
 </div>
-</div>
-<!-- Modal -->
+<div id="after-hours-email-chart" class="chart"></div>
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-            </button>
-             <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
 
-        </div>
-        <div class="modal-body">
-             <h5>Here are all the meetings you attended this week.</h5>
-
-            <br>
-            <div>
-                <table class="table">
-                    <tr>
-                        <th>Person</th>
-                        <th>Sent</th>
-                        <th>Received</th>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
-                        <td>Kent, Lead Engineer</td>
-                        <td>1</td>
-                        <td>18</td>
-                        <td>20.1</td>
-                    </tr>
-                    <tr>
-                        <td>Kent, Lead Engineer</td>
-                        <td>1</td>
-                        <td>18</td>
-                        <td>20.1</td>
-                    </tr>
-                    <tr>
-                        <td>Kent, Lead Engineer</td>
-                        <td>1</td>
-                        <td>18</td>
-                        <td>20.1</td>
-                    </tr>
-                </table>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="modal-body">
+                <h5>Here are all the meetings you attended this week.</h5>
+
+                <br>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th>Person</th>
+                            <th>Sent</th>
+                            <th>Received</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

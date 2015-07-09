@@ -1,19 +1,8 @@
-<!-- Panel -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-         <div class="panel-title">
-            <span class="h5">Reoccurring Meetings</span>
-            <a href="#" data-toggle="modal" data-target="#emailModal" class="pull-right btn btn-default btn-xs">
-                details
-            </a>    
-        </div>
 
-    </div>
-    <div class="panel-body">
-        <p>Hours spent in recurring meetings.</p>
-        <div>
-            <script>
-            $(function () {
+<p>Hours spent in recurring meetings.</p>
+<div>
+    <script>
+    $(function () {
             // Semi Circle Donut
             $('#reoccurring-meetings-chart-2').highcharts({
                 chart: {
@@ -51,8 +40,8 @@
                     name: 'Meeting Type',
                     innerSize: '50%',
                     data: [
-                        ['Ad Hoc',   45.0],
-                        ['Reoccurring', 26.8]
+                    ['Ad Hoc',   45.0],
+                    ['Reoccurring', 26.8]
                     ]
                 }],
                 exporting: {
@@ -62,85 +51,28 @@
                     enabled: false
                 }
             });  
-              
-            // $('#reoccurring-meetings-chart').highcharts({
-            //     chart: {
-            //         type: 'bar',
-            //         height: 185
-            //     },
-            //     title: {
-            //         text: ''
-            //     },
-            //     colors: ['#3BB5EA', '#A6CEE3'],
-            //     xAxis: {
-            //         categories: ['Meetings'],
-            //         title: {
-            //             text: 'Meetings',
-            //             enabled: false
-            //         }
-            //     },
-            //     yAxis: {
-            //         title: {
-            //             text: 'Percent of total meetings attended'
-            //         }
-            //     },
-            //     legend: {
-            //         enabled: true
-            //     },
-            //     plotOptions: {
-            //         line: {
-            //             dataLabels: {
-            //                 enabled: false
-            //             },
-            //             enableMouseTracking: false
-            //         },
-            //         series: {
-            //             marker: {
-            //                 enabled: false
-            //             }, 
-            //             stacking: 'percent'       
-            //         }
-            //     },
-            //     series: [{
-            //         name: 'Reoccurring',
-            //         data: [26]
-            //     }, {
-            //         name: 'Other',
-            //         data: [40]
-            //     }],
-            //     credits: {
-            //         enabled: false
-            //     },
-            //     exporting: {
-            //         enabled: false
-            //     }
-            // });
-
-        });
-        </script>
-        <div class="chart-description">
-            <span class="figure">26</span><strong>%</strong> reoccurring meetings
-        </div>
-        <div id="reoccurring-meetings-chart-2" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
-        </div>
-    </div>
+});
+</script>
+<div class="chart-description">
+    <span class="figure">26</span><strong>%</strong> reoccurring meetings
 </div>
+<div id="reoccurring-meetings-chart-2" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="reoccurring-meetings-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-            </button>
-             <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
 
-        </div>
-        <div class="modal-body">
-             <h5>Here are all the meetings you attended this week.</h5>
+            </div>
+            <div class="modal-body">
+               <h5>Here are all the meetings you attended this week.</h5>
 
-            <br>
-            <div>
+               <br>
+               <div>
                 <table class="table">
                     <tr>
                         <th>Person</th>
@@ -173,4 +105,5 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
+</div>
 </div>

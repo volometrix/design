@@ -1,0 +1,53 @@
+---
+title: Grid
+notes: These are notes about the component.
+---
+<p>A grid system helps keep elements aligned and in proportion. Our grid system is based on 12 columns.</p>
+<h4>Visual</h4>
+<div style="overflow-y:auto;height:300px;text-align:center;">
+  <img src="{{ site.baseurl }}/images/grid-example.png" alt="" style="margin:0 auto;">
+</div>
+<h4>Code</h4>
+<style>
+  .demo-grid .row {
+    background: #eee;
+    border: solid 1px #ccc;
+    margin-bottom: 15px;
+    line-height: 50px;
+  }
+  .demo-grid .row div {
+    border-right: solid 1px #ccc;
+  }
+  .demo-grid .row div:last-child {
+    border-right: none;
+  }
+</style>
+<div class="container demo-grid show-code" style="max-width: 960px;">
+    <div class="row">
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+      <div class="col-md-1">.col-md-1</div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">.col-md-8</div>
+      <div class="col-md-4">.col-md-4</div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4">.col-md-4</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">.col-md-6</div>
+      <div class="col-md-6">.col-md-6</div>
+    </div>
+</div>

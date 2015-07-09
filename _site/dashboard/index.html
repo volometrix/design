@@ -222,7 +222,7 @@
     </div>
 </div>
 <script>
-	$(function () {
+var progressBar = (function(){
     Highcharts.setOptions(Highcharts.theme);
     // Highcharts.setOptions({
     //     colors: ['#6a3d9a','#3bbbf3','#1f78b4']
@@ -282,7 +282,7 @@
             color: '#1f78b4'
         }]
     });
-});
+})();
 </script>
       </div>
     </div>
@@ -1416,136 +1416,112 @@ a .glyphicon-info-sign:hover {
 
       </div>
       <div class="col-md-4">
-        <!-- Panel -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-         <div class="panel-title">
-            <span class="h5">Time Demand on Colleagues</span> 
-            <a href="#" data-toggle="modal" data-target="#impactModal" class="pull-right btn btn-default btn-xs">
-                details
-            </a>    
-        </div>
-
-    </div>
-    <div class="panel-body">
         <p>When you email your colleagues or invite them to meetings, you take time out of their schedules. This shows how much time you imposed on your coworkers compared to their average.</p>
-        <div>
-            <script>
-            $(function () {
-            $('#impact-chart').highcharts({
-                chart: {
-                    type: 'areaspline',
-                    height: 185
-                },
+<script>
+    $(function(){
+        Highcharts.setOptions(Highcharts.theme);
+        $('#impact-chart').highcharts({
+            chart: {
+                type: 'areaspline',
+                height: 185
+            },
+            title: {
+                text: ''
+            },
+            colors: ['#3BB5EA', '#A6CEE3'],
+            // colors: ['#3BB5EA', '#979797'],
+            xAxis: {
+                categories: ['Week 1', '2', '3', 'Week 4'],
                 title: {
-                    text: ''
-                },
-                colors: ['#3BB5EA', '#A6CEE3'],
-                // colors: ['#3BB5EA', '#979797'],
-                xAxis: {
-                    categories: ['Week 1', '2', '3', 'Week 4'],
-                    title: {
-                        text: null
-                    }
-                },
-                yAxis: {
-                    title: {
-                        text: 'Hours Imposed'
-                    }
-                },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: false
-                        },
-                        enableMouseTracking: false
-                    }
-                },
-                series: [{
-                    name: 'You',
-                    marker: {
-                        radius: 3
-                    },
-                    data: [400, 200, 400, 800].sort(function(){ return .5 - Math.random() }),
-                }, {
-                    name: 'Peers',
-                    type: 'spline',
-                    marker: {
-                        radius: 0
-                    },
-                    dashStyle: 'dash',
-                    color: '#666',
-                    data: [400, 200, 400, 800].sort(function(){ return .5 - Math.random() }),
-                }],
-                exporting: {
-                    enabled: false
-                },
-                credits: {
-                    enabled: false
+                    text: null
                 }
-            });
+            },
+            yAxis: {
+                title: {
+                    text: 'Hours Imposed'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: false
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'You',
+                marker: {
+                    radius: 3
+                },
+                data: [400, 200, 400, 800].sort(function(){ return .5 - Math.random() }),
+            }, {
+                name: 'Peers',
+                type: 'spline',
+                marker: {
+                    radius: 0
+                },
+                dashStyle: 'dash',
+                color: '#666',
+                data: [400, 200, 400, 800].sort(function(){ return .5 - Math.random() }),
+            }],
+            exporting: {
+                enabled: false
+            },
+            credits: {
+                enabled: false
+            }
         });
-        </script>
-        <div class="chart-description">
-            <span class="big figure">1.7</span>
-            hours imposed<br>
-            <strong>3.5</strong> peer average
-      </div>
-        <div id="impact-chart" class="chart"></div>
-        </div>
-    </div>
-</div>
-</div>
-<!-- Modal -->
+    });
+</script>
+<div class="chart-description"><span class="big figure">1.7</span>hours imposed<br><strong>3.5</strong> peer average</div>
+<div id="impact-chart" class="chart"></div>
 <div class="modal fade" id="impactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-            </button>
-             <h5 class="modal-title" id="myModalLabel">Time Demand on Colleagues Detail</h5>
-
-        </div>
-        <div class="modal-body">
-             <h5>Be aware of how much of your colleagues time you are taking.</h5>
-
-            <br>
-            <div>
-                <table class="table">
-                    <tr>
-                        <th>Person</th>
-                        <th>Sent</th>
-                        <th>Received</th>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
-                        <td>Kent, Lead Engineer</td>
-                        <td>1</td>
-                        <td>18</td>
-                        <td>20.1</td>
-                    </tr>
-                    <tr>
-                        <td>Kent, Lead Engineer</td>
-                        <td>1</td>
-                        <td>18</td>
-                        <td>20.1</td>
-                    </tr>
-                    <tr>
-                        <td>Kent, Lead Engineer</td>
-                        <td>1</td>
-                        <td>18</td>
-                        <td>20.1</td>
-                    </tr>
-                </table>
-                    
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                 <h5 class="modal-title" id="myModalLabel">Time Demand on Colleagues Detail</h5>
+            </div>
+            <div class="modal-body">
+                 <h5>Be aware of how much of your colleagues time you are taking.</h5>
+                <br>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th>Person</th>
+                            <th>Sent</th>
+                            <th>Received</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
     </div>
 </div>
-
       </div>
     </div>
     <div class="row">
@@ -1684,95 +1660,79 @@ a .glyphicon-info-sign:hover {
 
       </div>
       <div class="col-md-4">
-        <!-- Panel -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-         <div class="panel-title">
-            <span class="h5">Hours Worked</span>
-            <!-- <a href="#" data-toggle="modal" data-target="#hours-worked-modal" class="pull-right btn btn-default btn-xs">
-                details
-            </a>  -->   
-        </div>
-
-    </div>
-    <div class="panel-body">
-        <p>The average span between your first and last emails or meetings per day.</p>
+        
         <div>
             <script>
-            $(function () {
-            $('#hours-worked-chart').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 185
-                },
-                title: {
-                    text: ''
-                },
-                colors: ['#3BB5EA', '#A6CEE3'],
-                xAxis: {
-                    categories: ['Week 1', '2', '3', 'Week 4'],
-                    title : {
-                        text: null
+                $(function(){
+                    $('#hours-worked-chart').highcharts({
+                    chart: {
+                        type: 'column',
+                        height: 185
                     },
-                },
-                yAxis: {
                     title: {
-                        text: 'Hours Per Day'
+                        text: ''
                     },
-                    plotLines: [{
-                        color: '#000000',
-                        width: 1,
-                        value: 8,
-                        label: {
-                            text: 'Goal',
-                            align: 'right',
-                            x: 0
-                        }
-                    }]
-                },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: false
+                    colors: ['#3BB5EA', '#A6CEE3'],
+                    xAxis: {
+                        categories: ['Week 1', '2', '3', 'Week 4'],
+                        title : {
+                            text: null
                         },
-                        enableMouseTracking: false
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Hours Per Day'
+                        },
+                        plotLines: [{
+                            color: '#000000',
+                            width: 1,
+                            value: 8,
+                            label: {
+                                text: 'Goal',
+                                align: 'right',
+                                x: 0
+                            }
+                        }]
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: false
+                            },
+                            enableMouseTracking: false
+                        }
+                    },
+                    series: [{
+                        name: 'You',
+                        data: [ 2, 9, 10, 6 
+                        // {
+                        //     y: 2, color: '#9ED100' 
+                        // },{
+                        //     y: 9, color: '#FFA91E' 
+                        // },{ 
+                        //     y: 10, color: '#FFA91E',
+                        // },{
+                        //     y: 6, color: '#9ED100',
+                        // }
+                        ].sort(function(){ return .5 - Math.random() }),
+                    }, {
+                        name: 'Peers',
+                        data: [10, 6, 8, 9].sort(function(){ return .5 - Math.random() })
+                    }],
+                    credits: {
+                        enabled: false
+                    },
+                    exporting: {
+                        enabled: false
                     }
-                },
-                series: [{
-                    name: 'You',
-                    data: [ 2, 9, 10, 6 
-                    // {
-                    //     y: 2, color: '#9ED100' 
-                    // },{
-                    //     y: 9, color: '#FFA91E' 
-                    // },{ 
-                    //     y: 10, color: '#FFA91E',
-                    // },{
-                    //     y: 6, color: '#9ED100',
-                    // }
-                    ].sort(function(){ return .5 - Math.random() }),
-                }, {
-                    name: 'Peers',
-                    data: [10, 6, 8, 9].sort(function(){ return .5 - Math.random() })
-                }],
-                credits: {
-                    enabled: false
-                },
-                exporting: {
-                    enabled: false
-                }
+                });
             });
-        });
         </script>
         <div class="chart-description">
             <span class="figure">10</span> average hours per day<br>
             <strong>11</strong> peer average
         </div>
         <div id="hours-worked-chart" class="chart"></div>
-        </div>
-    </div>
-</div>
-</div>
 <!-- Modal -->
 <div class="modal fade" id="hours-worked-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">
@@ -1821,7 +1781,7 @@ a .glyphicon-info-sign:hover {
         </div>
     </div>
 </div>
-
+</div>
       </div>
       <div class="col-md-4">
         <!-- Panel -->
@@ -1963,18 +1923,7 @@ a .glyphicon-info-sign:hover {
     </div>
     <div class="row">
       <div class="col-md-4">
-        <!-- Panel -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-         <div class="panel-title">
-            <span class="h5">Manager 1:1s</span>
-            <!-- <a href="#" data-toggle="modal" data-target="#emailModal" class="pull-right btn btn-default btn-xs">
-                details
-            </a>     -->
-        </div>
-
-    </div>
-    <div class="panel-body">
+        
         <p> Hours spent in 1:1s with your manager.</p>
         <div>
             <script>
@@ -2056,9 +2005,6 @@ a .glyphicon-info-sign:hover {
         </div>
         <div id="manager-11s-chart" class="chart"></div>
         </div>
-    </div>
-</div>
-</div>
 <!-- Modal -->
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">
@@ -2106,6 +2052,7 @@ a .glyphicon-info-sign:hover {
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
+</div>
 </div>
 
       </div>
@@ -2256,22 +2203,11 @@ a .glyphicon-info-sign:hover {
 
       </div>
       <div class="col-md-4">
-        <!-- Panel -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-         <div class="panel-title">
-            <span class="h5">Reoccurring Meetings</span>
-            <a href="#" data-toggle="modal" data-target="#emailModal" class="pull-right btn btn-default btn-xs">
-                details
-            </a>    
-        </div>
-
-    </div>
-    <div class="panel-body">
-        <p>Hours spent in recurring meetings.</p>
-        <div>
-            <script>
-            $(function () {
+        
+<p>Hours spent in recurring meetings.</p>
+<div>
+    <script>
+    $(function () {
             // Semi Circle Donut
             $('#reoccurring-meetings-chart-2').highcharts({
                 chart: {
@@ -2309,8 +2245,8 @@ a .glyphicon-info-sign:hover {
                     name: 'Meeting Type',
                     innerSize: '50%',
                     data: [
-                        ['Ad Hoc',   45.0],
-                        ['Reoccurring', 26.8]
+                    ['Ad Hoc',   45.0],
+                    ['Reoccurring', 26.8]
                     ]
                 }],
                 exporting: {
@@ -2320,85 +2256,28 @@ a .glyphicon-info-sign:hover {
                     enabled: false
                 }
             });  
-              
-            // $('#reoccurring-meetings-chart').highcharts({
-            //     chart: {
-            //         type: 'bar',
-            //         height: 185
-            //     },
-            //     title: {
-            //         text: ''
-            //     },
-            //     colors: ['#3BB5EA', '#A6CEE3'],
-            //     xAxis: {
-            //         categories: ['Meetings'],
-            //         title: {
-            //             text: 'Meetings',
-            //             enabled: false
-            //         }
-            //     },
-            //     yAxis: {
-            //         title: {
-            //             text: 'Percent of total meetings attended'
-            //         }
-            //     },
-            //     legend: {
-            //         enabled: true
-            //     },
-            //     plotOptions: {
-            //         line: {
-            //             dataLabels: {
-            //                 enabled: false
-            //             },
-            //             enableMouseTracking: false
-            //         },
-            //         series: {
-            //             marker: {
-            //                 enabled: false
-            //             }, 
-            //             stacking: 'percent'       
-            //         }
-            //     },
-            //     series: [{
-            //         name: 'Reoccurring',
-            //         data: [26]
-            //     }, {
-            //         name: 'Other',
-            //         data: [40]
-            //     }],
-            //     credits: {
-            //         enabled: false
-            //     },
-            //     exporting: {
-            //         enabled: false
-            //     }
-            // });
-
-        });
-        </script>
-        <div class="chart-description">
-            <span class="figure">26</span><strong>%</strong> reoccurring meetings
-        </div>
-        <div id="reoccurring-meetings-chart-2" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
-        </div>
-    </div>
+});
+</script>
+<div class="chart-description">
+    <span class="figure">26</span><strong>%</strong> reoccurring meetings
 </div>
+<div id="reoccurring-meetings-chart-2" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="reoccurring-meetings-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-            </button>
-             <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
 
-        </div>
-        <div class="modal-body">
-             <h5>Here are all the meetings you attended this week.</h5>
+            </div>
+            <div class="modal-body">
+               <h5>Here are all the meetings you attended this week.</h5>
 
-            <br>
-            <div>
+               <br>
+               <div>
                 <table class="table">
                     <tr>
                         <th>Person</th>
@@ -2432,270 +2311,189 @@ a .glyphicon-info-sign:hover {
         </div>
     </div>
 </div>
-
+</div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
-        <!-- Panel -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-         <div class="panel-title">
-            <span class="h5">After-hours Email</span>
-            <!-- <a href="#" data-toggle="modal" data-target="#emailModal" class="pull-right btn btn-default btn-xs">
-                details
-            </a>  -->   
-        </div>
-    </div>
-    <div class="panel-body">
         <p>Total count of email impact sent after hours .</p>
-        <div>
-            <script>
-            $(function () {
-            $('#after-hours-email-chart').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 185
-                },
-                title: {
-                    text: ''
-                },
-                colors: ['#3BB5EA', '#A6CEE3'],
-                xAxis: {
-                    categories: ['Week 1', '2', '3', 'Week 4'],
-                    title: {
-                        text: null
-                    }
-                },
-                yAxis: {
-                    title: {
-                        text: 'Email messages'
-                    }
-                },
-                legend: {
-                    enabled: true
-                },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: false
-                        },
-                        enableMouseTracking: false
-                    },
-                    series: {
-                        marker: {
-                            enabled: false
-                        }
-                    }
-                },
-                series: [{
-                    name: 'You',
-                    data: [66, 70, 56, 37].sort(function(){ return .5 - Math.random() })
-                }, {
-                    name: 'Peer',
-                    type: 'column',
-                    // color: '#666',
-                    marker: {
-                        enabled: true,
-                        radius: 2
-                    },
-                    data: [70, 56, 48, 69].sort(function(){ return .5 - Math.random() })
-                }],
-                credits: {
+<script>
+$(function(){
+    $('#after-hours-email-chart').highcharts({
+        chart: {
+            type: 'column',
+            height: 185
+        },
+        title: {
+            text: ''
+        },
+        colors: ['#3BB5EA', '#A6CEE3'],
+        xAxis: {
+            categories: ['Week 1', '2', '3', 'Week 4'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Email messages'
+            }
+        },
+        legend: {
+            enabled: true
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
                     enabled: false
                 },
-                exporting: {
+                enableMouseTracking: false
+            },
+            series: {
+                marker: {
                     enabled: false
                 }
-            });
-        });
-        </script>
-        <div class="chart-description">
-            <span class="figure">66</span> emails sent<br>
-            <strong>67</strong> peer average
-        </div>
-        <div id="after-hours-email-chart" class="chart"></div>
-        </div>
-    </div>
+            }
+        },
+        series: [{
+            name: 'You',
+            data: [66, 70, 56, 37].sort(function(){ return .5 - Math.random() })
+        }, {
+            name: 'Peer',
+            type: 'column',
+            marker: {
+                enabled: true,
+                radius: 2
+            },
+            data: [70, 56, 48, 69].sort(function(){ return .5 - Math.random() })
+        }],
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        }
+    });     
+});
+</script>
+<div class="chart-description">
+    <span class="figure">66</span> emails sent<br>
+    <strong>67</strong> peer average
 </div>
-</div>
-<!-- Modal -->
+<div id="after-hours-email-chart" class="chart"></div>
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-            </button>
-             <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
 
-        </div>
-        <div class="modal-body">
-             <h5>Here are all the meetings you attended this week.</h5>
-
-            <br>
-            <div>
-                <table class="table">
-                    <tr>
-                        <th>Person</th>
-                        <th>Sent</th>
-                        <th>Received</th>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
-                        <td>Kent, Lead Engineer</td>
-                        <td>1</td>
-                        <td>18</td>
-                        <td>20.1</td>
-                    </tr>
-                    <tr>
-                        <td>Kent, Lead Engineer</td>
-                        <td>1</td>
-                        <td>18</td>
-                        <td>20.1</td>
-                    </tr>
-                    <tr>
-                        <td>Kent, Lead Engineer</td>
-                        <td>1</td>
-                        <td>18</td>
-                        <td>20.1</td>
-                    </tr>
-                </table>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="modal-body">
+                <h5>Here are all the meetings you attended this week.</h5>
+
+                <br>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th>Person</th>
+                            <th>Sent</th>
+                            <th>Received</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
 
       </div>
       <div class="col-md-4">
-        <!-- Panel -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-         <div class="panel-title">
-            <span class="h5">Actionable Email</span>
-            <!-- <a href="#" data-toggle="modal" data-target="#emailModal" class="pull-right btn btn-default btn-xs">
-                details
-            </a>  -->   
-        </div>
-
-    </div>
-    <div class="panel-body">
+        
         <p>% of emails sent with "Action, Inform and Decide" in title.</p>
         <div>
+            <div class="chart-description">
+                <span class="figure">21</span><strong>%</strong> actionable emails sent
+            </div>
+            <div id="actionable-email-chart-2" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
             <script>
-            $(function () {
-                $('#actionable-email-chart-2').highcharts({
-                    chart: {
-                        plotBackgroundColor: null,
-                        plotBorderWidth: 0,
-                        plotShadow: false
-                    },
-                    title: {
-                        text: 'Email Types',
-                        align: 'center',
-                        verticalAlign: 'middle',
-                        y: 50
-                    },
-                    tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                    },
-                    plotOptions: {
-                        pie: {
-                            dataLabels: {
-                                enabled: true,
-                                distance: -50,
-                                style: {
-                                    fontWeight: 'bold',
-                                    color: 'white',
-                                    textShadow: '0px 1px 2px black'
-                                }
-                            },
-                            startAngle: -90,
-                            endAngle: 90,
-                            center: ['50%', '75%']
+            var hDougnutCart = (function() {
+                $(function(){
+                    $('#actionable-email-chart-2').highcharts({
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: 0,
+                            plotShadow: false
+                        },
+                        title: {
+                            text: 'Email Types',
+                            align: 'center',
+                            verticalAlign: 'middle',
+                            y: 50
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        plotOptions: {
+                            pie: {
+                                dataLabels: {
+                                    enabled: true,
+                                    distance: -50,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: 'white',
+                                        textShadow: '0px 1px 2px black'
+                                    }
+                                },
+                                startAngle: -90,
+                                endAngle: 90,
+                                center: ['50%', '75%']
+                            }
+                        },
+                        series: [{
+                            type: 'pie',
+                            name: 'Email Type',
+                            innerSize: '50%',
+                            data: [
+                                ['General',   94],
+                                ['Actionable', 6]
+                            ]
+                        }],
+                        exporting: {
+                            enabled: false
+                        },
+                        credits: {
+                            enabled: false
                         }
-                    },
-                    series: [{
-                        type: 'pie',
-                        name: 'Email Type',
-                        innerSize: '50%',
-                        data: [
-                            ['General',   94],
-                            ['Actionable', 6]
-                        ]
-                    }],
-                    exporting: {
-                        enabled: false
-                    },
-                    credits: {
-                        enabled: false
-                    }
+                    });
                 });
-
-            // $('#actionable-email-chart').highcharts({
-            //     chart: {
-            //         type: 'bar',
-            //         height: 185
-            //     },
-            //     title: {
-            //         text: ''
-            //     },
-            //     colors: ['#3BB5EA', '#A6CEE3'],
-            //     xAxis: {
-            //         categories: ['Email'],
-            //         title: {
-            //             text: 'Email',
-            //             enabled: false
-            //         }
-            //     },
-            //     yAxis: {
-            //         title: {
-            //             text: 'Percent of total email sent'
-            //         }
-            //     },
-            //     legend: {
-            //         enabled: true
-            //     },
-            //     plotOptions: {
-            //         line: {
-            //             dataLabels: {
-            //                 enabled: false
-            //             },
-            //             enableMouseTracking: false
-            //         },
-            //         series: {
-            //             marker: {
-            //                 enabled: false
-            //             }, 
-            //             stacking: 'percent'       
-            //         }
-            //     },
-            //     series: [{
-            //         name: 'Actionable',
-            //         data: [26]
-            //     }, {
-            //         name: 'Other',
-            //         data: [40]
-            //     }],
-            //     credits: {
-            //         enabled: false
-            //     },
-            //     exporting: {
-            //         enabled: false
-            //     }
-            // });
-        });
+            })();
         </script>
-        <div class="chart-description">
-            <span class="figure">21</span><strong>%</strong> actionable emails sent
         </div>
-        <div id="actionable-email-chart-2" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
-        </div>
-    </div>
-</div>
-</div>
+
 <!-- Modal -->
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">
