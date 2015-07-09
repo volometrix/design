@@ -1,0 +1,220 @@
+<style>
+[data-toggle="popover"]:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.popover {
+    font: 9pt Trebuchet MS, Verdana, sans-serif;
+    opacity: .8;
+    border-radius: 2px;
+}
+a .glyphicon-info-sign {
+   color: #bbb;
+}
+a .glyphicon-info-sign:hover {
+   color: #555;
+}
+#xaxis-label-1 {
+    fill: red;
+}
+</style>
+<div class="panel panel-default">
+	<div class="panel-heading">
+        <div class="panel-title">
+            <span class="h5">Email Effectiveness</span> 
+            <!-- <a href="#" data-toggle="modal" data-target="#meetingModal" class="pull-right btn btn-default btn-xs">
+                details
+            </a> -->    
+        </div>
+    </div>
+    <div class="panel-body">
+      <p>Send and receive more effective email <a href="#" data-toggle="popover" data-placement="top" data-html="true" data-content="<strong>A meeting’s quality is determined by its MQI</strong><br>, the Meeting Quality Index, which uses meeting components like the duration of the meeting, number of attendees, level of engagement, number of declines/double books, and number of levels present to rate the meeting.<br><a href='#'>Learn more</a>."><i class="glyphicon glyphicon-info-sign"></i></a>.</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="email-effectiveness-chart"></div>          
+            </div>
+            <div class="col-md-6">
+                <table class="table table-condensed">
+                    <tr>
+                        <th></th>
+                        <th>You</th>
+                        <th>Peers</th>
+                    </tr>
+                    <tr>
+                        <td>Hours</td>
+                        <td>6</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>Sent </td>
+                        <td>8</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>Avg. Recipient</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>% Action</td>
+                        <td>0.4</td>
+                        <td>0.2</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+      <script>
+            $(function () {
+            Highcharts.setOptions(Highcharts.theme);
+            $('#email-effectiveness-chart').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 240
+                },
+                title: {
+                    text: ''
+                },
+                colors: ['#3BB5EA', '#A6CEE3'],
+                xAxis: {
+                    categories: ['Week 1', '2', '3', 'Week 4'],
+                    title : {
+                        text: null
+                    },
+                },
+                yAxis: {
+                    title: {
+                        text: 'Hours in Email'
+                    }
+                    // ,
+                    // plotLines: [{
+                    //     color: '#000000',
+                    //     width: 1,
+                    //     value: 8,
+                    //     label: {
+                    //         text: 'Goal',
+                    //         align: 'right',
+                    //         x: 0
+                    //     }
+                    // }]
+                },
+                legend: {
+                    enabled: true
+                },
+                series: [{
+                    name: 'You',
+                    // color: '#3bbbf3',
+                    data: [107, 31, 45, 23]
+                }, {
+                    name: 'Peer',
+                    // color: '#1f78b4',
+                    data: [133, 156, 36, 13]
+                }],
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                }
+            });
+        });
+        </script>
+        <br>
+        <p style="text-align:center;"><strong>14.9%</strong> of your email time was spent in high-quality email, on average your peers spent 14.9% of their meeting time in high-quality email.</p>
+        </div>
+    </div>
+    <div class="modal fade" id="meetingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="myModalLabel">Meeting Effectiveness Details</h5>
+                </div>
+                <div class="modal-body">
+                 <h5>Here are all the meetings you attended this week.</h5>
+                 <br>
+                 <div>
+                    <table class="table">
+                        <th>
+                            <td>Date</td>
+                            <td>Subject</td>
+                            <td>Organizer</td>
+                            <td>Quality</td>
+                            <td>Size</td>
+                            <td>Duration</td>
+                            <td>Exclude</td>
+                        </th>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-true"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-true"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-false"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-true"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-false"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

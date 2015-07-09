@@ -1,0 +1,172 @@
+---
+layout: 
+title: 
+permalink: /personal-report-2/
+type: Your
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>{{ page.title }}</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <!-- script src="http://code.highcharts.com/modules/exporting.js"></script -->
+    <script src="{{ "/javascript/personalDashboardHCTheme.js" | prepend: site.baseurl }}"></script>
+    <style>
+    body {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: #f9f9f9;
+    color: #555;
+  }
+
+  .btn-default {
+    border-radius: 100px;
+    border-color: #ddd;
+  }
+
+  .theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .theme-showcase > p > .btn {
+    margin: 5px 0;
+  }
+
+  .theme-showcase .navbar .container {
+    width: auto;
+  }
+
+  /* Bootstrap overrides */
+  .panel-body {
+    min-height: 350px;
+    position: relative;
+  }
+  .chart {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+  .panel .panel-heading {
+    background: #fff;
+    border-bottom: none;
+  }
+  .modal .modal-footer {
+    text-align: left;
+  }
+  .goal-met-true {
+    color: #A6D53A;
+  }
+  .goal-met-false {
+    color: #FC9430;
+  }
+  .figure {
+    font-size: 64px;
+    font-weight: 200;
+  }
+  .popover {
+    font: 9pt Trebuchet MS, Verdana, sans-serif;
+    opacity: .8;
+  }
+  </style>
+  </head>
+
+  <body role="document">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Volometrix</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="#">METRICS</a></li>
+            <li><a href="#about">COLLABORATION</a></li>
+            <li><a href="#contact">TOPICS</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container" role="main">
+
+      <div class="row page-header clearfix">
+        <div class="col-md-12">
+          <span class="h2">{{ page.type | capitalize }} Goals</span>
+          <!-- a href="/team-dashboard/" class="btn btn-default">Switch to Team view</a -->
+          <span class="pull-right">Time Period <select name="" id=""><option value="">6/26/2015 - 7/2/2015</option></select></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Activities this week</h3>
+          {% include progress-bar-panel-2.html %}
+          <br>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-8">
+          {% include meeting-panel-2.html %}  
+        </div>
+        <div class="col-md-4">
+          {% include work-panel-2.html %}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          {% include email-panel-2.html %}
+        </div>
+        <div class="col-md-4">
+          {% include time-panel-mgr.html %}
+        </div>
+        <div class="col-md-4">
+          {% include balance-panel-2.html %}
+        </div>
+      </div>
+
+    </div> <!-- /container -->    
+  </body>
+</html>

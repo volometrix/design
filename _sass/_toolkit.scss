@@ -1,0 +1,74 @@
+.wrapper {
+    max-width:100%;
+}
+.site-header {
+    background: #eee;
+    position: fixed;
+    right:0;
+    left:0;
+    z-index: 100;
+}
+.page-content {
+    padding-top: 85px;
+}
+.site-nav {
+    
+    margin:0;
+    padding:0;
+}
+.site-title {
+    font-size: 18px;
+}
+.page-link {
+    font-size: 12px;
+    font-weight: 500;
+    color: #555 !important;
+}
+.swatches {
+    margin-bottom: 15px;
+}
+
+.swatch {
+    width:150px;
+    height:100px;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px 1px #ccc;
+    overflow: hidden;
+    position: relative;
+    margin-right: 8px; 
+    margin-bottom: 8px; 
+    float: left;
+    .swatch-name {
+        position: absolute;
+        top: 50%;
+        right:0;
+        left:0;
+        margin-top: -1em;
+        text-align: center;
+    }
+    .swatch-color {
+        position: absolute;
+        top: 50%;
+        right:0;
+        left:0;
+        margin-top: 0;
+    }
+}
+
+.swatches:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.source,.notes {
+    display: none;
+}
+
+.sg-component {
+    margin-bottom: 50px;
+    padding-bottom:50px;
+    border-bottom: solid 1px #eee;
+}

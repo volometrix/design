@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title></title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <!-- script src="http://code.highcharts.com/modules/exporting.js"></script -->
+    <script src="/projects/volometrix/gene//javascript/personalDashboardHCTheme.js"></script>
+    <style>
+    body {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: #f9f9f9;
+    color: #555;
+  }
+
+  .btn-default {
+    border-radius: 100px;
+    border-color: #ddd;
+  }
+
+  .theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .theme-showcase > p > .btn {
+    margin: 5px 0;
+  }
+
+  .theme-showcase .navbar .container {
+    width: auto;
+  }
+
+  /* Bootstrap overrides */
+  .panel-body {
+    min-height: 350px;
+    position: relative;
+  }
+  .chart {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+  .panel .panel-heading {
+    background: #fff;
+    border-bottom: none;
+  }
+  .modal .modal-footer {
+    text-align: left;
+  }
+  .goal-met-true {
+    color: #A6D53A;
+  }
+  .goal-met-false {
+    color: #FC9430;
+  }
+  .figure {
+    font-size: 64px;
+    font-weight: 200;
+  }
+  .popover {
+    font: 9pt Trebuchet MS, Verdana, sans-serif;
+    opacity: .8;
+  }
+  </style>
+  </head>
+
+  <body role="document">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Volometrix</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="#">METRICS</a></li>
+            <li><a href="#about">COLLABORATION</a></li>
+            <li><a href="#contact">TOPICS</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container" role="main">
+
+      <div class="row page-header clearfix">
+        <div class="col-md-12">
+          <span class="h2">Your Goals</span>
+          <!-- a href="/team-dashboard/" class="btn btn-default">Switch to Team view</a -->
+          <span class="pull-right">Time Period <select name="" id=""><option value="">6/26/2015 - 7/2/2015</option></select></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Activities this week</h3>
+          <div id="progress-bar-2-compare" style="min-width: 310px; height: 185px; margin: 0 auto;"></div>
+<script>
+	$(function () {
+    Highcharts.setOptions(Highcharts.theme);
+    // Highcharts.setOptions({
+    //     colors: ['#6a3d9a','#3bbbf3','#1f78b4']
+    // });
+    $('#progress-bar-2-compare').highcharts({
+        chart: {
+            type: 'bar',
+            margin: [15,15,50,75],
+            spacing: [0,0,0,0],
+            backgroundColor: 'rgba(255,255,255,0.1)',
+            // colors: ['#6a3d9a','#3bbbf3','#1f78b4']
+        },
+        credits:{enabled:false},
+        exporting:{enabled:false},
+        title: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['you','peers']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Work week (%)',
+                align: 'high'
+            },
+            max: 100
+        },
+        legend: {
+            reversed: true
+        },
+        tooltip: {
+            borderColor: '#999999',
+            shared: true,
+            useHTML: true,
+            headerFormat: '<small>{point.key}</small><table>',
+            pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
+                '<td style="text-align: right"><b>{point.y} h</b></td></tr>',
+            footerFormat: '</table>'
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'Email',
+            data: [50,40],
+            color: '#6a3d9a'
+        }, {
+            name: 'Meeting',
+            data: [20,35],
+            color: '#3bbbf3'
+        }, {
+            name: 'Work',
+            data: [30,25],
+            color: '#1f78b4'
+        }]
+    });
+});
+</script>
+          <br>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-8">
+          
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="/projects/volometrix/gene//javascript/personalDashboardHCTheme.js"></script>
+
+<style>
+
+[data-toggle="popover"]:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.popover {
+    font: 9pt Trebuchet MS, Verdana, sans-serif;
+    opacity: .8;
+    border-radius: 2px;
+}
+a .glyphicon-info-sign {
+   color: #bbb;
+}
+a .glyphicon-info-sign:hover {
+   color: #555;
+}
+#xaxis-label-1 {
+    fill: red;
+}
+</style>
+<div class="panel panel-default">
+	<div class="panel-heading">
+        <div class="panel-title">
+            <span class="h5">Meeting Effectiveness</span> 
+            <a href="#" data-toggle="modal" data-target="#meetingModal" class="pull-right btn btn-default btn-xs">
+                details
+            </a>    
+        </div>
+    </div>
+    <div class="panel-body">
+      <p>Organize and attend more effective meetings <a href="#" data-toggle="popover" data-placement="top" data-html="true" data-content="<strong>A meeting’s quality is determined by its MQI</strong><br>, the Meeting Quality Index, which uses meeting components like the duration of the meeting, number of attendees, level of engagement, number of declines/double books, and number of levels present to rate the meeting.<br><a href='#'>Learn more</a>."><i class="glyphicon glyphicon-info-sign"></i></a>.</p>
+
+      <!-- <p>Meeting Effectiveness Targets <a href="#" data-toggle="popover" data-placement="top" data-html="true" data-content="These components are not mutually exclusive, so their totals may exceed 100%.<br><br>Click the labels below to learn more."><i class="glyphicon glyphicon-info-sign"></i></a></p> -->
+      <div id="container6" style="min-width: 310px; max-width: 800px; height: 225px; margin: 0 auto"></div>
+      <script>
+      $(function () {
+       Highcharts.setOptions(Highcharts.theme);
+       $('#container6').highcharts({
+        chart: {
+            type: 'bar',
+            margin: [5,15,50,175],
+            spacing: [0,0,0,0]
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['Duration is less than 1 hour', 'Fewer than 6 attendees', '100% engagement', 'No declines or double booked attendees', 'Less than two levels present'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            title: {
+                text: 'Work week (%)',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' %',
+            enabled: false
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            },
+            series: {
+                states: {
+                    hover: {
+                        enabled: false
+                    }
+                }
+            }
+        },
+        exporting:{enabled:false},
+        legend: {
+         reversed: true,
+         align: 'center',
+         verticalAlign: 'bottom',
+         itemDistance: 15
+     },
+     credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Peers',
+        data: [41, 28, 33, 38, 66],
+        color: '#ccc'
+    }, {
+        name: 'You',
+        data: [31, 62, 64, 63, 31]
+        }]
+    })
+    // Numerate xAxis labels for tooltips
+    $.each($('#container6 .highcharts-xaxis-labels > text'), function(index, value){
+        var num = index + 1;
+        $(value).attr('id','xaxis-label-'+ num);
+    });
+        // Add the BS tooltips
+        $('#xaxis-label-1').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'Everyone&rsquo;s time counts, making larger meetings more costly. Additionally, more people make it harder to focus, and can limit the meeting&rsquo;s productivity.<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        $('#xaxis-label-2').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'Scheduling longer meetings increases the meeting&rsquo;s cost and the possibility of conversations running off topic. Be frugal with your time and others&rsquo;.<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        $('#xaxis-label-3').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'Your percentage of time in meetings where you are highly engaged (not multitasking, not too many levels present, and not double booked).<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        $('#xaxis-label-4').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'There are other ways to keep your peers in the loop than inviting everyone to every meeting. Only invite people who are absolutely necessary to the meeting to avoid high levels of declines and double bookings.<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        $('#xaxis-label-5').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'Before you attend or organize a meeting, make sure that the attendees won&rsquo;t create redundancies. It&rsquo;s unnecessary to have more than two levels of employees present at most meetings.<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        // Add the tooltip code
+        $('[data-toggle="popover"]').popover({
+            html:true,
+            trigger:'hover',
+            // trigger:'focus',
+            delay: {
+                "show": 300, 
+                "hide": 750 
+            } 
+        })
+    });
+        </script>
+        <br>
+        <p><strong>14.9%</strong> of your meeting time was spent in high-quality meetings, on average your peers spent 14.9% of their meeting time in high-quality meetings</p>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="meetingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="myModalLabel">Meeting Effectiveness Details</h5>
+                </div>
+                <div class="modal-body">
+                 <h5>Here are all the meetings you attended this week.</h5>
+
+                 <br>
+                 <div>
+                    <table class="table">
+                        <th>
+                            <td>Date</td>
+                            <td>Subject</td>
+                            <td>Organizer</td>
+                            <td>Quality</td>
+                            <td>Size</td>
+                            <td>Duration</td>
+                            <td>Exclude</td>
+                        </th>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-true"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-true"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-false"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-true"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-false"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>  
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+      <div class="panel-heading">
+            <div class="panel-title">
+                  <span class="h5">Think/Work Time</span>
+                  <a href="#" data-toggle="modal" data-target="#workModal" class="pull-right btn btn-default btn-xs">
+                        <small>details</small>
+                  </a>    
+            </div>
+
+      </div>
+      <div class="panel-body">
+            <div class="panel-subtitle">
+                  <p>Ensure you have ample time scheduled to work and think. Your goal is <strong>4 days</strong> with one or more two-hour blocks with no meetings</p>
+            </div>	
+            <div class="chart-wrapper">   
+                  <div class="chart-description">
+                        <span class="big figure">1</span>
+                        day with a two-hour block
+                  </div>
+                  <div class="days-chart days-chart-vis work-week-days">
+                        <ul>
+                              <li class="day work-day goal-met-false">
+                                    <span class="day-label">Mo</span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day work-day goal-met-false">
+                                    <span class="day-label">Tu</span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day work-day goal-met-true">
+                                    <span class="day-label">We</span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day work-day goal-met-false">
+                                    <span class="day-label">Th</span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day  work-day goal-met-false">
+                                    <span class="day-label">Fr</span>
+                              </li>
+                        </ul>
+                  </div>
+                  <br>
+                  <br>
+                  <ul class="days-chart days-chart-legend x-hidden">
+                        <li class="day work-day key"></li>
+                        <li>&nbsp;</li>
+                        <li><small>two hour block available</small></li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li class="day goal-met-false key"></li>
+                        <li>&nbsp;</li>
+                        <li><small>no focus time</small></li>
+                  </ul>
+            </div>
+      </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="workModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="myModalLabel">Think/Work Time Details</h5>
+
+                  </div>
+                  <div class="modal-body">
+                        <h5>You had 4 days with a free two-hour block.</h5>
+                        <p>Set a goal of <input type="text" style="width:35px;text-align:center;" /> days.<br><small>(Type a number between 0 and 5)</small></p>
+                        <div>
+
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                  </div>
+            </div>
+      </div>
+</div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Panel -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+         <div class="panel-title">
+            <span class="h5">Email Time</span>
+            <a href="#" data-toggle="modal" data-target="#emailModal" class="pull-right btn btn-default btn-xs">
+                details
+            </a>    
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <p>Be aware of the amount of time you spend sending and receiving emails compared to your colleagues.</p>
+        <div>
+            <script>
+            $(function () {
+            $('#email-chart').highcharts({
+                chart: {
+                    type: 'spline',
+                    height: 185
+                },
+                title: {
+                    text: ''
+                },
+                // colors: ['#3BB5EA', '#979797'],
+                xAxis: {
+                    categories: ['Mo', 'Tu', 'We', 'Tr', 'Fr']
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+                },
+                legend: {
+                    enabled: true
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: false
+                    },
+                    series: {
+                        marker: {
+                            enabled: false
+                        }
+                    }
+                },
+                series: [{
+                    name: 'You',
+                    data: [9, 10, 6, 7, 8].sort(function(){ return .5 - Math.random() })
+                }, {
+                    name: 'Peers',
+                    data: [10, 6, 8, 9, 7].sort(function(){ return .5 - Math.random() })
+                }],
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                }
+            });
+        });
+        </script>
+        <div class="chart-description">
+            <span class="figure">3.3</span> hours with email<br>
+            <strong>2.8</strong> peer average
+        </div>
+        <div id="email-chart" class="chart"></div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+             <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+
+        </div>
+        <div class="modal-body">
+             <h5>Here are all the meetings you attended this week.</h5>
+
+            <br>
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>Person</th>
+                        <th>Sent</th>
+                        <th>Received</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="col-md-4">
+          <!-- Panel -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+         <h3 class="panel-title">
+            Time 
+            <a href="#" data-toggle="modal" data-target="#myModal">
+                <i class="glyphicon glyphicon-search pull-right"></i>
+            </a>    
+        </h3>
+
+    </div>
+    <div class="panel-body">
+        <p><small>The average amount of time your Your is spending sending and receiving email each week.</small>
+        </p>
+        <p><span class="figure">7</span> hours worked per day on average <br>
+        9 hours worked on average for the company</p>
+        <div>
+            <script>
+            $(function () {
+            $('#time-chart').highcharts({
+                chart: {
+                    type: 'line',
+                    height: 150
+                },
+                title: {
+                    text: ''
+                },
+                // colors: ['#3BB5EA', '#979797'],
+                xAxis: {
+                    categories: ['Mo', 'Tu', 'We', 'Tr', 'Fr']
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+                },
+                legend: {
+                    enabled: true
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'team',
+                    data: [9, 10, 6, 7, 8]
+                }, {
+                    name: 'org',
+                    data: [10, 6, 8, 9, 7]
+                }],
+                credits: {
+                    enabled: false
+                }
+            });
+        });
+        </script>
+        <div id="time-chart" class="chart"></div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+             <h4 class="modal-title" id="myModalLabel">Meetings</h4>
+
+        </div>
+        <div class="modal-body">
+             <h5>Here are all the meetings you attended this week.</h5>
+
+            <br>
+            <div>
+                <table class="table">
+                    <th>
+                        <td>Date</td>
+                        <td>Subject</td>
+                        <td>Organizer</td>
+                        <td>Quality</td>
+                        <td>Size</td>
+                        <td>Duration</td>
+                        <td>Exclude</td>
+                    </th>
+                    <tr>
+                        <td><i class="fa fa-circle goal-met-true"></i>
+                        </td>
+                        <td>4/6</td>
+                        <td>Product team weekly planning</td>
+                        <td>Chantrelle, VP Product</td>
+                        <td>67</td>
+                        <td>13</td>
+                        <td>0.8</td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-circle goal-met-true"></i>
+                        </td>
+                        <td>4/6</td>
+                        <td>Product team weekly planning</td>
+                        <td>Chantrelle, VP Product</td>
+                        <td>67</td>
+                        <td>13</td>
+                        <td>0.8</td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-circle goal-met-false"></i>
+                        </td>
+                        <td>4/6</td>
+                        <td>Product team weekly planning</td>
+                        <td>Chantrelle, VP Product</td>
+                        <td>67</td>
+                        <td>13</td>
+                        <td>0.8</td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-circle goal-met-true"></i>
+                        </td>
+                        <td>4/6</td>
+                        <td>Product team weekly planning</td>
+                        <td>Chantrelle, VP Product</td>
+                        <td>67</td>
+                        <td>13</td>
+                        <td>0.8</td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-circle goal-met-false"></i>
+                        </td>
+                        <td>4/6</td>
+                        <td>Product team weekly planning</td>
+                        <td>Chantrelle, VP Product</td>
+                        <td>67</td>
+                        <td>13</td>
+                        <td>0.8</td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="col-md-4">
+          
+<div class="panel panel-default">
+      <div class="panel-heading">
+            <div class="panel-title">
+                  <span class="h5">After-hours Work </span>
+                  <a href="#" data-toggle="modal" data-target="#balanceModal"  class="pull-right btn btn-default btn-xs">
+                        details
+                  </a>    
+            </div>
+
+      </div>
+      <div class="panel-body">
+            <div class="panel-subtitle">
+                  <p>Here's how many days you had meetings or sent and received emails after hours. Your goal is <strong>x</strong> days with no after hours work.</p>
+            </div>	
+            <div class="chart-wrapper">   
+                  <div class="chart-description">
+                        <span class="big figure">1</span> day without after-hours work
+                  </div>
+                  <div class="days-chart days-chart-vis full-week-days">
+                        <ul>
+                              <li class="day work-day goal-met-false">
+                              <span class="day-label">Su</span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day work-day goal-met-false">
+                              <span class="day-label">Mo </span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day work-day goal-met-true">
+                              <span class="day-label">Tu </span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day work-day goal-met-true">
+                              <span class="day-label">We </span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day  work-day goal-met-false">
+                              <span class="day-label">Th </span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day  work-day goal-met-true">
+                              <span class="day-label">Fr </span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day  work-day goal-met-false">
+                              <span class="day-label">Sa</span>
+                              </li>
+                        </ul>
+                  </div>
+                  <br>
+                  <br>
+                  <ul class="days-chart x-hidden days-chart-legend">
+                        <li class="day work-day key"></li>
+                        <li>&nbsp;</li>
+                        <li><small>no extra work</small></li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li class="day goal-met-false key"></li>
+                        <li>&nbsp;</li>
+                        <li><small>extra work</small></li>
+                  </ul>
+                  </div>
+
+            </div>
+      </div>
+
+<!-- Modal -->
+<div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="myModalLabel">Balance Details</h5>
+
+                  </div>
+                  <div class="modal-body">
+                        <h5>You had <strong>n</strong> days without after-hours work.</h5>
+                        <p>Set a goal of <input type="text" style="width:35px;text-align:center;" /> days.<br><small>(Type a number between 0 and 7)</small></p>
+                  </div>
+                  <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                  </div>
+            </div>
+      </div>
+</div>
+
+        </div>
+      </div>
+
+    </div> <!-- /container -->    
+  </body>
+</html>

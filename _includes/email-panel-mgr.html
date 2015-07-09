@@ -1,0 +1,102 @@
+<!-- Panel -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+         <h3 class="panel-title">
+            Email 
+            <a href="#" data-toggle="modal" data-target="#email-panel-mgr-modal">
+                <i class="glyphicon glyphicon-search pull-right"></i>
+            </a>    
+        </h3>
+
+    </div>
+    <div class="panel-body">
+        <p><small>The average amount of time your {{ page.type }} is spending sending and receiving email each week.</small>
+        </p>
+        <p><span class="figure">8</span> hours spent with actionable email</p>
+        <div>
+            <script>
+            $(function () {
+            $('#email-chart').highcharts({
+                chart: {
+                    type: 'line',
+                    height: 150
+                },
+                title: {
+                    text: ''
+                },
+                // colors: ['#3BB5EA', '#979797'],
+                xAxis: {
+                    categories: ['Mo', 'Tu', 'We', 'Tr', 'Fr']
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+                },
+                legend: {
+                    enabled: true
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Email',
+                    data: [9, 10, 6, 7, 8]
+                }, {
+                    name: 'Meetings',
+                    data: [10, 6, 8, 9, 7]
+                }],
+                credits: {
+                    enabled: false
+                }
+            });
+        });
+        </script>
+        <div id="email-chart" class="chart"></div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="email-panel-mgr-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+             <h4 class="modal-title" id="myModalLabel">Meetings</h4>
+
+        </div>
+        <div class="modal-body">
+             <h5>Here are all the meetings you attended this week.</h5>
+
+            <br>
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>Email Type</th>
+                        <th>Time (%)</th>
+                    </tr>
+                    {% for email in site.data.emails %}
+                    <tr>
+                        <td>
+                            {{ email.type }}
+                        </td>
+                        <td>
+                            {{ email.time }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,302 @@
+---
+layout: 
+title: Dashboard
+permalink: /dashboard/
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+
+  <title>Personal Goals Dashboard</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="{{ site.baseurl }}/javascript/jquery-2.1.3.min.js"></script>
+  <script src="{{ site.baseurl }}/javascript/jquery.cookie.min.js"></script>
+  <script src="{{ site.baseurl }}/javascript/bootstrap.min.js"></script>
+  <script src="{{ site.baseurl }}/javascript/highcharts.js"></script>
+  <script src="{{ site.baseurl }}/javascript/exporting.js"></script>
+  <script src="{{ site.baseurl }}/javascript/personalDashboardHCTheme.js"></script>
+  <style>
+  body {
+    padding-top: 50px;
+    padding-bottom: 30px;
+    background: #f9f9f9;
+    color:#555;
+  }
+  .theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .theme-showcase > p > .btn {
+    margin: 5px 0;
+  }
+  .theme-showcase .navbar .container {
+    width: auto;
+  }
+  .panel-body {
+    min-height: 350px;
+    position: relative;
+  }
+  .panel-body p {
+    font-size: 12px;
+  }
+  .chart {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+  .chart-description {
+    position: absolute;
+    top:60px; left: 0; right: 0;
+    text-align: center !important;
+    z-index: 1;
+  }
+  .panel .panel-heading {
+    background: #fff;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .modal .modal-footer {
+    text-align: left;
+  }
+  .days-chart, .days-chart-legend {
+    position: absolute;
+    top:105px;
+    text-align: center;
+    left:50%;
+    margin-left: -195px;
+    width:350px;
+  }
+  .days-chart-vis {
+    margin-top:75px;
+  }
+  .days-chart .timeline {
+    background: #fff url('{{ site.baseurl }}/images/days-chart-bkd.png') no-repeat 0 12.5px !important;
+    margin: 0 -2px;
+  }
+  .days-chart.work-week-days .timeline {
+    width: 10%;
+  }
+  .days-chart.full-week-days .timeline {
+    width: 5%;
+  }
+  .days-chart .work-day {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .work-day.key,
+  .days-chart .goal-met-false.key {
+    height: 12px;
+    width: 12px;
+  }
+  .days-chart li {
+    display:inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 25px;
+    white-space: nowrap;
+  }
+  .days-chart .day {
+    width: 25px;
+    margin:0 -1px;
+    border-radius: 100%;
+    background-color: #d7d7d7;
+  }
+  .days-chart .sep {
+    width:10%;
+    background: #fff url(' {{ site.baseurl }}/images/days-chart-bkd.png') no-repeat 0 12.5px;
+    margin:0 -2px;
+  }
+  .days-chart .goal-met-true {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .goal-met-false {
+    background-color: #FFC960;
+    background-image: -webkit-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: -o-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: linear-gradient(#FFC960 0%, #FFA00C 100%);
+  }
+  .figure {
+    font-size: 38px;
+    font-weight: 300; 
+  }
+  .day-label {
+    font-size: 11px;
+    color: #555555;
+    position: absolute;
+    bottom:-20px;
+    width:100%;
+    text-align: center;
+    text-align: -webkit-center;
+    display: block;
+  }
+  .days-chart-legend {
+    top: 275px;
+  }
+  </style>
+</head>
+<body role="document">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Volometrix</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">METRICS</a></li>
+          <li><a href="#about">COLLABORATION</a></li>
+          <li><a href="#contact">TOPICS</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 style="font-weight:200;">How you spent your time</h1>
+        <p>This dashboard shows you recent activity quality and quantity of time you spend in email and meetings.</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="moment" style="text-align:center;">
+          <h1 class="moment-greeting">
+            Hello, Chelsey
+          </h1>
+          <p>Last week your focus was reducing meetings.</p>
+          <p>Do you feel you achieved this goal?</p>
+          <p><a href="#" class="btn btn-default">Yes</a>&nbsp;&nbsp;<a href="#">No</a></p>
+          <p>What is your focus for this week?</p>
+          <p><input type="text" style="border:none;background:transparent;border-bottom:solid 1px #555;"></p>
+          <p><a href="#" class="btn btn-default">Save</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        {% include progress-bar-panel-2.html %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        {% include last-week-productivity-panel.html %}
+      </div>
+      <div class="col-md-4">
+        {% include goals-for-the-week-panel.html %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        {% include key-people-panel.html %}
+      </div>
+      <div class="col-md-4">
+        {% include time-breakdown-panel.html %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        {% include meeting-panel-2.html %}  
+      </div>
+      <div class="col-md-4">
+        {% include work-panel-2.html %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        {% include email-effectiveness-panel.html %}  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        {% include email-panel-2.html %}
+      </div>
+      <div class="col-md-4">
+        {% include balance-panel-2.html %}
+      </div>
+      <div class="col-md-4">
+        {% include impact-panel-2.html %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        {% include email-sent-panel-2.html %}
+      </div>
+      <div class="col-md-4">
+        {% include hours-worked-panel.html %}
+      </div>
+      <div class="col-md-4">
+        {% include weekly-meetings-panel.html %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        {% include manager-11s-panel.html %}
+      </div>
+      <div class="col-md-4">
+        {% include direct-11s-panel.html %}
+      </div>
+      <div class="col-md-4">
+        {% include reoccurring-meetings-panel.html %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        {% include after-hours-email-panel.html %}
+      </div>
+      <div class="col-md-4">
+        {% include actionable-email-panel.html %}
+      </div>
+    </div>
+    {% include welcome-modal.html %}
+    <script>
+    $(function(){
+      var highestCol = Math.max($('.panel-body').height());
+      $('.equalHeight').height(highestCol);
+      $('.panel-body').css({ 
+        'height' : highestCol 
+      });
+    });
+    </script>
+  </div>
+</body>
+</html>

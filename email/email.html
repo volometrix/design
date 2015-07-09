@@ -1,0 +1,35 @@
+---
+layout: default
+title: Email
+permalink: /Email/
+type: team
+---
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			{% include html-email-intro.html %}
+		</div>
+		<div class="col-md-4">
+			<h5>Intro</h5>
+			<p>The first time a user gets the email, this intro is visible.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			{% include html-email-pass.html %}
+		</div>
+		<div class="col-md-4">
+			<h5>Passing</h5>
+			<p>This shows the passing messages.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			{% include html-email-fail.html %}
+		</div>
+		<div class="col-md-4">
+			<h5>Fail</h5>
+			<p>This shows the failing messages.</p>
+		</div>
+	</div>
+</div>
