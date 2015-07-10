@@ -1,0 +1,84 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">Work</span>
+      <!-- <a href="#" data-toggle="modal" data-target="#emailModal"  class="pull-right btn btn-default btn-xs">
+        details
+      </a> -->    
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="panel-subtitle">
+      <p>How many days your team had to dedicate to work</p>
+    </div>   
+    <script>
+    $(function () {
+      $('#manager-work-chart').highcharts({
+        chart: {
+          type: 'column',
+          height: 185
+        },
+        title: {
+          text: ''
+        },
+        xAxis: {
+          categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+          title: {
+            text: null
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'Days for Work'
+          },
+          max: 5,
+          plotLines: [{
+            color: '#000000',
+            width: 1,
+            value: 3,
+            label: {
+              text: 'Goal',
+              align: 'right',
+              x: 0
+            }
+          }]
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
+          line: {
+            dataLabels: {
+              enabled: false
+            },
+            enableMouseTracking: false
+          },
+          series: {
+            marker: {
+              enabled: true,
+              radius: 2
+            }
+          }
+        },
+        series: [{
+          // name: 'Large Attendance',
+          type: 'column',
+          color: '#3BB5EA',
+          data: [ 3, 1, 2, 4 ].sort(function(){ return .5 - Math.random() })
+        }],
+        credits: {
+          enabled: false
+        },
+        exporting: {
+          enabled: false
+        }
+      });
+});
+</script>
+<div class="chart-description">
+  <span class="figure">2.5</span> average days<br>
+  <strong>2</strong> peer average
+</div>
+<div id="manager-work-chart" class="chart"></div>    
+</div>
+</div>

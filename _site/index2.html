@@ -78,6 +78,8 @@
         
           
         
+          
+        
       </div>
     </nav>
 
@@ -1302,8 +1304,22 @@ $(function () {
         </div>
     </div>
 </div></div><hr>
-      <h5 id="grouped-column-chart">Grouped Column</h5><div class="show-code"><p>Total count of email impact sent after hours .</p>
-<script>
+      <h5 id="grouped-column-chart">Grouped Column</h5><div class="show-code"><div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">After Hours Email</span>
+      <a href="#" data-toggle="modal" data-target="#balanceModal"  class="pull-right btn btn-default btn-xs">
+        details
+      </a>    
+    </div>
+
+  </div>
+  <div class="panel-body">
+    <div class="panel-subtitle">
+      <p>Total count of email impact sent after hours .</p>
+    </div>  
+    <div class="chart-wrapper">   
+      <script>
 $(function(){
     $('#after-hours-email-chart').highcharts({
         chart: {
@@ -1367,6 +1383,11 @@ $(function(){
     <strong>67</strong> peer average
 </div>
 <div id="after-hours-email-chart" class="chart"></div>
+    </div>     
+  </div>
+</div>
+
+
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -1424,7 +1445,6 @@ $(function(){
                         details
                   </a>    
             </div>
-
       </div>
       <div class="panel-body">
             <script>
@@ -1469,17 +1489,8 @@ $(function(){
                     },
                     series: [{
                         name: 'You',
-                        data: [ 2, 9, 10, 6 
-                        // {
-                        //     y: 2, color: '#9ED100' 
-                        // },{
-                        //     y: 9, color: '#FFA91E' 
-                        // },{ 
-                        //     y: 10, color: '#FFA91E',
-                        // },{
-                        //     y: 6, color: '#9ED100',
-                        // }
-                        ].sort(function(){ return .5 - Math.random() }),
+                        data: [ 2, 9, 10, 6 ]
+                        .sort(function(){ return .5 - Math.random() }),
                     }, {
                         name: 'Peers',
                         data: [10, 6, 8, 9].sort(function(){ return .5 - Math.random() })

@@ -1,5 +1,19 @@
-<p>Total count of email impact sent after hours .</p>
-<script>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">After Hours Email</span>
+      <a href="#" data-toggle="modal" data-target="#balanceModal"  class="pull-right btn btn-default btn-xs">
+        details
+      </a>    
+    </div>
+
+  </div>
+  <div class="panel-body">
+    <div class="panel-subtitle">
+      <p>Total count of email impact sent after hours .</p>
+    </div>  
+    <div class="chart-wrapper">   
+      <script>
 $(function(){
     $('#after-hours-email-chart').highcharts({
         chart: {
@@ -63,6 +77,11 @@ $(function(){
     <strong>67</strong> peer average
 </div>
 <div id="after-hours-email-chart" class="chart"></div>
+    </div>     
+  </div>
+</div>
+
+
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
