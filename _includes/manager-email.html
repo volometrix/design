@@ -52,7 +52,7 @@
             dataLabels: {
               enabled: false
             },
-            enableMouseTracking: false
+            enableMouseTracking: false,
           },
           series: {
             marker: {
@@ -62,10 +62,14 @@
           }
         },
         series: [{
-          // name: 'Large Attendance',
           type: 'column',
           color: '#3BB5EA',
-          data: [ 333, 111, 222, 444 ].sort(function(){ return .5 - Math.random() })
+          data: [ 
+            { y:290, color: '#A6D53A'},
+            { y:666, color: '#3BB5EA'},
+            { y:222, color: '#A6D53A'},
+            { y:444, color: '#3BB5EA'}
+          ]
         }],
         credits: {
           enabled: false

@@ -1,0 +1,109 @@
+---
+layout: 
+title:
+permalink: /enterprise/
+type: Your
+page-title: Enterprise Dashboard
+---
+{% include db-header.html %}
+
+  <div class="container" role="main">
+    <div class="row page-header clearfix">
+      <div class="col-md-12">
+        <span class="h2">Enterprise Dashboard</span>
+          <!-- a href="/team-dashboard/" class="btn btn-default">Switch to Team view</a -->
+          <span class="pull-right">Time Period <select name="" id=""><option value="">6/26/2015 - 7/2/2015</option></select></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-4" style="border-right:solid 1px #ccc;">
+              <h5>Accounts</h5>
+              <p><span class="h1">718</span> Total</p>
+              <p><span class="h3">18</span><strong>%</strong> Contacted</p>
+              <p><span class="h3">6</span><strong>%</strong> Cold</p>
+              <p><span class="h3">2</span><strong>%</strong> Engaged</p>
+              <div id="ent-accts-trend"></div>
+              <script>
+                $(function () {
+                  $('#ent-accts-trend').highcharts({
+                      chart: {
+                          type: 'areaspline',
+                          height: 185
+                      },
+                      title: {
+                          text: ''
+                      },
+                      colors: ['#3BB5EA', '#A6CEE3'],
+                      xAxis: {
+                          categories: ['Jul', 'Aug', 'Sep', 'Oct'],
+                      },
+                      yAxis: {
+                          title: {
+                              text: null
+                          }
+                      },
+                      legend: {
+                          enabled: false
+                      },
+                      plotOptions: {
+                          line: {
+                              dataLabels: {
+                                  enabled: false
+                              },
+                              enableMouseTracking: false
+                          },
+                      },
+                      series: [{
+                          name: 'Peer',
+                          type: 'spline',
+                          marker: {
+                              radius: 0
+                          },
+                          color: '#666',
+                          data: [1120, 668, 888, 591].sort(function(){ return .5 - Math.random() })
+                      }],
+                      credits: {
+                          enabled: false
+                      },
+                      exporting: {
+                          enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+            <div class="col-md-8">
+              <h5>Top 5 Districts</h5>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="myModalLabel">Modal</h5>
+              </div>
+              <div class="modal-body">
+                <h5>Title</h5>
+                <p>Body</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>   
+</div>   
+
+{% include db-footer.html %}

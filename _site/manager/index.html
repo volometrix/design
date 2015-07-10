@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <link rel="icon" href="../../favicon.ico">
 
-  <title>Management Dashboard</title>
+  <title>Manager Dashboard</title>
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="/design/css/bootstrap.min.css">
@@ -21,110 +21,109 @@
   <script src="/design/javascript/highcharts.js"></script>
   <script src="/design/javascript/exporting.js"></script>
   <script src="/design/javascript/personalDashboardHCTheme.js"></script>
+  <style>
+    body {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: #f9f9f9;
+    color: #555;
+  }
 
-<style>
-  body {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  background: #f9f9f9;
-  color: #555;
-}
+  .btn-default {
+    border-color: #ddd;
+  }
 
-.btn-default {
-  border-color: #ddd;
-}
+  .theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+  }
 
-.theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
-}
+  .theme-showcase > p > .btn {
+    margin: 5px 0;
+  }
 
-.theme-showcase > p > .btn {
-  margin: 5px 0;
-}
+  .theme-showcase .navbar .container {
+    width: auto;
+  }
 
-.theme-showcase .navbar .container {
-  width: auto;
-}
-
-/* Bootstrap overrides */
-.panel-body {
-  min-height: 350px;
-  position: relative;
-}
-.chart {
-  position: absolute;
-  bottom:0;
-  left:0;
-  right:0;
-}
-.panel .panel-heading {
-  background: #fff;
-  border-bottom: none;
-}
-.modal .modal-footer {
-  text-align: left;
-}
-.goal-met-true {
-  color: #A6D53A;
-}
-.goal-met-false {
-  color: #FC9430;
-}
-.figure {
-  font-size: 48px;
-  font-weight: 300;
-}
-</style>
+  /* Bootstrap overrides */
+  .panel-body {
+    min-height: 350px;
+    position: relative;
+  }
+  .chart {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+  .panel .panel-heading {
+    background: #fff;
+    border-bottom: none;
+  }
+  .modal .modal-footer {
+    text-align: left;
+  }
+  .goal-met-true {
+    color: #A6D53A;
+  }
+  .goal-met-false {
+    color: #FC9430;
+  }
+  .figure {
+    font-size: 48px;
+    font-weight: 300;
+  }
+  </style>
 </head>
-  <body role="document">
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Volometrix</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class=""><a href="#">METRICS</a></li>
-            <li><a href="#about">COLLABORATION</a></li>
-            <li><a href="#contact">TOPICS</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
+<body role="document">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Volometrix</a>
       </div>
-    </nav>
-  <div class="container" role="main">
-    <div class="row page-header clearfix">
-      <div class="col-md-12">
-        <span class="h2">Your Goals</span>
-          <!-- a href="/team-dashboard/" class="btn btn-default">Switch to Team view</a -->
-          <span class="pull-right">Time Period <select name="" id=""><option value="">6/26/2015 - 7/2/2015</option></select></span>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="#">METRICS</a></li>
+          <li><a href="#about">COLLABORATION</a></li>
+          <li><a href="#contact">TOPICS</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h3>Activities this week</h3>
-        <span class="h5">Meeting and Email Summary</span><br><br> 
-        <div id="progress-bar-2" style="min-width: 310px; height: 95px; margin: 0 auto">
+  </nav>
+
+<div class="container" role="main">
+  <div class="row page-header clearfix">
+    <div class="col-md-12">
+      <span class="h2">Your Goals</span>
+      <!-- a href="/team-dashboard/" class="btn btn-default">Switch to Team view</a -->
+      <span class="pull-right">Time Period <select name="" id=""><option value="">6/26/2015 - 7/2/2015</option></select></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Activities this week</h3>
+      <span class="h5">Meeting and Email Summary</span><br><br> 
+      <div id="progress-bar-2" style="min-width: 310px; height: 95px; margin: 0 auto">
     <script>
     $(function () {
         Highcharts.setOptions(Highcharts.theme);
@@ -182,16 +181,16 @@
 });
 </script>
 </div>
-        <br>
-      </div>
-      <div class="col-md-4">
-        <h3>Goal attainment</h3>
-        <p><span class="figure">32%</span> of your team achieved their goals</p>
-      </div>
+      <br>
     </div>
-    <div class="row">
-      <div class="col-md-8">
-        <div class="panel panel-default">
+    <div class="col-md-4">
+      <h3>Goal attainment</h3>
+      <p><span class="figure">32%</span> of your team achieved their goals</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
       <span class="h5">Meeting Effectiveness</span>
@@ -258,17 +257,17 @@
           name: 'Large Attendance',
           type: 'column',
           color: '#6a3d9a',
-          data: [ 20, 10, 55, 60 ].sort(function(){ return .5 - Math.random() })
+          data: [20, 10, 55, 60].sort(function(){ return .5 - Math.random()})
         }, {
           name: 'Long Duration',
           type: 'column',
           color: '#3bbbf3',
-          data: [30, 60, 10, 30 ].sort(function(){ return .5 - Math.random() })
+          data: [30, 60, 10, 30].sort(function(){ return .5 - Math.random()})
         }, {
           name: 'Low Engagement',
           type: 'column',
           color: '#1f78b4',
-          data: [30, 60, 20, 70 ].sort(function(){ return .5 - Math.random() })
+          data: [30, 60, 20, 70].sort(function(){ return .5 - Math.random()})
         }],
         credits: {
           enabled: false
@@ -336,9 +335,9 @@
 </div>
 </div>
   
-      </div>
-      <div class="col-md-4">
-        <div class="panel panel-default">
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
       <span class="h5">Work Time</span>
@@ -362,15 +361,15 @@
           text: ''
         },
         xAxis: {
-          categories: ['1', '2', '3', '4', '5'],
+          categories: ['0', '1', '2', '3', '4', '5', '6', '7'],
           title: {
             text: 'Days with Focus Time'
           },
-          max: 4,
+          max: 5,
           plotLines: [{
             color: '#000000',
             width: 1,
-            value: 2.5,
+            value: 3.5,
             zIndex: 10,
             label: {
               text: 'Goal',
@@ -394,12 +393,29 @@
               enabled: false
             },
             enableMouseTracking: false
+          },
+          states: {
+              hover: {
+                  enabled: false
+              }
           }
         },
         series: [{
           type: 'column',
           color: '#3BB5EA',
-          data: [ 3, 1, 2, 4, 2 ].sort(function(){ return .5 - Math.random()})
+          data: [ 
+            { y:3 },
+            { y:1 },
+            { y:2 },
+            { y:2 },
+            { y:4, color: '#A6D53A'},
+            { y:2, color: '#A6D53A'}
+          ],
+          states: {
+              hover: {
+                  enabled: false
+              }
+          }
         }],
         credits: {
           enabled: false
@@ -407,19 +423,21 @@
         exporting: {
           enabled: false
         }
-      }, function(chart){
-            $.each(chart.series[0].data,function(i,data){
-              switch(data.x) {
-                case 3:
-                data.graphic.attr({ fill: '#A6D53A' });
-                break;
-                case 4:
-                data.graphic.attr({ fill: '#A6D53A' });
-                break;
-                default:
-                data.graphic.attr({ fill: '#3BB5EA' });
-              }
-            });
+      // }, function(chart){
+      //       $.each(chart.series[0].data,function(i,data){
+      //         switch(data.x) {
+      //           case 3:
+      //           // chart.series[0].options.color = "#A6D53A";
+      //           // chart.series[0].update(chart.series[0].options);
+      //           data.graphic.attr({ fill: '#A6D53A' });
+      //           break;
+      //           case 4:
+      //           data.graphic.attr({ fill: '#A6D53A' });
+      //           break;
+      //           default:
+      //           data.graphic.attr({ fill: '#3BB5EA' });
+      //         }
+      //       });
         });
     });
     </script>
@@ -430,11 +448,11 @@
 <div id="manager-work-chart" class="chart"></div>    
 </div>
 </div>
-      </div>
     </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="panel panel-default">
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
       <span class="h5">Email Time</span>
@@ -488,7 +506,7 @@
             dataLabels: {
               enabled: false
             },
-            enableMouseTracking: false
+            enableMouseTracking: false,
           },
           series: {
             marker: {
@@ -498,10 +516,14 @@
           }
         },
         series: [{
-          // name: 'Large Attendance',
           type: 'column',
           color: '#3BB5EA',
-          data: [ 333, 111, 222, 444 ].sort(function(){ return .5 - Math.random() })
+          data: [ 
+            { y:290, color: '#A6D53A'},
+            { y:666, color: '#3BB5EA'},
+            { y:222, color: '#A6D53A'},
+            { y:444, color: '#3BB5EA'}
+          ]
         }],
         credits: {
           enabled: false
@@ -519,9 +541,9 @@
 <div id="manager-email-chart" class="chart"></div>    
 </div>
 </div>
-      </div>
-      <div class="col-md-4">
-        <div class="panel panel-default">
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
       <span class="h5">After-hours Work</span>
@@ -545,15 +567,15 @@
           text: ''
         },
         xAxis: {
-          categories: ['1', '2', '3', '4', '5', '6', '7'],
+          categories: ['0', '1', '2', '3', '4', '5', '6', '7'],
           title: {
-            text: 'Days with Over Time'
+            text: 'Days with After-hours Work'
           },
-          max: 6,
+          max: 7,
           plotLines: [{
             color: '#000000',
             width: 1,
-            value: 4.5,
+            value: 5.5,
             zIndex: 10,
             label: {
               text: 'Goal',
@@ -582,7 +604,17 @@
         series: [{
           type: 'column',
           color: '#3BB5EA',
-          data: [ 3, 1, 2, 4, 2, 3, 5 ].sort(function(){ return .5 - Math.random()})
+          data: [ 
+            { y:1 },
+            { y:3 },
+            { y:1 },
+            { y:1 },
+            { y:2 },
+            { y:4 },
+            { y:2, color: '#A6D53A' },
+            { y:3, color: '#A6D53A'},
+            { y:5, color: '#A6D53A'}
+          ]
         }],
         credits: {
           enabled: false
@@ -590,20 +622,7 @@
         exporting: {
           enabled: false
         }
-      }, function(chart){
-            $.each(chart.series[0].data,function(i,data){
-              switch(data.x) {
-                case 5:
-                data.graphic.attr({ fill: '#A6D53A' });
-                break;
-                case 6:
-                data.graphic.attr({ fill: '#A6D53A' });
-                break;
-                default:
-                data.graphic.attr({ fill: '#3BB5EA' });
-              }
-            });
-        });
+      });
     });
     </script>
 <div class="chart-description">
@@ -613,9 +632,9 @@
 <div id="manager-balance-chart" class="chart"></div>    
 </div>
 </div>
-      </div>
-      <div class="col-md-4">
-        <div class="panel panel-default">
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
       <span class="h5">Impact</span>
@@ -681,8 +700,9 @@
 </div>
 
 
-      </div>
     </div>
-    </div>   
+  </div>
+</div>   
+
   </body>
 </html>

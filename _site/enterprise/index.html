@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+
+  <title>Enterprise Dashboard</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/design/css/bootstrap.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="/design/javascript/jquery-2.1.3.min.js"></script>
+  <script src="/design/javascript/jquery.cookie.min.js"></script>
+  <script src="/design/javascript/bootstrap.min.js"></script>
+  <script src="/design/javascript/highcharts.js"></script>
+  <script src="/design/javascript/exporting.js"></script>
+  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
+  <style>
+    body {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: #f9f9f9;
+    color: #555;
+  }
+
+  .btn-default {
+    border-color: #ddd;
+  }
+
+  .theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .theme-showcase > p > .btn {
+    margin: 5px 0;
+  }
+
+  .theme-showcase .navbar .container {
+    width: auto;
+  }
+
+  /* Bootstrap overrides */
+  .panel-body {
+    min-height: 350px;
+    position: relative;
+  }
+  .chart {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+  .panel .panel-heading {
+    background: #fff;
+    border-bottom: none;
+  }
+  .modal .modal-footer {
+    text-align: left;
+  }
+  .goal-met-true {
+    color: #A6D53A;
+  }
+  .goal-met-false {
+    color: #FC9430;
+  }
+  .figure {
+    font-size: 48px;
+    font-weight: 300;
+  }
+  </style>
+</head>
+<body role="document">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Volometrix</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="#">METRICS</a></li>
+          <li><a href="#about">COLLABORATION</a></li>
+          <li><a href="#contact">TOPICS</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" role="main">
+    <div class="row page-header clearfix">
+      <div class="col-md-12">
+        <span class="h2">Enterprise Dashboard</span>
+          <!-- a href="/team-dashboard/" class="btn btn-default">Switch to Team view</a -->
+          <span class="pull-right">Time Period <select name="" id=""><option value="">6/26/2015 - 7/2/2015</option></select></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-4" style="border-right:solid 1px #ccc;">
+              <h5>Accounts</h5>
+              <p><span class="h1">718</span> Total</p>
+              <p><span class="h3">18</span><strong>%</strong> Contacted</p>
+              <p><span class="h3">6</span><strong>%</strong> Cold</p>
+              <p><span class="h3">2</span><strong>%</strong> Engaged</p>
+              <div id="ent-accts-trend"></div>
+              <script>
+                $(function () {
+                  $('#ent-accts-trend').highcharts({
+                      chart: {
+                          type: 'areaspline',
+                          height: 185
+                      },
+                      title: {
+                          text: ''
+                      },
+                      colors: ['#3BB5EA', '#A6CEE3'],
+                      xAxis: {
+                          categories: ['Jul', 'Aug', 'Sep', 'Oct'],
+                      },
+                      yAxis: {
+                          title: {
+                              text: null
+                          }
+                      },
+                      legend: {
+                          enabled: false
+                      },
+                      plotOptions: {
+                          line: {
+                              dataLabels: {
+                                  enabled: false
+                              },
+                              enableMouseTracking: false
+                          },
+                      },
+                      series: [{
+                          name: 'Peer',
+                          type: 'spline',
+                          marker: {
+                              radius: 0
+                          },
+                          color: '#666',
+                          data: [1120, 668, 888, 591].sort(function(){ return .5 - Math.random() })
+                      }],
+                      credits: {
+                          enabled: false
+                      },
+                      exporting: {
+                          enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+            <div class="col-md-8">
+              <h5>Top 5 Districts</h5>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="myModalLabel">Modal</h5>
+              </div>
+              <div class="modal-body">
+                <h5>Title</h5>
+                <p>Body</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>   
+</div>   
+
+  </body>
+</html>
