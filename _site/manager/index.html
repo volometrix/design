@@ -362,27 +362,28 @@
           text: ''
         },
         xAxis: {
-          categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+          categories: ['1', '2', '3', '4', '5'],
           title: {
-            text: null
-          }
-        },
-        yAxis: {
-          title: {
-            text: 'Number of People'
+            text: 'Days with Focus Time'
           },
-          max: 5,
+          max: 4,
           plotLines: [{
             color: '#000000',
             width: 1,
-            value: 3,
+            value: 2.5,
             zIndex: 10,
             label: {
               text: 'Goal',
               align: 'right',
-              x: 0
+              rotation: 0,
+              x: 30
             }
           }]
+        },
+        yAxis: {
+          title: {
+            text: 'Number of People'
+          }
         },
         legend: {
           enabled: false
@@ -393,19 +394,12 @@
               enabled: false
             },
             enableMouseTracking: false
-          },
-          series: {
-            marker: {
-              enabled: true,
-              radius: 2
-            }
           }
         },
         series: [{
-          // name: 'Large Attendance',
           type: 'column',
           color: '#3BB5EA',
-          data: [ 3, 1, 2, 4 ].sort(function(){ return .5 - Math.random() })
+          data: [ 3, 1, 2, 4, 2 ].sort(function(){ return .5 - Math.random()})
         }],
         credits: {
           enabled: false
@@ -413,9 +407,22 @@
         exporting: {
           enabled: false
         }
-      });
-});
-</script>
+      }, function(chart){
+            $.each(chart.series[0].data,function(i,data){
+              switch(data.x) {
+                case 3:
+                data.graphic.attr({ fill: '#A6D53A' });
+                break;
+                case 4:
+                data.graphic.attr({ fill: '#A6D53A' });
+                break;
+                default:
+                data.graphic.attr({ fill: '#3BB5EA' });
+              }
+            });
+        });
+    });
+    </script>
 <div class="chart-description">
   <span class="figure">2.5</span> average days<br>
   <strong>2</strong> peer average
@@ -538,26 +545,28 @@
           text: ''
         },
         xAxis: {
-          categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+          categories: ['1', '2', '3', '4', '5', '6', '7'],
           title: {
-            text: null
-          }
-        },
-        yAxis: {
-          title: {
-            text: 'Hours'
+            text: 'Days with Over Time'
           },
+          max: 6,
           plotLines: [{
             color: '#000000',
             width: 1,
-            value: 12,
+            value: 4.5,
             zIndex: 10,
             label: {
               text: 'Goal',
               align: 'right',
-              x: 0
+              rotation: 0,
+              x: 30
             }
           }]
+        },
+        yAxis: {
+          title: {
+            text: 'Number of People'
+          }
         },
         legend: {
           enabled: false
@@ -568,18 +577,12 @@
               enabled: false
             },
             enableMouseTracking: false
-          },
-          series: {
-            marker: {
-              enabled: true,
-              radius: 2
-            }
           }
         },
         series: [{
           type: 'column',
           color: '#3BB5EA',
-          data: [ 8, 3, 12, 14 ].sort(function(){ return .5 - Math.random() })
+          data: [ 3, 1, 2, 4, 2, 3, 5 ].sort(function(){ return .5 - Math.random()})
         }],
         credits: {
           enabled: false
@@ -587,12 +590,25 @@
         exporting: {
           enabled: false
         }
-      });
-});
-</script>
+      }, function(chart){
+            $.each(chart.series[0].data,function(i,data){
+              switch(data.x) {
+                case 5:
+                data.graphic.attr({ fill: '#A6D53A' });
+                break;
+                case 6:
+                data.graphic.attr({ fill: '#A6D53A' });
+                break;
+                default:
+                data.graphic.attr({ fill: '#3BB5EA' });
+              }
+            });
+        });
+    });
+    </script>
 <div class="chart-description">
-  <span class="figure">1</span> average days<br>
-  <strong>3</strong> peer average
+  <span class="figure">3</span> average days<br>
+  <strong>4</strong> peer average
 </div>
 <div id="manager-balance-chart" class="chart"></div>    
 </div>
