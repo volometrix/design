@@ -2,7 +2,7 @@
 layout: 
 title:
 permalink: /manager/
-type: your
+type: Your
 ---
 
 {% include db-header.html %}
@@ -100,17 +100,20 @@ type: your
   <div class="container" role="main">
     <div class="row page-header clearfix">
       <div class="col-md-12">
-        <h1 class="title" style="font-weight:300;">Manager Dashboard</h1>
+        <span class="h2">{{ page.type | capitalize }} Goals</span>
+          <!-- a href="/team-dashboard/" class="btn btn-default">Switch to Team view</a -->
+          <span class="pull-right">Time Period <select name="" id=""><option value="">6/26/2015 - 7/2/2015</option></select></span>
       </div>
     </div>
     <div class="row">
       <div class="col-md-8">
-        <h4>How your team spent their time</h4>
+        <h3>Activities this week</h3>
+        <span class="h5">Meeting and Email Summary</span><br><br> 
         {% include progress-bar-2.html %}
         <br>
       </div>
       <div class="col-md-4">
-        <h4>Goal attainment</h4>
+        <h3>Goal attainment</h3>
         <p><span class="figure">32%</span> of your team achieved their goals</p>
       </div>
     </div>
@@ -130,7 +133,7 @@ type: your
         {% include manager-balance.html %}
       </div>
       <div class="col-md-4">
-        {% include manager-impact.html %}
+        {% include manager-oli.html %}
       </div>
     </div>
     </div>   

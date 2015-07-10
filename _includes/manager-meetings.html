@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
-      <span class="h5">Meetings</span>
+      <span class="h5">Meeting Effectiveness</span>
       <a href="#" data-toggle="modal" data-target="#emailModal"  class="pull-right btn btn-default btn-xs">
         details
       </a>    
@@ -29,13 +29,14 @@
         },
         yAxis: {
           title: {
-            text: 'Meeting Hours (%)'
+            text: 'Percent'
           },
           max: 100,
           plotLines: [{
             color: '#000000',
             width: 1,
             value: 45,
+            zIndex: 10,
             label: {
               text: 'Goal',
               align: 'right',
@@ -63,15 +64,17 @@
         series: [{
           name: 'Large Attendance',
           type: 'column',
-          color: '#3BB5EA',
+          color: '#6a3d9a',
           data: [ 20, 10, 55, 60 ].sort(function(){ return .5 - Math.random() })
         }, {
           name: 'Long Duration',
           type: 'column',
+          color: '#3bbbf3',
           data: [30, 60, 10, 30 ].sort(function(){ return .5 - Math.random() })
         }, {
           name: 'Low Engagement',
           type: 'column',
+          color: '#1f78b4',
           data: [30, 60, 20, 70 ].sort(function(){ return .5 - Math.random() })
         }],
         credits: {

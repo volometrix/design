@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
-      <span class="h5">Balance</span>
+      <span class="h5">After-hours Work</span>
       <!-- <a href="#" data-toggle="modal" data-target="#emailModal"  class="pull-right btn btn-default btn-xs">
         details
       </a> -->    
@@ -9,7 +9,7 @@
   </div>
   <div class="panel-body">
     <div class="panel-subtitle">
-      <p>How many 2-hour blocks your team had time to think</p>
+      <p>Evaluate your team's work/life balance by days they met or sent &amp; received emails after hours.</p>
     </div>   
     <script>
     $(function () {
@@ -29,13 +29,13 @@
         },
         yAxis: {
           title: {
-            text: 'Days for Thought'
+            text: 'Hours'
           },
-          max: 5,
           plotLines: [{
             color: '#000000',
             width: 1,
-            value: 3,
+            value: 12,
+            zIndex: 10,
             label: {
               text: 'Goal',
               align: 'right',
@@ -61,10 +61,9 @@
           }
         },
         series: [{
-          // name: 'Large Attendance',
           type: 'column',
           color: '#3BB5EA',
-          data: [ 3, 1, 2, 4 ].sort(function(){ return .5 - Math.random() })
+          data: [ 8, 3, 12, 14 ].sort(function(){ return .5 - Math.random() })
         }],
         credits: {
           enabled: false

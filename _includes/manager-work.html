@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
-      <span class="h5">Work</span>
+      <span class="h5">Work Time</span>
       <!-- <a href="#" data-toggle="modal" data-target="#emailModal"  class="pull-right btn btn-default btn-xs">
         details
       </a> -->    
@@ -9,7 +9,7 @@
   </div>
   <div class="panel-body">
     <div class="panel-subtitle">
-      <p>How many days your team had to dedicate to work</p>
+      <p>Encourage your team to schedule at least one two-hour block of focus time per day.</p>
     </div>   
     <script>
     $(function () {
@@ -29,13 +29,14 @@
         },
         yAxis: {
           title: {
-            text: 'Days for Work'
+            text: 'Number of People'
           },
           max: 5,
           plotLines: [{
             color: '#000000',
             width: 1,
             value: 3,
+            zIndex: 10,
             label: {
               text: 'Goal',
               align: 'right',
