@@ -1,7 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">Title </span>
+      <a href="#" data-toggle="modal" data-target="#emailModal"  class="pull-right btn btn-default btn-xs">
+        details
+      </a>    
+    </div>
 
-        <p> Hours spent in 1:1s with your manager.</p>
-        <div>
-            <script>
+  </div>
+  <div class="panel-body">
+    <div class="panel-subtitle">
+      <p> Hours spent in 1:1s with your manager.</p>
+    </div>  
+    <div class="chart-wrapper">   
+      <script>
             $(function () {
             $('#manager-11s-chart').highcharts({
                 chart: {
@@ -79,7 +91,9 @@
             <strong>2.8</strong> peer average
         </div>
         <div id="manager-11s-chart" class="chart"></div>
-        </div>
+    </div>     
+  </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">
