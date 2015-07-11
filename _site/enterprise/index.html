@@ -120,95 +120,153 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="col-md-4" style="border-right:solid 1px #ccc;">
-              <h5>Accounts</h5>
-              <p><span class="h1">718</span> Total</p>
-              <p><span class="h3">18</span><strong>%</strong> Contacted</p>
-              <p><span class="h3">6</span><strong>%</strong> Cold</p>
-              <p><span class="h3">2</span><strong>%</strong> Engaged</p>
-              <div id="ent-accts-trend"></div>
-              <script>
-                $(function () {
-                  $('#ent-accts-trend').highcharts({
-                      chart: {
-                          type: 'areaspline',
-                          height: 185
-                      },
+      <div class="col-md-12" style="background:#f7f7f7; border-radius:5px; border: solid 1px #ccc;  box-shadow: 0 1px 2px #ccc;">
+        <div class="col-md-4" style="border-right:solid 1px #ccc; background: #fff; margin-left:0;">
+          <h5>Accounts</h5>
+          <p><span class="h1">718</span> Total</p>
+          <p><span class="h3">18</span><strong>%</strong> Contacted</p>
+          <p><span class="h3">6</span><strong>%</strong> Cold</p>
+          <p><span class="h3">2</span><strong>%</strong> Engaged</p>
+          <div id="ent-accts-trend"></div>
+          <script>
+            $(function () {
+              $('#ent-accts-trend').highcharts({
+                  chart: {
+                      type: 'areaspline',
+                      height: 185
+                  },
+                  title: {
+                      text: ''
+                  },
+                  colors: ['#3BB5EA', '#A6CEE3'],
+                  xAxis: {
+                      categories: ['Jul', 'Aug', 'Sep', 'Oct'],
+                  },
+                  yAxis: {
                       title: {
-                          text: ''
-                      },
-                      colors: ['#3BB5EA', '#A6CEE3'],
-                      xAxis: {
-                          categories: ['Jul', 'Aug', 'Sep', 'Oct'],
-                      },
-                      yAxis: {
-                          title: {
-                              text: null
-                          }
-                      },
-                      legend: {
-                          enabled: false
-                      },
-                      plotOptions: {
-                          line: {
-                              dataLabels: {
-                                  enabled: false
-                              },
-                              enableMouseTracking: false
-                          },
-                      },
-                      series: [{
-                          name: 'Peer',
-                          type: 'spline',
-                          marker: {
-                              radius: 0
-                          },
-                          color: '#666',
-                          data: [1120, 668, 888, 591].sort(function(){ return .5 - Math.random() })
-                      }],
-                      credits: {
-                          enabled: false
-                      },
-                      exporting: {
-                          enabled: false
+                          text: null
                       }
-                  });
+                  },
+                  legend: {
+                      enabled: false
+                  },
+                  plotOptions: {
+                      line: {
+                          dataLabels: {
+                              enabled: false
+                          },
+                          enableMouseTracking: false
+                      },
+                  },
+                  series: [{
+                      name: 'Peer',
+                      type: 'spline',
+                      marker: {
+                          radius: 0
+                      },
+                      color: '#666',
+                      data: [1120, 668, 888, 591].sort(function(){ return .5 - Math.random() })
+                  }],
+                  credits: {
+                      enabled: false
+                  },
+                  exporting: {
+                      enabled: false
+                  }
               });
-              </script>
-            </div>
-            <div class="col-md-8">
-              <h5>Top 5 Districts</h5>
-            </div>
-          </div>
+          });
+          </script>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h5 class="modal-title" id="myModalLabel">Modal</h5>
-              </div>
-              <div class="modal-body">
-                <h5>Title</h5>
-                <p>Body</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-              </div>
-            </div>
-          </div>
+        <div class="col-md-8">
+          <h5>Top 5 Districts</h5>
+          <p class="btn btn-default" style="" id="toggle-data">Data</p>
+          <div id="ent-chart"></div>
+          <script>
+            $(function(){
+                $('#ent-chart').highcharts({
+                    chart: {
+                        type: 'column',
+                        height: 305
+                    },
+                    title: {
+                        text: ''
+                    },
+                    colors: ['#3BB5EA', '#A6CEE3'],
+                    xAxis: {
+                        categories: ['Week 1', '2', '3', 'Week 4'],
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Email messages'
+                        }
+                    },
+                    legend: {
+                        enabled: true
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: false
+                            },
+                            enableMouseTracking: false
+                        },
+                        series: {
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'You',
+                        data: [66, 70, 56, 37].sort(function(){ return .5 - Math.random() })
+                    }, {
+                        name: 'Peer',
+                        type: 'column',
+                        marker: {
+                            enabled: true,
+                            radius: 2
+                        },
+                        data: [70, 56, 48, 69].sort(function(){ return .5 - Math.random() })
+                    }],
+                    credits: {
+                        enabled: false
+                    },
+                    exporting: {
+                        enabled: false
+                    }
+                });     
+            });
+            </script>
         </div>
-
-
       </div>
-    </div>   
-</div>   
-
+      <script>
+      $(function(){
+        $('#toggle-data').click(function(){
+          $('#data').slideToggle();
+        })
+      });
+      </script>
+      <!-- table -->
+      <div id="data" class="col-md-12" style="padding:0 15px 15px 15px; background:#e6e6e6; margin:-15px 0.5% 15px 0.5%; z-index:-1; border-radius: 0 0 5px 5px; border: solid 1px #ccc; box-shadow: 0 1px 2px #ccc; width:99%;">
+        <br><br>
+        <h3>The Data</h3>
+        <table class="table">
+          <tr>
+            <th>Data</th>
+            <th>Data</th>
+            <th>Data</th>
+          </tr>
+          <tr>
+            <td>Data</td>
+            <td>Data</td>
+            <td>Data</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  
   </body>
 </html>
