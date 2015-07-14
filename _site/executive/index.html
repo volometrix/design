@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <link rel="icon" href="../../favicon.ico">
 
-  <title>Enterprise Dashboard</title>
+  <title>Executive Dashboard</title>
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="/design/css/bootstrap.min.css">
@@ -119,391 +119,817 @@
 
   <div class="container" role="main">
     <div class="row page-header clearfix">
-      <div class="col-md-12">
-        <span class="h2">Enterprise Dashboard</span>
+      <div class="">
+        <h2 class="h2">Executive Dashboard</h2>
           <!-- a href="/team-dashboard/" class="btn btn-default">Switch to Team view</a -->
           <span class="pull-right">Time Period <select name="" id=""><option value="">July 2015 - October 2015</option></select></span>
       </div>
-    </div>
-    <!-- DISTRICTS -->
-    <div class="row">
-      <div class="col-md-12" style="background:#fff; border-radius:5px; border: solid 1px #ccc;  box-shadow: 0 1px 2px #ccc;">
-        <div class="col-md-4" style="border-right:solid 1px #ccc; background: #fff; margin-left:0;min-height:425px">
-          <h5>Accounts</h5>
-          <p><span class="h1">718</span> Total</p>
-          <p><span class="h3">18</span><strong>%</strong> Contacted</p>
-          <p><span class="h3">6</span><strong>%</strong> Cold</p>
-          <p><span class="h3">2</span><strong>%</strong> Engaged</p>
-          <p>&nbsp;</p>
-          <div id="ent-accts-trend"></div>
-          <script>
-            $(function () {
-              $('#ent-accts-trend').highcharts({
-                  chart: {
-                      type: 'areaspline',
-                      height: 175
-                  },
-                  title: {
-                      text: ''
-                  },
-                  colors: ['#3BB5EA', '#A6CEE3'],
-                  xAxis: {
-                      categories: ['Jul', 'Aug', 'Sep', 'Oct'],
-                      plotLines: [{
-                        color: '#000000',
-                        width: 1,
-                        value: 1,
-                        zIndex:10
-                      }]
-                  },
-                  yAxis: {
+      <div>
+          <!-- Nav tabs -->
+          <ul class="nav nav-pills" role="tablist">
+            <li role="presentation" class="active"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
+            <li role="presentation"><a href="#accounts" aria-controls="accounts" role="tab" data-toggle="tab">Accounts</a></li>
+            <li role="presentation"><a href="#team" aria-controls="team" role="tab" data-toggle="tab">Team</a></li>
+          </ul>
+          <br>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="summary">
+              <!-- DISTRICTS -->
+              <div class="row">
+                <div class="col-md-12" style="background:#fff; border-radius:5px; border: solid 1px #ccc;  box-shadow: 0 1px 2px #ccc;">
+                  <div class="col-md-4" style="border-right:solid 1px #ccc; background: #fff; margin-left:0;min-height:425px">
+                    <h3 style="font-weight:300;">Accounts Covered</h3>
+                    <p><span class="h1">123</span> Cold</p>
+                    <table class="table table-condensed">
+                      <tr>
+                        <td>Cold</td>
+                        <td style="text-align:right;">30% <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 1%</span></td>
+                      </tr>
+                      <tr>
+                        <td>Engaged</td>
+                        <td style="text-align:right;">17% <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 3%</span></td>
+                      </tr>
+                      <tr>
+                        <td>Contacted</td>
+                        <td style="text-align:right;">50% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 5%</span></td>
+                      </tr>
+                    </table>
+                    <!-- 
+                    Total,616,309,215,93
+                    Average,123,48%,36%,15% 
+                    -->
+                    <p>&nbsp;</p>
+                    <div id="ent-accts-trend"></div>
+                    <script>
+                      $(function () {
+                        $('#ent-accts-trend').highcharts({
+                            chart: {
+                                type: 'areaspline',
+                                height: 175
+                            },
+                            title: {
+                                text: ''
+                            },
+                            colors: ['#3BB5EA', '#A6CEE3'],
+                            xAxis: {
+                                categories: ['Jul', 'Aug', 'Sep', 'Oct'],
+                                plotLines: [{
+                                  color: '#000000',
+                                  width: 1,
+                                  // value: 1,
+                                  zIndex:10
+                                }]
+                            },
+                            yAxis: {
+                                title: {
+                                    text: null
+                                }
+                            },
+                            legend: {
+                                enabled: false
+                            },
+                            plotOptions: {
+                                line: {
+                                    dataLabels: {
+                                        enabled: false
+                                    },
+                                    enableMouseTracking: false
+                                },
+                            },
+                            series: [{
+                                name: 'Peer',
+                                type: 'spline',
+                                marker: {
+                                    radius: 0
+                                },
+                                color: '#666',
+                                data: [12, 23, 90, 120]
+                            }],
+                            credits: {
+                                enabled: false
+                            },
+                            exporting: {
+                                enabled: false
+                            }
+                        });
+                    });
+                    </script>
+                  </div>
+                  <div class="col-md-8">
+                    <h5>Top 5 Districts</h5>
+                    <p class="btn btn-default" style="" id="toggle-data">Data</p>
+                      <div id="ent-chart-2"></div>
+                  </div>
+                </div>
+                <script>
+                $(function(){
+                  $('#toggle-data').click(function(){
+                    $('#data').slideToggle();
+                  });
+                  $('#districts-datatable').dataTable({
+                    "order": [[0,"asc"]],
+                    "paging": false
+                  });
+                });
+                </script>
+                <div id="data" class="col-md-12" style="padding:0 15px 15px 15px; background:#f9f9f9; margin:0 0.5% 15px 0.5%; border-radius: 0 0 5px 5px; border: solid 1px #ccc; border-top:none; box-shadow: 0 1px 2px #ccc; width:99%; display:none;"><br>
+                  <table id="districts-datatable" class="table sort-table">
+                    <thead>
+                      <tr>
+                        <th>District</th>
+                        <th>Cold</th>
+                        <th>Contacted</th>
+                        <th>Engaged</th>
+                        <!-- <th>Total</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <tr>
+                        <td>District 1</td>
+                        <td>31%</td>
+                        <td>58%</td>
+                        <td>11%</td>
+                        <!-- <td>128</td> -->
+                      </tr>
+                      
+                      <tr>
+                        <td>District 2</td>
+                        <td>37%</td>
+                        <td>38%</td>
+                        <td>25%</td>
+                        <!-- <td>81</td> -->
+                      </tr>
+                      
+                      <tr>
+                        <td>District 3</td>
+                        <td>25%</td>
+                        <td>58%</td>
+                        <td>17%</td>
+                        <!-- <td>174</td> -->
+                      </tr>
+                      
+                      <tr>
+                        <td>District 4</td>
+                        <td>54%</td>
+                        <td>38%</td>
+                        <td>8%</td>
+                        <!-- <td>113</td> -->
+                      </tr>
+                      
+                      <tr>
+                        <td>District 5</td>
+                        <td>33%</td>
+                        <td>50%</td>
+                        <td>17%</td>
+                        <!-- <td>120</td> -->
+                      </tr>
+                                  
+                    </tbody>
+                  </table>
+                  <script>
+                    $(function () {
+                      $('#ent-chart-2').highcharts({
+                          chart: {
+                        type: 'column',
+                        height: 335
+                      },
                       title: {
+                        text: ''
+                      },
+                      xAxis: {
+                        categories: ['District 2', 'District 5', 'District 3', 'District 1', 'District 4'],
+                        title: {
                           text: null
+                        }
+                      },
+                      yAxis: {
+                        title: {
+                          text: 'Performance'
+                        },
+                        // max: 700,
+                        plotLines: [{
+                          color: '#000000',
+                          width: 1,
+                          value: 450,
+                          zIndex:10,
+                          label: {
+                            text: 'Goal',
+                            align: 'right',
+                            x: 0
+                          }
+                        }]
+                      },
+                      legend: {
+                        enabled: false
+                      },
+                      plotOptions: {
+                        line: {
+                          dataLabels: {
+                            enabled: false
+                          },
+                          enableMouseTracking: false,
+                        },
+                        series: {
+                          marker: {
+                            enabled: true,
+                            radius: 2
+                          }
+                        }
+                      },
+                      series: [{
+                        type: 'column',
+                        color: '#3BB5EA',
+                        data: [ 
+                          { y:222, color: '#3BB5EA'},
+                          { y:333, color: '#3BB5EA'},
+                          { y:444, color: '#3BB5EA'},
+                          { y:555, color: '#A6D53A'},
+                          { y:666, color: '#A6D53A'}
+                        ]
+                      }],
+                      credits: {
+                        enabled: false
+                      },
+                      exporting: {
+                        enabled: false
                       }
-                  },
-                  legend: {
-                      enabled: false
-                  },
-                  plotOptions: {
-                      line: {
-                          dataLabels: {
-                              enabled: false
-                          },
-                          enableMouseTracking: false
+                    });
+                  });
+                  </script>
+                </div>
+              </div>
+              <!-- LEVELS -->
+              <br><br>
+              <div class="row">
+                <div class="col-md-12" style="background:#fff; border-radius:5px; border: solid 1px #ccc;  box-shadow: 0 1px 2px #ccc;">
+                  <div class="col-md-4" style="border-right:solid 1px #ccc; background: #fff; margin-left:0;min-height:425px">
+                    <h3 style="font-weight:300;">Average AE Quality</h3>
+                    <p><span class="h1">1224</span> Total</p>
+                    <table class="table table-condensed">
+                      <tr>
+                        <td>Hours with Customer</td>
+                        <td style="text-align:right;">71 <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 1%</span></td>
+                      </tr>
+                      <tr>
+                        <td>Meeting Hours</td>
+                        <td style="text-align:right;">48 <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 3%</span></td>
+                      </tr>
+                      <tr>
+                        <td>Hours with External People</td>
+                        <td style="text-align:right;">35 <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 5%</span></td>
+                      </tr>
+                      <tr>
+                        <td>Hours with Internal People</td>
+                        <td style="text-align:right;">43 <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 5%</span></td>
+                      </tr>
+                    </table>
+                    <!-- 
+                    Total,1224,71,48,35,43
+                    Average,245,14,10,7,9 
+                    -->
+                    <div id="ent-level-trend"></div>
+                    <script>
+                      $(function () {
+                        $('#ent-level-trend').highcharts({
+                            chart: {
+                                type: 'areaspline',
+                                height: 175
+                            },
+                            title: {
+                                text: ''
+                            },
+                            colors: ['#3BB5EA', '#A6CEE3'],
+                            xAxis: {
+                                categories: ['Jul', 'Aug', 'Sep', 'Oct'],
+                                plotLines: [{
+                                  color: '#000000',
+                                  width: 1,
+                                  // value: 1,
+                                  zIndex:10
+                                }]
+                            },
+                            yAxis: {
+                                title: {
+                                    text: null
+                                },
+                            },
+                            legend: {
+                                enabled: false
+                            },
+                            plotOptions: {
+                                line: {
+                                    dataLabels: {
+                                        enabled: false
+                                    },
+                                    enableMouseTracking: false
+                                },
+                            },
+                            series: [{
+                                name: 'Peer',
+                                type: 'spline',
+                                marker: {
+                                    radius: 0
+                                },
+                                color: '#666',
+                                data: [120, 230, 900, 1200]
+                            }],
+                            credits: {
+                                enabled: false
+                            },
+                            exporting: {
+                                enabled: false
+                            }
+                        });
+                    });
+                    </script>
+                  </div>
+                  <div class="col-md-8">
+                    <h5>Top 5 Levels</h5>
+                    <p class="btn btn-default" style="" id="toggle-data-levels">Data</p>
+                      <div id="ent-chart-levels"></div>
+                  </div>
+                </div>
+                <script>
+                $(function(){
+                  $('#toggle-data-levels').click(function(){
+                    $('#data-levels').slideToggle();
+                  });
+                  $('#levels-datatable').dataTable({
+                    "order": [[0,"asc"]],
+                    "paging": false
+                  });
+                });
+                </script>
+                <div id="data-levels" class="col-md-12" style="padding:0 15px 15px 15px; background:#f9f9f9; margin:0 0.5% 15px 0.5%; border-radius: 0 0 5px 5px; border: solid 1px #ccc; border-top:none; box-shadow: 0 1px 2px #ccc; width:99%; display:none;"><br>
+                  <table id="levels-datatable" class="table sort-table">
+                    <thead>
+                      <tr>
+                        <th>Level</th>
+                        <th>Total</th>
+                        <th>Hours with Customer</th>
+                        <th>Meeting Hours</th>
+                        <th>Hours with External People</th>
+                        <th>Hours with Internal People</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <tr>
+                        <td>Level 1</td>
+                        <td>201</td>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>9</td>
+                        <td>9</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Level 2</td>
+                        <td>265</td>
+                        <td>15</td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>10</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Level 3</td>
+                        <td>304</td>
+                        <td>16</td>
+                        <td>11</td>
+                        <td>7</td>
+                        <td>11</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Level 4</td>
+                        <td>189</td>
+                        <td>11</td>
+                        <td>8</td>
+                        <td>5</td>
+                        <td>6</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Level 5</td>
+                        <td>265</td>
+                        <td>17</td>
+                        <td>10</td>
+                        <td>6</td>
+                        <td>7</td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                  <script>
+                    $(function () {
+                      $('#ent-chart-levels').highcharts({
+                          chart: {
+                        type: 'column',
+                        height: 335
                       },
-                  },
-                  series: [{
-                      name: 'Peer',
-                      type: 'spline',
-                      marker: {
-                          radius: 0
-                      },
-                      color: '#666',
-                      data: [1120, 668, 888, 591].sort(function(){ return .5 - Math.random() })
-                  }],
-                  credits: {
-                      enabled: false
-                  },
-                  exporting: {
-                      enabled: false
-                  }
-              });
-          });
-          </script>
-        </div>
-        <div class="col-md-8">
-          <h5>Top 5 Districts</h5>
-          <p class="btn btn-default" style="" id="toggle-data">Data</p>
-            <div id="ent-chart-2"></div>
-        </div>
-      </div>
-      <script>
-      $(function(){
-        $('#toggle-data').click(function(){
-          $('#data').slideToggle();
-        });
-        $('#districts-datatable').dataTable({
-          "order": [[1,"asc"]],
-          "paging": false
-        });
-      });
-      </script>
-      <div id="data" class="col-md-12" style="padding:0 15px 15px 15px; background:#f9f9f9; margin:0 0.5% 15px 0.5%; border-radius: 0 0 5px 5px; border: solid 1px #ccc; border-top:none; box-shadow: 0 1px 2px #ccc; width:99%; display:none;">
-        <br><br>
-        <h3>The Data</h3>
-        <h5>Customer Engagement</h5>
-        <table id="districts-datatable" class="table sort-table">
-          <thead>
-            <tr>
-              <th>District</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>District 1</td>
-              <td>500</td>
-            </tr>            
-            <tr>
-              <td>District 2</td>
-              <td>200</td>
-            </tr>            
-            <tr>
-              <td>District 3</td>
-              <td>400</td>
-            </tr>            
-            <tr>
-              <td>District 4</td>
-              <td>600</td>
-            </tr>            
-            <tr>
-              <td>District 5</td>
-              <td>300</td>
-            </tr>
-          </tbody>
-        </table>
-        <script>
-          $(function () {
-            $('#ent-chart-2').highcharts({
-                chart: {
-              type: 'column',
-              height: 335
-            },
-            title: {
-              text: ''
-            },
-            xAxis: {
-              categories: ['District 2', 'District 5', 'District 3', 'District 1', 'District 4'],
-              title: {
-                text: null
-              }
-            },
-            yAxis: {
-              title: {
-                text: 'Performance'
-              },
-              // max: 700,
-              plotLines: [{
-                color: '#000000',
-                width: 1,
-                value: 450,
-                zIndex:10,
-                label: {
-                  text: 'Goal',
-                  align: 'right',
-                  x: 0
-                }
-              }]
-            },
-            legend: {
-              enabled: false
-            },
-            plotOptions: {
-              line: {
-                dataLabels: {
-                  enabled: false
-                },
-                enableMouseTracking: false,
-              },
-              series: {
-                marker: {
-                  enabled: true,
-                  radius: 2
-                }
-              }
-            },
-            series: [{
-              type: 'column',
-              color: '#3BB5EA',
-              data: [ 
-                { y:222, color: '#3BB5EA'},
-                { y:333, color: '#3BB5EA'},
-                { y:444, color: '#3BB5EA'},
-                { y:555, color: '#A6D53A'},
-                { y:666, color: '#A6D53A'}
-              ]
-            }],
-            credits: {
-              enabled: false
-            },
-            exporting: {
-              enabled: false
-            }
-          });
-        });
-        </script>
-      </div>
-    </div>
-    <!-- LEVELS -->
-    <br><br>
-    <div class="row">
-      <div class="col-md-12" style="background:#fff; border-radius:5px; border: solid 1px #ccc;  box-shadow: 0 1px 2px #ccc;">
-        <div class="col-md-4" style="border-right:solid 1px #ccc; background: #fff; margin-left:0;min-height:425px">
-          <h5>Accounts</h5>
-          <p><span class="h1">201</span> Total</p>
-          <p><span class="h3">12</span> Hours with Customer</p>
-          <p><span class="h3">10</span> Meeting Hours</p>
-          <p><span class="h3">9</span> Hours with External People</p>
-          <p><span class="h3">9</span> Hours with Internal People</p>
-          <div id="ent-level-trend"></div>
-          <script>
-            $(function () {
-              $('#ent-level-trend').highcharts({
-                  chart: {
-                      type: 'areaspline',
-                      height: 175
-                  },
-                  title: {
-                      text: ''
-                  },
-                  colors: ['#3BB5EA', '#A6CEE3'],
-                  xAxis: {
-                      categories: ['Jul', 'Aug', 'Sep', 'Oct'],
-                      plotLines: [{
-                        color: '#000000',
-                        width: 1,
-                        value: 1,
-                        zIndex:10
-                      }]
-                  },
-                  yAxis: {
                       title: {
+                        text: ''
+                      },
+                      xAxis: {
+                        categories: ['Level 2', 'Level 5', 'Level 3', 'Level 1', 'Level 4'],
+                        title: {
                           text: null
+                        }
                       },
-                  },
-                  legend: {
-                      enabled: false
-                  },
-                  plotOptions: {
-                      line: {
+                      yAxis: {
+                        title: {
+                          text: 'Performance'
+                        },
+                        // max: 700,
+                        plotLines: [{
+                          color: '#000000',
+                          width: 1,
+                          value: 450,
+                          zIndex:10,
+                          label: {
+                            text: 'Goal',
+                            align: 'right',
+                            x: 0
+                          }
+                        }]
+                      },
+                      legend: {
+                        enabled: false
+                      },
+                      plotOptions: {
+                        line: {
                           dataLabels: {
-                              enabled: false
+                            enabled: false
                           },
-                          enableMouseTracking: false
+                          enableMouseTracking: false,
+                        },
+                        series: {
+                          marker: {
+                            enabled: true,
+                            radius: 2
+                          }
+                        }
                       },
-                  },
-                  series: [{
-                      name: 'Peer',
-                      type: 'spline',
-                      marker: {
-                          radius: 0
+                      series: [{
+                        type: 'column',
+                        color: '#3BB5EA',
+                        data: [ 
+                          { y:222, color: '#3BB5EA'},
+                          { y:333, color: '#3BB5EA'},
+                          { y:350, color: '#3BB5EA'},
+                          { y:425, color: '#3BB5EA'},
+                          { y:666, color: '#A6D53A'}
+                        ]
+                      }],
+                      credits: {
+                        enabled: false
                       },
-                      color: '#666',
-                      data: [120, 68, 88, 91].sort(function(){ return .5 - Math.random() })
-                  }],
-                  credits: {
-                      enabled: false
-                  },
-                  exporting: {
-                      enabled: false
-                  }
-              });
-          });
-          </script>
+                      exporting: {
+                        enabled: false
+                      }
+                    });
+                  });
+                  </script>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="accounts">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <script>
+                    $(function(){
+                      $('#accounts-table').dataTable({
+                        "order": [[0,"asc"]],
+                        "paging": false
+                      });
+                    });
+                    </script>
+                  <table class="table" id="accounts-table">
+                    <thead>
+                      <tr>
+                        <th>Account Name</th>
+                        <th>Region</th>
+                        <th>District</th>
+                        <th>CISO Contacted?</th>
+                        <th>Status</th>
+                        <th>Time With Customer</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                        <tr>
+                          <td>ATT</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class=" ">Yes</span></td>
+                          <td><span class=" ">Contacted</span></td>
+                          <td>6</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Bank of America</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class="badge alert-warning">No</span></td>
+                          <td><span class="badge alert-warning">Engaged</span></td>
+                          <td>8</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Citi</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class=" ">Yes </span></td>
+                          <td><span class=" ">Cold</span></td>
+                          <td>2</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Coca Cola</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class=" ">Yes</span></td>
+                          <td><span class=" ">Cold</span></td>
+                          <td>7</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Comcast</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class=" ">Yes</span></td>
+                          <td><span class=" ">Engaged</span></td>
+                          <td>8</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Deutsche Bank</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class="badge alert-warning">No</span></td>
+                          <td><span class="badge alert-warning">Engaged</span></td>
+                          <td>1</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>FedEx</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class="badge alert-warning">No</span></td>
+                          <td><span class="badge alert-warning">Cold</span></td>
+                          <td>2</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Ford</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class=" ">Yes</span></td>
+                          <td><span class=" ">Cold</span></td>
+                          <td>6</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>General Elec</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class=" ">Yes</span></td>
+                          <td><span class=" ">Contacted</span></td>
+                          <td>9</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>General Motors</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class=" ">Yes</span></td>
+                          <td><span class=" ">Engaged</span></td>
+                          <td>8</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Johnson & Johnson</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class="badge alert-warning">No</span></td>
+                          <td><span class="badge alert-warning">Contacted</span></td>
+                          <td>4</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>JPMC</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class=" ">Yes</span></td>
+                          <td><span class=" ">Contacted</span></td>
+                          <td>6</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Morgan Stanley</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class="badge alert-warning">No</span></td>
+                          <td><span class="badge alert-warning">Engaged</span></td>
+                          <td>3</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>P&G</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class="badge alert-warning">No</span></td>
+                          <td><span class="badge alert-warning">Cold</span></td>
+                          <td>1</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>The Home Depot</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class="badge alert-warning">No</span></td>
+                          <td><span class="badge alert-warning">Contacted</span></td>
+                          <td>5</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Verizon</td>
+                          <td>East</td>
+                          <td>District</td>
+                          <td><span class=" ">Yes</span></td>
+                          <td><span class=" ">Engaged</span></td>
+                          <td>3</td>
+                        </tr>
+                        
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="team">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <script>
+                  $(function(){
+                    $('#team-table').dataTable({
+                      "order": [[0,"asc"]],
+                      "paging": false
+                    });
+                  });
+                  </script>
+                  <table class="table" id="team-table">
+                    <thead>
+                      <tr>
+                        <th>District Name</th>
+                        <th>Region</th>
+                        <th>Total Hours with Customer</th>
+                        <th>Meetings with Customer</th>
+                        <th>Mails with Customer</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>6 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>8 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>2 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>7 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>8 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>1 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>2 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>6 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>9 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>8 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>4 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>6 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>2 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>3 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>1 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>District</td>
+                          <td>East</td>
+                          <td>5 hours</td>
+                          <td> hours</td>
+                          <td> hours</td>
+                        </tr>
+                        
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-8">
-          <h5>Top 5 Levels</h5>
-          <p class="btn btn-default" style="" id="toggle-data-levels">Data</p>
-            <div id="ent-chart-levels"></div>
-        </div>
-      </div>
-      <script>
-      $(function(){
-        $('#toggle-data-levels').click(function(){
-          $('#data-levels').slideToggle();
-        });
-        $('#levels-datatable').dataTable({
-          "order": [[1,"asc"]],
-          "paging": false
-        });
-      });
-      </script>
-      <div id="data-levels" class="col-md-12" style="padding:0 15px 15px 15px; background:#f9f9f9; margin:0 0.5% 15px 0.5%; border-radius: 0 0 5px 5px; border: solid 1px #ccc; border-top:none; box-shadow: 0 1px 2px #ccc; width:99%; display:none;">
-        <br><br>
-        <h3>The Data</h3>
-        <h5>Team Levels</h5>
-        <table id="levels-datatable" class="table sort-table">
-          <thead>
-            <tr>
-              <th>Level</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Level 1</td>
-              <td>500</td>
-            </tr>            
-            <tr>
-              <td>Level 2</td>
-              <td>200</td>
-            </tr>            
-            <tr>
-              <td>Level 3</td>
-              <td>400</td>
-            </tr>            
-            <tr>
-              <td>Level 4</td>
-              <td>600</td>
-            </tr>            
-            <tr>
-              <td>Level 5</td>
-              <td>300</td>
-            </tr>
-          </tbody>
-        </table>
-        <script>
-          $(function () {
-            $('#ent-chart-levels').highcharts({
-                chart: {
-              type: 'column',
-              height: 335
-            },
-            title: {
-              text: ''
-            },
-            xAxis: {
-              categories: ['Level 2', 'Level 5', 'Level 3', 'Level 1', 'Level 4'],
-              title: {
-                text: null
-              }
-            },
-            yAxis: {
-              title: {
-                text: 'Performance'
-              },
-              // max: 700,
-              plotLines: [{
-                color: '#000000',
-                width: 1,
-                value: 450,
-                zIndex:10,
-                label: {
-                  text: 'Goal',
-                  align: 'right',
-                  x: 0
-                }
-              }]
-            },
-            legend: {
-              enabled: false
-            },
-            plotOptions: {
-              line: {
-                dataLabels: {
-                  enabled: false
-                },
-                enableMouseTracking: false,
-              },
-              series: {
-                marker: {
-                  enabled: true,
-                  radius: 2
-                }
-              }
-            },
-            series: [{
-              type: 'column',
-              color: '#3BB5EA',
-              data: [ 
-                { y:222, color: '#3BB5EA'},
-                { y:333, color: '#3BB5EA'},
-                { y:350, color: '#3BB5EA'},
-                { y:425, color: '#3BB5EA'},
-                { y:666, color: '#A6D53A'}
-              ]
-            }],
-            credits: {
-              enabled: false
-            },
-            exporting: {
-              enabled: false
-            }
-          });
-        });
-        </script>
       </div>
     </div>
+    <div>
   
   </body>
 </html>

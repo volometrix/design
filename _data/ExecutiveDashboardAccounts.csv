@@ -1,0 +1,17 @@
+Name,Region,District,ContactedCISO,Status,Time,Highlight,Color
+ATT,East,District,Yes,Contacted,6,,
+Bank of America,East,District,No,Engaged,8,badge,alert-warning
+Citi,East,District,Yes ,Cold,2,,
+Coca Cola,East,District,Yes,Cold,7,,
+Comcast,East,District,Yes,Engaged,8,,
+Deutsche Bank,East,District,No,Engaged,1,badge,alert-warning
+FedEx,East,District,No,Cold,2,badge,alert-warning
+Ford,East,District,Yes,Cold,6,,
+General Elec,East,District,Yes,Contacted,9,,
+General Motors,East,District,Yes,Engaged,8,,
+Johnson & Johnson,East,District,No,Contacted,4,badge,alert-warning
+JPMC,East,District,Yes,Contacted,6,,
+Morgan Stanley,East,District,No,Engaged,3,badge,alert-warning
+P&G,East,District,No,Cold,1,badge,alert-warning
+The Home Depot,East,District,No,Contacted,5,badge,alert-warning
+Verizon,East,District,Yes,Engaged,3,,
