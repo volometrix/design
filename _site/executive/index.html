@@ -140,7 +140,7 @@
                 <div class="col-md-12" style="background:#fff; border-radius:5px; border: solid 1px #ccc;  box-shadow: 0 1px 2px #ccc;">
                   <div class="col-md-4" style="border-right:solid 1px #ccc; background: #fff; margin-left:0;min-height:425px">
                     <h3 style="font-weight:300;">Accounts Covered</h3>
-                    <p><span class="h1">123</span> Cold</p>
+                    <p><span class="h1">30</span><strong>%</strong> Cold</p>
                     <table class="table table-condensed">
                       <tr>
                         <td>Cold</td>
@@ -177,7 +177,6 @@
                                 plotLines: [{
                                   color: '#000000',
                                   width: 1,
-                                  // value: 1,
                                   zIndex:10
                                 }]
                             },
@@ -195,7 +194,7 @@
                                         enabled: false
                                     },
                                     enableMouseTracking: false
-                                },
+                                }
                             },
                             series: [{
                                 name: 'Peer',
@@ -217,8 +216,8 @@
                     </script>
                   </div>
                   <div class="col-md-8">
-                    <h5>Top 5 Districts</h5>
-                    <p class="btn btn-default" style="" id="toggle-data">Data</p>
+                    <br>
+                    <p><span class="h5 text-center">Top 5 Districts</span> <a href="#" class="btn btn-default btn-xs pull-right" style="" id="toggle-data">Data</a></p>
                       <div id="ent-chart-2"></div>
                   </div>
                 </div>
@@ -293,7 +292,7 @@
                       $('#ent-chart-2').highcharts({
                           chart: {
                         type: 'column',
-                        height: 335
+                        height: 375
                       },
                       title: {
                         text: ''
@@ -446,8 +445,8 @@
                     </script>
                   </div>
                   <div class="col-md-8">
-                    <h5>Top 5 Levels</h5>
-                    <p class="btn btn-default" style="" id="toggle-data-levels">Data</p>
+                    <br>
+                    <p><span class="h5 text-center">Top 5 Districts</span> <a href="#" class="btn btn-default btn-xs pull-right" style="" id="toggle-data-levels">Data</a></p>
                       <div id="ent-chart-levels"></div>
                   </div>
                 </div>
@@ -528,13 +527,13 @@
                       $('#ent-chart-levels').highcharts({
                           chart: {
                         type: 'column',
-                        height: 335
+                        height: 375
                       },
                       title: {
                         text: ''
                       },
                       xAxis: {
-                        categories: ['Level 2', 'Level 5', 'Level 3', 'Level 1', 'Level 4'],
+                        categories: ['District 2', 'District 5', 'District 3', 'District 1', 'District 4'],
                         title: {
                           text: null
                         }
@@ -593,6 +592,270 @@
                     });
                   });
                   </script>
+                </div>
+              </div>
+              <br><br>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">Time With Customer</div>
+                    <div class="panel-body">
+                      <p><strong>3.8 hours</strong></p>
+                      <p><span class="badge alert-warning">40% below benchmark</span></p>
+                      <div id="ent-time-with-customers"></div>
+                      <script>
+                        $(function () {
+                          $('#ent-time-with-customers').highcharts({
+                              chart: {
+                            height: 275
+                          },
+                          title: {
+                            text: ''
+                          },
+                          xAxis: {
+                            categories: ['District 2', 'District 5', 'District 3', 'District 1', 'District 4'],
+                            title: {
+                              text: 'Hours with Customer'
+                            },
+                            tickWidth: 0,
+                            labels: {
+                              enabled: false
+                            },
+                            plotLines: [{
+                              color: '#000000',
+                              width: 1,
+                              value: 2.5,
+                              zIndex:10,
+                              label: {
+                                text: 'Goal',
+                                rotation: 0,
+                                align: 'right',
+                                x: -5
+                              }
+                            }]
+                          },
+                          yAxis: {
+                            title: {
+                              text: 'Number of Districts'
+                            },
+                            gridLineWidth: 0,
+                            labels: {
+                              enabled: false
+                            }
+                          },
+                          legend: {
+                            enabled: false
+                          },
+                          plotOptions: {
+                            line: {
+                              dataLabels: {
+                                enabled: false
+                              },
+                              enableMouseTracking: false,
+                            },
+                            series: {
+                              marker: {
+                                enabled: true,
+                                radius: 2
+                              }
+                            }
+                          },
+                          series: [{
+                            type: 'column',
+                            color: '#3BB5EA',
+                            data: [ 
+                              { y:2, color: '#3BB5EA'},
+                              { y:3, color: '#3BB5EA'},
+                              { y:7, color: '#3BB5EA'},
+                              { y:5, color: '#A6D53A'},
+                              { y:6, color: '#A6D53A'}
+                            ]
+                          }],
+                          credits: {
+                            enabled: false
+                          },
+                          exporting: {
+                            enabled: false
+                          }
+                        });
+                      });
+                      </script>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">Time with External People</div>
+                    <div class="panel-body">
+                      <p><strong>3.8 hours</strong></p>
+                      <p><span class="badge alert-warning">40% below benchmark</span></p>
+                      <div id="ent-time-with-external-people"></div>
+                      <script>
+                        $(function () {
+                          $('#ent-time-with-external-people').highcharts({
+                              chart: {
+                            height: 275
+                          },
+                          title: {
+                            text: ''
+                          },
+                          xAxis: {
+                            categories: ['District 2', 'District 5', 'District 3', 'District 1', 'District 4'],
+                            title: {
+                              text: 'Hours with External People'
+                            },
+                            tickWidth: 0,
+                            labels: {
+                              enabled: false
+                            },
+                            plotLines: [{
+                              color: '#000000',
+                              width: 1,
+                              value: 2.5,
+                              zIndex:10,
+                              label: {
+                                text: 'Goal',
+                                rotation: 0,
+                                align: 'right',
+                                x: -5
+                              }
+                            }]
+                          },
+                          yAxis: {
+                            title: {
+                              text: 'Number of Districts'
+                            },
+                            gridLineWidth: 0,
+                            labels: {
+                              enabled: false
+                            }
+                          },
+                          legend: {
+                            enabled: false
+                          },
+                          plotOptions: {
+                            line: {
+                              dataLabels: {
+                                enabled: false
+                              },
+                              enableMouseTracking: false,
+                            },
+                            series: {
+                              marker: {
+                                enabled: true,
+                                radius: 2
+                              }
+                            }
+                          },
+                          series: [{
+                            type: 'column',
+                            color: '#3BB5EA',
+                            data: [ 
+                              { y:2, color: '#3BB5EA'},
+                              { y:3, color: '#3BB5EA'},
+                              { y:7, color: '#3BB5EA'},
+                              { y:5, color: '#A6D53A'},
+                              { y:6, color: '#A6D53A'}
+                            ]
+                          }],
+                          credits: {
+                            enabled: false
+                          },
+                          exporting: {
+                            enabled: false
+                          }
+                        });
+                      });
+                      </script>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">Time with Internal People</div>
+                    <div class="panel-body">
+                      <p><strong>3.8 hours</strong></p>
+                      <p><span class="badge alert-warning">40% below benchmark</span></p>
+                      <div id="ent-time-with-internal-people"></div>
+                      <script>
+                        $(function () {
+                          $('#ent-time-with-internal-people').highcharts({
+                              chart: {
+                            height: 275
+                          },
+                          title: {
+                            text: ''
+                          },
+                          xAxis: {
+                            categories: ['District 2', 'District 5', 'District 3', 'District 1', 'District 4'],
+                            title: {
+                              text: 'Hours with Internal People'
+                            },
+                            tickWidth: 0,
+                            labels: {
+                              enabled: false
+                            },
+                            plotLines: [{
+                              color: '#000000',
+                              width: 1,
+                              value: 2.5,
+                              zIndex:10,
+                              label: {
+                                text: 'Goal',
+                                rotation: 0,
+                                align: 'right',
+                                x: -5
+                              }
+                            }]
+                          },
+                          yAxis: {
+                            title: {
+                              text: 'Number of Districts'
+                            },
+                            gridLineWidth: 0,
+                            labels: {
+                              enabled: false
+                            }
+                          },
+                          legend: {
+                            enabled: false
+                          },
+                          plotOptions: {
+                            line: {
+                              dataLabels: {
+                                enabled: false
+                              },
+                              enableMouseTracking: false,
+                            },
+                            series: {
+                              marker: {
+                                enabled: true,
+                                radius: 2
+                              }
+                            }
+                          },
+                          series: [{
+                            type: 'column',
+                            color: '#3BB5EA',
+                            data: [ 
+                              { y:2, color: '#3BB5EA'},
+                              { y:3, color: '#3BB5EA'},
+                              { y:7, color: '#3BB5EA'},
+                              { y:5, color: '#A6D53A'},
+                              { y:6, color: '#A6D53A'}
+                            ]
+                          }],
+                          credits: {
+                            enabled: false
+                          },
+                          exporting: {
+                            enabled: false
+                          }
+                        });
+                      });
+                      </script>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
