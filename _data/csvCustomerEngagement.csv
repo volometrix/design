@@ -1,0 +1,37 @@
+Region,Metric,Date,Value
+LAMC,Hours per Customer,April 2015,
+LAMC,Hours per Customer,May 2015,
+LAMC,Hours per Customer,June 2015,
+LAMC,Customer network breadth,April 2015,  5.9 
+LAMC,Customer network breadth,May 2015,  8.3 
+LAMC,Customer network breadth,June 2015,  9.8 
+LAMC,Customer network size,April 2015,  10.6 
+LAMC,Customer network size,May 2015,  15.0 
+LAMC,Customer network size,June 2015,  19.1 
+LAMC,Customer contacts / account,April 2015,  1.8 
+LAMC,Customer contacts / account,May 2015,  1.8 
+LAMC,Customer contacts / account,June 2015,  2.0 
+East,Hours per Customer,April 2015,
+East,Hours per Customer,May 2015,
+East,Hours per Customer,June 2015,
+East,Customer network breadth,April 2015,  12.3 
+East,Customer network breadth,May 2015,  12.2 
+East,Customer network breadth,June 2015,  13.6 
+East,Customer network size,April 2015,  25.9 
+East,Customer network size,May 2015,  25.6 
+East,Customer network size,June 2015,  27.4 
+East,Customer contacts / account,April 2015,  2.1 
+East,Customer contacts / account,May 2015,  2.1 
+East,Customer contacts / account,June 2015,  2.0 
+West,Hours per Customer,April 2015,
+West,Hours per Customer,May 2015,
+West,Hours per Customer,June 2015,
+West,Customer network breadth,April 2015,  12.4 
+West,Customer network breadth,May 2015,  12.2 
+West,Customer network breadth,June 2015,  13.2 
+West,Customer network size,April 2015,  24.8 
+West,Customer network size,May 2015,  23.7 
+West,Customer network size,June 2015,  27.0 
+West,Customer contacts / account,April 2015,  2.0 
+West,Customer contacts / account,May 2015,  1.9 
+West,Customer contacts / account,June 2015,  2.0 

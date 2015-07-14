@@ -1,0 +1,218 @@
+[
+    {
+        "Region": "LAMC",
+        "Metric": "Hours with Customers",
+        "Date": "April 2015",
+        "Value": "  0.6 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours with Customers",
+        "Date": "May 2015",
+        "Value": "  1.8 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours with Customers",
+        "Date": "June 2015",
+        "Value": "  1.7 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours with other External people",
+        "Date": "April 2015",
+        "Value": "  5.9 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours with other External people",
+        "Date": "May 2015",
+        "Value": "  9.4 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours with other External people",
+        "Date": "June 2015",
+        "Value": "  8.6 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours with Internal colleagues",
+        "Date": "April 2015",
+        "Value": "  15.1 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours with Internal colleagues",
+        "Date": "May 2015",
+        "Value": "  16.5 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours with Internal colleagues",
+        "Date": "June 2015",
+        "Value": "  17.7 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Non-meeting/email time",
+        "Date": "April 2015",
+        "Value": "  18.4 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Non-meeting/email time",
+        "Date": "May 2015",
+        "Value": "  12.4 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Non-meeting/email time",
+        "Date": "June 2015",
+        "Value": "  11.9 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours with Customers",
+        "Date": "April 2015",
+        "Value": "  3.4 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours with Customers",
+        "Date": "May 2015",
+        "Value": "  4.5 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours with Customers",
+        "Date": "June 2015",
+        "Value": "  4.2 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours with other External people",
+        "Date": "April 2015",
+        "Value": "  5.7 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours with other External people",
+        "Date": "May 2015",
+        "Value": "  6.5 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours with other External people",
+        "Date": "June 2015",
+        "Value": "  7.2 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours with Internal colleagues",
+        "Date": "April 2015",
+        "Value": "  14.7 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours with Internal colleagues",
+        "Date": "May 2015",
+        "Value": "  18.7 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours with Internal colleagues",
+        "Date": "June 2015",
+        "Value": "  18.7 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Non-meeting/email time",
+        "Date": "April 2015",
+        "Value": "  16.2 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Non-meeting/email time",
+        "Date": "May 2015",
+        "Value": "  10.3 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Non-meeting/email time",
+        "Date": "June 2015",
+        "Value": "  9.8 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours with Customers",
+        "Date": "April 2015",
+        "Value": "  3.6 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours with Customers",
+        "Date": "May 2015",
+        "Value": "  4.5 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours with Customers",
+        "Date": "June 2015",
+        "Value": "  4.6 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours with other External people",
+        "Date": "April 2015",
+        "Value": "  6.3 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours with other External people",
+        "Date": "May 2015",
+        "Value": "  5.9 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours with other External people",
+        "Date": "June 2015",
+        "Value": "  7.1 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours with Internal colleagues",
+        "Date": "April 2015",
+        "Value": "  16.4 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours with Internal colleagues",
+        "Date": "May 2015",
+        "Value": "  19.2 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours with Internal colleagues",
+        "Date": "June 2015",
+        "Value": "  19.6 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Non-meeting/email time",
+        "Date": "April 2015",
+        "Value": "  13.7 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Non-meeting/email time",
+        "Date": "May 2015",
+        "Value": "  10.3 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Non-meeting/email time",
+        "Date": "June 2015",
+        "Value": "  8.7 "
+    }
+]

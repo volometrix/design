@@ -1,0 +1,218 @@
+[
+    {
+        "Region": "LAMC",
+        "Metric": "Hours per Customer",
+        "Date": "April 2015",
+        "Value": ""
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours per Customer",
+        "Date": "May 2015",
+        "Value": ""
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours per Customer",
+        "Date": "June 2015",
+        "Value": ""
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Customer network breadth",
+        "Date": "April 2015",
+        "Value": "  5.9 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Customer network breadth",
+        "Date": "May 2015",
+        "Value": "  8.3 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Customer network breadth",
+        "Date": "June 2015",
+        "Value": "  9.8 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Customer network size",
+        "Date": "April 2015",
+        "Value": "  10.6 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Customer network size",
+        "Date": "May 2015",
+        "Value": "  15.0 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Customer network size",
+        "Date": "June 2015",
+        "Value": "  19.1 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Customer contacts / account",
+        "Date": "April 2015",
+        "Value": "  1.8 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Customer contacts / account",
+        "Date": "May 2015",
+        "Value": "  1.8 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Customer contacts / account",
+        "Date": "June 2015",
+        "Value": "  2.0 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours per Customer",
+        "Date": "April 2015",
+        "Value": ""
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours per Customer",
+        "Date": "May 2015",
+        "Value": ""
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours per Customer",
+        "Date": "June 2015",
+        "Value": ""
+    },
+    {
+        "Region": "East",
+        "Metric": "Customer network breadth",
+        "Date": "April 2015",
+        "Value": "  12.3 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Customer network breadth",
+        "Date": "May 2015",
+        "Value": "  12.2 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Customer network breadth",
+        "Date": "June 2015",
+        "Value": "  13.6 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Customer network size",
+        "Date": "April 2015",
+        "Value": "  25.9 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Customer network size",
+        "Date": "May 2015",
+        "Value": "  25.6 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Customer network size",
+        "Date": "June 2015",
+        "Value": "  27.4 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Customer contacts / account",
+        "Date": "April 2015",
+        "Value": "  2.1 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Customer contacts / account",
+        "Date": "May 2015",
+        "Value": "  2.1 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Customer contacts / account",
+        "Date": "June 2015",
+        "Value": "  2.0 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours per Customer",
+        "Date": "April 2015",
+        "Value": ""
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours per Customer",
+        "Date": "May 2015",
+        "Value": ""
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours per Customer",
+        "Date": "June 2015",
+        "Value": ""
+    },
+    {
+        "Region": "West",
+        "Metric": "Customer network breadth",
+        "Date": "April 2015",
+        "Value": "  12.4 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Customer network breadth",
+        "Date": "May 2015",
+        "Value": "  12.2 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Customer network breadth",
+        "Date": "June 2015",
+        "Value": "  13.2 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Customer network size",
+        "Date": "April 2015",
+        "Value": "  24.8 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Customer network size",
+        "Date": "May 2015",
+        "Value": "  23.7 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Customer network size",
+        "Date": "June 2015",
+        "Value": "  27.0 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Customer contacts / account",
+        "Date": "April 2015",
+        "Value": "  2.0 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Customer contacts / account",
+        "Date": "May 2015",
+        "Value": "  1.9 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Customer contacts / account",
+        "Date": "June 2015",
+        "Value": "  2.0 "
+    }
+]

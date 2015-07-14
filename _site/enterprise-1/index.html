@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+
+  <title>Enterprise Dashboard</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/design/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="/design/javascript/jquery-2.1.3.min.js"></script>
+  <script src="/design/javascript/jquery.cookie.min.js"></script>
+  <script src="/design/javascript/bootstrap.min.js"></script>
+  <script src="/design/javascript/highcharts.js"></script>
+  <script src="/design/javascript/exporting.js"></script>
+  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
+  <script src="/design/javascript/drilldown.js"></script>
+  <script src="/design/javascript/jquery.dataTables.min.js"></script>
+  <script src="/design/javascript/dataTables.bootstrap.js"></script>
+  <script src="/design/javascript/d3.min.js"></script>
+  <script src="/design/javascript/data.js"></script>
+  <style>
+    body {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: #f9f9f9;
+    color: #555;
+  }
+
+  .btn-default {
+    border-color: #ddd;
+  }
+
+  .theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .theme-showcase > p > .btn {
+    margin: 5px 0;
+  }
+
+  .theme-showcase .navbar .container {
+    width: auto;
+  }
+
+  /* Bootstrap overrides */
+  .panel-body {
+    min-height: 350px;
+    position: relative;
+  }
+  .chart {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+  .panel .panel-heading {
+    background: #fff;
+    border-bottom: none;
+  }
+  .modal .modal-footer {
+    text-align: left;
+  }
+  .goal-met-true {
+    color: #A6D53A;
+  }
+  .goal-met-false {
+    color: #FC9430;
+  }
+  .figure {
+    font-size: 48px;
+    font-weight: 300;
+  }
+  </style>
+</head>
+<body role="document">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Volometrix</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="#">METRICS</a></li>
+          <li><a href="#about">COLLABORATION</a></li>
+          <li><a href="#contact">TOPICS</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" role="main">
+    <div class="row page-header clearfix">
+      <div class="col-md-12">
+        <span class="h2">Enterprise Dashboard</span>
+          <!-- a href="/team-dashboard/" class="btn btn-default">Switch to Team view</a -->
+          <span class="pull-right">Time Period <select name="" id=""><option value="">6/26/2015 - 7/2/2015</option></select></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="background:#fff; border-radius:5px; border: solid 1px #ccc;  box-shadow: 0 1px 2px #ccc;">
+        <div class="col-md-4" style="border-right:solid 1px #ccc; background: #fff; margin-left:0;">
+          <h5>Accounts</h5>
+          <p><span class="h1">718</span> Total</p>
+          <p><span class="h3">18</span><strong>%</strong> Contacted</p>
+          <p><span class="h3">6</span><strong>%</strong> Cold</p>
+          <p><span class="h3">2</span><strong>%</strong> Engaged</p>
+          <div id="ent-accts-trend"></div>
+          <script>
+            $(function () {
+              // D3
+              d3.json("")
+              // HC
+              $('#ent-accts-trend').highcharts({
+                  chart: {
+                      type: 'areaspline',
+                      height: 185
+                  },
+                  title: {
+                      text: ''
+                  },
+                  colors: ['#3BB5EA', '#A6CEE3'],
+                  xAxis: {
+                      categories: ['Jul', 'Aug', 'Sep', 'Oct'],
+                  },
+                  yAxis: {
+                      title: {
+                          text: null
+                      }
+                  },
+                  legend: {
+                      enabled: false
+                  },
+                  plotOptions: {
+                      line: {
+                          dataLabels: {
+                              enabled: false
+                          },
+                          enableMouseTracking: false
+                      },
+                  },
+                  series: [{
+                      name: 'Peer',
+                      type: 'spline',
+                      marker: {
+                          radius: 0
+                      },
+                      color: '#666',
+                      data: [1120, 668, 888, 591].sort(function(){ return .5 - Math.random() })
+                  }],
+                  credits: {
+                      enabled: false
+                  },
+                  exporting: {
+                      enabled: false
+                  }
+              });
+          });
+          </script>
+        </div>
+        <div class="col-md-8">
+          <h5>Top 5 Districts</h5>
+          <p class="btn btn-default" style="" id="toggle-data">Data</p>
+          <div id="ent-chart" style="display:none;"></div>
+          <script>
+            $(function(){
+                $('#ent-chart').highcharts({
+                    chart: {
+                        type: 'column',
+                        height: 305
+                    },
+                    tooltip: {
+                        crosshairs: true,
+                        shared: true
+                    },
+                    title: {
+                        text: ''
+                    },
+                    colors: ['#3BB5EA', '#A6CEE3'],
+                    xAxis: {
+                        categories: ['Week 1', '2', '3', 'Week 4'],
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Email messages'
+                        }
+                    },
+                    legend: {
+                        enabled: true
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: false
+                            },
+                            enableMouseTracking: false
+                        },
+                        series: {
+                            marker: {
+                                enabled: false
+                            }
+                        },
+                    },
+                    series: [{
+                        name: 'You',
+                        data: [66, 70, 56, 37].sort(function(){ return .5 - Math.random() })
+                    }, {
+                        name: 'Peer',
+                        type: 'column',
+                        marker: {
+                            enabled: true,
+                            radius: 2
+                        },
+                        data: [70, 56, 48, 69].sort(function(){ return .5 - Math.random() })
+                    }],
+                    credits: {
+                        enabled: false
+                    },
+                    exporting: {
+                        enabled: false
+                    }
+                });     
+            });
+            </script>
+            <div id="ent-chart-2"></div>
+            <script>
+              $(function () {
+                $('#ent-chart-2').highcharts({
+                    chart: {
+                        type: 'column',
+                        height: 300,
+                        stacking: 'percent',
+                        events: {
+                            drilldown: function (e) {
+                                if (!e.seriesOptions) {
+
+                                    var chart = this,
+                                        drilldowns = {
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //   name: 'LAMC',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'East': {
+                                            //   name: 'East',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['April 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['May 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'West': {
+                                            //   name: 'West',
+                                            //   data: [
+                                            //     ['June 2015', ],
+                                            //   ]
+                                            // }
+                                            // 
+                                            // 'LAMC': {
+                                            //     name: 'LAMC',
+                                            //     data: [
+                                            //         ['April 2015', 9.2],
+                                            //         ['May 2015', 18.3],
+                                            //         ['June 2015', 16.4]
+                                            //     ]
+                                            // },
+                                            // 'East': {
+                                            //     name: 'East',
+                                            //     data: [
+                                            //         ['April 2015', 20.9],
+                                            //         ['May 2015', 29.3],
+                                            //         ['June 2015', 30.8]
+                                            //     ]
+                                            // },
+                                            // 'West': {
+                                            //     name: 'West',
+                                            //     data: [
+                                            //         ['April 2015', 21.5],
+                                            //         ['May 2015', 26.9],
+                                            //         ['June 2015', 27.9]
+                                            //     ]
+                                            // }
+                                        },
+                                        series = drilldowns[e.point.name];
+                                    chart.showLoading('Loading...');
+                                    setTimeout(function () {
+                                        chart.hideLoading();
+                                        chart.addSeriesAsDrilldown(e.point, series);
+                                    },0);
+                                }
+                            }
+                        }
+                    },
+                    title: {
+                        text: null
+                    },
+                    xAxis: {
+                        type: 'category'
+                    },
+
+                    legend: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        series: {
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    data: {
+                      startColumn: 20,
+                      endColumn: 22
+                    },
+                    series: [{
+                        name: 'Region',
+                        colorByPoint: true,                                            
+                        data: [
+                         
+                          {
+                            name: 'LAMC',
+                            y:   9.2 
+                          }, 
+                         
+                          {
+                            name: 'LAMC',
+                            y:   18.3 
+                          }, 
+                         
+                          {
+                            name: 'LAMC',
+                            y:   16.4 
+                          }, 
+                         
+                          {
+                            name: 'LAMC',
+                            y:   1.4 
+                          }, 
+                         
+                          {
+                            name: 'LAMC',
+                            y:   3.4 
+                          }, 
+                         
+                          {
+                            name: 'LAMC',
+                            y:   2.7 
+                          }, 
+                         
+                          {
+                            name: 'LAMC',
+                            y:   0.5 
+                          }, 
+                         
+                          {
+                            name: 'LAMC',
+                            y:   1.6 
+                          }, 
+                         
+                          {
+                            name: 'LAMC',
+                            y:  0 
+                          }, 
+                         
+                          {
+                            name: 'East',
+                            y:   20.9 
+                          }, 
+                         
+                          {
+                            name: 'East',
+                            y:   29.3 
+                          }, 
+                         
+                          {
+                            name: 'East',
+                            y:   30.8 
+                          }, 
+                         
+                          {
+                            name: 'East',
+                            y:   2.7 
+                          }, 
+                         
+                          {
+                            name: 'East',
+                            y:   3.6 
+                          }, 
+                         
+                          {
+                            name: 'East',
+                            y:   3.5 
+                          }, 
+                         
+                          {
+                            name: 'East',
+                            y:   2.7 
+                          }, 
+                         
+                          {
+                            name: 'East',
+                            y:   3.7 
+                          }, 
+                         
+                          {
+                            name: 'East',
+                            y:  0 
+                          }, 
+                         
+                          {
+                            name: 'West',
+                            y:   21.5 
+                          }, 
+                         
+                          {
+                            name: 'West',
+                            y:   26.9 
+                          }, 
+                         
+                          {
+                            name: 'West',
+                            y:   27.9 
+                          }, 
+                         
+                          {
+                            name: 'West',
+                            y:   2.9 
+                          }, 
+                         
+                          {
+                            name: 'West',
+                            y:   3.6 
+                          }, 
+                         
+                          {
+                            name: 'West',
+                            y:   4.0 
+                          }, 
+                         
+                          {
+                            name: 'West',
+                            y:   3.4 
+                          }, 
+                         
+                          {
+                            name: 'West',
+                            y:   4.1 
+                          }, 
+                         
+                          {
+                            name: 'West',
+                            y:  0 
+                          }, 
+                        
+                          {
+                            name: null,
+                            y: null
+                          }]
+                        // data: [{
+                        //     name: 'LAMC',
+                        //     y: 43.9,
+                        //     drilldown: true
+                        // }, {
+                        //     name: 'East',
+                        //     y: 81.1,
+                        //     drilldown: true
+                        // }, {
+                        //     name: 'West',
+                        //     y: 76.2,
+                        //     drilldown: true
+                        // }]
+                    }],
+                    credits: {
+                        enabled: false
+                    },
+                    exporting: {
+                        enabled: false
+                    },
+                    drilldown: {
+                        series: []
+                    }
+                });
+                // the button action
+                // $('#button').click(function () {
+                //     var chart = $('#container').highcharts();
+                //     chart.series[0].setData([129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4, 29.9, 71.5, 106.4]);
+                // });
+            });
+            </script>
+        </div>
+      </div>
+      <script>
+      $(function(){
+        $('#toggle-data').click(function(){
+          $('#data').slideToggle();
+        });
+        $('.sort-table').dataTable();
+      });
+      </script>
+      <!-- table -->
+      <div id="data" class="col-md-12" style="padding:0 15px 15px 15px; background:#f9f9f9; margin:0 0.5% 15px 0.5%; border-radius: 0 0 5px 5px; border: solid 1px #ccc; border-top:none; box-shadow: 0 1px 2px #ccc; width:99%; display:none;">
+        <br><br>
+        <h3>The Data</h3>
+        <h5>Customer Engagement</h5>
+        <table class="table sort-table">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>Metric</th>
+              <th>Date</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Hours per Customer</td>
+              <td>April 2015</td>
+              <td></td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Hours per Customer</td>
+              <td>May 2015</td>
+              <td></td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Hours per Customer</td>
+              <td>June 2015</td>
+              <td></td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Customer network breadth</td>
+              <td>April 2015</td>
+              <td>  5.9 </td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Customer network breadth</td>
+              <td>May 2015</td>
+              <td>  8.3 </td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Customer network breadth</td>
+              <td>June 2015</td>
+              <td>  9.8 </td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Customer network size</td>
+              <td>April 2015</td>
+              <td>  10.6 </td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Customer network size</td>
+              <td>May 2015</td>
+              <td>  15.0 </td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Customer network size</td>
+              <td>June 2015</td>
+              <td>  19.1 </td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Customer contacts / account</td>
+              <td>April 2015</td>
+              <td>  1.8 </td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Customer contacts / account</td>
+              <td>May 2015</td>
+              <td>  1.8 </td>
+            </tr>
+            
+            <tr>
+              <td>LAMC</td>
+              <td>Customer contacts / account</td>
+              <td>June 2015</td>
+              <td>  2.0 </td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Hours per Customer</td>
+              <td>April 2015</td>
+              <td></td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Hours per Customer</td>
+              <td>May 2015</td>
+              <td></td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Hours per Customer</td>
+              <td>June 2015</td>
+              <td></td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Customer network breadth</td>
+              <td>April 2015</td>
+              <td>  12.3 </td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Customer network breadth</td>
+              <td>May 2015</td>
+              <td>  12.2 </td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Customer network breadth</td>
+              <td>June 2015</td>
+              <td>  13.6 </td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Customer network size</td>
+              <td>April 2015</td>
+              <td>  25.9 </td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Customer network size</td>
+              <td>May 2015</td>
+              <td>  25.6 </td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Customer network size</td>
+              <td>June 2015</td>
+              <td>  27.4 </td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Customer contacts / account</td>
+              <td>April 2015</td>
+              <td>  2.1 </td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Customer contacts / account</td>
+              <td>May 2015</td>
+              <td>  2.1 </td>
+            </tr>
+            
+            <tr>
+              <td>East</td>
+              <td>Customer contacts / account</td>
+              <td>June 2015</td>
+              <td>  2.0 </td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Hours per Customer</td>
+              <td>April 2015</td>
+              <td></td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Hours per Customer</td>
+              <td>May 2015</td>
+              <td></td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Hours per Customer</td>
+              <td>June 2015</td>
+              <td></td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Customer network breadth</td>
+              <td>April 2015</td>
+              <td>  12.4 </td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Customer network breadth</td>
+              <td>May 2015</td>
+              <td>  12.2 </td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Customer network breadth</td>
+              <td>June 2015</td>
+              <td>  13.2 </td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Customer network size</td>
+              <td>April 2015</td>
+              <td>  24.8 </td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Customer network size</td>
+              <td>May 2015</td>
+              <td>  23.7 </td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Customer network size</td>
+              <td>June 2015</td>
+              <td>  27.0 </td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Customer contacts / account</td>
+              <td>April 2015</td>
+              <td>  2.0 </td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Customer contacts / account</td>
+              <td>May 2015</td>
+              <td>  1.9 </td>
+            </tr>
+            
+            <tr>
+              <td>West</td>
+              <td>Customer contacts / account</td>
+              <td>June 2015</td>
+              <td>  2.0 </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  </body>
+</html>

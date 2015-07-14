@@ -1,0 +1,28 @@
+Region,Metric,Date,Value
+LAMC,# emails sent to Customers,April 2015,  9.2 
+LAMC,# emails sent to Customers,May 2015,  18.3 
+LAMC,# emails sent to Customers,June 2015,  16.4 
+LAMC,Hours in meetings with customers,April 2015,  1.4 
+LAMC,Hours in meetings with customers,May 2015,  3.4 
+LAMC,Hours in meetings with customers,June 2015,  2.7 
+LAMC,# of meetings with customer,April 2015,  0.5 
+LAMC,# of meetings with customer,May 2015,  1.6 
+LAMC,# of meetings with customer,June 2015,
+East,# emails sent to Customers,April 2015,  20.9 
+East,# emails sent to Customers,May 2015,  29.3 
+East,# emails sent to Customers,June 2015,  30.8 
+East,Hours in meetings with customers,April 2015,  2.7 
+East,Hours in meetings with customers,May 2015,  3.6 
+East,Hours in meetings with customers,June 2015,  3.5 
+East,# of meetings with customer,April 2015,  2.7 
+East,# of meetings with customer,May 2015,  3.7 
+East,# of meetings with customer,June 2015,
+West,# emails sent to Customers,April 2015,  21.5 
+West,# emails sent to Customers,May 2015,  26.9 
+West,# emails sent to Customers,June 2015,  27.9 
+West,Hours in meetings with customers,April 2015,  2.9 
+West,Hours in meetings with customers,May 2015,  3.6 
+West,Hours in meetings with customers,June 2015,  4.0 
+West,# of meetings with customer,April 2015,  3.4 
+West,# of meetings with customer,May 2015,  4.1 
+West,# of meetings with customer,June 2015,

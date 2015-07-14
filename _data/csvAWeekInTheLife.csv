@@ -1,0 +1,37 @@
+Region,Metric,Date,Value
+LAMC,Hours with Customers,April 2015,  0.6 
+LAMC,Hours with Customers,May 2015,  1.8 
+LAMC,Hours with Customers,June 2015,  1.7 
+LAMC,Hours with other External people,April 2015,  5.9 
+LAMC,Hours with other External people,May 2015,  9.4 
+LAMC,Hours with other External people,June 2015,  8.6 
+LAMC,Hours with Internal colleagues,April 2015,  15.1 
+LAMC,Hours with Internal colleagues,May 2015,  16.5 
+LAMC,Hours with Internal colleagues,June 2015,  17.7 
+LAMC,Non-meeting/email time,April 2015,  18.4 
+LAMC,Non-meeting/email time,May 2015,  12.4 
+LAMC,Non-meeting/email time,June 2015,  11.9 
+East,Hours with Customers,April 2015,  3.4 
+East,Hours with Customers,May 2015,  4.5 
+East,Hours with Customers,June 2015,  4.2 
+East,Hours with other External people,April 2015,  5.7 
+East,Hours with other External people,May 2015,  6.5 
+East,Hours with other External people,June 2015,  7.2 
+East,Hours with Internal colleagues,April 2015,  14.7 
+East,Hours with Internal colleagues,May 2015,  18.7 
+East,Hours with Internal colleagues,June 2015,  18.7 
+East,Non-meeting/email time,April 2015,  16.2 
+East,Non-meeting/email time,May 2015,  10.3 
+East,Non-meeting/email time,June 2015,  9.8 
+West,Hours with Customers,April 2015,  3.6 
+West,Hours with Customers,May 2015,  4.5 
+West,Hours with Customers,June 2015,  4.6 
+West,Hours with other External people,April 2015,  6.3 
+West,Hours with other External people,May 2015,  5.9 
+West,Hours with other External people,June 2015,  7.1 
+West,Hours with Internal colleagues,April 2015,  16.4 
+West,Hours with Internal colleagues,May 2015,  19.2 
+West,Hours with Internal colleagues,June 2015,  19.6 
+West,Non-meeting/email time,April 2015,  13.7 
+West,Non-meeting/email time,May 2015,  10.3 
+West,Non-meeting/email time,June 2015,  8.7 

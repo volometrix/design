@@ -1,0 +1,164 @@
+[
+    {
+        "Region": "LAMC",
+        "Metric": "# emails sent to Customers",
+        "Date": "April 2015",
+        "Value": "  9.2 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "# emails sent to Customers",
+        "Date": "May 2015",
+        "Value": "  18.3 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "# emails sent to Customers",
+        "Date": "June 2015",
+        "Value": "  16.4 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours in meetings with customers",
+        "Date": "April 2015",
+        "Value": "  1.4 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours in meetings with customers",
+        "Date": "May 2015",
+        "Value": "  3.4 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "Hours in meetings with customers",
+        "Date": "June 2015",
+        "Value": "  2.7 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "# of meetings with customer",
+        "Date": "April 2015",
+        "Value": "  0.5 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "# of meetings with customer",
+        "Date": "May 2015",
+        "Value": "  1.6 "
+    },
+    {
+        "Region": "LAMC",
+        "Metric": "# of meetings with customer",
+        "Date": "June 2015",
+        "Value": " 0 "
+    },
+    {
+        "Region": "East",
+        "Metric": "# emails sent to Customers",
+        "Date": "April 2015",
+        "Value": "  20.9 "
+    },
+    {
+        "Region": "East",
+        "Metric": "# emails sent to Customers",
+        "Date": "May 2015",
+        "Value": "  29.3 "
+    },
+    {
+        "Region": "East",
+        "Metric": "# emails sent to Customers",
+        "Date": "June 2015",
+        "Value": "  30.8 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours in meetings with customers",
+        "Date": "April 2015",
+        "Value": "  2.7 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours in meetings with customers",
+        "Date": "May 2015",
+        "Value": "  3.6 "
+    },
+    {
+        "Region": "East",
+        "Metric": "Hours in meetings with customers",
+        "Date": "June 2015",
+        "Value": "  3.5 "
+    },
+    {
+        "Region": "East",
+        "Metric": "# of meetings with customer",
+        "Date": "April 2015",
+        "Value": "  2.7 "
+    },
+    {
+        "Region": "East",
+        "Metric": "# of meetings with customer",
+        "Date": "May 2015",
+        "Value": "  3.7 "
+    },
+    {
+        "Region": "East",
+        "Metric": "# of meetings with customer",
+        "Date": "June 2015",
+        "Value": " 0 "
+    },
+    {
+        "Region": "West",
+        "Metric": "# emails sent to Customers",
+        "Date": "April 2015",
+        "Value": "  21.5 "
+    },
+    {
+        "Region": "West",
+        "Metric": "# emails sent to Customers",
+        "Date": "May 2015",
+        "Value": "  26.9 "
+    },
+    {
+        "Region": "West",
+        "Metric": "# emails sent to Customers",
+        "Date": "June 2015",
+        "Value": "  27.9 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours in meetings with customers",
+        "Date": "April 2015",
+        "Value": "  2.9 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours in meetings with customers",
+        "Date": "May 2015",
+        "Value": "  3.6 "
+    },
+    {
+        "Region": "West",
+        "Metric": "Hours in meetings with customers",
+        "Date": "June 2015",
+        "Value": "  4.0 "
+    },
+    {
+        "Region": "West",
+        "Metric": "# of meetings with customer",
+        "Date": "April 2015",
+        "Value": "  3.4 "
+    },
+    {
+        "Region": "West",
+        "Metric": "# of meetings with customer",
+        "Date": "May 2015",
+        "Value": "  4.1 "
+    },
+    {
+        "Region": "West",
+        "Metric": "# of meetings with customer",
+        "Date": "June 2015",
+        "Value": " 0 "
+    }
+]
