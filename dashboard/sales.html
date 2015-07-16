@@ -1,0 +1,52 @@
+---
+layout: 
+title:
+permalink: /sales/
+page-title: Sales Dashboard
+---
+{% include db-header.html %}
+<script>
+  $(function() { 
+    // var trendVals = [10,8,5,7,4,4,1].sort(function(){ return .5 - Math.random() });
+    var range_map = $.range_map({
+        1: 'red',
+        '2:9': 'yellow',
+        '10:': 'red'
+    });
+    $('.sparkline').sparkline('html', { enableTagOptions: true });
+  });
+</script>
+<div class="container" role="main">
+  <div class="row page-header clearfix">
+    <div class="col-md-12">
+      <span class="h2" style="font-weight:400;">{{page.page-title}}</span>
+      <br class="clear"><br>
+      <span class="pull-left"><a href="#" class="btn btn-default btn-xs">View Your Goals</a></span>
+      <!-- a href="/team-dashboard/" class="btn btn-default">Switch to Team view</a -->
+      <span class="pull-right">Time Period <select name="" id=""><option value="">6/26/2015 - 7/2/2015</option></select></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <span class="h5">Value</span>
+      <p><span class="figure">1.07</span>mm</p>
+    </div>
+    <div class="col-md-8">
+      <span class="h5">Performance Summary</span>
+      [ tbd ]
+      <br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {% include sales-efficiency.html %}  
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {% include sales-effectiveness.html %}  
+    </div>
+  </div>
+</div>   
+
+{% include db-footer.html %}

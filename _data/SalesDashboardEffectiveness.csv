@@ -1,0 +1,5 @@
+Metric,Value,Goal,Rank,Alert,Triangle
+Percent Low Engagement,24,-10,7,warning,bottom
+Percent Recurring Hours,37,20,4,success,top
+Percent External Hours,40,-30,3,danger,bottom
+Percent Insularity,35,10,5,warning,top

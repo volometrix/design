@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+  <!-- <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">Sales</span>
+      <a href="#" data-toggle="modal" data-target="#balanceModal"  class="pull-right btn btn-default btn-xs">
+        details
+      </a>    
+    </div>
+
+  </div> -->
+  <div class="panel-body">
+    <!-- <div class="panel-subtitle">
+      <p>Here's how many days you had meetings or sent and received emails after hours. Your goal is <strong>x</strong> days with no after hours work.</p>
+    </div> -->	
+    <!-- <div class="chart-wrapper">   
+      <div class="chart-description">
+        <span class="big figure">1</span> day without after-hours work
+      </div>
+      <div>
+        [ chart ]
+      </div>
+    </div>-->
+    <h4>Efficiency</h4>
+    <table class="table">
+      <tr>
+        <th style="width:40%;">Metric</th>
+        <th style="width:15%;">Value</th>
+        <th style="width:15%;">Trend</th>
+        <th style="width:15%;">Percent of Goal</th>
+        <th>Rank</th>
+      </tr>
+      {% for efficiency in site.data.SalesDashboardEfficiency %}
+      <tr>
+        <td>{{ efficiency.Metric }}</td>
+        <td>{{ efficiency.Value }}</td>
+        <td><span class="sparkline" sparkWidth="100" sparkType="line"><!-- 1,4,4,7,5,9,10 --></span></td>
+        <td><span class="badge alert-{{efficiency.Alert}}"><i class="glyphicon glyphicon-triangle-{{efficiency.Triangle}}"></i>{{ efficiency.Goal }}%</span></td>
+        <td>{{ efficiency.Rank }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>

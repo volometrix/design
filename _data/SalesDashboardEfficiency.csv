@@ -1,0 +1,5 @@
+Metric,Value,Goal,Rank,Alert,Triangle
+Total Meeting Investment,"1,072,822.00",-30,3,danger,bottom
+Average Meeting Duration,1.5,10,4,success,top
+Average Meeting Attendees,12,-10,6,warning,bottom
+Percent of Time Spent in Meetings,24,-30,2,danger,bottom
