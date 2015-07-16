@@ -24,17 +24,19 @@
     <table class="table">
       <tr>
         <th style="width:40%;">Metric</th>
-        <th style="width:15%;">Value</th>
-        <th style="width:15%;">Trend</th>
-        <th style="width:15%;">Percent of Goal</th>
+        <th>Value</th>
+        <th>Trend</th>
+        <th>Percent of Goal</th>
+        <th>vs Peers</th>
         <th>Rank</th>
       </tr>
       {% for effectiveness in site.data.SalesDashboardEffectiveness %}
       <tr>
         <td>{{ effectiveness.Metric }}</td>
         <td>{{ effectiveness.Value }}</td>
-        <td><span class="sparkline" sparkWidth="100" sparkType="line"><!-- 1,4,4,7,5,9,10 --></span></td>
+        <td data-sparkline="71, 78, 39, 66 "/>
         <td><span class="badge alert-{{effectiveness.Alert}}"><i class="glyphicon glyphicon-triangle-{{effectiveness.Triangle}}"></i>{{ effectiveness.Goal }}%</span></td>
+        <td data-sparkline="3, 26, -41, -30 ; column"/>
         <td>{{ effectiveness.Rank }}</td>
       </tr>
       {% endfor %}
