@@ -249,8 +249,8 @@
                     pointStart: 1
                 }],
                 tooltip: {
-                    headerFormat: '<span style="font-size: 10px">' + $td.parent().find('th').html() + ', Q{point.x}:</span><br/>',
-                    pointFormat: '<b>{point.y}.000</b> USD'
+                    headerFormat: '<span style="font-size: 10px">' + $td.parent().parent().find('th').html() + '{point.x}</span><br/>',
+                    pointFormat: '<b>{point.y}</b>'
                 },
                 chart: chart
             });
@@ -271,9 +271,14 @@
         }
     }
     doChunk();
-
+    $('[data-toggle="tooltip"]').tooltip()
 });
 </script>
+<style>
+  .panel-body {
+    min-height: auto;
+  }
+</style>
 <div class="container" role="main">
   <div class="row page-header clearfix">
     <div class="col-md-12">
@@ -286,13 +291,28 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <span class="h5">Value</span>
-      <p><span class="figure">1.07</span>mm</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h5">Value</span><br>
+          <span class="figure">1.07</span>mm <i class="glyphicon glyphicon-triangle-up"></i>
+        </div>
+      </div>
     </div>
-    <div class="col-md-8">
-      <span class="h5">Performance Summary</span>
-      [ tbd ]
-      <br>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h5">TBD</span>
+          <p>[ chart ]</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h5">TBD</span>
+          <p>[ chart ]</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -331,38 +351,38 @@
       </tr>
       
       <tr>
-        <td>Total Meeting Investment</td>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="Define Total Meeting Investment">Total Meeting Investment</a></td>
         <td>1,072,822.00</td>
-        <td data-sparkline="71, 78, 39, 66 "/>
+        <td data-sparkline="3,2, 5, 9, 8, 6"/>
         <td><span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-bottom"></i>-30%</span></td>
-        <td data-sparkline="3, 26, -41, -30 ; column"/>
+        <td data-sparkline="3, 5, -2, -4, -6 ; column"/>
         <td>3</td>
       </tr>
       
       <tr>
-        <td>Average Meeting Duration</td>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="Define Average Meeting Duration">Average Meeting Duration</a></td>
         <td>1.5</td>
-        <td data-sparkline="71, 78, 39, 66 "/>
+        <td data-sparkline="4,3, 7, 6, 6, 5"/>
         <td><span class="badge alert-success"><i class="glyphicon glyphicon-triangle-top"></i>10%</span></td>
-        <td data-sparkline="3, 26, -41, -30 ; column"/>
+        <td data-sparkline="-3, 1, 3, -2, 5 ; column"/>
         <td>4</td>
       </tr>
       
       <tr>
-        <td>Average Meeting Attendees</td>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="Define Average Meeting Attendees">Average Meeting Attendees</a></td>
         <td>12</td>
-        <td data-sparkline="71, 78, 39, 66 "/>
+        <td data-sparkline="2,4, 4, 5, 7, 3"/>
         <td><span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-bottom"></i>-10%</span></td>
-        <td data-sparkline="3, 26, -41, -30 ; column"/>
+        <td data-sparkline="2, 3, 2, 1, 4 ; column"/>
         <td>6</td>
       </tr>
       
       <tr>
-        <td>Percent of Time Spent in Meetings</td>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="Define Percent of Time Spent in Meetings">Percent of Time Spent in Meetings</a></td>
         <td>24</td>
-        <td data-sparkline="71, 78, 39, 66 "/>
+        <td data-sparkline="1,6, 2, 4, 9, 6"/>
         <td><span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-bottom"></i>-30%</span></td>
-        <td data-sparkline="3, 26, -41, -30 ; column"/>
+        <td data-sparkline="-5, -1, 3, 3, 3 ; column"/>
         <td>2</td>
       </tr>
       
@@ -407,38 +427,38 @@
       </tr>
       
       <tr>
-        <td>Percent Low Engagement</td>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="Define Percent Low Engagement">Percent Low Engagement</a></td>
         <td>24</td>
-        <td data-sparkline="71, 78, 39, 66 "/>
+        <td data-sparkline="5,2, 3, 9, 8, 6 "/>
         <td><span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-bottom"></i>-10%</span></td>
-        <td data-sparkline="3, 26, -41, -30 ; column"/>
+        <td data-sparkline="2, 4, -4, 2, 3 ; column"/>
         <td>7</td>
       </tr>
       
       <tr>
-        <td>Percent Recurring Hours</td>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="Define Percent Recurring Hours">Percent Recurring Hours</a></td>
         <td>37</td>
-        <td data-sparkline="71, 78, 39, 66 "/>
+        <td data-sparkline="7,3, 4, 6, 7, 4 "/>
         <td><span class="badge alert-success"><i class="glyphicon glyphicon-triangle-top"></i>20%</span></td>
-        <td data-sparkline="3, 26, -41, -30 ; column"/>
+        <td data-sparkline="-3, 1, 3, -2, 5 ; column"/>
         <td>4</td>
       </tr>
       
       <tr>
-        <td>Percent External Hours</td>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="Define Percent External Hours">Percent External Hours</a></td>
         <td>40</td>
-        <td data-sparkline="71, 78, 39, 66 "/>
+        <td data-sparkline="4,4, 2, 3, 3, 3 "/>
         <td><span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-bottom"></i>-30%</span></td>
-        <td data-sparkline="3, 26, -41, -30 ; column"/>
+        <td data-sparkline="2, 3, 2, 1, 4 ; column"/>
         <td>3</td>
       </tr>
       
       <tr>
-        <td>Percent Insularity</td>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="Define Percent Insularity">Percent Insularity</a></td>
         <td>35</td>
-        <td data-sparkline="71, 78, 39, 66 "/>
+        <td data-sparkline="2,6, 7, 2, 3, 6 "/>
         <td><span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i>10%</span></td>
-        <td data-sparkline="3, 26, -41, -30 ; column"/>
+        <td data-sparkline="3, 5, -2, -4, -6 ; column"/>
         <td>5</td>
       </tr>
       

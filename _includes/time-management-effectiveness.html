@@ -30,13 +30,13 @@
         <th>vs Peers</th>
         <th>Rank</th>
       </tr>
-      {% for effectiveness in site.data.SalesDashboardEffectiveness %}
+      {% for effectiveness in site.data.TimeManagementEffectiveness %}
       <tr>
-        <td>{{ effectiveness.Metric }}</td>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="{{ effectiveness.Definition }}">{{ effectiveness.Metric }}</a></td>
         <td>{{ effectiveness.Value }}</td>
-        <td data-sparkline="71, 78, 39, 66 "/>
+        <td data-sparkline="{{effectiveness.TrendM1}},{{effectiveness.TrendM2}}, {{effectiveness.TrendM3}}, {{effectiveness.TrendM4}}, {{effectiveness.TrendM5}}, {{effectiveness.TrendM6}} "/>
         <td><span class="badge alert-{{effectiveness.Alert}}"><i class="glyphicon glyphicon-triangle-{{effectiveness.Triangle}}"></i>{{ effectiveness.Goal }}%</span></td>
-        <td data-sparkline="3, 26, -41, -30 ; column"/>
+        <td data-sparkline="{{effectiveness.Peer1}}, {{effectiveness.Peer2}}, {{effectiveness.Peer3}}, {{effectiveness.Peer4}}, {{effectiveness.Peer5}} ; column"/>
         <td>{{ effectiveness.Rank }}</td>
       </tr>
       {% endfor %}

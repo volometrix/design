@@ -30,13 +30,13 @@
         <th>vs Peers</th>
         <th>Rank</th>
       </tr>
-      {% for efficiency in site.data.SalesDashboardEfficiency %}
+      {% for efficiency in site.data.TimeManagementEfficiency %}
       <tr>
-        <td>{{ efficiency.Metric }}</td>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="{{ efficiency.Definition }}">{{ efficiency.Metric }}</a></td>
         <td>{{ efficiency.Value }}</td>
-        <td data-sparkline="71, 78, 39, 66 "/>
+        <td data-sparkline="{{efficiency.TrendM1}},{{efficiency.TrendM2}}, {{efficiency.TrendM3}}, {{efficiency.TrendM4}}, {{efficiency.TrendM5}}, {{efficiency.TrendM6}}"/>
         <td><span class="badge alert-{{efficiency.Alert}}"><i class="glyphicon glyphicon-triangle-{{efficiency.Triangle}}"></i>{{ efficiency.Goal }}%</span></td>
-        <td data-sparkline="3, 26, -41, -30 ; column"/>
+        <td data-sparkline="{{efficiency.Peer1}}, {{efficiency.Peer2}}, {{efficiency.Peer3}}, {{efficiency.Peer4}}, {{efficiency.Peer5}} ; column"/>
         <td>{{ efficiency.Rank }}</td>
       </tr>
       {% endfor %}

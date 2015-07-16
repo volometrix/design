@@ -137,8 +137,8 @@ page-title: Time Management Executive Dashboard
                     pointStart: 1
                 }],
                 tooltip: {
-                    headerFormat: '<span style="font-size: 10px">' + $td.parent().find('th').html() + ', Q{point.x}:</span><br/>',
-                    pointFormat: '<b>{point.y}.000</b> USD'
+                    headerFormat: '<span style="font-size: 10px">' + $td.parent().parent().find('th').html() + '{point.x}</span><br/>',
+                    pointFormat: '<b>{point.y}</b>'
                 },
                 chart: chart
             });
@@ -159,9 +159,14 @@ page-title: Time Management Executive Dashboard
         }
     }
     doChunk();
-
+    $('[data-toggle="tooltip"]').tooltip()
 });
 </script>
+<style>
+  .panel-body {
+    min-height: auto;
+  }
+</style>
 <div class="container" role="main">
   <div class="row page-header clearfix">
     <div class="col-md-12">
@@ -174,23 +179,38 @@ page-title: Time Management Executive Dashboard
   </div>
   <div class="row">
     <div class="col-md-4">
-      <span class="h5">Value</span>
-      <p><span class="figure">1.07</span>mm</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h5">Value</span><br>
+          <span class="figure">1.07</span>mm <i class="glyphicon glyphicon-triangle-up"></i>
+        </div>
+      </div>
     </div>
-    <div class="col-md-8">
-      <span class="h5">Performance Summary</span>
-      [ tbd ]
-      <br>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h5">TBD</span>
+          <p>[ chart ]</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h5">TBD</span>
+          <p>[ chart ]</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      {% include sales-efficiency.html %}  
+      {% include time-management-efficiency.html %}  
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      {% include sales-effectiveness.html %}  
+      {% include time-management-effectiveness.html %}  
     </div>
   </div>
 </div>   
