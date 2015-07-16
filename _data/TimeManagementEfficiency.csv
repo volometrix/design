@@ -1,5 +1,5 @@
 Metric,Definition,Value,TrendM1,TrendM2,TrendM3,TrendM4,TrendM5,TrendM6,Goal,Peer1,Peer2,Peer3,Peer4,Peer5,Rank,Alert,Triangle
-Total Meeting Investment,Define Total Meeting Investment,"1,072,822.00",3,2,5,9,8,6,-30,3,5,-2,-4,-6,3,danger,bottom
+Total Meeting Investment,Define Total Meeting Investment,"$1,072,822.00",3,2,5,9,8,6,-30,3,5,-2,-4,-6,3,danger,bottom
 Average Meeting Duration,Define Average Meeting Duration,1.5,4,3,7,6,6,5,10,-3,1,3,-2,5,4,success,top
 Average Meeting Attendees,Define Average Meeting Attendees,12,2,4,4,5,7,3,-10,2,3,2,1,4,6,warning,bottom
 Percent of Time Spent in Meetings,Define Percent of Time Spent in Meetings,24,1,6,2,4,9,6,-30,-5,-1,3,3,3,2,danger,bottom
