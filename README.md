@@ -1,3 +1,5 @@
+## Prototypical designs, fake everything.
+
 **Copyright – All Rights Reserved**
 
 These are prototypes, hypothetical in nature, are used to garner feedback and explore potential design solutions. 
