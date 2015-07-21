@@ -17,7 +17,7 @@
     $(function () {
       $('#manager-11s-chart').highcharts({
         chart: {
-          type: 'column',
+          type: 'areaspline',
           height: 185
         },
         title: {
@@ -63,12 +63,13 @@
         },
         series: [{
           name: 'You',
-          type: 'column',
           color: '#3BB5EA',
           data: [ 2, 1, 5, 6 ].sort(function(){ return .5 - Math.random() })
         }, {
           name: 'Peer',
-          type: 'column',
+          dashStyle: 'dash',
+          color: '#666',
+          type: 'spline',
           data: [3, 6, 1, 3 ].sort(function(){ return .5 - Math.random() })
         }],
         credits: {

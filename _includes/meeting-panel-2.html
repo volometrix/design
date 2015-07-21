@@ -49,7 +49,7 @@ a .glyphicon-info-sign:hover {
             text: ''
         },
         xAxis: {
-            categories: ['Duration is less than 1 hour', 'Fewer than 6 attendees', '100% engagement', 'No declines or double booked attendees', 'Less than two levels present'],
+            categories: ['Duration is less than 1 hour', 'Fewer than 6 attendees', '100% engagement', 'No declines or double booked attendees', 'Less than two levels present', 'Reoccurring Meetings'],
             title: {
                 text: null
             }
@@ -95,11 +95,11 @@ a .glyphicon-info-sign:hover {
     },
     series: [{
         name: 'Peer',
-        data: [41, 28, 33, 38, 66],
+        data: [41, 28, 33, 38, 66, 45],
         // color: '#ccc'
     }, {
         name: 'You',
-        data: [31, 62, 64, 63, 31]
+        data: [31, 62, 64, 63, 31, 40]
         }]
     })
     // Numerate xAxis labels for tooltips
@@ -129,6 +129,11 @@ a .glyphicon-info-sign:hover {
             'data-content':'There are other ways to keep your peers in the loop than inviting everyone to every meeting. Only invite people who are absolutely necessary to the meeting to avoid high levels of declines and double bookings.<br><a href="#">Learn more</a>.'
         }).css('cursor','pointer');
         $('#xaxis-label-5').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'Before you attend or organize a meeting, make sure that the attendees won&rsquo;t create redundancies. It&rsquo;s unnecessary to have more than two levels of employees present at most meetings.<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        $('#xaxis-label-6').attr({ 
             'data-container': 'body',
             'data-toggle':'popover',
             'data-content':'Before you attend or organize a meeting, make sure that the attendees won&rsquo;t create redundancies. It&rsquo;s unnecessary to have more than two levels of employees present at most meetings.<br><a href="#">Learn more</a>.'

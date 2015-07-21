@@ -1,7 +1,7 @@
 ---
 layout: 
 title: 
-permalink: /individual/
+permalink: /individual-2/
 page-title: Individual Dashboard
 ---
 
@@ -135,15 +135,6 @@ page-title: Individual Dashboard
     top: 275px;
   }
   </style>
-  <script>
-  $(function(){
-    $('#moment-panel').slideDown('slow');
-    $('#moment-input').focus().css('text-align','center');
-    $('#moment-save').click(function(){
-      $('#moment-panel').slideUp();
-    });
-  });
-  </script>
 </head>
 <body role="document">
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -188,16 +179,16 @@ page-title: Individual Dashboard
     <hr>
     <div class="row">
       <div class="col-md-12">
-        <div id="moment-panel" class="moment" style="text-align:center;display:none;">
+        <div class="moment" style="text-align:center;">
           <h1 class="moment-greeting">
             Hello, Chelsey
           </h1>
           <p>Last week your focus was reducing meetings.</p>
           <p>Do you feel you achieved this goal?</p>
-          <p><a id="moment-yes" href="#" class="btn btn-default">Yes</a>&nbsp;&nbsp;<a id="moment-no" href="#">No</a></p>
+          <p><a href="#" class="btn btn-default">Yes</a>&nbsp;&nbsp;<a href="#">No</a></p>
           <p>What is your focus for this week?</p>
-          <p><input id="moment-input" type="text" style="border:none;background:transparent;border-bottom:solid 1px #555;"></p>
-          <p><a href="#" id="moment-save" class="btn btn-default">Save</a></p>
+          <p><input type="text" style="border:none;background:transparent;border-bottom:solid 1px #555;"></p>
+          <p><a href="#" class="btn btn-default">Save</a></p>
         </div>
       </div>
     </div>
@@ -213,18 +204,18 @@ page-title: Individual Dashboard
       <div class="col-md-4">
         {% include goals-for-the-week-panel.html %}
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        {% include key-people-panel.html %}
+      </div>
       <div class="col-md-4">
         {% include time-breakdown-panel.html %}
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        {% include meeting-panel-2.html %}  
-      </div>
-    </div>
-    <div class="row">
       <div class="col-md-8">
-        {% include key-people-panel.html %}
+        {% include meeting-panel-2.html %}  
       </div>
       <div class="col-md-4">
         {% include work-panel-2.html %}
@@ -248,13 +239,32 @@ page-title: Individual Dashboard
     </div>
     <div class="row">
       <div class="col-md-4">
+        {% include email-sent-panel-2.html %}
+      </div>
+      <div class="col-md-4">
         {% include hours-worked-panel.html %}
       </div>
+      <div class="col-md-4">
+        {% include weekly-meetings-panel.html %}
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-4">
         {% include manager-11s-panel.html %}
       </div>
       <div class="col-md-4">
         {% include direct-11s-panel.html %}
+      </div>
+      <div class="col-md-4">
+        {% include reoccurring-meetings-panel.html %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        {% include after-hours-email-panel.html %}
+      </div>
+      <div class="col-md-4">
+        {% include actionable-email-panel.html %}
       </div>
     </div>
     {% include welcome-modal.html %}

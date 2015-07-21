@@ -77,6 +77,87 @@
     font-size: 64px;
     font-weight: 200;
   }
+   .days-chart, .days-chart-legend {
+    position: absolute;
+    top:105px;
+    text-align: center;
+    left:50%;
+    margin-left: -195px;
+    width:350px;
+  }
+  .days-chart-vis {
+    margin-top:75px;
+  }
+  .days-chart .timeline {
+    background: #fff url('/design/images/days-chart-bkd.png') no-repeat 0 12.5px !important;
+    margin: 0 -2px;
+  }
+  .days-chart.work-week-days .timeline {
+    width: 10%;
+  }
+  .days-chart.full-week-days .timeline {
+    width: 5%;
+  }
+  .days-chart .work-day {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .work-day.key,
+  .days-chart .goal-met-false.key {
+    height: 12px;
+    width: 12px;
+  }
+  .days-chart li {
+    display:inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 25px;
+    white-space: nowrap;
+  }
+  .days-chart .day {
+    width: 25px;
+    margin:0 -1px;
+    border-radius: 100%;
+    background-color: #d7d7d7;
+  }
+  .days-chart .sep {
+    width:10%;
+    background: #fff url(' /design/images/days-chart-bkd.png') no-repeat 0 12.5px;
+    margin:0 -2px;
+  }
+  .days-chart .goal-met-true {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .goal-met-false {
+    background-color: #FFC960;
+    background-image: -webkit-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: -o-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: linear-gradient(#FFC960 0%, #FFA00C 100%);
+  }
+  .figure {
+    font-size: 38px;
+    font-weight: 300; 
+  }
+  .day-label {
+    font-size: 11px;
+    color: #555555;
+    position: absolute;
+    bottom:-20px;
+    width:100%;
+    text-align: center;
+    text-align: -webkit-center;
+    display: block;
+  }
+  .days-chart-legend {
+    top: 275px;
+  }
   </style>
   </head>
 
