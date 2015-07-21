@@ -1,12 +1,11 @@
+
 <div id="bullet-chart">
-  <script src="/javascript/d3.v3.4.8.js"></script>
-  <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
   <script type="text/javascript">
 
     // Create the svg and set the dimensions
     var svg = dimple.newSvg("#bullet-chart", 800, 400);
 
-    d3.tsv("/data/example_data.tsv", function (data) {
+    d3.tsv("{{ site.baseurl }}/data/example_data.tsv", function (data) {
 
       // Add a bullet chart to the svg
       function addBullet(x, y, height, width, measure, lowMark,

@@ -1,0 +1,84 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+         <div class="panel-title">
+            <span class="h5">Impact</span>
+            <!-- <a href="#" data-toggle="modal" data-target="#emailModal" class="pull-right btn btn-default btn-xs">
+                details
+            </a>  -->   
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <p>Be aware of how much time your team imposed on your organization.</p>
+        <div>
+            <script>
+            $(function () {
+            Highcharts.setOptions(Highcharts.theme);
+            $('#manager-impact-chart').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 185
+                },
+                title: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4']
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+                },
+                legend: {
+                    enabled: true
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: false
+                    },
+                },
+                series: [{
+                    name: 'Average Size',
+                    data: [90, 100, 60, 70].sort(function(){ return .5 - Math.random() })
+                }, {
+                    name: 'Team Size',
+                    data: [100, 60, 80, 90].sort(function(){ return .5 - Math.random() })
+                }, {
+                    name: 'Meeting Duration',
+                    data: [100, 60, 80, 90].sort(function(){ return .5 - Math.random() })
+                }, {
+                    name: 'Average Email Send',
+                    data: [100, 60, 80, 90].sort(function(){ return .5 - Math.random() })
+                }, {
+                    name: 'Average Email Received',
+                    data: [100, 60, 80, 90].sort(function(){ return .5 - Math.random() })
+                }, {
+                    name: 'Peer',
+                    type: 'spline',
+                    color: '#000',
+                    marker: {
+                      radius: 0
+                    },
+                    data: [100, 60, 80, 90].sort(function(){ return .5 - Math.random() })
+                }],
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                }
+            });
+        });
+        </script>
+        <div class="chart-description">
+            <span class="figure">145</span> hours imposed<br>
+            <strong>182</strong> peer average
+        </div>
+        <div id="manager-impact-chart" class="chart"></div>
+        </div>
+    </div>
+</div>

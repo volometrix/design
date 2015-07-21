@@ -1,0 +1,71 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">Time Breakdown</span>  
+    </div>
+  </div>
+  <div class="panel-body">
+  <div class="panel-subtitle">
+    <p>This shows how your time is being spent with different groups of people (based on meetings).</p>
+  </div>	
+  <div class="chart-wrapper">
+    <p><a href="#">Level</a> <a href="#">Groups</a> <a href="#">Function</a> <a href="#">Location</a></p>
+    <div id="time-breakdown-chart" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
+    <script>
+    $(function () {
+      $('#time-breakdown-chart').highcharts({
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: 0,
+          plotShadow: false
+        },
+        title: null,
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            dataLabels: {
+              enabled: true,
+              distance: -50,
+              style: {
+                fontWeight: 'bold',
+                color: 'white',
+                textShadow: '0px 1px 2px black'
+              }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '75%']
+          }
+        },
+        exporting: {
+          enabled: false
+        },
+        credits: {
+          enabled: false
+        },
+        series: [{
+          type: 'pie',
+          name: '',
+          innerSize: '50%',
+          data: [
+          ['Manage Down',     10.38],
+          ['Manage Across',   56.33],
+          ['Manage Up',       24.03],
+          ['Desk Time',        4.77],
+          {
+            name: 'Proprietary or Undetectable',
+            y: 0.2,
+            dataLabels: {
+              enabled: false
+            }
+          }
+          ]
+        }]
+      });
+});
+</script>
+</div>     
+</div>
+</div>

@@ -1,0 +1,203 @@
+<style>
+#intro-modal .modal-content,
+#intro-modal .modal-body {
+	background: #C1E9FE !important;
+	max-width: 550px;
+	margin: auto;
+}
+#intro-modal .modal-header {
+	margin-bottom: none;
+	border-bottom: none;
+}
+#intro-modal .modal-body {
+	padding:0;
+}
+#intro-modal .intro-container {
+	position: relative;	
+}
+#intro-modal .intro-heading {
+	font-size: 24px;
+	margin: 0;
+}
+#intro-modal .intro-subheading {
+	font-size: 18px;
+}
+#intro-modal .intro-step {
+	padding: 0 35px 0 35px;
+	display: none;
+}
+#intro-modal .intro-step:hover {
+	cursor: pointer;
+}
+#intro-modal .intro-progress {
+	text-align: center;	
+	margin:0 -75px 0 0;
+	position: absolute;
+	bottom: -35px;
+	right: 50%;
+	width: 150px;
+}
+#intro-modal .intro-progress ul {
+	display: block;
+	text-align: center;
+}
+#intro-modal .intro-progress li {
+	background-color: #222;
+	list-style: none;
+	display: inline-block;
+	width:10px; 
+	height:10px;
+	border-radius: 10px;
+	margin-right: 2px;
+	margin-left: 2px;
+	padding:0;
+}
+#intro-modal .intro-progress li.active {
+	background-color:#C1E9FE;
+}
+#intro-modal .intro-step .btn {
+	position: absolute;
+	display: block;
+	bottom: 15px; 
+	left:50%;
+	margin-left: -50px;
+	width: 100px;
+	text-align: center;
+	visibility: hidden;
+}
+#intro-modal .modal-content .intro-step {
+	background: #C1E9FE url( "/design/images/tutorial/intro-step.png" ) no-repeat bottom right ;
+	min-height: 550px;
+}
+#intro-modal .modal-content .meeting-step {
+	background-image: url( "/design/images/tutorial/meeting-effectiveness-step.png" ) ;
+}
+#intro-modal .modal-content .work-time-step {
+	background-image: url( "/design/images/tutorial/work-time-step.png" ) ;
+}
+#intro-modal .modal-content .email-time-step {
+	background-image: url( "/design/images/tutorial/email-time-step.png" ) ;
+}
+#intro-modal .modal-content .after-hours-step {
+	background-image: url( "/design/images/tutorial/after-hours-step.png" ) ;
+}
+#intro-modal .modal-content .time-demand-step {
+	background-image: url( "/design/images/tutorial/time-demand-step.png" ) ;
+}
+#intro-modal .modal-content .final-step {
+	background-image: url( "/design/images/tutorial/finished-step.png" ) ;
+}
+</style>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js"></script>
+<script>
+$(function() {
+	$.fn.takeTour = function () {
+		if( $.cookie('toured') === null ) {
+				$('#intro-modal').modal('show');
+				$.cookie('toured','7');
+		};
+		$('.intro-container').parent().append('<div class="intro-progress"><ul></ul></div>');
+		var count = $('.intro-step').length;
+		for ( var i = 0; i < count; i++ ){
+			$('.intro-progress').append('<li class="progress-step"></li>');
+		}
+		$('.intro-progress .progress-step').first().addClass('active');
+		$('.intro-step').append('<a href="#" title="Use the &rarr; key too" class="btn btn-primary next-step">Next</a>');
+		$('.intro-step').first().show();
+		$('.intro-step:last-child').addClass('final-step');
+		$('.intro-step:first-child').addClass('first-step');
+		var advanceStep = function(obj) {
+				var currentStep, nextStep;
+				currentStep = obj;
+				nextStep 		= obj.next();
+				$('.intro-progress .progress-step').eq($('.intro-step').index(nextStep)).addClass('active');
+				nextStep.fadeIn();
+				currentStep.hide();
+		}
+		var reverseStep = function(obj) {
+				var currentStep, prevStep;
+				currentStep = obj;
+				prevStep 		= obj.prev();
+				$('.intro-progress .progress-step').eq($('.intro-step').index(currentStep)).removeClass('active');
+				prevStep.fadeIn();
+				currentStep.hide();
+		}
+		$('.intro-step').click(function(){
+			var btn = $(this);
+				if ( btn.hasClass('final-step')) {
+					$('#intro-modal').modal('hide');
+				} else {
+					advanceStep(btn);
+				}
+		});
+		$('.intro-progress .progress-step').click(function(){
+			$('.intro-step:visible').hide();
+			$('.intro-step').eq($(this).index()-1).fadeIn();
+			$('.intro-progress .progress-step').removeClass('active');
+			$('.intro-progress .progress-step').slice(0, $(this).index()).addClass('active');
+		});
+		$(document).unbind().bind('keydown', function(e) {
+			if ( e.keyCode == 39 ) {
+				var btn = $('.intro-step:visible');
+				if ( btn.hasClass('final-step')) {
+					$('#intro-modal').modal('hide');
+				} else {
+					advanceStep(btn);
+				}
+			}
+			if ( e.keyCode == 37 ) {
+				var btn = $('.intro-step:visible');
+				if ( !btn.hasClass('first-step')) {
+					reverseStep(btn);
+				}
+			}
+		});	
+	}
+	$('.intro-container').takeTour();
+});
+</script>
+<div class="modal" id="intro-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body intro-container">
+				<div class="intro-step welcome-step">
+					<h1 class="intro-heading">Introduction</h1>
+					<h3 class="intro-subheading">Welcome to your new personal goals dashboard!</h3>
+					<p>Complete this quick walk-through to get acquainted with the different modules and discover how to get the most out of your dashboard.</p>
+				</div>
+				<div class="intro-step meeting-step">
+					<h1 class="intro-heading">Meeting Effectiveness</h1>
+					<h3 class="intro-subheading">Organize and attend effective meetings.</h3>
+					<p>Productive collaboration is the result of several key meeting elements. Use the Meetings module to measure the quality of your meetings based on their duration, size, engagement level and timing.</p>
+				</div>
+				<div class="intro-step work-time-step">
+					<h1 class="intro-heading">Work Time</h1>
+					<h3 class="intro-subheading">Schedule time to focus.</h3>
+					<p>Time fragmentation is critical for both concentration and mental recovery. To enhance your productivity, use the Work Time module to set a goal each week for the number of days that you'd like to reserve at least one 2-hour block of time without meetings.</p>
+				</div>
+				<div class="intro-step email-time-step">
+					<h1 class="intro-heading">Email Time	</h1>
+					<h3 class="intro-subheading">Track the time you spend in email.</h3>
+					<p>When used appropriately, email is a great communication tool. However, inboxes can weigh you and your team down. Track the number of emails you send and receive in the Email Time module to identify the best balance for your own productivity.</p>
+				</div>
+				<div class="intro-step after-hours-step">
+					<h1 class="intro-heading">After-Hours Work</h1>
+					<h3 class="intro-subheading">Achieve the work/life balance that's best for you.</h3>
+					<p>It's okay to go the extra mile, but balance is important. Discover how you manage your work and personal life with the After-Hours module, which highlights days where you spent time in meetings or email outside of your regular work day.</p>
+				</div>
+				<div class="intro-step time-demand-step">
+					<h1 class="intro-heading">Time Demand on Colleagues</h1>
+					<h3 class="intro-subheading">See how your meeting and emails impact your colleagues' schedules.</h3>
+					<p>Communication is crucial for your job, but every email and meeting demands time from your coworkers. Track your organizational load through the Time Demand on Colleagues module, which shows the number of hours you impose on your colleagues' schedules.</p>
+				</div>
+				<div class="intro-step final-step">
+					<h1 class="intro-heading">Get started!</h1>
+					<h3 class="intro-subheading">You're ready to start settings goals and prioritizing your time.</h3>
+					<p>If you have any lingering questions, you can read the <a href="#">Resources Page</a> for more information. Replay this tutorial anytime by clicking the tutorial button in the upper right corner of your dashboard.</p>
+				</div>
+			</div>
+	</div>
+</div>

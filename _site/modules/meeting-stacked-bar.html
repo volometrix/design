@@ -1,0 +1,37 @@
+<div id="meeting-stacked-bar"></div>
+<script>
+    $(function () {
+    $('#meeting-stacked-bar').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Meting Size'
+        },
+        xAxis: {
+            categories: ['1 only', '2 only', '3–6', '7–10', '21+']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Hours'
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'Actual',
+            data: [5, 3, 4, 7, 2]
+        }, {
+            name: 'Benchmark',
+            data: [2, 2, 3, 2, 1]
+        }]
+    });
+});
+</script>

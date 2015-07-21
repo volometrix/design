@@ -18,5 +18,10 @@ collections:
   components:
     output: false
 
+# Includes
+collections:
+  modules:
+    output: true
+
 # Build settings
 markdown: kramdown

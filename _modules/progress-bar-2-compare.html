@@ -1,0 +1,48 @@
+---
+label: Progress Bar 2 Compare
+---
+<div id="progress-bar-2-compare" style="min-width: 310px; max-width: 800px; height: 105px; margin: 0 auto"></div>
+<script>
+	$(function () {
+    $('#progress-bar-2-compare').highcharts({
+        chart: {
+            type: 'bar',
+            margin: [5,5,50,50],
+            spacing: [2,2,2,2],
+            backgroundColor: 'rgba(255,255,255,0.1)'
+        },
+        credits:{enabled:false},
+			  exporting:{enabled:false},
+        title: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['you','peers']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ''
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'percent'
+            }
+        },
+        series: [{
+            name: 'Work',
+            data: [50,40]
+        }, {
+            name: 'Meeting',
+            data: [20,35]
+        }, {
+            name: 'Email',
+            data: [30,25]
+        }]
+    });
+});
+</script>

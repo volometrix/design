@@ -1,0 +1,133 @@
+---
+label: Sent Email
+---
+<div class="panel panel-default">
+    <div class="panel-heading">
+         <div class="panel-title">
+            <span class="h5">Sent Email</span>
+            <a href="#" data-toggle="modal" data-target="#email-sent-modal" class="pull-right btn btn-default btn-xs">
+                Key people
+            </a>    
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <p>Number of mails sent to your colleagues.</p>
+        <div>
+            <script>
+            $(function () {
+            $('#email-sent-chart').highcharts({
+                chart: {
+                    type: 'areaspline',
+                    height: 185
+                },
+                title: {
+                    text: ''
+                },
+                // colors: ['#3BB5EA', '#979797'],
+                colors: ['#3BB5EA', '#A6CEE3'],
+                xAxis: {
+                    categories: ['Week 1', '2', '3', 'Week 4'],
+                    title : {
+                        text: 'Trend'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Emails Sent'
+                    }
+                },
+                legend: {
+                    enabled: true
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: false
+                    },
+                },
+                series: [{
+                    name: 'You',
+                    type: 'areaspline',
+                    marker: {
+                        radius: 3
+                    },
+                    data: [98, 106, 65, 76].sort(function(){ return .5 - Math.random() })
+                }, {
+                    name: 'Peer',
+                    type: 'spline',
+                    marker: {
+                        radius: 0
+                    },
+                    dashStyle: 'dash',
+                    color: '#666',
+                    data: [120, 68, 88, 91].sort(function(){ return .5 - Math.random() })
+                }],
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                }
+            });
+        });
+        </script>
+        <div class="chart-description">
+            <span class="figure">86</span> emails<br>
+            <strong>96</strong> peer average
+        </div>
+        <div id="email-sent-chart" class="chart"></div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="email-sent-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                 <h5 class="modal-title" id="myModalLabel">Key email recipients</h5>
+
+            </div>
+            <div class="modal-body">
+                 <h5>Here are the top people who received your email.</h5>
+
+                <br>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th>Person</th>
+                            <th>Sent</th>
+                            <th>Received</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td>Kent, Lead Engineer</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Bryan, Lead Design</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                        <tr>
+                            <td>Cindy, Lead Sales</td>
+                            <td>1</td>
+                            <td>18</td>
+                            <td>20.1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

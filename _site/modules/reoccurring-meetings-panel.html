@@ -1,0 +1,142 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">Title </span>
+      <a href="#" data-toggle="modal" data-target="#balanceModal"  class="pull-right btn btn-default btn-xs">
+        details
+      </a>    
+    </div>
+
+  </div>
+  <div class="panel-body">
+    <div class="panel-subtitle">
+      <p>Hours spent in recurring meetings.</p>
+    </div>  
+    <div class="chart-wrapper">   
+      <script>
+      $(function () {
+  // Semi Circle Donut
+  $('#reoccurring-meetings-chart-2').highcharts({
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: 0,
+      plotShadow: false
+    },
+    title: {
+      text: 'Meeting Types',
+      align: 'center',
+      verticalAlign: 'middle',
+      y: 50
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        dataLabels: {
+          enabled: true,
+          distance: -50,
+          style: {
+            fontWeight: 'bold',
+            color: 'white',
+            textShadow: '0px 1px 2px black'
+          }
+        },
+        startAngle: -90,
+        endAngle: 90,
+        center: ['50%', '75%']
+      }
+    },
+    series: [{
+      type: 'pie',
+      name: 'Meeting Type',
+      innerSize: '50%',
+      data: [
+      ['Ad Hoc',   45.0],
+      ['Reoccurring', 26.8]
+      ]
+    }],
+    exporting: {
+      enabled: false
+    },
+    credits: {
+      enabled: false
+    }
+  });  
+});
+</script>
+<div class="chart-description">
+  <span class="figure">26</span><strong>%</strong> reoccurring meetings
+</div>
+<div id="reoccurring-meetings-chart-2" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
+</div>     
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title" id="myModalLabel">Modal</h5>
+      </div>
+      <div class="modal-body">
+        <h5>Title</h5>
+        <p>Body</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="reoccurring-meetings-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+
+      </div>
+      <div class="modal-body">
+       <h5>Here are all the meetings you attended this week.</h5>
+
+       <br>
+       <div>
+        <table class="table">
+          <tr>
+            <th>Person</th>
+            <th>Sent</th>
+            <th>Received</th>
+            <th>Total</th>
+          </tr>
+          <tr>
+            <td>Kent, Lead Engineer</td>
+            <td>1</td>
+            <td>18</td>
+            <td>20.1</td>
+          </tr>
+          <tr>
+            <td>Kent, Lead Engineer</td>
+            <td>1</td>
+            <td>18</td>
+            <td>20.1</td>
+          </tr>
+          <tr>
+            <td>Kent, Lead Engineer</td>
+            <td>1</td>
+            <td>18</td>
+            <td>20.1</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>

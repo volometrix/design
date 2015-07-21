@@ -1,0 +1,435 @@
+---
+label: Meeting Module v2
+---
+<style>
+	body {
+	background-color: #f9f9f9;
+	}
+	.panel-heading {
+		background-color: #fff !important;
+		font-weight: 500;
+		border:none;
+	}
+	.panel-body {
+		padding-top:0;
+	}
+	.figure {
+		font-size: 64px;
+		font-weight: 200;
+	}
+	[data-toggle="popover"]:hover {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	.popover {
+    font: 9pt Trebuchet MS, Verdana, sans-serif;
+    opacity: .8;
+    border-radius: 2px;
+  }
+  a .glyphicon-info-sign {
+  	color: #bbb;
+  }
+  a .glyphicon-info-sign:hover {
+  	color: #555;
+  }
+</style>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Meetings
+		<p class="pull-right">
+			View
+			<select name="mtg" id="mtg">
+				<option value="mtg-organized">organized</option>
+				<option value="mtg-attended">attended</option>
+				<option value="mtg-both" selected>all meetings</option>
+			</select>
+			&nbsp;
+			&nbsp;
+			<a href="#" data-toggle="modal" data-target="#myModal">
+        <i class="glyphicon glyphicon-search pull-right"></i>
+      </a>
+		</p>
+	</div>
+	<div class="panel-body">
+		<h5>Your goal is for N% of your meetings to be considered <strong>high quality</strong>.</h5>
+		<div class="clearfix">
+			<p class="pull-left" style="width:48%"><span class="figure">67</span>% of time in high-quality <a href="#" data-toggle="popover" data-placement="top" data-html="true" data-content="A meeting’s quality is determined by its MQI, the Meeting Quality Index, which uses meeting components like the duration of the meeting, number of attendees, level of engagement, number of declines/double books, and number of levels present to rate the meeting. <a href='#'>Learn more</a>."><i class="glyphicon glyphicon-info-sign"></i></a></p>
+			<p class="pull-right" style="width:48%"><span class="figure">72</span>% peer average</p>
+		</div>
+		<h5>Meeting Components <a href="#" data-toggle="popover" data-placement="top" data-html="true" data-content="These components are not mutually exclusive, so their totals may exceed 100%."><i class="glyphicon glyphicon-info-sign"></i></a></h5>
+		<div id="container1" style="min-width: 310px; max-width: 800px; height: 28px; margin: 0 auto"></div> 
+		<div id="container2" style="min-width: 310px; max-width: 800px; height: 28px; margin: 0 auto"></div>
+		<div id="container3" style="min-width: 310px; max-width: 800px; height: 28px; margin: 0 auto"></div>
+		<div id="container4" style="min-width: 310px; max-width: 800px; height: 28px; margin: 0 auto"></div>
+		<div id="container5" style="min-width: 310px; max-width: 800px; height: 110px; margin: 0 auto"></div> <!-- height: 78px; -->
+		<script>
+		$(function () {
+
+			Highcharts.setOptions(Highcharts.theme);
+			Highcharts.setOptions({
+			    chart:{
+			        defaultSeriesType:'bar',
+			        borderWidth:0
+			    },
+			    credits:{enabled:false},
+			    exporting:{enabled:false},
+			    title:{text:''},
+			    tooltip: false,
+			    xAxis:{
+			        tickLength:0,
+			        lineColor:'#999',
+			        lineWidth:1,
+			        labels:{
+			        	style:{
+			        		fontWeight:'bold'
+			        	}
+			      },       
+			    },
+			    yAxis:{
+			        min:0,
+			        max:100,
+			        title:{text: 'stuff'},
+			        labels:{
+			            overflow: 'justify'
+			        },
+			        plotLines: [{
+			        	color: '#ff0000',
+			        	width: 3
+			        }],
+			    },
+			    plotOptions:{
+			        bar:{
+			        		states: {
+                    hover: {
+                        brightness: 0 // darken
+                    }
+                },
+			            dataLabels: {
+			            	enabled: true
+			            },
+			        }
+			    },
+			    legend: {
+			    	enabled: false
+			    }
+			});
+			var chart1= new Highcharts.Chart({
+			    chart:{
+			    	renderTo:'container1',
+			    	margin: [5,15,0,250],        
+			      spacing: [0,0,0,0],
+			    	label: {
+			    		text: 'label'
+			    	}
+			    },
+			    xAxis:{
+			    	categories:['Duration is less than 1hr']
+			    },
+			    yAxis:{
+			        min: 0,
+			        title: {
+			        	text: ''
+			        },
+			        plotLines: [{
+                color: '#000000',
+                width: 2,
+                value: 60,
+                zIndex: 5, 
+               	label: {
+               		text: '30',
+               		verticalAlign: 'middle',
+               		y:6,
+               		textAlign: 'left',
+               		rotation: 0
+               	}
+            }],
+			    },
+			    series:[{
+			    	data: [40]
+			    }]
+			});
+			$('#container1 .highcharts-xaxis-labels').attr({ 
+				'data-container': 'body',
+				'data-toggle':'popover',
+				'data-content':'Everyone&rsquo;s time counts, making larger meetings more costly. Additionally, more people make it harder to focus, and can limit the meeting&rsquo;s productivity.<br><a href="#">Learn more</a>.'
+			}).css('cursor','pointer');
+			var chart2= new Highcharts.Chart({
+			    chart:{
+			    	renderTo:'container2',
+			    	margin: [0,15,0,250],        
+			      spacing: [0,0,0,0],
+			    	label: {
+			    		text: 'label'
+			    	}
+			    },
+			    xAxis:{
+			    	categories:['<a href="#">Fewer than 6 attendees</a>']
+			    },
+			    yAxis:{
+			        min: 0,
+			        title: {
+			        	text: ''
+			        },
+			        plotLines: [{
+                color: '#000000',
+                width: 2,
+                value: 30,
+                zIndex: 5, 
+               	label: {
+               		text: '30',
+               		verticalAlign: 'middle',
+               		y:6,
+               		textAlign: 'left',
+               		rotation: 0
+               	}
+            }],
+			    },
+			    series:[{
+			    	data: [60]
+			    }]
+			});
+			$('#container2 .highcharts-xaxis-labels').attr({ 
+				'data-container': 'body',
+				'data-toggle':'popover',
+				'data-content':'Scheduling longer meetings increases the meeting&rsquo;s cost and the possibility of conversations running off topic. Be frugal with your time and others&rsquo;<br><a href="#">Learn more</a>.'
+			}).css('cursor','pointer');
+			var chart3= new Highcharts.Chart({
+			    chart:{
+			    	renderTo:'container3',
+			    	margin: [0,15,0,250],        
+			      spacing: [0,0,0,0],
+			    	label: {
+			    		text: 'label'
+			    	}
+			    },
+			    xAxis:{
+			    	categories:['100% engagement']
+			    },
+			    yAxis:{
+			        min: 0,
+			        title: {
+			        	text: ''
+			        },
+			        plotLines: [{
+                color: '#000000',
+                width: 2,
+                value: 30,
+                zIndex: 5, 
+               	label: {
+               		text: '30',
+               		verticalAlign: 'middle',
+               		y:6,
+               		textAlign: 'left',
+               		rotation: 0
+               	}
+            }],
+			    },
+			    series:[{
+			    	data: [60]
+			    }]
+			});
+			$('#container3 .highcharts-xaxis-labels').attr({ 
+				'data-container': 'body',
+				'data-toggle':'popover',
+				'data-content':'If meeting attendees are sending email and getting other work done during the meeting, it lowers the level of engagement.<br><a href="#">Learn more</a>.'
+			}).css('cursor','pointer');
+			var chart4= new Highcharts.Chart({
+			    chart:{
+			    	renderTo:'container4',
+			    	margin: [0,15,0,250],        
+			      spacing: [0,0,0,0],
+			    	label: {
+			    		text: 'label'
+			    	}
+			    },
+			    xAxis:{
+			    	categories:['No declines or double booked attendees']
+			    },
+			    yAxis:{
+			        min: 0,
+			        title: {
+			        	text: ''
+			        },
+			        plotLines: [{
+                color: '#000000',
+                width: 2,
+                value: 60,
+                zIndex: 5, 
+               	label: {
+               		text: '60',
+               		verticalAlign: 'middle',
+               		y:6,
+               		textAlign: 'left',
+               		rotation: 0
+               	}
+            }],
+			    },
+			    series:[{
+			    	data: [30]
+			    }]
+			});
+			$('#container4 .highcharts-xaxis-labels').attr({ 
+				'data-container': 'body',
+				'data-toggle':'popover',
+				'data-content':'There are other ways to keep your peers in the loop than inviting everyone to every meeting. Only invite people who are absolutely necessary to the meeting to avoid high levels of declines and double bookings.<br><a href="#">Learn more</a>.'
+			}).css('cursor','pointer');
+			var chart5= new Highcharts.Chart({
+			    chart:{
+			    	animation: false,
+			    	renderTo:'container5',
+			    	margin: [0,15,65,250],         
+			      spacing: [0,0,0,0],
+			    	label: {
+			    		text: ''
+			    	}
+			    },
+			    legend: {
+			    	enabled: true
+			    },
+			    xAxis:{
+			    	categories:['Less than two levels present'] 
+			    },
+			    yAxis:{
+			        min: 0,
+			        title: {
+			        	text: 'Percent of time in meetings (you vs. peers)'
+			        },
+			        plotLines: [{
+                color: '#000000',
+                width: 2,
+                value: 60,
+                zIndex: 5, 
+               	label: {
+               		text: '60',
+               		verticalAlign: 'middle',
+               		y:6,
+               		textAlign: 'left',
+               		rotation: 0
+               	}
+            }],
+			    },
+			    series:[{
+			    	name: 'Work',
+			    	data: [30]
+			    },
+			    {
+			    	name: 'Peer Average',
+			    	color: '#000000'
+			    }]
+			});	
+			$('#container5 .highcharts-xaxis-labels').attr({ 
+				'data-container': 'body',
+				'data-toggle':'popover',
+				'data-content':'Before you attend or organize a meeting, make sure that the attendees won&rsquo;t create redundancies. It&rsquo;s unnecessary to have more than two levels of employees present at most meetings.<br><a href="#">Learn more</a>.'
+			}).css('cursor','pointer');
+			$('[data-toggle="popover"]').popover({
+				html:true,
+				trigger:'hover',
+				delay: { 
+					"show": 300, 
+					"hide": 750 
+				}
+			});
+		});
+		</script>
+	</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+             <h4 class="modal-title" id="myModalLabel">Meetings</h4>
+
+        </div>
+        <div class="modal-body">
+             <h5>Here are all the meetings you attended this week.</h5>
+
+            <br>
+            <div>
+                <table class="table">
+                    <th>
+                        <td>Date</td>
+                        <td>Subject</td>
+                        <td>Organizer</td>
+                        <td>Quality</td>
+                        <td>Size</td>
+                        <td>Duration</td>
+                        <td>Exclude</td>
+                    </th>
+                    <tr>
+                        <td><i class="fa fa-circle goal-met-true"></i>
+                        </td>
+                        <td>4/6</td>
+                        <td>Product team weekly planning</td>
+                        <td>Chantrelle, VP Product</td>
+                        <td>67</td>
+                        <td>13</td>
+                        <td>0.8</td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-circle goal-met-true"></i>
+                        </td>
+                        <td>4/6</td>
+                        <td>Product team weekly planning</td>
+                        <td>Chantrelle, VP Product</td>
+                        <td>67</td>
+                        <td>13</td>
+                        <td>0.8</td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-circle goal-met-false"></i>
+                        </td>
+                        <td>4/6</td>
+                        <td>Product team weekly planning</td>
+                        <td>Chantrelle, VP Product</td>
+                        <td>67</td>
+                        <td>13</td>
+                        <td>0.8</td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-circle goal-met-true"></i>
+                        </td>
+                        <td>4/6</td>
+                        <td>Product team weekly planning</td>
+                        <td>Chantrelle, VP Product</td>
+                        <td>67</td>
+                        <td>13</td>
+                        <td>0.8</td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-circle goal-met-false"></i>
+                        </td>
+                        <td>4/6</td>
+                        <td>Product team weekly planning</td>
+                        <td>Chantrelle, VP Product</td>
+                        <td>67</td>
+                        <td>13</td>
+                        <td>0.8</td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+        </div>
+    </div>
+</div>
+</div>

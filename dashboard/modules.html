@@ -1,0 +1,21 @@
+---
+layout: default
+title:
+permalink: /modules/
+page-title: Modules
+---
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h4>Modules</h4>
+		</div>
+	</div>
+	{% assign modules = site.modules %}
+	{% for module in modules %}
+	  <div class="row">
+	  	<div class="col-md-8">
+	  		{{ module.content }}
+	  	</div>
+	  </div>
+	{% endfor %}
+</div>

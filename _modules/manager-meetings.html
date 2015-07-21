@@ -1,0 +1,147 @@
+---
+label: Manager Meetings
+---
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">Meeting Effectiveness</span>
+      <a href="#" data-toggle="modal" data-target="#emailModal"  class="pull-right btn btn-default btn-xs">
+        details
+      </a>    
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="panel-subtitle">
+      <p>Your team's meeting profile.</p>
+    </div>   
+    <script>
+    $(function () {
+      $('#manager-meetings-chart').highcharts({
+        chart: {
+          type: 'column',
+          height: 185
+        },
+        title: {
+          text: ''
+        },
+        xAxis: {
+          categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+          title: {
+            text: null
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'Percent'
+          },
+          max: 100,
+          plotLines: [{
+            color: '#000000',
+            width: 1,
+            value: 45,
+            zIndex: 10,
+            label: {
+              text: 'Goal',
+              align: 'right',
+              x: 0
+            }
+          }]
+        },
+        legend: {
+          enabled: true
+        },
+        plotOptions: {
+          line: {
+            dataLabels: {
+              enabled: false
+            },
+            enableMouseTracking: false
+          },
+          series: {
+            marker: {
+              enabled: true,
+              radius: 2
+            }
+          }
+        },
+        series: [{
+          name: 'Large Attendance',
+          type: 'column',
+          color: '#6a3d9a',
+          data: [20, 10, 55, 60].sort(function(){ return .5 - Math.random()})
+        }, {
+          name: 'Long Duration',
+          type: 'column',
+          color: '#3bbbf3',
+          data: [30, 60, 10, 30].sort(function(){ return .5 - Math.random()})
+        }, {
+          name: 'Low Engagement',
+          type: 'column',
+          color: '#1f78b4',
+          data: [30, 60, 20, 70].sort(function(){ return .5 - Math.random()})
+        }],
+        credits: {
+          enabled: false
+        },
+        exporting: {
+          enabled: false
+        }
+      });
+});
+</script>
+<div class="chart-description">
+  <span class="figure">133</span> average meeting hours<br>
+  <strong>168</strong> peer average
+</div>
+<div id="manager-meetings-chart" class="chart"></div>    
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+
+      </div>
+      <div class="modal-body">
+       <h5>Here are all the meetings you attended this week.</h5>
+
+       <br>
+       <div>
+        <table class="table">
+          <tr>
+            <th>Person</th>
+            <th>Sent</th>
+            <th>Received</th>
+            <th>Total</th>
+          </tr>
+          <tr>
+            <td>Kent, Lead Engineer</td>
+            <td>1</td>
+            <td>18</td>
+            <td>20.1</td>
+          </tr>
+          <tr>
+            <td>Kent, Lead Engineer</td>
+            <td>1</td>
+            <td>18</td>
+            <td>20.1</td>
+          </tr>
+          <tr>
+            <td>Kent, Lead Engineer</td>
+            <td>1</td>
+            <td>18</td>
+            <td>20.1</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>

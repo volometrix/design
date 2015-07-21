@@ -1,0 +1,251 @@
+---
+label: Meeting Panel
+---
+<style>
+[data-toggle="popover"]:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.popover {
+    font: 9pt Trebuchet MS, Verdana, sans-serif;
+    opacity: .8;
+    border-radius: 2px;
+}
+a .glyphicon-info-sign {
+   color: #bbb;
+}
+a .glyphicon-info-sign:hover {
+   color: #555;
+}
+#xaxis-label-1 {
+    fill: red;
+}
+</style>
+<div class="panel panel-default">
+	<div class="panel-heading">
+        <div class="panel-title">
+            <span class="h5">Meeting Effectiveness</span> 
+            <a href="#" data-toggle="modal" data-target="#meetingModal" class="pull-right btn btn-default btn-xs">
+                details
+            </a>    
+        </div>
+    </div>
+    <div class="panel-body">
+      <p>Organize and attend more effective meetings <a href="#" data-toggle="popover" data-placement="top" data-html="true" data-content="<strong>A meeting’s quality is determined by its MQI</strong><br>, the Meeting Quality Index, which uses meeting components like the duration of the meeting, number of attendees, level of engagement, number of declines/double books, and number of levels present to rate the meeting.<br><a href='#'>Learn more</a>."><i class="glyphicon glyphicon-info-sign"></i></a>.</p>
+
+      <!-- <p>Meeting Effectiveness Targets <a href="#" data-toggle="popover" data-placement="top" data-html="true" data-content="These components are not mutually exclusive, so their totals may exceed 100%.<br><br>Click the labels below to learn more."><i class="glyphicon glyphicon-info-sign"></i></a></p> -->
+      <div id="container6" style="min-width: 310px; max-width: 800px; height: 225px; margin: 0 auto"></div>
+      <script>
+      $(function () {
+       Highcharts.setOptions(Highcharts.theme);
+       $('#container6').highcharts({
+        chart: {
+            type: 'bar',
+            margin: [5,15,50,175],
+            spacing: [0,0,0,0]
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['Duration is less than 1 hour', 'Fewer than 6 attendees', '100% engagement', 'No declines or double booked attendees', 'Less than two levels present'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            title: {
+                text: 'Work week (%)',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' %',
+            enabled: false
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            },
+            series: {
+                states: {
+                    hover: {
+                        enabled: false
+                    }
+                }
+            }
+        },
+        exporting:{enabled:false},
+        legend: {
+         reversed: true,
+         align: 'center',
+         verticalAlign: 'bottom',
+         itemDistance: 15
+     },
+     credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Peer',
+        data: [41, 28, 33, 38, 66],
+        // color: '#ccc'
+    }, {
+        name: 'You',
+        data: [31, 62, 64, 63, 31]
+        }]
+    })
+    // Numerate xAxis labels for tooltips
+    $.each($('#container6 .highcharts-xaxis-labels > text'), function(index, value){
+        var num = index + 1;
+        $(value).attr('id','xaxis-label-'+ num);
+    });
+        // Add the BS tooltips
+        $('#xaxis-label-1').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'Everyone&rsquo;s time counts, making larger meetings more costly. Additionally, more people make it harder to focus, and can limit the meeting&rsquo;s productivity.<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        $('#xaxis-label-2').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'Scheduling longer meetings increases the meeting&rsquo;s cost and the possibility of conversations running off topic. Be frugal with your time and others&rsquo;.<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        $('#xaxis-label-3').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'Your percentage of time in meetings where you are highly engaged (not multitasking, not too many levels present, and not double booked).<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        $('#xaxis-label-4').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'There are other ways to keep your peers in the loop than inviting everyone to every meeting. Only invite people who are absolutely necessary to the meeting to avoid high levels of declines and double bookings.<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        $('#xaxis-label-5').attr({ 
+            'data-container': 'body',
+            'data-toggle':'popover',
+            'data-content':'Before you attend or organize a meeting, make sure that the attendees won&rsquo;t create redundancies. It&rsquo;s unnecessary to have more than two levels of employees present at most meetings.<br><a href="#">Learn more</a>.'
+        }).css('cursor','pointer');
+        // Add the tooltip code
+        $('[data-toggle="popover"]').popover({
+            html:true,
+            trigger:'hover',
+            // trigger:'focus',
+            delay: {
+                "show": 300, 
+                "hide": 750 
+            } 
+        })
+    });
+        </script>
+        <br>
+        <p style="text-align:center;"><strong>14.9%</strong> of your meeting time was spent in high-quality meetings, on average your peers spent 14.9% of their meeting time in high-quality meetings</p>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="meetingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="myModalLabel">Meeting Effectiveness Details</h5>
+                </div>
+                <div class="modal-body">
+                 <h5>Here are all the meetings you attended this week.</h5>
+
+                 <br>
+                 <div>
+                    <table class="table">
+                        <th>
+                            <td>Date</td>
+                            <td>Subject</td>
+                            <td>Organizer</td>
+                            <td>Quality</td>
+                            <td>Size</td>
+                            <td>Duration</td>
+                            <td>Exclude</td>
+                        </th>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-true"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-true"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-false"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-true"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-circle goal-met-false"></i>
+                            </td>
+                            <td>4/6</td>
+                            <td>Product team weekly planning</td>
+                            <td>Chantrelle, VP Product</td>
+                            <td>67</td>
+                            <td>13</td>
+                            <td>0.8</td>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

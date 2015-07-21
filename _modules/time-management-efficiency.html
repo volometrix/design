@@ -1,0 +1,48 @@
+---
+label: Time Management Efficiency
+---
+<div class="panel panel-default">
+  <!-- <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">Sales</span>
+      <a href="#" data-toggle="modal" data-target="#balanceModal"  class="pull-right btn btn-default btn-xs">
+        details
+      </a>    
+    </div>
+
+  </div> -->
+  <div class="panel-body" style="min-height: auto;">
+    <!-- <div class="panel-subtitle">
+      <p>Here's how many days you had meetings or sent and received emails after hours. Your goal is <strong>x</strong> days with no after hours work.</p>
+    </div> -->	
+    <!-- <div class="chart-wrapper">   
+      <div class="chart-description">
+        <span class="big figure">1</span> day without after-hours work
+      </div>
+      <div>
+        [ chart ]
+      </div>
+    </div>-->
+    <h4>Efficiency</h4>
+    <table class="table">
+      <tr>
+        <th style="width:40%;">Metric</th>
+        <th>Value</th>
+        <th>Trend</th>
+        <th>Percent of Goal</th>
+        <th>vs Peers</th>
+        <th>Rank</th>
+      </tr>
+      {% for efficiency in site.data.TimeManagementEfficiency %}
+      <tr>
+        <td><a href="#" data-toggle="tooltip" data-placement="top" title="{{ efficiency.Definition }}">{{ efficiency.Metric }}</a></td>
+        <td>{{ efficiency.Value }}</td>
+        <td data-sparkline="{{efficiency.TrendM1}},{{efficiency.TrendM2}}, {{efficiency.TrendM3}}, {{efficiency.TrendM4}}, {{efficiency.TrendM5}}, {{efficiency.TrendM6}}"/>
+        <td><span class="badge alert-{{efficiency.Alert}}"><i class="glyphicon glyphicon-triangle-{{efficiency.Triangle}}"></i>{{ efficiency.Goal }}%</span></td>
+        <td data-sparkline="{{efficiency.Peer1}}, {{efficiency.Peer2}}, {{efficiency.Peer3}}, {{efficiency.Peer4}}, {{efficiency.Peer5}} ; column"/>
+        <td>{{ efficiency.Rank }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
