@@ -4,10 +4,10 @@
     <title>Personal Dashboard</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
-    <link>https://volometrix.github.io/personalgoals/</link>
-    <atom:link href="https://volometrix.github.io/personalgoals/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 09 Jul 2015 12:23:31 -0700</pubDate>
-    <lastBuildDate>Thu, 09 Jul 2015 12:23:31 -0700</lastBuildDate>
+    <link>https://volometrix.github.io/design/</link>
+    <atom:link href="https://volometrix.github.io/design/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 21 Jul 2015 08:11:08 -0700</pubDate>
+    <lastBuildDate>Tue, 21 Jul 2015 08:11:08 -0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -41,8 +41,8 @@
 
 </description>
         <pubDate>Fri, 01 May 2015 00:00:00 -0700</pubDate>
-        <link>https://volometrix.github.io/personalgoals/comp/2015/05/01/Comps.html</link>
-        <guid isPermaLink="true">https://volometrix.github.io/personalgoals/comp/2015/05/01/Comps.html</guid>
+        <link>https://volometrix.github.io/design/comp/2015/05/01/Comps.html</link>
+        <guid isPermaLink="true">https://volometrix.github.io/design/comp/2015/05/01/Comps.html</guid>
         
         
         <category>comp</category>
