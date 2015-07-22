@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Personal Dashboard</title>
+	<title>SYMC-Monthly-Sales-Report</title>
+  <!-- Personal Dashboard -->
 	<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 	<link rel="stylesheet" href="/design/css/main.css">
@@ -31,12 +32,6 @@
 	body {
 		background: #eee;
 	}
- /* #print-container {
-  	width:800px;
-  	margin:25px auto;
-  	padding:25px;
-  	background: #fff;
-  	}*/
   	.container {
   		max-width: 850px;
   	}
@@ -90,10 +85,31 @@
   	th {
   		background: #f9f9f9;
   	}
+    table td.metric {
+      width:50%;
+    }
+    table td.value {
+      width:25%;
+    }
+    table td.benchmark {
+      width:25%;
+    }
+    #instructions {
+      position: fixed;
+      right: 5px;
+      top: 5px;
+      background: rgba(0,0,0,.09);
+      padding:5px;
+      font-size: 12px;
+      border-radius: 4px; 
+    }
 
   	/* Print */
 
   	@media print {
+      #instructions {
+        display: none;
+      }
   		h1 {
   			color: #000;
   			background: none;
@@ -109,21 +125,70 @@
   		article {
   			page-break-before: always;
   		}
+      #print-wrapper  .container {
+        width: 595px;
+      }
+      .nav-container {
+        display: none;
+      }
+      .masthead {
+        padding:0;
+      }
+      .masthead .report-title{
+        font-size: 24px;
+        font-weight: 300;
+      }
+      .masthead .report-subtitle{
+        font-size: 18px;
+        font-weight: 300;
+      }
+      .section-title {
+        font-size: 18px;
+        font-weight: 300;
+        margin-top:0;
+      }
+      #print-container .table {
+        font-size: 11px;
+      }
+      .box {
+        padding:0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }    
+      table.table th,
+      table.table td {
+        padding: 3px 4px !important;
+        margin:0 !important;
+        line-height: 1;
+      }
+      .tab-content > .tab-pane {
+        display: block !important; 
+        opacity: 1 !important; 
+        visibility: visible !important
+      }
   		@page {
   			margin: 2cm;
   		}
-  	}
-  	@media print and (color) {
-  		* {
-  			-webkit-print-color-adjust: exact;
-  			print-color-adjust: exact;
-  		}
-  	}
+    }
+    @media print and (color) {
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
   	</style>
   </head>
   <body>
+    <div id="instructions">
+      <p>To Print (works best in Chrome)</p>
+      <ol>
+        <li>CTRL + P</li>
+        <li>Save As PDF</li>
+      </ol>
+    </div>
   	<div id="print-wrapper">
-  		<div class="container">
+  		<div class="container nav-container">
   			<div class="row">
   				<div class="col-md-12">
   					<ul class="nav nav-tabs" role="tablist">
@@ -135,68 +200,220 @@
   			</div>
   		</div>
   		<div id="print-container" class="box container">
-  			<div class="row">
-  				<div class="col-md-12">
-  					<img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-  					<img src="/design/images/symc-logo.svg" alt="Symantec">
-  				</div>
-  			</div>
-  			<hr>
   			<div class="tab-content">
   				<div role="tabpanel" class="tab-pane fade in active" id="east-region">
+            <div class="row">
+              <div class="col-md-12">
+                <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                <img src="/design/images/symc-logo.svg" alt="Symantec">
+              </div>
+            </div>
+            <hr>
   					<div class="row">
   						<div class="masthead col-md-12">
-  							<h1>Welcome to your monthly sales retrospective</h1>
-  							<h2>East Region, June 2015</h2>
+  							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
+  							<h2 class="report-subtitle">East Region, June 2015</h2>
   						</div>
   					</div>
-  					<hr>
+            <hr>
   					<div class="row">
-  						<div class="col-md-8">
-  							<h3>QTD Overview</h3>
+  						<div class="col-md-12">
+  							<h3 class="section-title">QTD Overview</h3>
   							<table class="table">
   								<tr>
   									<th>Metrics</th>
   									<th>East Region</th>
   									<th>Benchmark</th>
+                    <!-- <th>Per Quarter</th> -->
   								</tr>
   								
   								<tr>
-  									<td>Accounts contacted</td>
-  									<td>1057</td>
-  									<td></td>
+  									<td class="metric">Accounts contacted</td>
+  									<td class="value">1057</td>
+  									<td cladd="benchmark"></td>
+                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
   								</tr>
   								
   								<tr>
-  									<td>Accounts engaged</td>
-  									<td>500</td>
-  									<td></td>
+  									<td class="metric">Accounts engaged</td>
+  									<td class="value">500</td>
+  									<td cladd="benchmark"></td>
+                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
   								</tr>
   								
   								<tr>
-  									<td>Cold</td>
-  									<td></td>
-  									<td></td>
+  									<td class="metric">Cold</td>
+  									<td class="value"></td>
+  									<td cladd="benchmark"></td>
+                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
   								</tr>
   								
   								<tr>
-  									<td>Key account CISOs contacted</td>
-  									<td>18</td>
-  									<td></td>
+  									<td class="metric">Key account CISOs contacted</td>
+  									<td class="value">18</td>
+  									<td cladd="benchmark"></td>
+                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
   								</tr>
   								
   								<tr>
-  									<td>Total time with key account CISOs</td>
-  									<td>96</td>
-  									<td></td>
+  									<td class="metric">Total time with key account CISOs</td>
+  									<td class="value">96</td>
+  									<td cladd="benchmark"></td>
+                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
   								</tr>
   								
   							</table>
+                <script>
+                  $(function () {
+                    Highcharts.SparkLine = function (options, callback) {
+                        var defaultOptions = {
+                            chart: {
+                                renderTo: (options.chart && options.chart.renderTo) || this,
+                                backgroundColor: null,
+                                borderWidth: 0,
+                                type: 'line',
+                                margin: [0, 0, 0, 0],
+                                width: 120,
+                                height: 20,
+                                style: {
+                                    overflow: 'visible'
+                                },
+                                skipClone: true
+                            },
+                            title: {
+                                text: ''
+                            },
+                            credits: {
+                                enabled: false
+                            },
+                            exporting: {
+                                enabled: false
+                            },
+                            xAxis: {
+                                labels: {
+                                    enabled: false
+                                },
+                                title: {
+                                    text: null
+                                },
+                                startOnTick: false,
+                                endOnTick: false,
+                                tickPositions: []
+                            },
+                            yAxis: {
+                                endOnTick: false,
+                                startOnTick: false,
+                                labels: {
+                                    enabled: false
+                                },
+                                title: {
+                                    text: null
+                                },
+                                tickPositions: [0]
+                            },
+                            legend: {
+                                enabled: false
+                            },
+                            tooltip: {
+                                backgroundColor: null,
+                                borderWidth: 0,
+                                shadow: false,
+                                useHTML: true,
+                                hideDelay: 0,
+                                shared: true,
+                                padding: 0,
+                                positioner: function (w, h, point) {
+                                    return { x: point.plotX - w / 2, y: point.plotY - h};
+                                }
+                            },
+                            plotOptions: {
+                                series: {
+                                    animation: false,
+                                    lineWidth: 1,
+                                    shadow: false,
+                                    states: {
+                                        hover: {
+                                            lineWidth: 1
+                                        }
+                                    },
+                                    marker: {
+                                        radius: 1,
+                                        states: {
+                                            hover: {
+                                                radius: 2
+                                            }
+                                        }
+                                    },
+                                    fillOpacity: 0.25
+                                },
+                                column: {
+                                    negativeColor: '#910000',
+                                    borderColor: 'silver'
+                                }
+                            }
+                        };
+                        options = Highcharts.merge(defaultOptions, options);
+                        return new Highcharts.Chart(options, callback);
+                    };
+                    var start = +new Date(),
+                        $tds = $("td[data-sparkline]"),
+                        fullLen = $tds.length,
+                        n = 0;
+                    function doChunk() {
+                        var time = +new Date(),
+                            i,
+                            len = $tds.length,
+                            $td,
+                            stringdata,
+                            arr,
+                            data,
+                            chart;
+
+                        for (i = 0; i < len; i += 1) {
+                            $td = $($tds[i]);
+                            stringdata = $td.data('sparkline');
+                            arr = stringdata.split('; ');
+                            data = $.map(arr[0].split(', '), parseFloat);
+                            chart = {};
+
+                            if (arr[1]) {
+                                chart.type = arr[1];
+                            }
+                            $td.highcharts('SparkLine', {
+                                series: [{
+                                    data: data,
+                                    pointStart: 1
+                                }],
+                                tooltip: {
+                                    headerFormat: '<span style="font-size: 10px">' + $td.parent().parent().find('th').html() + ', Q{point.x}:</span><br/>',
+                                    pointFormat: '<b>{point.y}.000</b> USD'
+                                },
+                                chart: chart
+                            });
+
+                            n += 1;
+
+                            // If the process takes too much time, run a timeout to allow interaction with the browser
+                            if (new Date() - time > 500) {
+                                $tds.splice(0, i + 1);
+                                setTimeout(doChunk, 0);
+                                break;
+                            }
+
+                            // Print a feedback on the performance
+                            if (n === fullLen) {
+                                $('#result').html('Generated ' + fullLen + ' sparklines in ' + (new Date() - start) + ' ms');
+                            }
+                        }
+                    }
+                    doChunk();
+                });
+                </script>
   						</div>
   					</div>
   					<div class="row">
-  						<div class="col-md-8">
-  							<h3>Details for this month</h3>
+  						<div class="col-md-12">
+  							<h3 class="section-title">Details for this month</h3>
   							<table class="table">
   								<tr>
   									<th>Time with Customers</th>
@@ -205,32 +422,37 @@
   								</tr>
   								
   								<tr>
-  									<td>Time communicating with customer per week</td>
-  									<td>11</td>
-  									<td>11</td>
+  									<td class="metric">Time communicating with customer per week</td>
+  									<td class="value">11</td>
+  									<td class="benchmark">11</td>
   								</tr>
   								
   								<tr>
-  									<td>Distict customers contacted per week</td>
-  									<td>14</td>
-  									<td>16</td>
+  									<td class="metric">Distict customers contacted per week</td>
+  									<td class="value">14</td>
+  									<td class="benchmark">16</td>
   								</tr>
   								
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
   								<table class="table">
   									<tr>
   										<th colspan="3">Engagement with Customers</th>
   									</tr>
   									
   									<tr>
-  										<td>Accounts within rep network</td>
-  										<td>20</td>
-  										<td>18</td>
+  										<td class="metric">Accounts within rep network</td>
+  										<td class="value">20</td>
+  										<td class="benchmark">18</td>
   									</tr>
   									
   									<tr>
-  										<td>Account contacts within rep network</td>
-  										<td>46</td>
-  										<td>40</td>
+  										<td class="metric">Account contacts within rep network</td>
+  										<td class="value">46</td>
+  										<td class="benchmark">40</td>
   									</tr>
   									
   								</table>
@@ -240,27 +462,27 @@
   									</tr>
   									
   									<tr>
-  										<td>Accounts contacted</td>
-  										<td>380</td>
-  										<td></td>
+  										<td class="metric">Accounts contacted</td>
+  										<td class="value">380</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Accounts engaged</td>
-  										<td>227</td>
-  										<td></td>
+  										<td class="metric">Accounts engaged</td>
+  										<td class="value">227</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Accounts contacted per salesperson</td>
-  										<td>9</td>
-  										<td></td>
+  										<td class="metric">Accounts contacted per salesperson</td>
+  										<td class="value">9</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Accounts engaged per salesperson</td>
-  										<td>5</td>
-  										<td></td>
+  										<td class="metric">Accounts engaged per salesperson</td>
+  										<td class="value">5</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   								</table>
@@ -270,27 +492,27 @@
   									</tr>
   									
   									<tr>
-  										<td>No contact</td>
-  										<td>12</td>
-  										<td></td>
+  										<td class="metric">No contact</td>
+  										<td class="value">12</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Email</td>
-  										<td>4</td>
-  										<td></td>
+  										<td class="metric">Email</td>
+  										<td class="value">4</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Meetings</td>
-  										<td>0</td>
-  										<td></td>
+  										<td class="metric">Meetings</td>
+  										<td class="value">0</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Email and meetings</td>
-  										<td>0</td>
-  										<td></td>
+  										<td class="metric">Email and meetings</td>
+  										<td class="value">0</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   								</table>
@@ -298,16 +520,23 @@
   						</div>
   					</div>
   					<div role="tabpanel" class="tab-pane fade" id="west-region">
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                  <img src="/design/images/symc-logo.svg" alt="Symantec">
+                </div>
+              </div>
+              <hr>
   						<div class="row">
   						<div class="masthead col-md-12">
-  							<h1>Welcome to your monthly sales retrospective</h1>
-  							<h2>West Region, June 2015</h2>
+  							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
+  							<h2 class="report-subtitle">West Region, June 2015</h2>
   						</div>
   					</div>
   					<hr>
   					<div class="row">
-  						<div class="col-md-8">
-  							<h3>QTD Overview</h3>
+  						<div class="col-md-12">
+  							<h3 class="section-title">QTD Overview</h3>
   							<table class="table">
   								<tr>
   									<th>Metrics</th>
@@ -316,41 +545,37 @@
   								</tr>
   								
   								<tr>
-  									<td>Accounts contacted</td>
-  									<td>1057</td>
-  									<td></td>
+  									<td class="metric">Accounts contacted</td>
+  									<td class="value">1057</td>
+  									<td class="benchmark"></td>
   								</tr>
   								
   								<tr>
-  									<td>Accounts engaged</td>
-  									<td>500</td>
-  									<td></td>
+  									<td class="metric">Accounts engaged</td>
+  									<td class="value">500</td>
+  									<td class="benchmark"></td>
   								</tr>
   								
   								<tr>
-  									<td>Cold</td>
-  									<td></td>
-  									<td></td>
+  									<td class="metric">Cold</td>
+  									<td class="value"></td>
+  									<td class="benchmark"></td>
   								</tr>
   								
   								<tr>
-  									<td>Key account CISOs contacted</td>
-  									<td>18</td>
-  									<td></td>
+  									<td class="metric">Key account CISOs contacted</td>
+  									<td class="value">18</td>
+  									<td class="benchmark"></td>
   								</tr>
   								
   								<tr>
-  									<td>Total time with key account CISOs</td>
-  									<td>96</td>
-  									<td></td>
+  									<td class="metric">Total time with key account CISOs</td>
+  									<td class="value">96</td>
+  									<td class="benchmark"></td>
   								</tr>
   								
   							</table>
-  						</div>
-  					</div>
-  					<div class="row">
-  						<div class="col-md-8">
-  							<h3>Details for this month</h3>
+  							<h3 class="section-title">Details for this month</h3>
   							<table class="table">
   								<tr>
   									<th>Time with Customers</th>
@@ -359,15 +584,15 @@
   								</tr>
   								
   								<tr>
-  									<td>Time communicating with customer per week</td>
-  									<td>11</td>
-  									<td>11</td>
+  									<td class="metric">Time communicating with customer per week</td>
+  									<td class="value">11</td>
+  									<td class="benchmark">11</td>
   								</tr>
   								
   								<tr>
-  									<td>Distict customers contacted per week</td>
-  									<td>14</td>
-  									<td>16</td>
+  									<td class="metric">Distict customers contacted per week</td>
+  									<td class="value">14</td>
+  									<td class="benchmark">16</td>
   								</tr>
   								
   								<table class="table">
@@ -376,15 +601,15 @@
   									</tr>
   									
   									<tr>
-  										<td>Accounts within rep network</td>
-  										<td>20</td>
-  										<td>18</td>
+  										<td class="metric">Accounts within rep network</td>
+  										<td class="value">20</td>
+  										<td class="benchmark">18</td>
   									</tr>
   									
   									<tr>
-  										<td>Account contacts within rep network</td>
-  										<td>46</td>
-  										<td>40</td>
+  										<td class="metric">Account contacts within rep network</td>
+  										<td class="value">46</td>
+  										<td class="benchmark">40</td>
   									</tr>
   									
   								</table>
@@ -394,27 +619,27 @@
   									</tr>
   									
   									<tr>
-  										<td>Accounts contacted</td>
-  										<td>380</td>
-  										<td></td>
+  										<td class="metric">Accounts contacted</td>
+  										<td class="value">380</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Accounts engaged</td>
-  										<td>227</td>
-  										<td></td>
+  										<td class="metric">Accounts engaged</td>
+  										<td class="value">227</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Accounts contacted per salesperson</td>
-  										<td>9</td>
-  										<td></td>
+  										<td class="metric">Accounts contacted per salesperson</td>
+  										<td class="value">9</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Accounts engaged per salesperson</td>
-  										<td>5</td>
-  										<td></td>
+  										<td class="metric">Accounts engaged per salesperson</td>
+  										<td class="value">5</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   								</table>
@@ -424,27 +649,27 @@
   									</tr>
   									
   									<tr>
-  										<td>No contact</td>
-  										<td>12</td>
-  										<td></td>
+  										<td class="metric">No contact</td>
+  										<td class="value">12</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Email</td>
-  										<td>4</td>
-  										<td></td>
+  										<td class="metric">Email</td>
+  										<td class="value">4</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Meetings</td>
-  										<td>0</td>
-  										<td></td>
+  										<td class="metric">Meetings</td>
+  										<td class="value">0</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Email and meetings</td>
-  										<td>0</td>
-  										<td></td>
+  										<td class="metric">Email and meetings</td>
+  										<td class="value">0</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   								</table>
@@ -452,16 +677,23 @@
   						</div>
   					</div>
   					<div role="tabpanel" class="tab-pane fade" id="latin-america">
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                  <img src="/design/images/symc-logo.svg" alt="Symantec">
+                </div>
+              </div>
+              <hr>
   						<div class="row">
   						<div class="masthead col-md-12">
-  							<h1>Welcome to your monthly sales retrospective</h1>
-  							<h2>Latin America Region, June 2015</h2>
+  							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
+  							<h2 class="report-subtitle">Latin America Region, June 2015</h2>
   						</div>
   					</div>
   					<hr>
   					<div class="row">
-  						<div class="col-md-8">
-  							<h3>QTD Overview</h3>
+  						<div class="col-md-12">
+  							<h3 class="section-title">QTD Overview</h3>
   							<table class="table">
   								<tr>
   									<th>Metrics</th>
@@ -470,41 +702,37 @@
   								</tr>
   								
   								<tr>
-  									<td>Accounts contacted</td>
-  									<td>1057</td>
-  									<td></td>
+  									<td class="metric">Accounts contacted</td>
+  									<td class="value">1057</td>
+  									<td class="benchmark"></td>
   								</tr>
   								
   								<tr>
-  									<td>Accounts engaged</td>
-  									<td>500</td>
-  									<td></td>
+  									<td class="metric">Accounts engaged</td>
+  									<td class="value">500</td>
+  									<td class="benchmark"></td>
   								</tr>
   								
   								<tr>
-  									<td>Cold</td>
-  									<td></td>
-  									<td></td>
+  									<td class="metric">Cold</td>
+  									<td class="value"></td>
+  									<td class="benchmark"></td>
   								</tr>
   								
   								<tr>
-  									<td>Key account CISOs contacted</td>
-  									<td>18</td>
-  									<td></td>
+  									<td class="metric">Key account CISOs contacted</td>
+  									<td class="value">18</td>
+  									<td class="benchmark"></td>
   								</tr>
   								
   								<tr>
-  									<td>Total time with key account CISOs</td>
-  									<td>96</td>
-  									<td></td>
+  									<td class="metric">Total time with key account CISOs</td>
+  									<td class="value">96</td>
+  									<td class="benchmark"></td>
   								</tr>
   								
   							</table>
-  						</div>
-  					</div>
-  					<div class="row">
-  						<div class="col-md-8">
-  							<h3>Details for this month</h3>
+  							<h3 class="section-title">Details for this month</h3>
   							<table class="table">
   								<tr>
   									<th>Time with Customers</th>
@@ -513,32 +741,33 @@
   								</tr>
   								
   								<tr>
-  									<td>Time communicating with customer per week</td>
-  									<td>11</td>
-  									<td>11</td>
+  									<td class="metric">Time communicating with customer per week</td>
+  									<td class="value">11</td>
+  									<td class="benchmark">11</td>
   								</tr>
   								
   								<tr>
-  									<td>Distict customers contacted per week</td>
-  									<td>14</td>
-  									<td>16</td>
+  									<td class="metric">Distict customers contacted per week</td>
+  									<td class="value">14</td>
+  									<td class="benchmark">16</td>
   								</tr>
   								
+                </table>
   								<table class="table">
   									<tr>
   										<th colspan="3">Engagement with Customers</th>
   									</tr>
   									
   									<tr>
-  										<td>Accounts within rep network</td>
-  										<td>20</td>
-  										<td>18</td>
+  										<td class="metric">Accounts within rep network</td>
+  										<td class="value">20</td>
+  										<td class="benchmark">18</td>
   									</tr>
   									
   									<tr>
-  										<td>Account contacts within rep network</td>
-  										<td>46</td>
-  										<td>40</td>
+  										<td class="metric">Account contacts within rep network</td>
+  										<td class="value">46</td>
+  										<td class="benchmark">40</td>
   									</tr>
   									
   								</table>
@@ -548,27 +777,27 @@
   									</tr>
   									
   									<tr>
-  										<td>Accounts contacted</td>
-  										<td>380</td>
-  										<td></td>
+  										<td class="metric">Accounts contacted</td>
+  										<td class="value">380</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Accounts engaged</td>
-  										<td>227</td>
-  										<td></td>
+  										<td class="metric">Accounts engaged</td>
+  										<td class="value">227</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Accounts contacted per salesperson</td>
-  										<td>9</td>
-  										<td></td>
+  										<td class="metric">Accounts contacted per salesperson</td>
+  										<td class="value">9</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Accounts engaged per salesperson</td>
-  										<td>5</td>
-  										<td></td>
+  										<td class="metric">Accounts engaged per salesperson</td>
+  										<td class="value">5</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   								</table>
@@ -578,27 +807,27 @@
   									</tr>
   									
   									<tr>
-  										<td>No contact</td>
-  										<td>12</td>
-  										<td></td>
+  										<td class="metric">No contact</td>
+  										<td class="value">12</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Email</td>
-  										<td>4</td>
-  										<td></td>
+  										<td class="metric">Email</td>
+  										<td class="value">4</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Meetings</td>
-  										<td>0</td>
-  										<td></td>
+  										<td class="metric">Meetings</td>
+  										<td class="value">0</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   									<tr>
-  										<td>Email and meetings</td>
-  										<td>0</td>
-  										<td></td>
+  										<td class="metric">Email and meetings</td>
+  										<td class="value">0</td>
+  										<td class="benchmark"></td>
   									</tr>
   									
   								</table>

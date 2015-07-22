@@ -10,7 +10,8 @@ page-title: SYMC Monthly Sales Report
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+	<title>SYMC-Monthly-Sales-Report</title>
+  <!-- {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %} -->
 	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 	<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
@@ -36,12 +37,6 @@ page-title: SYMC Monthly Sales Report
 	body {
 		background: #eee;
 	}
- /* #print-container {
-  	width:800px;
-  	margin:25px auto;
-  	padding:25px;
-  	background: #fff;
-  	}*/
   	.container {
   		max-width: 850px;
   	}
@@ -95,10 +90,31 @@ page-title: SYMC Monthly Sales Report
   	th {
   		background: #f9f9f9;
   	}
+    table td.metric {
+      width:50%;
+    }
+    table td.value {
+      width:25%;
+    }
+    table td.benchmark {
+      width:25%;
+    }
+    #instructions {
+      position: fixed;
+      right: 5px;
+      top: 5px;
+      background: rgba(0,0,0,.09);
+      padding:5px;
+      font-size: 12px;
+      border-radius: 4px; 
+    }
 
   	/* Print */
 
   	@media print {
+      #instructions {
+        display: none;
+      }
   		h1 {
   			color: #000;
   			background: none;
@@ -114,21 +130,70 @@ page-title: SYMC Monthly Sales Report
   		article {
   			page-break-before: always;
   		}
+      #print-wrapper  .container {
+        width: 595px;
+      }
+      .nav-container {
+        display: none;
+      }
+      .masthead {
+        padding:0;
+      }
+      .masthead .report-title{
+        font-size: 24px;
+        font-weight: 300;
+      }
+      .masthead .report-subtitle{
+        font-size: 18px;
+        font-weight: 300;
+      }
+      .section-title {
+        font-size: 18px;
+        font-weight: 300;
+        margin-top:0;
+      }
+      #print-container .table {
+        font-size: 11px;
+      }
+      .box {
+        padding:0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }    
+      table.table th,
+      table.table td {
+        padding: 3px 4px !important;
+        margin:0 !important;
+        line-height: 1;
+      }
+      .tab-content > .tab-pane {
+        display: block !important; 
+        opacity: 1 !important; 
+        visibility: visible !important
+      }
   		@page {
   			margin: 2cm;
   		}
-  	}
-  	@media print and (color) {
-  		* {
-  			-webkit-print-color-adjust: exact;
-  			print-color-adjust: exact;
-  		}
-  	}
+    }
+    @media print and (color) {
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
   	</style>
   </head>
   <body>
+    <div id="instructions">
+      <p>To Print (works best in Chrome)</p>
+      <ol>
+        <li>CTRL + P</li>
+        <li>Save As PDF</li>
+      </ol>
+    </div>
   	<div id="print-wrapper">
-  		<div class="container">
+  		<div class="container nav-container">
   			<div class="row">
   				<div class="col-md-12">
   					<ul class="nav nav-tabs" role="tablist">
@@ -140,44 +205,192 @@ page-title: SYMC Monthly Sales Report
   			</div>
   		</div>
   		<div id="print-container" class="box container">
-  			<div class="row">
-  				<div class="col-md-12">
-  					<img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-  					<img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
-  				</div>
-  			</div>
-  			<hr>
   			<div class="tab-content">
   				<div role="tabpanel" class="tab-pane fade in active" id="east-region">
+            <div class="row">
+              <div class="col-md-12">
+                <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
+              </div>
+            </div>
+            <hr>
   					<div class="row">
   						<div class="masthead col-md-12">
-  							<h1>Welcome to your monthly sales retrospective</h1>
-  							<h2>East Region, June 2015</h2>
+  							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
+  							<h2 class="report-subtitle">East Region, June 2015</h2>
   						</div>
   					</div>
-  					<hr>
+            <hr>
   					<div class="row">
-  						<div class="col-md-8">
-  							<h3>QTD Overview</h3>
+  						<div class="col-md-12">
+  							<h3 class="section-title">QTD Overview</h3>
   							<table class="table">
   								<tr>
   									<th>Metrics</th>
   									<th>East Region</th>
   									<th>Benchmark</th>
+                    <!-- <th>Per Quarter</th> -->
   								</tr>
   								{% for eo in site.data.SYMCMonthlySalesReport-East-Overview %}
   								<tr>
-  									<td>{{ eo.Metric }}</td>
-  									<td>{{ eo.Value }}</td>
-  									<td>{{ eo.Benchmark }}</td>
+  									<td class="metric">{{ eo.Metric }}</td>
+  									<td class="value">{{ eo.Value }}</td>
+  									<td cladd="benchmark">{{ eo.Benchmark }}</td>
+                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
   								</tr>
   								{% endfor %}
   							</table>
+                <script>
+                  $(function () {
+                    Highcharts.SparkLine = function (options, callback) {
+                        var defaultOptions = {
+                            chart: {
+                                renderTo: (options.chart && options.chart.renderTo) || this,
+                                backgroundColor: null,
+                                borderWidth: 0,
+                                type: 'line',
+                                margin: [0, 0, 0, 0],
+                                width: 120,
+                                height: 20,
+                                style: {
+                                    overflow: 'visible'
+                                },
+                                skipClone: true
+                            },
+                            title: {
+                                text: ''
+                            },
+                            credits: {
+                                enabled: false
+                            },
+                            exporting: {
+                                enabled: false
+                            },
+                            xAxis: {
+                                labels: {
+                                    enabled: false
+                                },
+                                title: {
+                                    text: null
+                                },
+                                startOnTick: false,
+                                endOnTick: false,
+                                tickPositions: []
+                            },
+                            yAxis: {
+                                endOnTick: false,
+                                startOnTick: false,
+                                labels: {
+                                    enabled: false
+                                },
+                                title: {
+                                    text: null
+                                },
+                                tickPositions: [0]
+                            },
+                            legend: {
+                                enabled: false
+                            },
+                            tooltip: {
+                                backgroundColor: null,
+                                borderWidth: 0,
+                                shadow: false,
+                                useHTML: true,
+                                hideDelay: 0,
+                                shared: true,
+                                padding: 0,
+                                positioner: function (w, h, point) {
+                                    return { x: point.plotX - w / 2, y: point.plotY - h};
+                                }
+                            },
+                            plotOptions: {
+                                series: {
+                                    animation: false,
+                                    lineWidth: 1,
+                                    shadow: false,
+                                    states: {
+                                        hover: {
+                                            lineWidth: 1
+                                        }
+                                    },
+                                    marker: {
+                                        radius: 1,
+                                        states: {
+                                            hover: {
+                                                radius: 2
+                                            }
+                                        }
+                                    },
+                                    fillOpacity: 0.25
+                                },
+                                column: {
+                                    negativeColor: '#910000',
+                                    borderColor: 'silver'
+                                }
+                            }
+                        };
+                        options = Highcharts.merge(defaultOptions, options);
+                        return new Highcharts.Chart(options, callback);
+                    };
+                    var start = +new Date(),
+                        $tds = $("td[data-sparkline]"),
+                        fullLen = $tds.length,
+                        n = 0;
+                    function doChunk() {
+                        var time = +new Date(),
+                            i,
+                            len = $tds.length,
+                            $td,
+                            stringdata,
+                            arr,
+                            data,
+                            chart;
+
+                        for (i = 0; i < len; i += 1) {
+                            $td = $($tds[i]);
+                            stringdata = $td.data('sparkline');
+                            arr = stringdata.split('; ');
+                            data = $.map(arr[0].split(', '), parseFloat);
+                            chart = {};
+
+                            if (arr[1]) {
+                                chart.type = arr[1];
+                            }
+                            $td.highcharts('SparkLine', {
+                                series: [{
+                                    data: data,
+                                    pointStart: 1
+                                }],
+                                tooltip: {
+                                    headerFormat: '<span style="font-size: 10px">' + $td.parent().parent().find('th').html() + ', Q{point.x}:</span><br/>',
+                                    pointFormat: '<b>{point.y}.000</b> USD'
+                                },
+                                chart: chart
+                            });
+
+                            n += 1;
+
+                            // If the process takes too much time, run a timeout to allow interaction with the browser
+                            if (new Date() - time > 500) {
+                                $tds.splice(0, i + 1);
+                                setTimeout(doChunk, 0);
+                                break;
+                            }
+
+                            // Print a feedback on the performance
+                            if (n === fullLen) {
+                                $('#result').html('Generated ' + fullLen + ' sparklines in ' + (new Date() - start) + ' ms');
+                            }
+                        }
+                    }
+                    doChunk();
+                });
+                </script>
   						</div>
   					</div>
   					<div class="row">
-  						<div class="col-md-8">
-  							<h3>Details for this month</h3>
+  						<div class="col-md-12">
+  							<h3 class="section-title">Details for this month</h3>
   							<table class="table">
   								<tr>
   									<th>Time with Customers</th>
@@ -186,20 +399,25 @@ page-title: SYMC Monthly Sales Report
   								</tr>
   								{% for et in site.data.SYMCMonthlySalesReport-East-Time %}
   								<tr>
-  									<td>{{ et.Metric }}</td>
-  									<td>{{ et.Value }}</td>
-  									<td>{{ et.Benchmark }}</td>
+  									<td class="metric">{{ et.Metric }}</td>
+  									<td class="value">{{ et.Value }}</td>
+  									<td class="benchmark">{{ et.Benchmark }}</td>
   								</tr>
   								{% endfor %}
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
   								<table class="table">
   									<tr>
   										<th colspan="3">Engagement with Customers</th>
   									</tr>
   									{% for ee in site.data.SYMCMonthlySalesReport-East-Engagement %}
   									<tr>
-  										<td>{{ ee.Metric }}</td>
-  										<td>{{ ee.Value }}</td>
-  										<td>{{ ee.Benchmark }}</td>
+  										<td class="metric">{{ ee.Metric }}</td>
+  										<td class="value">{{ ee.Value }}</td>
+  										<td class="benchmark">{{ ee.Benchmark }}</td>
   									</tr>
   									{% endfor %}
   								</table>
@@ -209,9 +427,9 @@ page-title: SYMC Monthly Sales Report
   									</tr>
   									{% for ec in site.data.SYMCMonthlySalesReport-East-Coverage %}
   									<tr>
-  										<td>{{ ec.Metric }}</td>
-  										<td>{{ ec.Value }}</td>
-  										<td>{{ ec.Benchmark }}</td>
+  										<td class="metric">{{ ec.Metric }}</td>
+  										<td class="value">{{ ec.Value }}</td>
+  										<td class="benchmark">{{ ec.Benchmark }}</td>
   									</tr>
   									{% endfor %}
   								</table>
@@ -221,9 +439,9 @@ page-title: SYMC Monthly Sales Report
   									</tr>
   									{% for ei in site.data.SYMCMonthlySalesReport-East-CSIO %}
   									<tr>
-  										<td>{{ ei.Metric }}</td>
-  										<td>{{ ei.Value }}</td>
-  										<td>{{ ei.Benchmark }}</td>
+  										<td class="metric">{{ ei.Metric }}</td>
+  										<td class="value">{{ ei.Value }}</td>
+  										<td class="benchmark">{{ ei.Benchmark }}</td>
   									</tr>
   									{% endfor %}
   								</table>
@@ -231,16 +449,23 @@ page-title: SYMC Monthly Sales Report
   						</div>
   					</div>
   					<div role="tabpanel" class="tab-pane fade" id="west-region">
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                  <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
+                </div>
+              </div>
+              <hr>
   						<div class="row">
   						<div class="masthead col-md-12">
-  							<h1>Welcome to your monthly sales retrospective</h1>
-  							<h2>West Region, June 2015</h2>
+  							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
+  							<h2 class="report-subtitle">West Region, June 2015</h2>
   						</div>
   					</div>
   					<hr>
   					<div class="row">
-  						<div class="col-md-8">
-  							<h3>QTD Overview</h3>
+  						<div class="col-md-12">
+  							<h3 class="section-title">QTD Overview</h3>
   							<table class="table">
   								<tr>
   									<th>Metrics</th>
@@ -249,17 +474,13 @@ page-title: SYMC Monthly Sales Report
   								</tr>
   								{% for wo in site.data.SYMCMonthlySalesReport-West-Overview %}
   								<tr>
-  									<td>{{ wo.Metric }}</td>
-  									<td>{{ wo.Value }}</td>
-  									<td>{{ wo.Benchmark }}</td>
+  									<td class="metric">{{ wo.Metric }}</td>
+  									<td class="value">{{ wo.Value }}</td>
+  									<td class="benchmark">{{ wo.Benchmark }}</td>
   								</tr>
   								{% endfor %}
   							</table>
-  						</div>
-  					</div>
-  					<div class="row">
-  						<div class="col-md-8">
-  							<h3>Details for this month</h3>
+  							<h3 class="section-title">Details for this month</h3>
   							<table class="table">
   								<tr>
   									<th>Time with Customers</th>
@@ -268,9 +489,9 @@ page-title: SYMC Monthly Sales Report
   								</tr>
   								{% for wt in site.data.SYMCMonthlySalesReport-West-Time %}
   								<tr>
-  									<td>{{ wt.Metric }}</td>
-  									<td>{{ wt.Value }}</td>
-  									<td>{{ wt.Benchmark }}</td>
+  									<td class="metric">{{ wt.Metric }}</td>
+  									<td class="value">{{ wt.Value }}</td>
+  									<td class="benchmark">{{ wt.Benchmark }}</td>
   								</tr>
   								{% endfor %}
   								<table class="table">
@@ -279,9 +500,9 @@ page-title: SYMC Monthly Sales Report
   									</tr>
   									{% for we in site.data.SYMCMonthlySalesReport-West-Engagement %}
   									<tr>
-  										<td>{{ we.Metric }}</td>
-  										<td>{{ we.Value }}</td>
-  										<td>{{ we.Benchmark }}</td>
+  										<td class="metric">{{ we.Metric }}</td>
+  										<td class="value">{{ we.Value }}</td>
+  										<td class="benchmark">{{ we.Benchmark }}</td>
   									</tr>
   									{% endfor %}
   								</table>
@@ -291,9 +512,9 @@ page-title: SYMC Monthly Sales Report
   									</tr>
   									{% for wc in site.data.SYMCMonthlySalesReport-West-Coverage %}
   									<tr>
-  										<td>{{ wc.Metric }}</td>
-  										<td>{{ wc.Value }}</td>
-  										<td>{{ wc.Benchmark }}</td>
+  										<td class="metric">{{ wc.Metric }}</td>
+  										<td class="value">{{ wc.Value }}</td>
+  										<td class="benchmark">{{ wc.Benchmark }}</td>
   									</tr>
   									{% endfor %}
   								</table>
@@ -303,9 +524,9 @@ page-title: SYMC Monthly Sales Report
   									</tr>
   									{% for wi in site.data.SYMCMonthlySalesReport-West-CSIO %}
   									<tr>
-  										<td>{{ wi.Metric }}</td>
-  										<td>{{ wi.Value }}</td>
-  										<td>{{ wi.Benchmark }}</td>
+  										<td class="metric">{{ wi.Metric }}</td>
+  										<td class="value">{{ wi.Value }}</td>
+  										<td class="benchmark">{{ wi.Benchmark }}</td>
   									</tr>
   									{% endfor %}
   								</table>
@@ -313,16 +534,23 @@ page-title: SYMC Monthly Sales Report
   						</div>
   					</div>
   					<div role="tabpanel" class="tab-pane fade" id="latin-america">
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                  <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
+                </div>
+              </div>
+              <hr>
   						<div class="row">
   						<div class="masthead col-md-12">
-  							<h1>Welcome to your monthly sales retrospective</h1>
-  							<h2>Latin America Region, June 2015</h2>
+  							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
+  							<h2 class="report-subtitle">Latin America Region, June 2015</h2>
   						</div>
   					</div>
   					<hr>
   					<div class="row">
-  						<div class="col-md-8">
-  							<h3>QTD Overview</h3>
+  						<div class="col-md-12">
+  							<h3 class="section-title">QTD Overview</h3>
   							<table class="table">
   								<tr>
   									<th>Metrics</th>
@@ -331,17 +559,13 @@ page-title: SYMC Monthly Sales Report
   								</tr>
   								{% for lo in site.data.SYMCMonthlySalesReport-LatinAmerica-Overview %}
   								<tr>
-  									<td>{{ lo.Metric }}</td>
-  									<td>{{ lo.Value }}</td>
-  									<td>{{ lo.Benchmark }}</td>
+  									<td class="metric">{{ lo.Metric }}</td>
+  									<td class="value">{{ lo.Value }}</td>
+  									<td class="benchmark">{{ lo.Benchmark }}</td>
   								</tr>
   								{% endfor %}
   							</table>
-  						</div>
-  					</div>
-  					<div class="row">
-  						<div class="col-md-8">
-  							<h3>Details for this month</h3>
+  							<h3 class="section-title">Details for this month</h3>
   							<table class="table">
   								<tr>
   									<th>Time with Customers</th>
@@ -350,20 +574,21 @@ page-title: SYMC Monthly Sales Report
   								</tr>
   								{% for lt in site.data.SYMCMonthlySalesReport-LatinAmerica-Time %}
   								<tr>
-  									<td>{{ lt.Metric }}</td>
-  									<td>{{ lt.Value }}</td>
-  									<td>{{ lt.Benchmark }}</td>
+  									<td class="metric">{{ lt.Metric }}</td>
+  									<td class="value">{{ lt.Value }}</td>
+  									<td class="benchmark">{{ lt.Benchmark }}</td>
   								</tr>
   								{% endfor %}
+                </table>
   								<table class="table">
   									<tr>
   										<th colspan="3">Engagement with Customers</th>
   									</tr>
   									{% for le in site.data.SYMCMonthlySalesReport-LatinAmerica-Engagement %}
   									<tr>
-  										<td>{{ le.Metric }}</td>
-  										<td>{{ le.Value }}</td>
-  										<td>{{ le.Benchmark }}</td>
+  										<td class="metric">{{ le.Metric }}</td>
+  										<td class="value">{{ le.Value }}</td>
+  										<td class="benchmark">{{ le.Benchmark }}</td>
   									</tr>
   									{% endfor %}
   								</table>
@@ -373,9 +598,9 @@ page-title: SYMC Monthly Sales Report
   									</tr>
   									{% for lc in site.data.SYMCMonthlySalesReport-LatinAmerica-Coverage %}
   									<tr>
-  										<td>{{ lc.Metric }}</td>
-  										<td>{{ lc.Value }}</td>
-  										<td>{{ lc.Benchmark }}</td>
+  										<td class="metric">{{ lc.Metric }}</td>
+  										<td class="value">{{ lc.Value }}</td>
+  										<td class="benchmark">{{ lc.Benchmark }}</td>
   									</tr>
   									{% endfor %}
   								</table>
@@ -385,9 +610,9 @@ page-title: SYMC Monthly Sales Report
   									</tr>
   									{% for li in site.data.SYMCMonthlySalesReport-LatinAmerica-CSIO %}
   									<tr>
-  										<td>{{ li.Metric }}</td>
-  										<td>{{ li.Value }}</td>
-  										<td>{{ li.Benchmark }}</td>
+  										<td class="metric">{{ li.Metric }}</td>
+  										<td class="value">{{ li.Value }}</td>
+  										<td class="benchmark">{{ li.Benchmark }}</td>
   									</tr>
   									{% endfor %}
   								</table>
