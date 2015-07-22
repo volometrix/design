@@ -107,6 +107,7 @@ page-title: SYMC Monthly Sales Report
       padding:5px;
       font-size: 12px;
       border-radius: 4px; 
+      z-index: 10;
     }
 
   	/* Print */
@@ -188,7 +189,14 @@ page-title: SYMC Monthly Sales Report
     <div id="instructions">
       <p>To Print (works best in Chrome)</p>
       <ol>
-        <li>CTRL + P</li>
+        <li><a href="#" id="print" class="btn btn-default">Print</a> <small>(or press CTRL + P)</small></li>
+        <script>
+          $(function(){
+            $('#print').click(function() {
+                window.print();
+            })
+          })
+        </script>
         <li>Save As PDF</li>
       </ol>
     </div>
