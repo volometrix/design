@@ -1,0 +1,399 @@
+---
+layout: 
+title:
+permalink: /monthly-sales/
+page-title: SYMC Monthly Sales Report
+---
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+	<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/dataTables.bootstrap.css">
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
+	<script src="{{ site.baseurl }}/javascript/jquery-2.1.3.min.js"></script>
+	<script src="{{ site.baseurl }}/javascript/bootstrap.min.js"></script>
+	<script src="{{ site.baseurl }}/javascript/highcharts.js"></script>
+	<script src="{{ site.baseurl }}/javascript/exporting.js"></script>
+	<script src="{{ site.baseurl }}/javascript/drilldown.js"></script>
+	<script src="{{ site.baseurl }}/javascript/data.js"></script>
+	<script src="{{ site.baseurl }}/javascript/highcharts-more.js"></script>
+	<script src="{{ site.baseurl }}/javascript/d3.v3.4.8.js"></script>
+	<script src="{{ site.baseurl }}/javascript/dimple.v2.0.0.min.js"></script>
+	<script src="{{ site.baseurl }}/javascript/jquery.cookie.min.js"></script>
+	<script src="{{ site.baseurl }}/javascript/personalDashboardHCTheme.js"></script>
+	<script src="{{ site.baseurl }}/javascript/jquery.dataTables.min.js"></script>
+	<script src="{{ site.baseurl }}/javascript/dataTables.bootstrap.js"></script>
+	<script src="{{ site.baseurl }}/javascript/jquery.sparkline.js"></script>
+	<style>
+	body {
+		background: #eee;
+	}
+ /* #print-container {
+  	width:800px;
+  	margin:25px auto;
+  	padding:25px;
+  	background: #fff;
+  	}*/
+  	.container {
+  		max-width: 850px;
+  	}
+  	.nav {
+  		margin-top: 25px;
+  	}
+  	.box
+  	{
+  		position: relative;
+  		padding: 50px;
+  		margin: 0 auto 150px auto;
+  		background-color: #fff;
+  		-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  		-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  	}
+
+  	.box:before, .box:after
+  	{
+  		position: absolute;
+  		width: 40%;
+  		height: 10px;
+  		content: ' ';
+  		left: 12px;
+  		bottom: 12px;
+  		background: transparent;
+  		-webkit-transform: skew(-5deg) rotate(-5deg);
+  		-moz-transform: skew(-5deg) rotate(-5deg);
+  		-ms-transform: skew(-5deg) rotate(-5deg);
+  		-o-transform: skew(-5deg) rotate(-5deg);
+  		transform: skew(-5deg) rotate(-5deg);
+  		-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  		-moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  		z-index: -1;
+  	} 
+
+  	.box:after
+  	{
+  		left: auto;
+  		right: 12px;
+  		-webkit-transform: skew(5deg) rotate(5deg);
+  		-moz-transform: skew(5deg) rotate(5deg);
+  		-ms-transform: skew(5deg) rotate(5deg);
+  		-o-transform: skew(5deg) rotate(5deg);
+  		transform: skew(5deg) rotate(5deg);
+  	} 
+  	.masthead {
+  		text-align: center;
+  	}
+  	th {
+  		background: #f9f9f9;
+  	}
+
+  	/* Print */
+
+  	@media print {
+  		h1 {
+  			color: #000;
+  			background: none;
+  		}
+  		h1, h2, h3 {
+  			page-break-after: avoid;
+  		}
+  		body, article {
+  			width: 100%;
+  			margin: 0;
+  			padding: 0;
+  		}
+  		article {
+  			page-break-before: always;
+  		}
+  		@page {
+  			margin: 2cm;
+  		}
+  	}
+  	@media print and (color) {
+  		* {
+  			-webkit-print-color-adjust: exact;
+  			print-color-adjust: exact;
+  		}
+  	}
+  	</style>
+  </head>
+  <body>
+  	<div id="print-wrapper">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-md-12">
+  					<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#east-region" aria-controls="home" role="tab" data-toggle="tab">East Region</a></li>
+							<li role="presentation"><a href="#west-region" aria-controls="profile" role="tab" data-toggle="tab">West Region</a></li>
+							<li role="presentation"><a href="#latin-america" aria-controls="messages" role="tab" data-toggle="tab">Latin America</a></li>
+						</ul>
+  				</div>
+  			</div>
+  		</div>
+  		<div id="print-container" class="box container">
+  			<div class="row">
+  				<div class="col-md-12">
+  					<img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+  					<img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
+  				</div>
+  			</div>
+  			<hr>
+  			<div class="tab-content">
+  				<div role="tabpanel" class="tab-pane fade in active" id="east-region">
+  					<div class="row">
+  						<div class="masthead col-md-12">
+  							<h1>Welcome to your monthly sales retrospective</h1>
+  							<h2>East Region, June 2015</h2>
+  						</div>
+  					</div>
+  					<hr>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>QTD Overview</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Metrics</th>
+  									<th>East Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								{% for eo in site.data.SYMCMonthlySalesReport-East-Overview %}
+  								<tr>
+  									<td>{{ eo.Metric }}</td>
+  									<td>{{ eo.Value }}</td>
+  									<td>{{ eo.Benchmark }}</td>
+  								</tr>
+  								{% endfor %}
+  							</table>
+  						</div>
+  					</div>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>Details for this month</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Time with Customers</th>
+  									<th>East Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								{% for et in site.data.SYMCMonthlySalesReport-East-Time %}
+  								<tr>
+  									<td>{{ et.Metric }}</td>
+  									<td>{{ et.Value }}</td>
+  									<td>{{ et.Benchmark }}</td>
+  								</tr>
+  								{% endfor %}
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Engagement with Customers</th>
+  									</tr>
+  									{% for ee in site.data.SYMCMonthlySalesReport-East-Engagement %}
+  									<tr>
+  										<td>{{ ee.Metric }}</td>
+  										<td>{{ ee.Value }}</td>
+  										<td>{{ ee.Benchmark }}</td>
+  									</tr>
+  									{% endfor %}
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Account Coverage</th>
+  									</tr>
+  									{% for ec in site.data.SYMCMonthlySalesReport-East-Coverage %}
+  									<tr>
+  										<td>{{ ec.Metric }}</td>
+  										<td>{{ ec.Value }}</td>
+  										<td>{{ ec.Benchmark }}</td>
+  									</tr>
+  									{% endfor %}
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">CISO Engagement</th>
+  									</tr>
+  									{% for ei in site.data.SYMCMonthlySalesReport-East-CSIO %}
+  									<tr>
+  										<td>{{ ei.Metric }}</td>
+  										<td>{{ ei.Value }}</td>
+  										<td>{{ ei.Benchmark }}</td>
+  									</tr>
+  									{% endfor %}
+  								</table>
+  							</div>
+  						</div>
+  					</div>
+  					<div role="tabpanel" class="tab-pane fade" id="west-region">
+  						<div class="row">
+  						<div class="masthead col-md-12">
+  							<h1>Welcome to your monthly sales retrospective</h1>
+  							<h2>West Region, June 2015</h2>
+  						</div>
+  					</div>
+  					<hr>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>QTD Overview</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Metrics</th>
+  									<th>West Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								{% for wo in site.data.SYMCMonthlySalesReport-West-Overview %}
+  								<tr>
+  									<td>{{ wo.Metric }}</td>
+  									<td>{{ wo.Value }}</td>
+  									<td>{{ wo.Benchmark }}</td>
+  								</tr>
+  								{% endfor %}
+  							</table>
+  						</div>
+  					</div>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>Details for this month</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Time with Customers</th>
+  									<th>West Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								{% for wt in site.data.SYMCMonthlySalesReport-West-Time %}
+  								<tr>
+  									<td>{{ wt.Metric }}</td>
+  									<td>{{ wt.Value }}</td>
+  									<td>{{ wt.Benchmark }}</td>
+  								</tr>
+  								{% endfor %}
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Engagement with Customers</th>
+  									</tr>
+  									{% for we in site.data.SYMCMonthlySalesReport-West-Engagement %}
+  									<tr>
+  										<td>{{ we.Metric }}</td>
+  										<td>{{ we.Value }}</td>
+  										<td>{{ we.Benchmark }}</td>
+  									</tr>
+  									{% endfor %}
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Account Coverage</th>
+  									</tr>
+  									{% for wc in site.data.SYMCMonthlySalesReport-West-Coverage %}
+  									<tr>
+  										<td>{{ wc.Metric }}</td>
+  										<td>{{ wc.Value }}</td>
+  										<td>{{ wc.Benchmark }}</td>
+  									</tr>
+  									{% endfor %}
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">CISO Engagement</th>
+  									</tr>
+  									{% for wi in site.data.SYMCMonthlySalesReport-West-CSIO %}
+  									<tr>
+  										<td>{{ wi.Metric }}</td>
+  										<td>{{ wi.Value }}</td>
+  										<td>{{ wi.Benchmark }}</td>
+  									</tr>
+  									{% endfor %}
+  								</table>
+  							</div>
+  						</div>
+  					</div>
+  					<div role="tabpanel" class="tab-pane fade" id="latin-america">
+  						<div class="row">
+  						<div class="masthead col-md-12">
+  							<h1>Welcome to your monthly sales retrospective</h1>
+  							<h2>Latin America Region, June 2015</h2>
+  						</div>
+  					</div>
+  					<hr>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>QTD Overview</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Metrics</th>
+  									<th>East Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								{% for lo in site.data.SYMCMonthlySalesReport-LatinAmerica-Overview %}
+  								<tr>
+  									<td>{{ lo.Metric }}</td>
+  									<td>{{ lo.Value }}</td>
+  									<td>{{ lo.Benchmark }}</td>
+  								</tr>
+  								{% endfor %}
+  							</table>
+  						</div>
+  					</div>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>Details for this month</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Time with Customers</th>
+  									<th>Latin America Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								{% for lt in site.data.SYMCMonthlySalesReport-LatinAmerica-Time %}
+  								<tr>
+  									<td>{{ lt.Metric }}</td>
+  									<td>{{ lt.Value }}</td>
+  									<td>{{ lt.Benchmark }}</td>
+  								</tr>
+  								{% endfor %}
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Engagement with Customers</th>
+  									</tr>
+  									{% for le in site.data.SYMCMonthlySalesReport-LatinAmerica-Engagement %}
+  									<tr>
+  										<td>{{ le.Metric }}</td>
+  										<td>{{ le.Value }}</td>
+  										<td>{{ le.Benchmark }}</td>
+  									</tr>
+  									{% endfor %}
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Account Coverage</th>
+  									</tr>
+  									{% for lc in site.data.SYMCMonthlySalesReport-LatinAmerica-Coverage %}
+  									<tr>
+  										<td>{{ lc.Metric }}</td>
+  										<td>{{ lc.Value }}</td>
+  										<td>{{ lc.Benchmark }}</td>
+  									</tr>
+  									{% endfor %}
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">CISO Engagement</th>
+  									</tr>
+  									{% for li in site.data.SYMCMonthlySalesReport-LatinAmerica-CSIO %}
+  									<tr>
+  										<td>{{ li.Metric }}</td>
+  										<td>{{ li.Value }}</td>
+  										<td>{{ li.Benchmark }}</td>
+  									</tr>
+  									{% endfor %}
+  								</table>
+  							</div>
+  						</div>
+  				</div>
+  			</div>
+  		</body>
+  		</html>

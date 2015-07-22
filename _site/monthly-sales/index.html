@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Personal Dashboard</title>
+	<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+	<link rel="stylesheet" href="/design/css/main.css">
+	<link rel="canonical" href="https://volometrix.github.io/design/monthly-sales/">
+	<link rel="alternate" type="application/rss+xml" title="Personal Dashboard" href="https://volometrix.github.io/design/feed.xml" />
+	<link rel="stylesheet" href="/design/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
+	<link rel="stylesheet" href="/design/css/prism.css">
+	<script src="/design/javascript/jquery-2.1.3.min.js"></script>
+	<script src="/design/javascript/bootstrap.min.js"></script>
+	<script src="/design/javascript/highcharts.js"></script>
+	<script src="/design/javascript/exporting.js"></script>
+	<script src="/design/javascript/drilldown.js"></script>
+	<script src="/design/javascript/data.js"></script>
+	<script src="/design/javascript/highcharts-more.js"></script>
+	<script src="/design/javascript/d3.v3.4.8.js"></script>
+	<script src="/design/javascript/dimple.v2.0.0.min.js"></script>
+	<script src="/design/javascript/jquery.cookie.min.js"></script>
+	<script src="/design/javascript/personalDashboardHCTheme.js"></script>
+	<script src="/design/javascript/jquery.dataTables.min.js"></script>
+	<script src="/design/javascript/dataTables.bootstrap.js"></script>
+	<script src="/design/javascript/jquery.sparkline.js"></script>
+	<style>
+	body {
+		background: #eee;
+	}
+ /* #print-container {
+  	width:800px;
+  	margin:25px auto;
+  	padding:25px;
+  	background: #fff;
+  	}*/
+  	.container {
+  		max-width: 850px;
+  	}
+  	.nav {
+  		margin-top: 25px;
+  	}
+  	.box
+  	{
+  		position: relative;
+  		padding: 50px;
+  		margin: 0 auto 150px auto;
+  		background-color: #fff;
+  		-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  		-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  	}
+
+  	.box:before, .box:after
+  	{
+  		position: absolute;
+  		width: 40%;
+  		height: 10px;
+  		content: ' ';
+  		left: 12px;
+  		bottom: 12px;
+  		background: transparent;
+  		-webkit-transform: skew(-5deg) rotate(-5deg);
+  		-moz-transform: skew(-5deg) rotate(-5deg);
+  		-ms-transform: skew(-5deg) rotate(-5deg);
+  		-o-transform: skew(-5deg) rotate(-5deg);
+  		transform: skew(-5deg) rotate(-5deg);
+  		-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  		-moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  		z-index: -1;
+  	} 
+
+  	.box:after
+  	{
+  		left: auto;
+  		right: 12px;
+  		-webkit-transform: skew(5deg) rotate(5deg);
+  		-moz-transform: skew(5deg) rotate(5deg);
+  		-ms-transform: skew(5deg) rotate(5deg);
+  		-o-transform: skew(5deg) rotate(5deg);
+  		transform: skew(5deg) rotate(5deg);
+  	} 
+  	.masthead {
+  		text-align: center;
+  	}
+  	th {
+  		background: #f9f9f9;
+  	}
+
+  	/* Print */
+
+  	@media print {
+  		h1 {
+  			color: #000;
+  			background: none;
+  		}
+  		h1, h2, h3 {
+  			page-break-after: avoid;
+  		}
+  		body, article {
+  			width: 100%;
+  			margin: 0;
+  			padding: 0;
+  		}
+  		article {
+  			page-break-before: always;
+  		}
+  		@page {
+  			margin: 2cm;
+  		}
+  	}
+  	@media print and (color) {
+  		* {
+  			-webkit-print-color-adjust: exact;
+  			print-color-adjust: exact;
+  		}
+  	}
+  	</style>
+  </head>
+  <body>
+  	<div id="print-wrapper">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-md-12">
+  					<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#east-region" aria-controls="home" role="tab" data-toggle="tab">East Region</a></li>
+							<li role="presentation"><a href="#west-region" aria-controls="profile" role="tab" data-toggle="tab">West Region</a></li>
+							<li role="presentation"><a href="#latin-america" aria-controls="messages" role="tab" data-toggle="tab">Latin America</a></li>
+						</ul>
+  				</div>
+  			</div>
+  		</div>
+  		<div id="print-container" class="box container">
+  			<div class="row">
+  				<div class="col-md-12">
+  					<img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+  					<img src="/design/images/symc-logo.svg" alt="Symantec">
+  				</div>
+  			</div>
+  			<hr>
+  			<div class="tab-content">
+  				<div role="tabpanel" class="tab-pane fade in active" id="east-region">
+  					<div class="row">
+  						<div class="masthead col-md-12">
+  							<h1>Welcome to your monthly sales retrospective</h1>
+  							<h2>East Region, June 2015</h2>
+  						</div>
+  					</div>
+  					<hr>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>QTD Overview</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Metrics</th>
+  									<th>East Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								
+  								<tr>
+  									<td>Accounts contacted</td>
+  									<td>1057</td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Accounts engaged</td>
+  									<td>500</td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Cold</td>
+  									<td></td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Key account CISOs contacted</td>
+  									<td>18</td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Total time with key account CISOs</td>
+  									<td>96</td>
+  									<td></td>
+  								</tr>
+  								
+  							</table>
+  						</div>
+  					</div>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>Details for this month</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Time with Customers</th>
+  									<th>East Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								
+  								<tr>
+  									<td>Time communicating with customer per week</td>
+  									<td>11</td>
+  									<td>11</td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Distict customers contacted per week</td>
+  									<td>14</td>
+  									<td>16</td>
+  								</tr>
+  								
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Engagement with Customers</th>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts within rep network</td>
+  										<td>20</td>
+  										<td>18</td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Account contacts within rep network</td>
+  										<td>46</td>
+  										<td>40</td>
+  									</tr>
+  									
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Account Coverage</th>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts contacted</td>
+  										<td>380</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts engaged</td>
+  										<td>227</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts contacted per salesperson</td>
+  										<td>9</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts engaged per salesperson</td>
+  										<td>5</td>
+  										<td></td>
+  									</tr>
+  									
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">CISO Engagement</th>
+  									</tr>
+  									
+  									<tr>
+  										<td>No contact</td>
+  										<td>12</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Email</td>
+  										<td>4</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Meetings</td>
+  										<td>0</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Email and meetings</td>
+  										<td>0</td>
+  										<td></td>
+  									</tr>
+  									
+  								</table>
+  							</div>
+  						</div>
+  					</div>
+  					<div role="tabpanel" class="tab-pane fade" id="west-region">
+  						<div class="row">
+  						<div class="masthead col-md-12">
+  							<h1>Welcome to your monthly sales retrospective</h1>
+  							<h2>West Region, June 2015</h2>
+  						</div>
+  					</div>
+  					<hr>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>QTD Overview</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Metrics</th>
+  									<th>West Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								
+  								<tr>
+  									<td>Accounts contacted</td>
+  									<td>1057</td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Accounts engaged</td>
+  									<td>500</td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Cold</td>
+  									<td></td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Key account CISOs contacted</td>
+  									<td>18</td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Total time with key account CISOs</td>
+  									<td>96</td>
+  									<td></td>
+  								</tr>
+  								
+  							</table>
+  						</div>
+  					</div>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>Details for this month</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Time with Customers</th>
+  									<th>West Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								
+  								<tr>
+  									<td>Time communicating with customer per week</td>
+  									<td>11</td>
+  									<td>11</td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Distict customers contacted per week</td>
+  									<td>14</td>
+  									<td>16</td>
+  								</tr>
+  								
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Engagement with Customers</th>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts within rep network</td>
+  										<td>20</td>
+  										<td>18</td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Account contacts within rep network</td>
+  										<td>46</td>
+  										<td>40</td>
+  									</tr>
+  									
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Account Coverage</th>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts contacted</td>
+  										<td>380</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts engaged</td>
+  										<td>227</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts contacted per salesperson</td>
+  										<td>9</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts engaged per salesperson</td>
+  										<td>5</td>
+  										<td></td>
+  									</tr>
+  									
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">CISO Engagement</th>
+  									</tr>
+  									
+  									<tr>
+  										<td>No contact</td>
+  										<td>12</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Email</td>
+  										<td>4</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Meetings</td>
+  										<td>0</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Email and meetings</td>
+  										<td>0</td>
+  										<td></td>
+  									</tr>
+  									
+  								</table>
+  							</div>
+  						</div>
+  					</div>
+  					<div role="tabpanel" class="tab-pane fade" id="latin-america">
+  						<div class="row">
+  						<div class="masthead col-md-12">
+  							<h1>Welcome to your monthly sales retrospective</h1>
+  							<h2>Latin America Region, June 2015</h2>
+  						</div>
+  					</div>
+  					<hr>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>QTD Overview</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Metrics</th>
+  									<th>East Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								
+  								<tr>
+  									<td>Accounts contacted</td>
+  									<td>1057</td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Accounts engaged</td>
+  									<td>500</td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Cold</td>
+  									<td></td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Key account CISOs contacted</td>
+  									<td>18</td>
+  									<td></td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Total time with key account CISOs</td>
+  									<td>96</td>
+  									<td></td>
+  								</tr>
+  								
+  							</table>
+  						</div>
+  					</div>
+  					<div class="row">
+  						<div class="col-md-8">
+  							<h3>Details for this month</h3>
+  							<table class="table">
+  								<tr>
+  									<th>Time with Customers</th>
+  									<th>Latin America Region</th>
+  									<th>Benchmark</th>
+  								</tr>
+  								
+  								<tr>
+  									<td>Time communicating with customer per week</td>
+  									<td>11</td>
+  									<td>11</td>
+  								</tr>
+  								
+  								<tr>
+  									<td>Distict customers contacted per week</td>
+  									<td>14</td>
+  									<td>16</td>
+  								</tr>
+  								
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Engagement with Customers</th>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts within rep network</td>
+  										<td>20</td>
+  										<td>18</td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Account contacts within rep network</td>
+  										<td>46</td>
+  										<td>40</td>
+  									</tr>
+  									
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">Account Coverage</th>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts contacted</td>
+  										<td>380</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts engaged</td>
+  										<td>227</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts contacted per salesperson</td>
+  										<td>9</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Accounts engaged per salesperson</td>
+  										<td>5</td>
+  										<td></td>
+  									</tr>
+  									
+  								</table>
+  								<table class="table">
+  									<tr>
+  										<th colspan="3">CISO Engagement</th>
+  									</tr>
+  									
+  									<tr>
+  										<td>No contact</td>
+  										<td>12</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Email</td>
+  										<td>4</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Meetings</td>
+  										<td>0</td>
+  										<td></td>
+  									</tr>
+  									
+  									<tr>
+  										<td>Email and meetings</td>
+  										<td>0</td>
+  										<td></td>
+  									</tr>
+  									
+  								</table>
+  							</div>
+  						</div>
+  				</div>
+  			</div>
+  		</body>
+  		</html>

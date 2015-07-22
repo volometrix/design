@@ -1,0 +1,13 @@
+Region,Section,Metric,Value,Benchmark
+West,Details,Time communicating with customer per week,11,11
+West,Details,Distict customers contacted per week,14,16
+West,Details,Accounts within rep network,20,18
+West,Details,Account contacts within rep network,46,40
+West,Details,Accounts contacted,380,
+West,Details,Accounts engaged,227,
+West,Details,Accounts contacted per salesperson,9,
+West,Details,Accounts engaged per salesperson,5,
+West,Details,No contact,12,
+West,Details,Email,4,
+West,Details,Meetings,0,
+West,Details,Email and meetings,0,

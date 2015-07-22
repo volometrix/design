@@ -1,0 +1,13 @@
+Region,Section,Metric,Value,Benchmark
+East,Details,Time communicating with customer per week,11,11
+East,Details,Distict customers contacted per week,14,16
+East,Details,Accounts within rep network,20,18
+East,Details,Account contacts within rep network,46,40
+East,Details,Accounts contacted,380,
+East,Details,Accounts engaged,227,
+East,Details,Accounts contacted per salesperson,9,
+East,Details,Accounts engaged per salesperson,5,
+East,Details,No contact,12,
+East,Details,Email,4,
+East,Details,Meetings,0,
+East,Details,Email and meetings,0,
