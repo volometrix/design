@@ -88,6 +88,9 @@
     table td.metric {
       width:50%;
     }
+    table td.month {
+      width: 12.5%;
+    }
     table td.value {
       width:25%;
     }
@@ -123,11 +126,17 @@
   			margin: 0;
   			padding: 0;
   		}
-  		article {
-  			page-break-before: always;
+  		.tab-pane {
+        page-break-before: always !important;
+  			page-break-after: always !important;
   		}
       #print-wrapper  .container {
         width: 595px;
+        margin:0;
+      }
+      .col-sm-8 {
+        width: 300px;
+        float:left;
       }
       .nav-container {
         display: none;
@@ -179,6 +188,163 @@
       }
     }
   	</style>
+    <script>
+      $(function () {
+        /**
+         * Create a constructor for sparklines that takes some sensible defaults and merges in the individual
+         * chart options. This function is also available from the jQuery plugin as $(element).highcharts('SparkLine').
+         */
+        Highcharts.SparkLine = function (options, callback) {
+            var defaultOptions = {
+                chart: {
+                    renderTo: (options.chart && options.chart.renderTo) || this,
+                    backgroundColor: null,
+                    borderWidth: 0,
+                    type: 'area',
+                    margin: [2, 0, 2, 0],
+                    width: 120,
+                    height: 20,
+                    style: {
+                        overflow: 'visible'
+                    },
+                    skipClone: true
+                },
+                title: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                xAxis: {
+                    labels: {
+                        enabled: false
+                    },
+                    title: {
+                        text: null
+                    },
+                    startOnTick: false,
+                    endOnTick: false,
+                    tickPositions: []
+                },
+                yAxis: {
+                    endOnTick: false,
+                    startOnTick: false,
+                    labels: {
+                        enabled: false
+                    },
+                    title: {
+                        text: null
+                    },
+                    tickPositions: [0]
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    backgroundColor: null,
+                    borderWidth: 0,
+                    shadow: false,
+                    useHTML: true,
+                    hideDelay: 0,
+                    shared: true,
+                    padding: 0,
+                    positioner: function (w, h, point) {
+                        return { x: point.plotX - w / 2, y: point.plotY - h};
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        animation: false,
+                        lineWidth: 1,
+                        shadow: false,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        marker: {
+                            radius: 1,
+                            states: {
+                                hover: {
+                                    radius: 2
+                                }
+                            }
+                        },
+                        fillOpacity: 0.25
+                    },
+                    column: {
+                        negativeColor: '#910000',
+                        borderColor: 'silver'
+                    }
+                }
+            };
+            options = Highcharts.merge(defaultOptions, options);
+
+            return new Highcharts.Chart(options, callback);
+        };
+
+        var start = +new Date(),
+            $tds = $("td[data-sparkline]"),
+            fullLen = $tds.length,
+            n = 0;
+
+        // Creating 153 sparkline charts is quite fast in modern browsers, but IE8 and mobile
+        // can take some seconds, so we split the input into chunks and apply them in timeouts
+        // in order avoid locking up the browser process and allow interaction.
+        function doChunk() {
+            var time = +new Date(),
+                i,
+                len = $tds.length,
+                $td,
+                stringdata,
+                arr,
+                data,
+                chart;
+
+            for (i = 0; i < len; i += 1) {
+                $td = $($tds[i]);
+                stringdata = $td.data('sparkline');
+                arr = stringdata.split('; ');
+                data = $.map(arr[0].split(', '), parseFloat);
+                chart = {};
+
+                if (arr[1]) {
+                    chart.type = arr[1];
+                }
+                $td.highcharts('SparkLine', {
+                    series: [{
+                        data: data,
+                        pointStart: 1
+                    }],
+                    tooltip: {
+                        headerFormat: '<span style="font-size: 10px">' + $td.parent().parent().find('th').html(),
+                        pointFormat: '<b>{point.y}</b>'
+                    },
+                    chart: chart
+                });
+
+                n += 1;
+
+                // If the process takes too much time, run a timeout to allow interaction with the browser
+                if (new Date() - time > 500) {
+                    $tds.splice(0, i + 1);
+                    setTimeout(doChunk, 0);
+                    break;
+                }
+
+                // Print a feedback on the performance
+                if (n === fullLen) {
+                    $('#result').html('Generated ' + fullLen + ' sparklines in ' + (new Date() - start) + ' ms');
+                }
+            }
+        }
+        doChunk();
+
+    });
+    </script>
   </head>
   <body>
     <div id="instructions">
@@ -198,7 +364,7 @@
   	<div id="print-wrapper">
   		<div class="container nav-container">
   			<div class="row">
-  				<div class="col-md-12">
+  				<div class="col-sm-12">
   					<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#east-region" aria-controls="home" role="tab" data-toggle="tab">East Region</a></li>
 							<li role="presentation"><a href="#west-region" aria-controls="profile" role="tab" data-toggle="tab">West Region</a></li>
@@ -211,637 +377,820 @@
   			<div class="tab-content">
   				<div role="tabpanel" class="tab-pane fade in active" id="east-region">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-sm-12">
                 <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                 <img src="/design/images/symc-logo.svg" alt="Symantec">
               </div>
             </div>
             <hr>
   					<div class="row">
-  						<div class="masthead col-md-12">
+  						<div class="masthead col-sm-12">
   							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
   							<h2 class="report-subtitle">East Region, June 2015</h2>
   						</div>
   					</div>
             <hr>
-  					<div class="row">
-  						<div class="col-md-12">
-  							<h3 class="section-title">QTD Overview</h3>
-  							<table class="table">
-  								<tr>
-  									<th>Metrics</th>
-  									<th>East Region</th>
-  									<th>Benchmark</th>
-                    <!-- <th>Per Quarter</th> -->
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Accounts contacted</td>
-  									<td class="value">1057</td>
-  									<td cladd="benchmark"></td>
-                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Accounts engaged</td>
-  									<td class="value">500</td>
-  									<td cladd="benchmark"></td>
-                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Cold</td>
-  									<td class="value"></td>
-  									<td cladd="benchmark"></td>
-                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Key account CISOs contacted</td>
-  									<td class="value">18</td>
-  									<td cladd="benchmark"></td>
-                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Total time with key account CISOs</td>
-  									<td class="value">96</td>
-  									<td cladd="benchmark"></td>
-                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
-  								</tr>
-  								
-  							</table>
+            <h4>Engagement</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="ee-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Engaged</td>
+                    <td class="">260</td>
+                    <td class="">342</td>
+                    <td class="">227</td>
+                    <td class="">227</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Contacted</td>
+                    <td class="">460</td>
+                    <td class="">469</td>
+                    <td class="">380</td>
+                    <td class="">380</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">New Accounts Engaged (Qtr)</td>
+                    <td class="">260</td>
+                    <td class="">180</td>
+                    <td class="">60</td>
+                    <td class="">60</td>
+                  </tr>
+                  
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="ee-table"></div>
                 <script>
                   $(function () {
-                    Highcharts.SparkLine = function (options, callback) {
-                        var defaultOptions = {
-                            chart: {
-                                renderTo: (options.chart && options.chart.renderTo) || this,
-                                backgroundColor: null,
-                                borderWidth: 0,
-                                type: 'line',
-                                margin: [0, 0, 0, 0],
-                                width: 120,
-                                height: 20,
-                                style: {
-                                    overflow: 'visible'
-                                },
-                                skipClone: true
-                            },
+                    $('#ee-table').highcharts({
+                        data: {
+                            table: 'ee-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
                             title: {
-                                text: ''
-                            },
-                            credits: {
-                                enabled: false
-                            },
-                            exporting: {
-                                enabled: false
-                            },
-                            xAxis: {
-                                labels: {
-                                    enabled: false
-                                },
-                                title: {
-                                    text: null
-                                },
-                                startOnTick: false,
-                                endOnTick: false,
-                                tickPositions: []
-                            },
-                            yAxis: {
-                                endOnTick: false,
-                                startOnTick: false,
-                                labels: {
-                                    enabled: false
-                                },
-                                title: {
-                                    text: null
-                                },
-                                tickPositions: [0]
-                            },
-                            legend: {
-                                enabled: false
-                            },
-                            tooltip: {
-                                backgroundColor: null,
-                                borderWidth: 0,
-                                shadow: false,
-                                useHTML: true,
-                                hideDelay: 0,
-                                shared: true,
-                                padding: 0,
-                                positioner: function (w, h, point) {
-                                    return { x: point.plotX - w / 2, y: point.plotY - h};
-                                }
-                            },
-                            plotOptions: {
-                                series: {
-                                    animation: false,
-                                    lineWidth: 1,
-                                    shadow: false,
-                                    states: {
-                                        hover: {
-                                            lineWidth: 1
-                                        }
-                                    },
-                                    marker: {
-                                        radius: 1,
-                                        states: {
-                                            hover: {
-                                                radius: 2
-                                            }
-                                        }
-                                    },
-                                    fillOpacity: 0.25
-                                },
-                                column: {
-                                    negativeColor: '#910000',
-                                    borderColor: 'silver'
-                                }
+                                text: null
                             }
-                        };
-                        options = Highcharts.merge(defaultOptions, options);
-                        return new Highcharts.Chart(options, callback);
-                    };
-                    var start = +new Date(),
-                        $tds = $("td[data-sparkline]"),
-                        fullLen = $tds.length,
-                        n = 0;
-                    function doChunk() {
-                        var time = +new Date(),
-                            i,
-                            len = $tds.length,
-                            $td,
-                            stringdata,
-                            arr,
-                            data,
-                            chart;
-
-                        for (i = 0; i < len; i += 1) {
-                            $td = $($tds[i]);
-                            stringdata = $td.data('sparkline');
-                            arr = stringdata.split('; ');
-                            data = $.map(arr[0].split(', '), parseFloat);
-                            chart = {};
-
-                            if (arr[1]) {
-                                chart.type = arr[1];
-                            }
-                            $td.highcharts('SparkLine', {
-                                series: [{
-                                    data: data,
-                                    pointStart: 1
-                                }],
-                                tooltip: {
-                                    headerFormat: '<span style="font-size: 10px">' + $td.parent().parent().find('th').html() + ', Q{point.x}:</span><br/>',
-                                    pointFormat: '<b>{point.y}.000</b> USD'
-                                },
-                                chart: chart
-                            });
-
-                            n += 1;
-
-                            // If the process takes too much time, run a timeout to allow interaction with the browser
-                            if (new Date() - time > 500) {
-                                $tds.splice(0, i + 1);
-                                setTimeout(doChunk, 0);
-                                break;
-                            }
-
-                            // Print a feedback on the performance
-                            if (n === fullLen) {
-                                $('#result').html('Generated ' + fullLen + ' sparklines in ' + (new Date() - start) + ' ms');
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
                             }
                         }
-                    }
-                    doChunk();
+                    });
                 });
                 </script>
-  						</div>
-  					</div>
-  					<div class="row">
-  						<div class="col-md-12">
-  							<h3 class="section-title">Details for this month</h3>
-  							<table class="table">
+              </div>
+            </div>
+            <h4>Time</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="et-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Time with Customers</td>
+                    <td class="">975</td>
+                    <td class="">1297</td>
+                    <td class="">709</td>
+                    <td class="">709</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Time with Key Accounts</td>
+                    <td class="">126</td>
+                    <td class="">167</td>
+                    <td class="">90</td>
+                    <td class="">90</td>
+                  </tr>
+                  
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="et-table"></div>
+                <script>
+                  $(function () {
+                    $('#et-table').highcharts({
+                        data: {
+                            table: 'et-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
+            </div>
+            <h4>Sales</h4>
+            <div class="row">
+              <div class="col-sm-8">
+  							<table class="table" id="es-datatable">
   								<tr>
-  									<th>Time with Customers</th>
-  									<th>East Region</th>
-  									<th>Benchmark</th>
+  									<th></th>
+  									<th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
   								</tr>
   								
   								<tr>
-  									<td class="metric">Time communicating with customer per week</td>
-  									<td class="value">11</td>
-  									<td class="benchmark">11</td>
+  									<td class="metric">Salespeople</td>
+                    <td class="">43</td>
+                    <td class="">43</td>
+                    <td class="">43</td>
+                    <td class="">43</td>
   								</tr>
   								
   								<tr>
-  									<td class="metric">Distict customers contacted per week</td>
-  									<td class="value">14</td>
-  									<td class="benchmark">16</td>
+  									<td class="metric">Accounts Contacted / Salesperson</td>
+                    <td class="">11</td>
+                    <td class="">11</td>
+                    <td class="">9</td>
+                    <td class="">9</td>
+  								</tr>
+  								
+  								<tr>
+  									<td class="metric">Accounts Engaged / Salesperson</td>
+                    <td class="">6</td>
+                    <td class="">8</td>
+                    <td class="">5</td>
+                    <td class="">5</td>
+  								</tr>
+  								
+  								<tr>
+  									<td class="metric">Hours / week with Customer</td>
+                    <td class="">8</td>
+                    <td class="">10</td>
+                    <td class="">10</td>
+                    <td class="">10</td>
+  								</tr>
+  								
+  								<tr>
+  									<td class="metric">Breadth of customer network</td>
+                    <td class="">17</td>
+                    <td class="">18</td>
+                    <td class="">19</td>
+                    <td class="">19</td>
+  								</tr>
+  								
+  								<tr>
+  									<td class="metric">Size of customer network</td>
+                    <td class="">38</td>
+                    <td class="">42</td>
+                    <td class="">45</td>
+                    <td class="">45</td>
+  								</tr>
+  								
+  								<tr>
+  									<td class="metric">Hours in Internal Meetings</td>
+                    <td class="">5</td>
+                    <td class="">6</td>
+                    <td class="">4</td>
+                    <td class="">4</td>
   								</tr>
   								
                 </table>
               </div>
+              <div class="col-sm-4">
+                <div id="es-table"></div>
+                <script>
+                  $(function () {
+                    $('#es-table').highcharts({
+                        data: {
+                            table: 'es-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Engagement with Customers</th>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts within rep network</td>
-  										<td class="value">20</td>
-  										<td class="benchmark">18</td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Account contacts within rep network</td>
-  										<td class="value">46</td>
-  										<td class="benchmark">40</td>
-  									</tr>
-  									
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Account Coverage</th>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts contacted</td>
-  										<td class="value">380</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts engaged</td>
-  										<td class="value">227</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts contacted per salesperson</td>
-  										<td class="value">9</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts engaged per salesperson</td>
-  										<td class="value">5</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">CISO Engagement</th>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">No contact</td>
-  										<td class="value">12</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Email</td>
-  										<td class="value">4</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Meetings</td>
-  										<td class="value">0</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Email and meetings</td>
-  										<td class="value">0</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  								</table>
-  							</div>
-  						</div>
-  					</div>
+          </div>
+
   					<div role="tabpanel" class="tab-pane fade" id="west-region">
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                   <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                   <img src="/design/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
-              <hr>
-  						<div class="row">
-  						<div class="masthead col-md-12">
-  							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
-  							<h2 class="report-subtitle">West Region, June 2015</h2>
-  						</div>
+              <div class="row">
+              <div class="masthead col-sm-12">
+                <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
+                <h2 class="report-subtitle">West Region, June 2015</h2>
+              </div>
+            </div>
+            <hr>
+            <h4>Engagement</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="we-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Contacted</td>
+                    <td class="">331</td>
+                    <td class="">362</td>
+                    <td class="">310</td>
+                    <td class="">310</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Engaged</td>
+                    <td class="">211</td>
+                    <td class="">278</td>
+                    <td class="">198</td>
+                    <td class="">198</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">New Accounts Engaged (Qtr)</td>
+                    <td class="">211</td>
+                    <td class="">146</td>
+                    <td class="">45</td>
+                    <td class="">45</td>
+                  </tr>
+                  
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="we-table"></div>
+                <script>
+                  $(function () {
+                    $('#we-table').highcharts({
+                        data: {
+                            table: 'we-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
+            </div>
+            <h4>Time</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="wt-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Time with Customers</td>
+                    <td class="">797</td>
+                    <td class="">959</td>
+                    <td class="">540</td>
+                    <td class="">540</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Time with Key Accounts</td>
+                    <td class="">129</td>
+                    <td class="">104</td>
+                    <td class="">62</td>
+                    <td class="">62</td>
+                  </tr>
+                  
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="wt-table"></div>
+                <script>
+                  $(function () {
+                    $('#wt-table').highcharts({
+                        data: {
+                            table: 'wt-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
+            </div>
+            <h4>Sales</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="ws-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric"># of Salespeople</td>
+                    <td class="">35</td>
+                    <td class="">35</td>
+                    <td class="">34</td>
+                    <td class="">34</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric"># of Accounts Contacted / Salesperson</td>
+                    <td class="">9</td>
+                    <td class="">10</td>
+                    <td class="">9</td>
+                    <td class="">9</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric"># of Accounts Engaged / Salesperson</td>
+                    <td class="">6</td>
+                    <td class="">8</td>
+                    <td class="">6</td>
+                    <td class="">6</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Hours / week with Customer</td>
+                    <td class="">8</td>
+                    <td class="">9</td>
+                    <td class="">10</td>
+                    <td class="">10</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Breadth of customer network</td>
+                    <td class="">6</td>
+                    <td class="">6</td>
+                    <td class="">6</td>
+                    <td class="">6</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Size of customer network</td>
+                    <td class="">12</td>
+                    <td class="">12</td>
+                    <td class="">13</td>
+                    <td class="">13</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Hours in Internal Meetings</td>
+                    <td class="">6</td>
+                    <td class="">7</td>
+                    <td class="">5</td>
+                    <td class="">5</td>
+                  </tr>
+                  
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="ws-table"></div>
+                <script>
+                  $(function () {
+                    $('#ws-table').highcharts({
+                        data: {
+                            table: 'ws-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+                </div>
+              </div>
   					</div>
-  					<hr>
-  					<div class="row">
-  						<div class="col-md-12">
-  							<h3 class="section-title">QTD Overview</h3>
-  							<table class="table">
-  								<tr>
-  									<th>Metrics</th>
-  									<th>West Region</th>
-  									<th>Benchmark</th>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Accounts contacted</td>
-  									<td class="value">1057</td>
-  									<td class="benchmark"></td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Accounts engaged</td>
-  									<td class="value">500</td>
-  									<td class="benchmark"></td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Cold</td>
-  									<td class="value"></td>
-  									<td class="benchmark"></td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Key account CISOs contacted</td>
-  									<td class="value">18</td>
-  									<td class="benchmark"></td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Total time with key account CISOs</td>
-  									<td class="value">96</td>
-  									<td class="benchmark"></td>
-  								</tr>
-  								
-  							</table>
-  							<h3 class="section-title">Details for this month</h3>
-  							<table class="table">
-  								<tr>
-  									<th>Time with Customers</th>
-  									<th>West Region</th>
-  									<th>Benchmark</th>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Time communicating with customer per week</td>
-  									<td class="value">11</td>
-  									<td class="benchmark">11</td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Distict customers contacted per week</td>
-  									<td class="value">14</td>
-  									<td class="benchmark">16</td>
-  								</tr>
-  								
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Engagement with Customers</th>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts within rep network</td>
-  										<td class="value">20</td>
-  										<td class="benchmark">18</td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Account contacts within rep network</td>
-  										<td class="value">46</td>
-  										<td class="benchmark">40</td>
-  									</tr>
-  									
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Account Coverage</th>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts contacted</td>
-  										<td class="value">380</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts engaged</td>
-  										<td class="value">227</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts contacted per salesperson</td>
-  										<td class="value">9</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts engaged per salesperson</td>
-  										<td class="value">5</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">CISO Engagement</th>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">No contact</td>
-  										<td class="value">12</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Email</td>
-  										<td class="value">4</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Meetings</td>
-  										<td class="value">0</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Email and meetings</td>
-  										<td class="value">0</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  								</table>
-  							</div>
-  						</div>
-  					</div>
+
   					<div role="tabpanel" class="tab-pane fade" id="latin-america">
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                   <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                   <img src="/design/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
               <hr>
   						<div class="row">
-  						<div class="masthead col-md-12">
+  						<div class="masthead col-sm-12">
   							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
   							<h2 class="report-subtitle">Latin America Region, June 2015</h2>
   						</div>
   					</div>
   					<hr>
-  					<div class="row">
-  						<div class="col-md-12">
-  							<h3 class="section-title">QTD Overview</h3>
-  							<table class="table">
-  								<tr>
-  									<th>Metrics</th>
-  									<th>Latin America Region</th>
-  									<th>Benchmark</th>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Accounts contacted</td>
-  									<td class="value">1057</td>
-  									<td class="benchmark"></td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Accounts engaged</td>
-  									<td class="value">500</td>
-  									<td class="benchmark"></td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Cold</td>
-  									<td class="value"></td>
-  									<td class="benchmark"></td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Key account CISOs contacted</td>
-  									<td class="value">18</td>
-  									<td class="benchmark"></td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Total time with key account CISOs</td>
-  									<td class="value">96</td>
-  									<td class="benchmark"></td>
-  								</tr>
-  								
-  							</table>
-  							<h3 class="section-title">Details for this month</h3>
-  							<table class="table">
-  								<tr>
-  									<th>Time with Customers</th>
-  									<th>Latin America Region</th>
-  									<th>Benchmark</th>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Time communicating with customer per week</td>
-  									<td class="value">11</td>
-  									<td class="benchmark">11</td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Distict customers contacted per week</td>
-  									<td class="value">14</td>
-  									<td class="benchmark">16</td>
-  								</tr>
-  								
+            <h4>Engagement</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="le-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Contacted</td>
+                    <td class="">145</td>
+                    <td class="">159</td>
+                    <td class="">149</td>
+                    <td class="">149</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Engaged</td>
+                    <td class="">85</td>
+                    <td class="">139</td>
+                    <td class="">95</td>
+                    <td class="">95</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">New Accounts Engaged (Qtr)</td>
+                    <td class="">85</td>
+                    <td class="">91</td>
+                    <td class="">29</td>
+                    <td class="">29</td>
+                  </tr>
+                  
                 </table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Engagement with Customers</th>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts within rep network</td>
-  										<td class="value">20</td>
-  										<td class="benchmark">18</td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Account contacts within rep network</td>
-  										<td class="value">46</td>
-  										<td class="benchmark">40</td>
-  									</tr>
-  									
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Account Coverage</th>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts contacted</td>
-  										<td class="value">380</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts engaged</td>
-  										<td class="value">227</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts contacted per salesperson</td>
-  										<td class="value">9</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Accounts engaged per salesperson</td>
-  										<td class="value">5</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">CISO Engagement</th>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">No contact</td>
-  										<td class="value">12</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Email</td>
-  										<td class="value">4</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Meetings</td>
-  										<td class="value">0</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  									<tr>
-  										<td class="metric">Email and meetings</td>
-  										<td class="value">0</td>
-  										<td class="benchmark"></td>
-  									</tr>
-  									
-  								</table>
-  							</div>
-  						</div>
+              </div>
+              <div class="col-sm-4">
+                <div id="le-table"></div>
+                <script>
+                  $(function () {
+                    $('#le-table').highcharts({
+                        data: {
+                            table: 'le-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width:230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
+            </div>
+            <h4>Time</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="lt-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Time with Customers</td>
+                    <td class="">229</td>
+                    <td class="">592</td>
+                    <td class="">246</td>
+                    <td class="">246</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Time with Key Accounts</td>
+                    <td class=""></td>
+                    <td class=""></td>
+                    <td class=""></td>
+                    <td class=""></td>
+                  </tr>
+                  
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="lt-table"></div>
+                <script>
+                  $(function () {
+                    $('#lt-table').highcharts({
+                        data: {
+                            table: 'lt-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
+            </div>
+            <h4>Sales</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="ls-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Salespeople</td>
+                    <td class="">19</td>
+                    <td class="">19</td>
+                    <td class="">19</td>
+                    <td class="">19</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Contacted / Salesperson</td>
+                    <td class="">8</td>
+                    <td class="">8</td>
+                    <td class="">8</td>
+                    <td class="">8</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Engaged / Salesperson</td>
+                    <td class="">4</td>
+                    <td class="">7</td>
+                    <td class="">5</td>
+                    <td class="">5</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Hours / week with Customer</td>
+                    <td class="">4</td>
+                    <td class="">9</td>
+                    <td class="">8</td>
+                    <td class="">8</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Breadth of customer network</td>
+                    <td class="">17</td>
+                    <td class="">17</td>
+                    <td class="">18</td>
+                    <td class="">18</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Size of customer network</td>
+                    <td class="">36</td>
+                    <td class="">36</td>
+                    <td class="">40</td>
+                    <td class="">40</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Hours in Internal Meetings</td>
+                    <td class="">8</td>
+                    <td class="">7</td>
+                    <td class="">9</td>
+                    <td class="">9</td>
+                  </tr>
+                  
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="ls-table"></div>
+                <script>
+                  $(function () {
+                    $('#ls-table').highcharts({
+                        data: {
+                            table: 'ls-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width:230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+                </div>
+              </div>
+  					</div>
   				</div>
   			</div>
+      </div>
   		</body>
   		</html>

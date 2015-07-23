@@ -1,0 +1,8 @@
+Region,Section,Metric,April,May,June,July,Benchmark
+LM,Sales,Salespeople,19,19,19,19,
+LM,Sales,Accounts Contacted / Salesperson,8,8,8,8,
+LM,Sales,Accounts Engaged / Salesperson,4,7,5,5,
+LM,Sales,Hours / week with Customer,4,9,8,8,
+LM,Sales,Breadth of customer network,17,17,18,18,
+LM,Sales,Size of customer network,36,36,40,40,
+LM,Sales,Hours in Internal Meetings,8,7,9,9,

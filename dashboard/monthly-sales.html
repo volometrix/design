@@ -93,6 +93,9 @@ page-title: SYMC Monthly Sales Report
     table td.metric {
       width:50%;
     }
+    table td.month {
+      width: 12.5%;
+    }
     table td.value {
       width:25%;
     }
@@ -128,11 +131,17 @@ page-title: SYMC Monthly Sales Report
   			margin: 0;
   			padding: 0;
   		}
-  		article {
-  			page-break-before: always;
+  		.tab-pane {
+        page-break-before: always !important;
+  			page-break-after: always !important;
   		}
       #print-wrapper  .container {
         width: 595px;
+        margin:0;
+      }
+      .col-sm-8 {
+        width: 300px;
+        float:left;
       }
       .nav-container {
         display: none;
@@ -184,6 +193,163 @@ page-title: SYMC Monthly Sales Report
       }
     }
   	</style>
+    <script>
+      $(function () {
+        /**
+         * Create a constructor for sparklines that takes some sensible defaults and merges in the individual
+         * chart options. This function is also available from the jQuery plugin as $(element).highcharts('SparkLine').
+         */
+        Highcharts.SparkLine = function (options, callback) {
+            var defaultOptions = {
+                chart: {
+                    renderTo: (options.chart && options.chart.renderTo) || this,
+                    backgroundColor: null,
+                    borderWidth: 0,
+                    type: 'area',
+                    margin: [2, 0, 2, 0],
+                    width: 120,
+                    height: 20,
+                    style: {
+                        overflow: 'visible'
+                    },
+                    skipClone: true
+                },
+                title: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                xAxis: {
+                    labels: {
+                        enabled: false
+                    },
+                    title: {
+                        text: null
+                    },
+                    startOnTick: false,
+                    endOnTick: false,
+                    tickPositions: []
+                },
+                yAxis: {
+                    endOnTick: false,
+                    startOnTick: false,
+                    labels: {
+                        enabled: false
+                    },
+                    title: {
+                        text: null
+                    },
+                    tickPositions: [0]
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    backgroundColor: null,
+                    borderWidth: 0,
+                    shadow: false,
+                    useHTML: true,
+                    hideDelay: 0,
+                    shared: true,
+                    padding: 0,
+                    positioner: function (w, h, point) {
+                        return { x: point.plotX - w / 2, y: point.plotY - h};
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        animation: false,
+                        lineWidth: 1,
+                        shadow: false,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        marker: {
+                            radius: 1,
+                            states: {
+                                hover: {
+                                    radius: 2
+                                }
+                            }
+                        },
+                        fillOpacity: 0.25
+                    },
+                    column: {
+                        negativeColor: '#910000',
+                        borderColor: 'silver'
+                    }
+                }
+            };
+            options = Highcharts.merge(defaultOptions, options);
+
+            return new Highcharts.Chart(options, callback);
+        };
+
+        var start = +new Date(),
+            $tds = $("td[data-sparkline]"),
+            fullLen = $tds.length,
+            n = 0;
+
+        // Creating 153 sparkline charts is quite fast in modern browsers, but IE8 and mobile
+        // can take some seconds, so we split the input into chunks and apply them in timeouts
+        // in order avoid locking up the browser process and allow interaction.
+        function doChunk() {
+            var time = +new Date(),
+                i,
+                len = $tds.length,
+                $td,
+                stringdata,
+                arr,
+                data,
+                chart;
+
+            for (i = 0; i < len; i += 1) {
+                $td = $($tds[i]);
+                stringdata = $td.data('sparkline');
+                arr = stringdata.split('; ');
+                data = $.map(arr[0].split(', '), parseFloat);
+                chart = {};
+
+                if (arr[1]) {
+                    chart.type = arr[1];
+                }
+                $td.highcharts('SparkLine', {
+                    series: [{
+                        data: data,
+                        pointStart: 1
+                    }],
+                    tooltip: {
+                        headerFormat: '<span style="font-size: 10px">' + $td.parent().parent().find('th').html(),
+                        pointFormat: '<b>{point.y}</b>'
+                    },
+                    chart: chart
+                });
+
+                n += 1;
+
+                // If the process takes too much time, run a timeout to allow interaction with the browser
+                if (new Date() - time > 500) {
+                    $tds.splice(0, i + 1);
+                    setTimeout(doChunk, 0);
+                    break;
+                }
+
+                // Print a feedback on the performance
+                if (n === fullLen) {
+                    $('#result').html('Generated ' + fullLen + ' sparklines in ' + (new Date() - start) + ' ms');
+                }
+            }
+        }
+        doChunk();
+
+    });
+    </script>
   </head>
   <body>
     <div id="instructions">
@@ -203,7 +369,7 @@ page-title: SYMC Monthly Sales Report
   	<div id="print-wrapper">
   		<div class="container nav-container">
   			<div class="row">
-  				<div class="col-md-12">
+  				<div class="col-sm-12">
   					<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#east-region" aria-controls="home" role="tab" data-toggle="tab">East Region</a></li>
 							<li role="presentation"><a href="#west-region" aria-controls="profile" role="tab" data-toggle="tab">West Region</a></li>
@@ -216,417 +382,604 @@ page-title: SYMC Monthly Sales Report
   			<div class="tab-content">
   				<div role="tabpanel" class="tab-pane fade in active" id="east-region">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-sm-12">
                 <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                 <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
               </div>
             </div>
             <hr>
   					<div class="row">
-  						<div class="masthead col-md-12">
+  						<div class="masthead col-sm-12">
   							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
   							<h2 class="report-subtitle">East Region, June 2015</h2>
   						</div>
   					</div>
             <hr>
-  					<div class="row">
-  						<div class="col-md-12">
-  							<h3 class="section-title">QTD Overview</h3>
-  							<table class="table">
-  								<tr>
-  									<th>Metrics</th>
-  									<th>East Region</th>
-  									<th>Benchmark</th>
-                    <!-- <th>Per Quarter</th> -->
-  								</tr>
-  								{% for eo in site.data.SYMCMonthlySalesReport-East-Overview %}
-  								<tr>
-  									<td class="metric">{{ eo.Metric }}</td>
-  									<td class="value">{{ eo.Value }}</td>
-  									<td cladd="benchmark">{{ eo.Benchmark }}</td>
-                    <!-- <td data-sparkline="71, 78, 39, 66 "/> -->
-  								</tr>
-  								{% endfor %}
-  							</table>
+            <h4>Engagement</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="ee-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  {% for ee in site.data.symc_ee %}
+                  <tr>
+                    <td class="metric">{{ ee.Metric }}</td>
+                    <td class="">{{ ee.April }}</td>
+                    <td class="">{{ ee.May }}</td>
+                    <td class="">{{ ee.June }}</td>
+                    <td class="">{{ ee.July }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="ee-table"></div>
                 <script>
                   $(function () {
-                    Highcharts.SparkLine = function (options, callback) {
-                        var defaultOptions = {
-                            chart: {
-                                renderTo: (options.chart && options.chart.renderTo) || this,
-                                backgroundColor: null,
-                                borderWidth: 0,
-                                type: 'line',
-                                margin: [0, 0, 0, 0],
-                                width: 120,
-                                height: 20,
-                                style: {
-                                    overflow: 'visible'
-                                },
-                                skipClone: true
-                            },
+                    $('#ee-table').highcharts({
+                        data: {
+                            table: 'ee-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
                             title: {
-                                text: ''
-                            },
-                            credits: {
-                                enabled: false
-                            },
-                            exporting: {
-                                enabled: false
-                            },
-                            xAxis: {
-                                labels: {
-                                    enabled: false
-                                },
-                                title: {
-                                    text: null
-                                },
-                                startOnTick: false,
-                                endOnTick: false,
-                                tickPositions: []
-                            },
-                            yAxis: {
-                                endOnTick: false,
-                                startOnTick: false,
-                                labels: {
-                                    enabled: false
-                                },
-                                title: {
-                                    text: null
-                                },
-                                tickPositions: [0]
-                            },
-                            legend: {
-                                enabled: false
-                            },
-                            tooltip: {
-                                backgroundColor: null,
-                                borderWidth: 0,
-                                shadow: false,
-                                useHTML: true,
-                                hideDelay: 0,
-                                shared: true,
-                                padding: 0,
-                                positioner: function (w, h, point) {
-                                    return { x: point.plotX - w / 2, y: point.plotY - h};
-                                }
-                            },
-                            plotOptions: {
-                                series: {
-                                    animation: false,
-                                    lineWidth: 1,
-                                    shadow: false,
-                                    states: {
-                                        hover: {
-                                            lineWidth: 1
-                                        }
-                                    },
-                                    marker: {
-                                        radius: 1,
-                                        states: {
-                                            hover: {
-                                                radius: 2
-                                            }
-                                        }
-                                    },
-                                    fillOpacity: 0.25
-                                },
-                                column: {
-                                    negativeColor: '#910000',
-                                    borderColor: 'silver'
-                                }
+                                text: null
                             }
-                        };
-                        options = Highcharts.merge(defaultOptions, options);
-                        return new Highcharts.Chart(options, callback);
-                    };
-                    var start = +new Date(),
-                        $tds = $("td[data-sparkline]"),
-                        fullLen = $tds.length,
-                        n = 0;
-                    function doChunk() {
-                        var time = +new Date(),
-                            i,
-                            len = $tds.length,
-                            $td,
-                            stringdata,
-                            arr,
-                            data,
-                            chart;
-
-                        for (i = 0; i < len; i += 1) {
-                            $td = $($tds[i]);
-                            stringdata = $td.data('sparkline');
-                            arr = stringdata.split('; ');
-                            data = $.map(arr[0].split(', '), parseFloat);
-                            chart = {};
-
-                            if (arr[1]) {
-                                chart.type = arr[1];
-                            }
-                            $td.highcharts('SparkLine', {
-                                series: [{
-                                    data: data,
-                                    pointStart: 1
-                                }],
-                                tooltip: {
-                                    headerFormat: '<span style="font-size: 10px">' + $td.parent().parent().find('th').html() + ', Q{point.x}:</span><br/>',
-                                    pointFormat: '<b>{point.y}.000</b> USD'
-                                },
-                                chart: chart
-                            });
-
-                            n += 1;
-
-                            // If the process takes too much time, run a timeout to allow interaction with the browser
-                            if (new Date() - time > 500) {
-                                $tds.splice(0, i + 1);
-                                setTimeout(doChunk, 0);
-                                break;
-                            }
-
-                            // Print a feedback on the performance
-                            if (n === fullLen) {
-                                $('#result').html('Generated ' + fullLen + ' sparklines in ' + (new Date() - start) + ' ms');
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
                             }
                         }
-                    }
-                    doChunk();
+                    });
                 });
                 </script>
-  						</div>
-  					</div>
-  					<div class="row">
-  						<div class="col-md-12">
-  							<h3 class="section-title">Details for this month</h3>
-  							<table class="table">
+              </div>
+            </div>
+            <h4>Time</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="et-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  {% for et in site.data.symc_et %}
+                  <tr>
+                    <td class="metric">{{ et.Metric }}</td>
+                    <td class="">{{ et.April }}</td>
+                    <td class="">{{ et.May }}</td>
+                    <td class="">{{ et.June }}</td>
+                    <td class="">{{ et.July }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="et-table"></div>
+                <script>
+                  $(function () {
+                    $('#et-table').highcharts({
+                        data: {
+                            table: 'et-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
+            </div>
+            <h4>Sales</h4>
+            <div class="row">
+              <div class="col-sm-8">
+  							<table class="table" id="es-datatable">
   								<tr>
-  									<th>Time with Customers</th>
-  									<th>East Region</th>
-  									<th>Benchmark</th>
+  									<th></th>
+  									<th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
   								</tr>
-  								{% for et in site.data.SYMCMonthlySalesReport-East-Time %}
+  								{% for es in site.data.symc_es %}
   								<tr>
-  									<td class="metric">{{ et.Metric }}</td>
-  									<td class="value">{{ et.Value }}</td>
-  									<td class="benchmark">{{ et.Benchmark }}</td>
+  									<td class="metric">{{ es.Metric }}</td>
+                    <td class="">{{ es.April }}</td>
+                    <td class="">{{ es.May }}</td>
+                    <td class="">{{ es.June }}</td>
+                    <td class="">{{ es.July }}</td>
   								</tr>
   								{% endfor %}
                 </table>
               </div>
+              <div class="col-sm-4">
+                <div id="es-table"></div>
+                <script>
+                  $(function () {
+                    $('#es-table').highcharts({
+                        data: {
+                            table: 'es-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Engagement with Customers</th>
-  									</tr>
-  									{% for ee in site.data.SYMCMonthlySalesReport-East-Engagement %}
-  									<tr>
-  										<td class="metric">{{ ee.Metric }}</td>
-  										<td class="value">{{ ee.Value }}</td>
-  										<td class="benchmark">{{ ee.Benchmark }}</td>
-  									</tr>
-  									{% endfor %}
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Account Coverage</th>
-  									</tr>
-  									{% for ec in site.data.SYMCMonthlySalesReport-East-Coverage %}
-  									<tr>
-  										<td class="metric">{{ ec.Metric }}</td>
-  										<td class="value">{{ ec.Value }}</td>
-  										<td class="benchmark">{{ ec.Benchmark }}</td>
-  									</tr>
-  									{% endfor %}
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">CISO Engagement</th>
-  									</tr>
-  									{% for ei in site.data.SYMCMonthlySalesReport-East-CSIO %}
-  									<tr>
-  										<td class="metric">{{ ei.Metric }}</td>
-  										<td class="value">{{ ei.Value }}</td>
-  										<td class="benchmark">{{ ei.Benchmark }}</td>
-  									</tr>
-  									{% endfor %}
-  								</table>
-  							</div>
-  						</div>
-  					</div>
+          </div>
+
   					<div role="tabpanel" class="tab-pane fade" id="west-region">
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                   <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                   <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
-              <hr>
-  						<div class="row">
-  						<div class="masthead col-md-12">
-  							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
-  							<h2 class="report-subtitle">West Region, June 2015</h2>
-  						</div>
+              <div class="row">
+              <div class="masthead col-sm-12">
+                <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
+                <h2 class="report-subtitle">West Region, June 2015</h2>
+              </div>
+            </div>
+            <hr>
+            <h4>Engagement</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="we-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  {% for we in site.data.symc_we %}
+                  <tr>
+                    <td class="metric">{{ we.Metric }}</td>
+                    <td class="">{{ we.April }}</td>
+                    <td class="">{{ we.May }}</td>
+                    <td class="">{{ we.June }}</td>
+                    <td class="">{{ we.July }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="we-table"></div>
+                <script>
+                  $(function () {
+                    $('#we-table').highcharts({
+                        data: {
+                            table: 'we-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
+            </div>
+            <h4>Time</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="wt-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  {% for wt in site.data.symc_wt %}
+                  <tr>
+                    <td class="metric">{{ wt.Metric }}</td>
+                    <td class="">{{ wt.April }}</td>
+                    <td class="">{{ wt.May }}</td>
+                    <td class="">{{ wt.June }}</td>
+                    <td class="">{{ wt.July }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="wt-table"></div>
+                <script>
+                  $(function () {
+                    $('#wt-table').highcharts({
+                        data: {
+                            table: 'wt-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
+            </div>
+            <h4>Sales</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="ws-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  {% for ws in site.data.symc_ws %}
+                  <tr>
+                    <td class="metric">{{ ws.Metric }}</td>
+                    <td class="">{{ ws.April }}</td>
+                    <td class="">{{ ws.May }}</td>
+                    <td class="">{{ ws.June }}</td>
+                    <td class="">{{ ws.July }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="ws-table"></div>
+                <script>
+                  $(function () {
+                    $('#ws-table').highcharts({
+                        data: {
+                            table: 'ws-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+                </div>
+              </div>
   					</div>
-  					<hr>
-  					<div class="row">
-  						<div class="col-md-12">
-  							<h3 class="section-title">QTD Overview</h3>
-  							<table class="table">
-  								<tr>
-  									<th>Metrics</th>
-  									<th>West Region</th>
-  									<th>Benchmark</th>
-  								</tr>
-  								{% for wo in site.data.SYMCMonthlySalesReport-West-Overview %}
-  								<tr>
-  									<td class="metric">{{ wo.Metric }}</td>
-  									<td class="value">{{ wo.Value }}</td>
-  									<td class="benchmark">{{ wo.Benchmark }}</td>
-  								</tr>
-  								{% endfor %}
-  							</table>
-  							<h3 class="section-title">Details for this month</h3>
-  							<table class="table">
-  								<tr>
-  									<th>Time with Customers</th>
-  									<th>West Region</th>
-  									<th>Benchmark</th>
-  								</tr>
-  								{% for wt in site.data.SYMCMonthlySalesReport-West-Time %}
-  								<tr>
-  									<td class="metric">{{ wt.Metric }}</td>
-  									<td class="value">{{ wt.Value }}</td>
-  									<td class="benchmark">{{ wt.Benchmark }}</td>
-  								</tr>
-  								{% endfor %}
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Engagement with Customers</th>
-  									</tr>
-  									{% for we in site.data.SYMCMonthlySalesReport-West-Engagement %}
-  									<tr>
-  										<td class="metric">{{ we.Metric }}</td>
-  										<td class="value">{{ we.Value }}</td>
-  										<td class="benchmark">{{ we.Benchmark }}</td>
-  									</tr>
-  									{% endfor %}
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Account Coverage</th>
-  									</tr>
-  									{% for wc in site.data.SYMCMonthlySalesReport-West-Coverage %}
-  									<tr>
-  										<td class="metric">{{ wc.Metric }}</td>
-  										<td class="value">{{ wc.Value }}</td>
-  										<td class="benchmark">{{ wc.Benchmark }}</td>
-  									</tr>
-  									{% endfor %}
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">CISO Engagement</th>
-  									</tr>
-  									{% for wi in site.data.SYMCMonthlySalesReport-West-CSIO %}
-  									<tr>
-  										<td class="metric">{{ wi.Metric }}</td>
-  										<td class="value">{{ wi.Value }}</td>
-  										<td class="benchmark">{{ wi.Benchmark }}</td>
-  									</tr>
-  									{% endfor %}
-  								</table>
-  							</div>
-  						</div>
-  					</div>
+
   					<div role="tabpanel" class="tab-pane fade" id="latin-america">
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                   <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                   <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
               <hr>
   						<div class="row">
-  						<div class="masthead col-md-12">
+  						<div class="masthead col-sm-12">
   							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
   							<h2 class="report-subtitle">Latin America Region, June 2015</h2>
   						</div>
   					</div>
   					<hr>
-  					<div class="row">
-  						<div class="col-md-12">
-  							<h3 class="section-title">QTD Overview</h3>
-  							<table class="table">
-  								<tr>
-  									<th>Metrics</th>
-  									<th>Latin America Region</th>
-  									<th>Benchmark</th>
-  								</tr>
-  								{% for lo in site.data.SYMCMonthlySalesReport-LatinAmerica-Overview %}
-  								<tr>
-  									<td class="metric">{{ lo.Metric }}</td>
-  									<td class="value">{{ lo.Value }}</td>
-  									<td class="benchmark">{{ lo.Benchmark }}</td>
-  								</tr>
-  								{% endfor %}
-  							</table>
-  							<h3 class="section-title">Details for this month</h3>
-  							<table class="table">
-  								<tr>
-  									<th>Time with Customers</th>
-  									<th>Latin America Region</th>
-  									<th>Benchmark</th>
-  								</tr>
-  								{% for lt in site.data.SYMCMonthlySalesReport-LatinAmerica-Time %}
-  								<tr>
-  									<td class="metric">{{ lt.Metric }}</td>
-  									<td class="value">{{ lt.Value }}</td>
-  									<td class="benchmark">{{ lt.Benchmark }}</td>
-  								</tr>
-  								{% endfor %}
+            <h4>Engagement</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="le-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  {% for le in site.data.symc_le %}
+                  <tr>
+                    <td class="metric">{{ le.Metric }}</td>
+                    <td class="">{{ le.April }}</td>
+                    <td class="">{{ le.May }}</td>
+                    <td class="">{{ le.June }}</td>
+                    <td class="">{{ le.July }}</td>
+                  </tr>
+                  {% endfor %}
                 </table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Engagement with Customers</th>
-  									</tr>
-  									{% for le in site.data.SYMCMonthlySalesReport-LatinAmerica-Engagement %}
-  									<tr>
-  										<td class="metric">{{ le.Metric }}</td>
-  										<td class="value">{{ le.Value }}</td>
-  										<td class="benchmark">{{ le.Benchmark }}</td>
-  									</tr>
-  									{% endfor %}
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">Account Coverage</th>
-  									</tr>
-  									{% for lc in site.data.SYMCMonthlySalesReport-LatinAmerica-Coverage %}
-  									<tr>
-  										<td class="metric">{{ lc.Metric }}</td>
-  										<td class="value">{{ lc.Value }}</td>
-  										<td class="benchmark">{{ lc.Benchmark }}</td>
-  									</tr>
-  									{% endfor %}
-  								</table>
-  								<table class="table">
-  									<tr>
-  										<th colspan="3">CISO Engagement</th>
-  									</tr>
-  									{% for li in site.data.SYMCMonthlySalesReport-LatinAmerica-CSIO %}
-  									<tr>
-  										<td class="metric">{{ li.Metric }}</td>
-  										<td class="value">{{ li.Value }}</td>
-  										<td class="benchmark">{{ li.Benchmark }}</td>
-  									</tr>
-  									{% endfor %}
-  								</table>
-  							</div>
-  						</div>
+              </div>
+              <div class="col-sm-4">
+                <div id="le-table"></div>
+                <script>
+                  $(function () {
+                    $('#le-table').highcharts({
+                        data: {
+                            table: 'le-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width:230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
+            </div>
+            <h4>Time</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="lt-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  {% for lt in site.data.symc_lt %}
+                  <tr>
+                    <td class="metric">{{ lt.Metric }}</td>
+                    <td class="">{{ lt.April }}</td>
+                    <td class="">{{ lt.May }}</td>
+                    <td class="">{{ lt.June }}</td>
+                    <td class="">{{ lt.July }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="lt-table"></div>
+                <script>
+                  $(function () {
+                    $('#lt-table').highcharts({
+                        data: {
+                            table: 'lt-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width: 230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+              </div>
+            </div>
+            <h4>Sales</h4>
+            <div class="row">
+              <div class="col-sm-8">
+                <table class="table" id="ls-datatable">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                  </tr>
+                  {% for ls in site.data.symc_ls %}
+                  <tr>
+                    <td class="metric">{{ ls.Metric }}</td>
+                    <td class="">{{ ls.April }}</td>
+                    <td class="">{{ ls.May }}</td>
+                    <td class="">{{ ls.June }}</td>
+                    <td class="">{{ ls.July }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <div id="ls-table"></div>
+                <script>
+                  $(function () {
+                    $('#ls-table').highcharts({
+                        data: {
+                            table: 'ls-datatable'
+                        },
+                        chart: {
+                            type: 'column',
+                            height: 200,
+                            width:230
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: null
+                            }
+                        },
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        }
+                    });
+                });
+                </script>
+                </div>
+              </div>
+  					</div>
   				</div>
   			</div>
+      </div>
   		</body>
   		</html>
