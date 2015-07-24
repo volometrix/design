@@ -642,62 +642,102 @@ var progressBar = (function(){
     <p>This shows how your time is being spent with different groups of people (based on meetings).</p>
   </div>	
   <div class="chart-wrapper">
-    <p><a href="#">Level</a> <a href="#">Groups</a> <a href="#">Function</a> <a href="#">Location</a></p>
-    <div id="time-breakdown-chart" class="chart" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto;"></div>
-    <script>
-    $(function () {
-      $('#time-breakdown-chart').highcharts({
-        chart: {
-          plotBackgroundColor: null,
-          plotBorderWidth: 0,
-          plotShadow: false
-        },
-        title: null,
-        tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-          pie: {
-            dataLabels: {
-              enabled: true,
-              distance: -50,
-              style: {
-                fontWeight: 'bold',
-                color: 'white',
-                textShadow: '0px 1px 2px black'
-              }
+    <!-- <p><a href="#">Level</a> <a href="#">Groups</a> <a href="#">Function</a> <a href="#">Location</a></p> -->
+    <div id="time-breakdown-chart" class="chart"></div>
+     <script>
+     $(function () {
+          Highcharts.setOptions(Highcharts.theme);
+          $('#time-breakdown-chart').highcharts({
+            chart: {
+              type: 'column',
+              height: 285
             },
-            startAngle: -90,
-            endAngle: 90,
-            center: ['50%', '75%']
-          }
-        },
-        exporting: {
-          enabled: false
-        },
-        credits: {
-          enabled: false
-        },
-        series: [{
-          type: 'pie',
-          name: '',
-          innerSize: '50%',
-          data: [
-          ['Manage Down',     10.38],
-          ['Manage Across',   56.33],
-          ['Manage Up',       24.03],
-          ['Desk Time',        4.77],
-          {
-            name: 'Proprietary or Undetectable',
-            y: 0.2,
-            dataLabels: {
+            title: {
+              text: null
+            },
+            xAxis: {
+              categories: ['Manage Across', 'Manage Up', 'Desktime']
+            },
+            yAxis: {
+              title: {
+                text: null
+              },
+            },
+            legend: {
+              enabled: false  
+            },
+            // plotOptions: {
+            //   line: {
+            //     dataLabels: {
+            //       enabled: false
+            //     },
+            //     enableMouseTracking: false
+            //   },
+            // },
+            series: [{
+              data: [56.33,24.03,4.77],
+            }],
+            credits: {
+              enabled: false
+            },
+            exporting: {
               enabled: false
             }
-          }
-          ]
-        }]
-      });
-});
+          });
+        });
+//     $(function () {
+//       $('#time-breakdown-chart').highcharts({
+//         chart: {
+//           plotBackgroundColor: null,
+//           plotBorderWidth: 0,
+//           plotShadow: false
+//         },
+//         title: null,
+//         tooltip: {
+//           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+//         },
+//         plotOptions: {
+//           pie: {
+//             dataLabels: {
+//               enabled: true,
+//               distance: -50,
+//               style: {
+//                 fontWeight: 'bold',
+//                 color: 'white',
+//                 textShadow: '0px 1px 2px black'
+//               }
+//             },
+//             startAngle: -90,
+//             endAngle: 90,
+//             center: ['50%', '75%']
+//           }
+//         },
+//         exporting: {
+//           enabled: false
+//         },
+//         credits: {
+//           enabled: false
+//         },
+//         series: [{
+//           type: 'pie',
+//           name: '',
+//           innerSize: '50%',
+//           data: [
+//           ['Manage Down',     10.38],
+//           ['Manage Across',   56.33],
+//           ['Manage Up',       24.03],
+//           ['Desk Time',        4.77],
+//           {
+//             name: 'Proprietary or Undetectable',
+//             y: 0.2,
+//             dataLabels: {
+//               enabled: false
+//             }
+//           }
+//           ]
+//         }]
+//       });
+// });
 </script>
 </div>     
 </div>
@@ -962,7 +1002,100 @@ a .glyphicon-info-sign:hover {
 </div>  
       </div>
       <div class="col-md-4">
-        
+        <style>
+      
+  .goal-met-true {
+    color: #A6D53A;
+  }
+  .goal-met-false {
+    color: #FC9430;
+  }
+  .figure {
+    font-size: 64px;
+    font-weight: 200;
+  }
+   .days-chart, .days-chart-legend {
+    position: absolute;
+    top:105px;
+    text-align: center;
+    left:50%;
+    margin-left: -195px;
+    width:350px;
+  }
+  .days-chart-vis {
+    margin-top:75px;
+  }
+  .days-chart .timeline {
+    background: #fff url('/design/images/days-chart-bkd.png') no-repeat 0 12.5px !important;
+    margin: 0 -2px;
+  }
+  .days-chart.work-week-days .timeline {
+    width: 10%;
+  }
+  .days-chart.full-week-days .timeline {
+    width: 5%;
+  }
+  .days-chart .work-day {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .work-day.key,
+  .days-chart .goal-met-false.key {
+    height: 12px;
+    width: 12px;
+  }
+  .days-chart li {
+    display:inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 25px;
+    white-space: nowrap;
+  }
+  .days-chart .day {
+    width: 25px;
+    margin:0 -1px;
+    border-radius: 100%;
+    background-color: #d7d7d7;
+  }
+  .days-chart .sep {
+    width:10%;
+    background: #fff url(' /design/images/days-chart-bkd.png') no-repeat 0 12.5px;
+    margin:0 -2px;
+  }
+  .days-chart .goal-met-true {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .goal-met-false {
+    background-color: #FFC960;
+    background-image: -webkit-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: -o-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: linear-gradient(#FFC960 0%, #FFA00C 100%);
+  }
+  .figure {
+    font-size: 38px;
+    font-weight: 300; 
+  }
+  .day-label {
+    font-size: 11px;
+    color: #555555;
+    position: absolute;
+    bottom:-20px;
+    width:100%;
+    text-align: center;
+    text-align: -webkit-center;
+    display: block;
+  }
+  .days-chart-legend {
+    top: 275px;
+  }
+</style>
 <div class="panel panel-default">
       <div class="panel-heading">
             <div class="panel-title">
