@@ -393,7 +393,7 @@
             <h4>Engagement</h4>
             <div class="row">
               <div class="col-sm-8">
-                <table class="table" id="ee-datatable">
+                <table class="table">
                   <tr>
                     <th></th>
                     <th>April</th>
@@ -429,15 +429,69 @@
                 </table>
               </div>
               <div class="col-sm-4">
+                <table id="ee-datatable" class="hidden">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      
+                      <th>Accounts Engaged</th>
+                      
+                      <th>Accounts Contacted</th>
+                      
+                      <th>New Accounts Engaged (Qtr)</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>April</td>
+                      
+                      <td>260</td>
+                      
+                      <td>460</td>
+                      
+                      <td>260</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>May</td>
+                      
+                      <td>342</td>
+                      
+                      <td>469</td>
+                      
+                      <td>180</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>June</td>
+                      
+                      <td>227</td>
+                      
+                      <td>380</td>
+                      
+                      <td>60</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>July</td>
+                      
+                      <td>227</td>
+                      
+                      <td>380</td>
+                      
+                      <td>60</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
                 <div id="ee-table"></div>
                 <script>
                   $(function () {
+                    Highcharts.setOptions(Highcharts.theme);
                     $('#ee-table').highcharts({
-                        data: {
-                            table: 'ee-datatable'
-                        },
                         chart: {
-                            type: 'column',
+                            type: 'spline',
                             height: 200,
                             width: 230
                         },
@@ -445,22 +499,31 @@
                             text: null
                         },
                         yAxis: {
-                            allowDecimals: false,
                             title: {
                                 text: null
                             }
                         },
+                        xAxis: {
+                          categories: ['Apr','May','Jun','Jul'],
+                          title: {
+                            text: null
+                          }
+                        },
+                        series: [{
+                          name: 'Accounts Engaged',
+                          data: [260, 342, 227, 227]
+                        }, {
+                          name: 'Accounts Contacted',
+                          data: [460, 469, 380, 380]
+                        }, {
+                          name: 'New Accounts Engaged',
+                          data: [260, 180, 90, 90]
+                        }],
                         credits: {
                           enabled: false
                         },
                         exporting: {
                           enabled: false
-                        },
-                        tooltip: {
-                            formatter: function () {
-                                return '<b>' + this.series.name + '</b><br/>' +
-                                    this.point.y + ' ' + this.point.name.toLowerCase();
-                            }
                         }
                     });
                 });
@@ -470,7 +533,7 @@
             <h4>Time</h4>
             <div class="row">
               <div class="col-sm-8">
-                <table class="table" id="et-datatable">
+                <table class="table">
                   <tr>
                     <th></th>
                     <th>April</th>
@@ -498,15 +561,62 @@
                 </table>
               </div>
               <div class="col-sm-4">
+                <table id="et-datatable" class="hidden">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      
+                      <th>Time with Customers</th>
+                      
+                      <th>Time with Key Accounts</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>April</td>
+                      
+                      <td>975</td>
+                      
+                      <td>126</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>May</td>
+                      
+                      <td>1297</td>
+                      
+                      <td>167</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>June</td>
+                      
+                      <td>709</td>
+                      
+                      <td>90</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>July</td>
+                      
+                      <td>709</td>
+                      
+                      <td>90</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
                 <div id="et-table"></div>
                 <script>
                   $(function () {
+                    Highcharts.setOptions(Highcharts.theme);
                     $('#et-table').highcharts({
                         data: {
-                            table: 'et-datatable'
+                          table: 'et-datatable'
                         },
                         chart: {
-                            type: 'column',
+                            type: 'spline',
                             height: 200,
                             width: 230
                         },
@@ -514,7 +624,6 @@
                             text: null
                         },
                         yAxis: {
-                            allowDecimals: false,
                             title: {
                                 text: null
                             }
@@ -524,12 +633,6 @@
                         },
                         exporting: {
                           enabled: false
-                        },
-                        tooltip: {
-                            formatter: function () {
-                                return '<b>' + this.series.name + '</b><br/>' +
-                                    this.point.y + ' ' + this.point.name.toLowerCase();
-                            }
                         }
                     });
                 });
@@ -539,7 +642,7 @@
             <h4>Sales</h4>
             <div class="row">
               <div class="col-sm-8">
-  							<table class="table" id="es-datatable">
+  							<table class="table">
   								<tr>
   									<th></th>
   									<th>April</th>
@@ -607,23 +710,119 @@
                 </table>
               </div>
               <div class="col-sm-4">
+                <table id="es-datatable" class="hidden">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      
+                      <th>Salespeople</th>
+                      
+                      <th>Accounts Contacted / Salesperson</th>
+                      
+                      <th>Accounts Engaged / Salesperson</th>
+                      
+                      <th>Hours / week with Customer</th>
+                      
+                      <th>Breadth of customer network</th>
+                      
+                      <th>Size of customer network</th>
+                      
+                      <th>Hours in Internal Meetings</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>April</td>
+                      
+                      <td>43</td>
+                      
+                      <td>11</td>
+                      
+                      <td>6</td>
+                      
+                      <td>8</td>
+                      
+                      <td>17</td>
+                      
+                      <td>38</td>
+                      
+                      <td>5</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>May</td>
+                      
+                      <td>43</td>
+                      
+                      <td>11</td>
+                      
+                      <td>8</td>
+                      
+                      <td>10</td>
+                      
+                      <td>18</td>
+                      
+                      <td>42</td>
+                      
+                      <td>6</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>June</td>
+                      
+                      <td>43</td>
+                      
+                      <td>9</td>
+                      
+                      <td>5</td>
+                      
+                      <td>10</td>
+                      
+                      <td>19</td>
+                      
+                      <td>45</td>
+                      
+                      <td>4</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>July</td>
+                      
+                      <td>43</td>
+                      
+                      <td>9</td>
+                      
+                      <td>5</td>
+                      
+                      <td>10</td>
+                      
+                      <td>19</td>
+                      
+                      <td>45</td>
+                      
+                      <td>4</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
                 <div id="es-table"></div>
                 <script>
                   $(function () {
+                    Highcharts.setOptions(Highcharts.theme);
                     $('#es-table').highcharts({
                         data: {
-                            table: 'es-datatable'
+                          table: 'es-datatable'
                         },
                         chart: {
-                            type: 'column',
-                            height: 200,
+                            type: 'spline',
+                            height: 300,
                             width: 230
                         },
                         title: {
                             text: null
                         },
                         yAxis: {
-                            allowDecimals: false,
                             title: {
                                 text: null
                             }
@@ -633,12 +832,6 @@
                         },
                         exporting: {
                           enabled: false
-                        },
-                        tooltip: {
-                            formatter: function () {
-                                return '<b>' + this.series.name + '</b><br/>' +
-                                    this.point.y + ' ' + this.point.name.toLowerCase();
-                            }
                         }
                     });
                 });
@@ -664,7 +857,7 @@
             <h4>Engagement</h4>
             <div class="row">
               <div class="col-sm-8">
-                <table class="table" id="we-datatable">
+                <table class="table">
                   <tr>
                     <th></th>
                     <th>April</th>
@@ -700,15 +893,72 @@
                 </table>
               </div>
               <div class="col-sm-4">
+                <table id="we-datatable" class="hidden">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      
+                      <th>Accounts Contacted</th>
+                      
+                      <th>Accounts Engaged</th>
+                      
+                      <th>New Accounts Engaged (Qtr)</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>April</td>
+                      
+                      <td>331</td>
+                      
+                      <td>211</td>
+                      
+                      <td>211</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>May</td>
+                      
+                      <td>362</td>
+                      
+                      <td>278</td>
+                      
+                      <td>146</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>June</td>
+                      
+                      <td>310</td>
+                      
+                      <td>198</td>
+                      
+                      <td>45</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>July</td>
+                      
+                      <td>310</td>
+                      
+                      <td>198</td>
+                      
+                      <td>45</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
                 <div id="we-table"></div>
                 <script>
                   $(function () {
+                    Highcharts.setOptions(Highcharts.theme);
                     $('#we-table').highcharts({
                         data: {
-                            table: 'we-datatable'
+                          table: 'we-datatable'
                         },
                         chart: {
-                            type: 'column',
+                            type: 'spline',
                             height: 200,
                             width: 230
                         },
@@ -716,7 +966,6 @@
                             text: null
                         },
                         yAxis: {
-                            allowDecimals: false,
                             title: {
                                 text: null
                             }
@@ -726,12 +975,6 @@
                         },
                         exporting: {
                           enabled: false
-                        },
-                        tooltip: {
-                            formatter: function () {
-                                return '<b>' + this.series.name + '</b><br/>' +
-                                    this.point.y + ' ' + this.point.name.toLowerCase();
-                            }
                         }
                     });
                 });
@@ -741,7 +984,7 @@
             <h4>Time</h4>
             <div class="row">
               <div class="col-sm-8">
-                <table class="table" id="wt-datatable">
+                <table class="table">
                   <tr>
                     <th></th>
                     <th>April</th>
@@ -769,15 +1012,62 @@
                 </table>
               </div>
               <div class="col-sm-4">
+                <table id="wt-datatable" class="hidden">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      
+                      <th>Time with Customers</th>
+                      
+                      <th>Time with Key Accounts</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>April</td>
+                      
+                      <td>797</td>
+                      
+                      <td>129</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>May</td>
+                      
+                      <td>959</td>
+                      
+                      <td>104</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>June</td>
+                      
+                      <td>540</td>
+                      
+                      <td>62</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>July</td>
+                      
+                      <td>540</td>
+                      
+                      <td>62</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
                 <div id="wt-table"></div>
                 <script>
                   $(function () {
+                    Highcharts.setOptions(Highcharts.theme);
                     $('#wt-table').highcharts({
                         data: {
-                            table: 'wt-datatable'
+                          table: 'wt-datatable'
                         },
                         chart: {
-                            type: 'column',
+                            type: 'spline',
                             height: 200,
                             width: 230
                         },
@@ -785,7 +1075,6 @@
                             text: null
                         },
                         yAxis: {
-                            allowDecimals: false,
                             title: {
                                 text: null
                             }
@@ -795,12 +1084,6 @@
                         },
                         exporting: {
                           enabled: false
-                        },
-                        tooltip: {
-                            formatter: function () {
-                                return '<b>' + this.series.name + '</b><br/>' +
-                                    this.point.y + ' ' + this.point.name.toLowerCase();
-                            }
                         }
                     });
                 });
@@ -810,7 +1093,7 @@
             <h4>Sales</h4>
             <div class="row">
               <div class="col-sm-8">
-                <table class="table" id="ws-datatable">
+                <table class="table">
                   <tr>
                     <th></th>
                     <th>April</th>
@@ -820,7 +1103,7 @@
                   </tr>
                   
                   <tr>
-                    <td class="metric"># of Salespeople</td>
+                    <td class="metric">Salespeople</td>
                     <td class="">35</td>
                     <td class="">35</td>
                     <td class="">34</td>
@@ -828,7 +1111,7 @@
                   </tr>
                   
                   <tr>
-                    <td class="metric"># of Accounts Contacted / Salesperson</td>
+                    <td class="metric">Accounts Contacted / Salesperson</td>
                     <td class="">9</td>
                     <td class="">10</td>
                     <td class="">9</td>
@@ -836,7 +1119,7 @@
                   </tr>
                   
                   <tr>
-                    <td class="metric"># of Accounts Engaged / Salesperson</td>
+                    <td class="metric">Accounts Engaged / Salesperson</td>
                     <td class="">6</td>
                     <td class="">8</td>
                     <td class="">6</td>
@@ -878,23 +1161,119 @@
                 </table>
               </div>
               <div class="col-sm-4">
+                <table id="ws-datatable" class="hidden">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      
+                      <th>Salespeople</th>
+                      
+                      <th>Accounts Contacted / Salesperson</th>
+                      
+                      <th>Accounts Engaged / Salesperson</th>
+                      
+                      <th>Hours / week with Customer</th>
+                      
+                      <th>Breadth of customer network</th>
+                      
+                      <th>Size of customer network</th>
+                      
+                      <th>Hours in Internal Meetings</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>April</td>
+                      
+                      <td>35</td>
+                      
+                      <td>9</td>
+                      
+                      <td>6</td>
+                      
+                      <td>8</td>
+                      
+                      <td>6</td>
+                      
+                      <td>12</td>
+                      
+                      <td>6</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>May</td>
+                      
+                      <td>35</td>
+                      
+                      <td>10</td>
+                      
+                      <td>8</td>
+                      
+                      <td>9</td>
+                      
+                      <td>6</td>
+                      
+                      <td>12</td>
+                      
+                      <td>7</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>June</td>
+                      
+                      <td>34</td>
+                      
+                      <td>9</td>
+                      
+                      <td>6</td>
+                      
+                      <td>10</td>
+                      
+                      <td>6</td>
+                      
+                      <td>13</td>
+                      
+                      <td>5</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>July</td>
+                      
+                      <td>34</td>
+                      
+                      <td>9</td>
+                      
+                      <td>6</td>
+                      
+                      <td>10</td>
+                      
+                      <td>6</td>
+                      
+                      <td>13</td>
+                      
+                      <td>5</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
                 <div id="ws-table"></div>
                 <script>
                   $(function () {
+                    Highcharts.setOptions(Highcharts.theme);
                     $('#ws-table').highcharts({
                         data: {
-                            table: 'ws-datatable'
+                          table: 'ws-datatable'
                         },
                         chart: {
-                            type: 'column',
-                            height: 200,
+                            type: 'spline',
+                            height: 300,
                             width: 230
                         },
                         title: {
                             text: null
                         },
                         yAxis: {
-                            allowDecimals: false,
                             title: {
                                 text: null
                             }
@@ -904,12 +1283,6 @@
                         },
                         exporting: {
                           enabled: false
-                        },
-                        tooltip: {
-                            formatter: function () {
-                                return '<b>' + this.series.name + '</b><br/>' +
-                                    this.point.y + ' ' + this.point.name.toLowerCase();
-                            }
                         }
                     });
                 });
@@ -936,7 +1309,7 @@
             <h4>Engagement</h4>
             <div class="row">
               <div class="col-sm-8">
-                <table class="table" id="le-datatable">
+                <table class="table">
                   <tr>
                     <th></th>
                     <th>April</th>
@@ -972,23 +1345,79 @@
                 </table>
               </div>
               <div class="col-sm-4">
+                <table id="le-datatable" class="hidden">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      
+                      <th>Accounts Contacted</th>
+                      
+                      <th>Accounts Engaged</th>
+                      
+                      <th>New Accounts Engaged (Qtr)</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>April</td>
+                      
+                      <td>145</td>
+                      
+                      <td>85</td>
+                      
+                      <td>85</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>May</td>
+                      
+                      <td>159</td>
+                      
+                      <td>139</td>
+                      
+                      <td>91</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>June</td>
+                      
+                      <td>149</td>
+                      
+                      <td>95</td>
+                      
+                      <td>29</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>July</td>
+                      
+                      <td>149</td>
+                      
+                      <td>95</td>
+                      
+                      <td>29</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
                 <div id="le-table"></div>
                 <script>
                   $(function () {
+                    Highcharts.setOptions(Highcharts.theme);
                     $('#le-table').highcharts({
                         data: {
-                            table: 'le-datatable'
+                          table: 'le-datatable'
                         },
                         chart: {
-                            type: 'column',
+                            type: 'spline',
                             height: 200,
-                            width:230
+                            width: 230
                         },
                         title: {
                             text: null
                         },
                         yAxis: {
-                            allowDecimals: false,
                             title: {
                                 text: null
                             }
@@ -998,12 +1427,6 @@
                         },
                         exporting: {
                           enabled: false
-                        },
-                        tooltip: {
-                            formatter: function () {
-                                return '<b>' + this.series.name + '</b><br/>' +
-                                    this.point.y + ' ' + this.point.name.toLowerCase();
-                            }
                         }
                     });
                 });
@@ -1041,15 +1464,62 @@
                 </table>
               </div>
               <div class="col-sm-4">
+                <table id="lt-datatable" class="hidden">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      
+                      <th>Time with Customers</th>
+                      
+                      <th>Time with Key Accounts</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>April</td>
+                      
+                      <td>229</td>
+                      
+                      <td></td>
+                      
+                    </tr>
+                    <tr>
+                      <td>May</td>
+                      
+                      <td>592</td>
+                      
+                      <td></td>
+                      
+                    </tr>
+                    <tr>
+                      <td>June</td>
+                      
+                      <td>246</td>
+                      
+                      <td></td>
+                      
+                    </tr>
+                    <tr>
+                      <td>July</td>
+                      
+                      <td>246</td>
+                      
+                      <td></td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
                 <div id="lt-table"></div>
                 <script>
                   $(function () {
+                    Highcharts.setOptions(Highcharts.theme);
                     $('#lt-table').highcharts({
                         data: {
-                            table: 'lt-datatable'
+                          table: 'lt-datatable'
                         },
                         chart: {
-                            type: 'column',
+                            type: 'spline',
                             height: 200,
                             width: 230
                         },
@@ -1057,7 +1527,6 @@
                             text: null
                         },
                         yAxis: {
-                            allowDecimals: false,
                             title: {
                                 text: null
                             }
@@ -1067,12 +1536,6 @@
                         },
                         exporting: {
                           enabled: false
-                        },
-                        tooltip: {
-                            formatter: function () {
-                                return '<b>' + this.series.name + '</b><br/>' +
-                                    this.point.y + ' ' + this.point.name.toLowerCase();
-                            }
                         }
                     });
                 });
@@ -1082,7 +1545,7 @@
             <h4>Sales</h4>
             <div class="row">
               <div class="col-sm-8">
-                <table class="table" id="ls-datatable">
+                <table class="table">
                   <tr>
                     <th></th>
                     <th>April</th>
@@ -1150,23 +1613,119 @@
                 </table>
               </div>
               <div class="col-sm-4">
+                <table id="ls-datatable" class="hidden">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      
+                      <th>Salespeople</th>
+                      
+                      <th>Accounts Contacted / Salesperson</th>
+                      
+                      <th>Accounts Engaged / Salesperson</th>
+                      
+                      <th>Hours / week with Customer</th>
+                      
+                      <th>Breadth of customer network</th>
+                      
+                      <th>Size of customer network</th>
+                      
+                      <th>Hours in Internal Meetings</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>April</td>
+                      
+                      <td>19</td>
+                      
+                      <td>8</td>
+                      
+                      <td>4</td>
+                      
+                      <td>4</td>
+                      
+                      <td>17</td>
+                      
+                      <td>36</td>
+                      
+                      <td>8</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>May</td>
+                      
+                      <td>19</td>
+                      
+                      <td>8</td>
+                      
+                      <td>7</td>
+                      
+                      <td>9</td>
+                      
+                      <td>17</td>
+                      
+                      <td>36</td>
+                      
+                      <td>7</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>June</td>
+                      
+                      <td>19</td>
+                      
+                      <td>8</td>
+                      
+                      <td>5</td>
+                      
+                      <td>8</td>
+                      
+                      <td>18</td>
+                      
+                      <td>40</td>
+                      
+                      <td>9</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>July</td>
+                      
+                      <td>19</td>
+                      
+                      <td>8</td>
+                      
+                      <td>5</td>
+                      
+                      <td>8</td>
+                      
+                      <td>18</td>
+                      
+                      <td>40</td>
+                      
+                      <td>9</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
                 <div id="ls-table"></div>
                 <script>
                   $(function () {
+                    Highcharts.setOptions(Highcharts.theme);
                     $('#ls-table').highcharts({
                         data: {
-                            table: 'ls-datatable'
+                          table: 'ls-datatable'
                         },
                         chart: {
-                            type: 'column',
-                            height: 200,
-                            width:230
+                            type: 'spline',
+                            height: 300,
+                            width: 230
                         },
                         title: {
                             text: null
                         },
                         yAxis: {
-                            allowDecimals: false,
                             title: {
                                 text: null
                             }
@@ -1176,12 +1735,6 @@
                         },
                         exporting: {
                           enabled: false
-                        },
-                        tooltip: {
-                            formatter: function () {
-                                return '<b>' + this.series.name + '</b><br/>' +
-                                    this.point.y + ' ' + this.point.name.toLowerCase();
-                            }
                         }
                     });
                 });

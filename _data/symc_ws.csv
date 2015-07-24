@@ -1,7 +1,7 @@
 Region,Section,Metric,April,May,June,July,Benchmark
-West,Sales,# of Salespeople,35,35,34,34,
-West,Sales,# of Accounts Contacted / Salesperson,9,10,9,9,
-West,Sales,# of Accounts Engaged / Salesperson,6,8,6,6,
+West,Sales,Salespeople,35,35,34,34,
+West,Sales,Accounts Contacted / Salesperson,9,10,9,9,
+West,Sales,Accounts Engaged / Salesperson,6,8,6,6,
 West,Sales,Hours / week with Customer,8,9,10,10,
 West,Sales,Breadth of customer network,6,6,6,6,
 West,Sales,Size of customer network,12,12,13,13,
