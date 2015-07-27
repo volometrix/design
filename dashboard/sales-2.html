@@ -1,90 +1,91 @@
+---
+layout: 
+title:
+permalink: /sales-2/
+page-title: SYMC | Volometrix Account Engagement Report
+---
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>SYMC-Monthly-Sales-Report</title>
-  <!-- Personal Dashboard -->
-	<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-">
-	<link rel="stylesheet" href="/design/css/main.css">
-	<link rel="canonical" href="https://volometrix.github.io/design/monthly-sales/">
-	<link rel="alternate" type="application/rss+xml" title="Personal Dashboard" href="https://volometrix.github.io/design/feed.xml" />
-	<link rel="stylesheet" href="/design/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
-	<link rel="stylesheet" href="/design/css/prism.css">
-	<script src="/design/javascript/jquery-2.1.3.min.js"></script>
-	<script src="/design/javascript/bootstrap.min.js"></script>
-	<script src="/design/javascript/highcharts.js"></script>
-	<script src="/design/javascript/exporting.js"></script>
-	<script src="/design/javascript/drilldown.js"></script>
-	<script src="/design/javascript/data.js"></script>
-	<script src="/design/javascript/highcharts-more.js"></script>
-	<script src="/design/javascript/d3.v3.4.8.js"></script>
-	<script src="/design/javascript/dimple.v2.0.0.min.js"></script>
-	<script src="/design/javascript/jquery.cookie.min.js"></script>
-	<script src="/design/javascript/personalDashboardHCTheme.js"></script>
-	<script src="/design/javascript/jquery.dataTables.min.js"></script>
-	<script src="/design/javascript/dataTables.bootstrap.js"></script>
-	<script src="/design/javascript/jquery.sparkline.js"></script>
-	<style>
-	body {
-		background: #eee;
-	}
-  	.container {
-  		max-width: 850px;
-  	}
-  	.nav {
-  		margin-top: 25px;
-  	}
-  	.box
-  	{
-  		position: relative;
-  		padding: 50px;
-  		margin: 0 auto 150px auto;
-  		background-color: #fff;
-  		-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-  		-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-  		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-  	}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SYMC-Monthly-Sales-Report</title>
+  <!-- {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %} -->
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
+  <script src="{{ site.baseurl }}/javascript/jquery-2.1.3.min.js"></script>
+  <script src="{{ site.baseurl }}/javascript/bootstrap.min.js"></script>
+  <script src="{{ site.baseurl }}/javascript/highcharts.js"></script>
+  <script src="{{ site.baseurl }}/javascript/exporting.js"></script>
+  <script src="{{ site.baseurl }}/javascript/drilldown.js"></script>
+  <script src="{{ site.baseurl }}/javascript/data.js"></script>
+  <script src="{{ site.baseurl }}/javascript/highcharts-more.js"></script>
+  <script src="{{ site.baseurl }}/javascript/d3.v3.4.8.js"></script>
+  <script src="{{ site.baseurl }}/javascript/dimple.v2.0.0.min.js"></script>
+  <script src="{{ site.baseurl }}/javascript/jquery.cookie.min.js"></script>
+  <script src="{{ site.baseurl }}/javascript/personalDashboardHCTheme.js"></script>
+  <script src="{{ site.baseurl }}/javascript/jquery.dataTables.min.js"></script>
+  <script src="{{ site.baseurl }}/javascript/dataTables.bootstrap.js"></script>
+  <script src="{{ site.baseurl }}/javascript/jquery.sparkline.js"></script>
+  <style>
+    body {
+      background: #eee;
+    }
+    .container {
+      max-width: 850px;
+    }
+    .nav {
+      margin-top: 25px;
+    }
+    .box {
+      position: relative;
+      padding: 50px;
+      margin: 0 auto 150px auto;
+      background-color: #fff;
+      -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    }
+    .box:before, .box:after {
+      position: absolute;
+      width: 40%;
+      height: 10px;
+      content: ' ';
+      left: 12px;
+      bottom: 12px;
+      background: transparent;
+      -webkit-transform: skew(-5deg) rotate(-5deg);
+      -moz-transform: skew(-5deg) rotate(-5deg);
+      -ms-transform: skew(-5deg) rotate(-5deg);
+      -o-transform: skew(-5deg) rotate(-5deg);
+      transform: skew(-5deg) rotate(-5deg);
+      -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    } 
 
-  	.box:before, .box:after
-  	{
-  		position: absolute;
-  		width: 40%;
-  		height: 10px;
-  		content: ' ';
-  		left: 12px;
-  		bottom: 12px;
-  		background: transparent;
-  		-webkit-transform: skew(-5deg) rotate(-5deg);
-  		-moz-transform: skew(-5deg) rotate(-5deg);
-  		-ms-transform: skew(-5deg) rotate(-5deg);
-  		-o-transform: skew(-5deg) rotate(-5deg);
-  		transform: skew(-5deg) rotate(-5deg);
-  		-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  		-moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  		z-index: -1;
-  	} 
-
-  	.box:after
-  	{
-  		left: auto;
-  		right: 12px;
-  		-webkit-transform: skew(5deg) rotate(5deg);
-  		-moz-transform: skew(5deg) rotate(5deg);
-  		-ms-transform: skew(5deg) rotate(5deg);
-  		-o-transform: skew(5deg) rotate(5deg);
-  		transform: skew(5deg) rotate(5deg);
-  	} 
-  	.masthead {
-  		text-align: center;
-  	}
-  	th {
-  		background: #f9f9f9;
-  	}
+    .box:after {
+      left: auto;
+      right: 12px;
+      -webkit-transform: skew(5deg) rotate(5deg);
+      -moz-transform: skew(5deg) rotate(5deg);
+      -ms-transform: skew(5deg) rotate(5deg);
+      -o-transform: skew(5deg) rotate(5deg);
+      transform: skew(5deg) rotate(5deg);
+    } 
+    .masthead {
+      text-align: center;
+    }
+    th {
+      background: #f9f9f9;
+    }
     table td.metric {
       width:50%;
     }
@@ -108,28 +109,28 @@
       z-index: 10;
     }
 
-  	/* Print */
+    /* Print */
 
-  	@media print {
+    @media print {
       #instructions {
         display: none;
       }
-  		h1 {
-  			color: #000;
-  			background: none;
-  		}
-  		h1, h2, h3 {
-  			page-break-after: avoid;
-  		}
-  		body, article {
-  			width: 100%;
-  			margin: 0;
-  			padding: 0;
-  		}
-  		.tab-pane {
+      h1 {
+        color: #000;
+        background: none;
+      }
+      h1, h2, h3 {
+        page-break-after: avoid;
+      }
+      body, article {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .tab-pane {
         page-break-before: always !important;
-  			page-break-after: always !important;
-  		}
+        page-break-after: always !important;
+      }
       #print-wrapper  .container {
         width: 595px;
         margin:0;
@@ -177,9 +178,9 @@
         opacity: 1 !important; 
         visibility: visible !important
       }
-  		@page {
-  			margin: 2cm;
-  		}
+      @page {
+        margin: 2cm;
+      }
     }
     @media print and (color) {
       * {
@@ -187,7 +188,7 @@
         print-color-adjust: exact;
       }
     }
-  	</style>
+    </style>
     <script>
       $(function () {
         /**
@@ -282,7 +283,6 @@
                 }
             };
             options = Highcharts.merge(defaultOptions, options);
-
             return new Highcharts.Chart(options, callback);
         };
 
@@ -342,7 +342,6 @@
             }
         }
         doChunk();
-
     });
     </script>
   </head>
@@ -361,34 +360,34 @@
         <li>Save As PDF</li>
       </ol>
     </div>
-  	<div id="print-wrapper">
-  		<div class="container nav-container">
-  			<div class="row">
-  				<div class="col-sm-12">
-  					<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#east-region" aria-controls="home" role="tab" data-toggle="tab">East Region</a></li>
-							<li role="presentation"><a href="#west-region" aria-controls="profile" role="tab" data-toggle="tab">West Region</a></li>
-							<li role="presentation"><a href="#latin-america" aria-controls="messages" role="tab" data-toggle="tab">Latin America</a></li>
-						</ul>
-  				</div>
-  			</div>
-  		</div>
-  		<div id="print-container" class="box container">
-  			<div class="tab-content">
-  				<div role="tabpanel" class="tab-pane fade in active" id="east-region">
+    <div id="print-wrapper">
+      <div class="container nav-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#east-region" aria-controls="home" role="tab" data-toggle="tab">East Region</a></li>
+              <li role="presentation"><a href="#west-region" aria-controls="profile" role="tab" data-toggle="tab">West Region</a></li>
+              <li role="presentation"><a href="#latin-america" aria-controls="messages" role="tab" data-toggle="tab">Latin America</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="print-container" class="box container">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active" id="east-region">
             <div class="row">
               <div class="col-sm-12">
-                <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-                <img src="/design/images/symc-logo.svg" alt="Symantec">
+                <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
               </div>
             </div>
             <hr>
-  					<div class="row">
-  						<div class="masthead col-sm-12">
-  							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
-  							<h2 class="report-subtitle">East Region, June 2015</h2>
-  						</div>
-  					</div>
+            <div class="row">
+              <div class="masthead col-sm-12">
+                <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
+                <h2 class="report-subtitle">East Region, June 2015</h2>
+              </div>
+            </div>
             <hr>
             <h4>Engagement</h4>
             <div class="row">
@@ -401,31 +400,15 @@
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  
+                  {% for ee in site.data.symc_ee %}
                   <tr>
-                    <td class="metric">Accounts Engaged</td>
-                    <td class="">260</td>
-                    <td class="">342</td>
-                    <td class="">227</td>
-                    <td class="">300</td>
+                    <td class="metric">{{ ee.Metric }}</td>
+                    <td class="">{{ ee.April }}</td>
+                    <td class="">{{ ee.May }}</td>
+                    <td class="">{{ ee.June }}</td>
+                    <td class="">{{ ee.July }}</td>
                   </tr>
-                  
-                  <tr>
-                    <td class="metric">Accounts Contacted</td>
-                    <td class="">460</td>
-                    <td class="">469</td>
-                    <td class="">380</td>
-                    <td class="">400</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">New Accounts Engaged (Qtr)</td>
-                    <td class="">260</td>
-                    <td class="">180</td>
-                    <td class="">60</td>
-                    <td class="">300</td>
-                  </tr>
-                  
+                  {% endfor %}
                 </table>
               </div>
               <div class="col-sm-4">
@@ -433,55 +416,35 @@
                   <thead>
                     <tr>
                       <th></th>
-                      
-                      <th>Accounts Engaged</th>
-                      
-                      <th>Accounts Contacted</th>
-                      
-                      <th>New Accounts Engaged (Qtr)</th>
-                      
+                      {% for ee in site.data.symc_ee %}
+                      <th>{{ ee.Metric }}</th>
+                      {% endfor %}
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      
-                      <td>260</td>
-                      
-                      <td>460</td>
-                      
-                      <td>260</td>
-                      
+                      {% for ee in site.data.symc_ee %}
+                      <td>{{ ee.April }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>May</td>
-                      
-                      <td>342</td>
-                      
-                      <td>469</td>
-                      
-                      <td>180</td>
-                      
+                      {% for ee in site.data.symc_ee %}
+                      <td>{{ ee.May }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>June</td>
-                      
-                      <td>227</td>
-                      
-                      <td>380</td>
-                      
-                      <td>60</td>
-                      
+                      {% for ee in site.data.symc_ee %}
+                      <td>{{ ee.June }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>July</td>
-                      
-                      <td>300</td>
-                      
-                      <td>400</td>
-                      
-                      <td>300</td>
-                      
+                      {% for ee in site.data.symc_ee %}
+                      <td>{{ ee.July }}</td>
+                      {% endfor %}
                     </tr>
                   </tbody>
                 </table>
@@ -541,23 +504,15 @@
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  
+                  {% for et in site.data.symc_et %}
                   <tr>
-                    <td class="metric">Time with Customers</td>
-                    <td class="">975</td>
-                    <td class="">1297</td>
-                    <td class="">709</td>
-                    <td class="">900</td>
+                    <td class="metric">{{ et.Metric }}</td>
+                    <td class="">{{ et.April }}</td>
+                    <td class="">{{ et.May }}</td>
+                    <td class="">{{ et.June }}</td>
+                    <td class="">{{ et.July }}</td>
                   </tr>
-                  
-                  <tr>
-                    <td class="metric">Time with Key Accounts</td>
-                    <td class="">126</td>
-                    <td class="">167</td>
-                    <td class="">90</td>
-                    <td class="">100</td>
-                  </tr>
-                  
+                  {% endfor %}
                 </table>
               </div>
               <div class="col-sm-4">
@@ -565,45 +520,35 @@
                   <thead>
                     <tr>
                       <th></th>
-                      
-                      <th>Time with Customers</th>
-                      
-                      <th>Time with Key Accounts</th>
-                      
+                      {% for et in site.data.symc_et %}
+                      <th>{{ et.Metric }}</th>
+                      {% endfor %}
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      
-                      <td>975</td>
-                      
-                      <td>126</td>
-                      
+                      {% for et in site.data.symc_et %}
+                      <td>{{ et.April }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>May</td>
-                      
-                      <td>1297</td>
-                      
-                      <td>167</td>
-                      
+                      {% for et in site.data.symc_et %}
+                      <td>{{ et.May }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>June</td>
-                      
-                      <td>709</td>
-                      
-                      <td>90</td>
-                      
+                      {% for et in site.data.symc_et %}
+                      <td>{{ et.June }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>July</td>
-                      
-                      <td>900</td>
-                      
-                      <td>100</td>
-                      
+                      {% for et in site.data.symc_et %}
+                      <td>{{ et.July }}</td>
+                      {% endfor %}
                     </tr>
                   </tbody>
                 </table>
@@ -642,71 +587,23 @@
             <h4>Sales</h4>
             <div class="row">
               <div class="col-sm-8">
-  							<table class="table">
-  								<tr>
-  									<th></th>
-  									<th>April</th>
+                <table class="table">
+                  <tr>
+                    <th></th>
+                    <th>April</th>
                     <th>May</th>
                     <th>June</th>
                     <th>July</th>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Salespeople</td>
-                    <td class="">43</td>
-                    <td class="">43</td>
-                    <td class="">43</td>
-                    <td class=""></td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Accounts Contacted / Salesperson</td>
-                    <td class="">11</td>
-                    <td class="">11</td>
-                    <td class="">9</td>
-                    <td class="">10</td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Accounts Engaged / Salesperson</td>
-                    <td class="">6</td>
-                    <td class="">8</td>
-                    <td class="">5</td>
-                    <td class="">6</td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Hours / week with Customer</td>
-                    <td class="">8</td>
-                    <td class="">10</td>
-                    <td class="">10</td>
-                    <td class="">10</td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Breadth of customer network</td>
-                    <td class="">17</td>
-                    <td class="">18</td>
-                    <td class="">19</td>
-                    <td class="">20</td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Size of customer network</td>
-                    <td class="">38</td>
-                    <td class="">42</td>
-                    <td class="">45</td>
-                    <td class="">40</td>
-  								</tr>
-  								
-  								<tr>
-  									<td class="metric">Hours in Internal Meetings</td>
-                    <td class="">5</td>
-                    <td class="">6</td>
-                    <td class="">4</td>
-                    <td class="">8</td>
-  								</tr>
-  								
+                  </tr>
+                  {% for es in site.data.symc_es %}
+                  <tr>
+                    <td class="metric">{{ es.Metric }}</td>
+                    <td class="">{{ es.April }}</td>
+                    <td class="">{{ es.May }}</td>
+                    <td class="">{{ es.June }}</td>
+                    <td class="">{{ es.July }}</td>
+                  </tr>
+                  {% endfor %}
                 </table>
               </div>
               <div class="col-sm-4">
@@ -714,95 +611,35 @@
                   <thead>
                     <tr>
                       <th></th>
-                      
-                      <th>Salespeople</th>
-                      
-                      <th>Accounts Contacted / Salesperson</th>
-                      
-                      <th>Accounts Engaged / Salesperson</th>
-                      
-                      <th>Hours / week with Customer</th>
-                      
-                      <th>Breadth of customer network</th>
-                      
-                      <th>Size of customer network</th>
-                      
-                      <th>Hours in Internal Meetings</th>
-                      
+                      {% for es in site.data.symc_es %}
+                      <th>{{ es.Metric }}</th>
+                      {% endfor %}
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      
-                      <td>43</td>
-                      
-                      <td>11</td>
-                      
-                      <td>6</td>
-                      
-                      <td>8</td>
-                      
-                      <td>17</td>
-                      
-                      <td>38</td>
-                      
-                      <td>5</td>
-                      
+                      {% for es in site.data.symc_es %}
+                      <td>{{ es.April }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>May</td>
-                      
-                      <td>43</td>
-                      
-                      <td>11</td>
-                      
-                      <td>8</td>
-                      
-                      <td>10</td>
-                      
-                      <td>18</td>
-                      
-                      <td>42</td>
-                      
-                      <td>6</td>
-                      
+                      {% for es in site.data.symc_es %}
+                      <td>{{ es.May }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>June</td>
-                      
-                      <td>43</td>
-                      
-                      <td>9</td>
-                      
-                      <td>5</td>
-                      
-                      <td>10</td>
-                      
-                      <td>19</td>
-                      
-                      <td>45</td>
-                      
-                      <td>4</td>
-                      
+                      {% for es in site.data.symc_es %}
+                      <td>{{ es.June }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>July</td>
-                      
-                      <td></td>
-                      
-                      <td>10</td>
-                      
-                      <td>6</td>
-                      
-                      <td>10</td>
-                      
-                      <td>20</td>
-                      
-                      <td>40</td>
-                      
-                      <td>8</td>
-                      
+                      {% for es in site.data.symc_es %}
+                      <td>{{ es.July }}</td>
+                      {% endfor %}
                     </tr>
                   </tbody>
                 </table>
@@ -840,11 +677,11 @@
             </div>
           </div>
 
-  					<div role="tabpanel" class="tab-pane fade" id="west-region">
+            <div role="tabpanel" class="tab-pane fade" id="west-region">
               <div class="row">
                 <div class="col-sm-12">
-                  <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-                  <img src="/design/images/symc-logo.svg" alt="Symantec">
+                  <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                  <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
               <div class="row">
@@ -865,31 +702,15 @@
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  
+                  {% for we in site.data.symc_we %}
                   <tr>
-                    <td class="metric">Accounts Contacted</td>
-                    <td class="">331</td>
-                    <td class="">362</td>
-                    <td class="">310</td>
-                    <td class="">310</td>
+                    <td class="metric">{{ we.Metric }}</td>
+                    <td class="">{{ we.April }}</td>
+                    <td class="">{{ we.May }}</td>
+                    <td class="">{{ we.June }}</td>
+                    <td class="">{{ we.July }}</td>
                   </tr>
-                  
-                  <tr>
-                    <td class="metric">Accounts Engaged</td>
-                    <td class="">211</td>
-                    <td class="">278</td>
-                    <td class="">198</td>
-                    <td class="">198</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">New Accounts Engaged (Qtr)</td>
-                    <td class="">211</td>
-                    <td class="">146</td>
-                    <td class="">45</td>
-                    <td class="">45</td>
-                  </tr>
-                  
+                  {% endfor %}
                 </table>
               </div>
               <div class="col-sm-4">
@@ -897,55 +718,35 @@
                   <thead>
                     <tr>
                       <th></th>
-                      
-                      <th>Accounts Contacted</th>
-                      
-                      <th>Accounts Engaged</th>
-                      
-                      <th>New Accounts Engaged (Qtr)</th>
-                      
+                      {% for we in site.data.symc_we %}
+                      <th>{{ we.Metric }}</th>
+                      {% endfor %}
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      
-                      <td>331</td>
-                      
-                      <td>211</td>
-                      
-                      <td>211</td>
-                      
+                      {% for we in site.data.symc_we %}
+                      <td>{{ we.April }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>May</td>
-                      
-                      <td>362</td>
-                      
-                      <td>278</td>
-                      
-                      <td>146</td>
-                      
+                      {% for we in site.data.symc_we %}
+                      <td>{{ we.May }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>June</td>
-                      
-                      <td>310</td>
-                      
-                      <td>198</td>
-                      
-                      <td>45</td>
-                      
+                      {% for we in site.data.symc_we %}
+                      <td>{{ we.June }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>July</td>
-                      
-                      <td>310</td>
-                      
-                      <td>198</td>
-                      
-                      <td>45</td>
-                      
+                      {% for we in site.data.symc_we %}
+                      <td>{{ we.July }}</td>
+                      {% endfor %}
                     </tr>
                   </tbody>
                 </table>
@@ -992,23 +793,15 @@
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  
+                  {% for wt in site.data.symc_wt %}
                   <tr>
-                    <td class="metric">Time with Customers</td>
-                    <td class="">797</td>
-                    <td class="">959</td>
-                    <td class="">540</td>
-                    <td class="">540</td>
+                    <td class="metric">{{ wt.Metric }}</td>
+                    <td class="">{{ wt.April }}</td>
+                    <td class="">{{ wt.May }}</td>
+                    <td class="">{{ wt.June }}</td>
+                    <td class="">{{ wt.July }}</td>
                   </tr>
-                  
-                  <tr>
-                    <td class="metric">Time with Key Accounts</td>
-                    <td class="">129</td>
-                    <td class="">104</td>
-                    <td class="">62</td>
-                    <td class="">62</td>
-                  </tr>
-                  
+                  {% endfor %}
                 </table>
               </div>
               <div class="col-sm-4">
@@ -1016,45 +809,35 @@
                   <thead>
                     <tr>
                       <th></th>
-                      
-                      <th>Time with Customers</th>
-                      
-                      <th>Time with Key Accounts</th>
-                      
+                      {% for wt in site.data.symc_wt %}
+                      <th>{{ wt.Metric }}</th>
+                      {% endfor %}
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      
-                      <td>797</td>
-                      
-                      <td>129</td>
-                      
+                      {% for wt in site.data.symc_wt %}
+                      <td>{{ wt.April }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>May</td>
-                      
-                      <td>959</td>
-                      
-                      <td>104</td>
-                      
+                      {% for wt in site.data.symc_wt %}
+                      <td>{{ wt.May }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>June</td>
-                      
-                      <td>540</td>
-                      
-                      <td>62</td>
-                      
+                      {% for wt in site.data.symc_wt %}
+                      <td>{{ wt.June }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>July</td>
-                      
-                      <td>540</td>
-                      
-                      <td>62</td>
-                      
+                      {% for wt in site.data.symc_wt %}
+                      <td>{{ wt.July }}</td>
+                      {% endfor %}
                     </tr>
                   </tbody>
                 </table>
@@ -1101,63 +884,15 @@
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  
+                  {% for ws in site.data.symc_ws %}
                   <tr>
-                    <td class="metric">Salespeople</td>
-                    <td class="">35</td>
-                    <td class="">35</td>
-                    <td class="">34</td>
-                    <td class="">34</td>
+                    <td class="metric">{{ ws.Metric }}</td>
+                    <td class="">{{ ws.April }}</td>
+                    <td class="">{{ ws.May }}</td>
+                    <td class="">{{ ws.June }}</td>
+                    <td class="">{{ ws.July }}</td>
                   </tr>
-                  
-                  <tr>
-                    <td class="metric">Accounts Contacted / Salesperson</td>
-                    <td class="">9</td>
-                    <td class="">10</td>
-                    <td class="">9</td>
-                    <td class="">9</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">Accounts Engaged / Salesperson</td>
-                    <td class="">6</td>
-                    <td class="">8</td>
-                    <td class="">6</td>
-                    <td class="">6</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">Hours / week with Customer</td>
-                    <td class="">8</td>
-                    <td class="">9</td>
-                    <td class="">10</td>
-                    <td class="">10</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">Breadth of customer network</td>
-                    <td class="">6</td>
-                    <td class="">6</td>
-                    <td class="">6</td>
-                    <td class="">6</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">Size of customer network</td>
-                    <td class="">12</td>
-                    <td class="">12</td>
-                    <td class="">13</td>
-                    <td class="">13</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">Hours in Internal Meetings</td>
-                    <td class="">6</td>
-                    <td class="">7</td>
-                    <td class="">5</td>
-                    <td class="">5</td>
-                  </tr>
-                  
+                  {% endfor %}
                 </table>
               </div>
               <div class="col-sm-4">
@@ -1165,95 +900,35 @@
                   <thead>
                     <tr>
                       <th></th>
-                      
-                      <th>Salespeople</th>
-                      
-                      <th>Accounts Contacted / Salesperson</th>
-                      
-                      <th>Accounts Engaged / Salesperson</th>
-                      
-                      <th>Hours / week with Customer</th>
-                      
-                      <th>Breadth of customer network</th>
-                      
-                      <th>Size of customer network</th>
-                      
-                      <th>Hours in Internal Meetings</th>
-                      
+                      {% for ws in site.data.symc_ws %}
+                      <th>{{ ws.Metric }}</th>
+                      {% endfor %}
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      
-                      <td>35</td>
-                      
-                      <td>9</td>
-                      
-                      <td>6</td>
-                      
-                      <td>8</td>
-                      
-                      <td>6</td>
-                      
-                      <td>12</td>
-                      
-                      <td>6</td>
-                      
+                      {% for ws in site.data.symc_ws %}
+                      <td>{{ ws.April }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>May</td>
-                      
-                      <td>35</td>
-                      
-                      <td>10</td>
-                      
-                      <td>8</td>
-                      
-                      <td>9</td>
-                      
-                      <td>6</td>
-                      
-                      <td>12</td>
-                      
-                      <td>7</td>
-                      
+                      {% for ws in site.data.symc_ws %}
+                      <td>{{ ws.May }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>June</td>
-                      
-                      <td>34</td>
-                      
-                      <td>9</td>
-                      
-                      <td>6</td>
-                      
-                      <td>10</td>
-                      
-                      <td>6</td>
-                      
-                      <td>13</td>
-                      
-                      <td>5</td>
-                      
+                      {% for ws in site.data.symc_ws %}
+                      <td>{{ ws.June }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>July</td>
-                      
-                      <td>34</td>
-                      
-                      <td>9</td>
-                      
-                      <td>6</td>
-                      
-                      <td>10</td>
-                      
-                      <td>6</td>
-                      
-                      <td>13</td>
-                      
-                      <td>5</td>
-                      
+                      {% for ws in site.data.symc_ws %}
+                      <td>{{ ws.July }}</td>
+                      {% endfor %}
                     </tr>
                   </tbody>
                 </table>
@@ -1289,23 +964,23 @@
                 </script>
                 </div>
               </div>
-  					</div>
+            </div>
 
-  					<div role="tabpanel" class="tab-pane fade" id="latin-america">
+            <div role="tabpanel" class="tab-pane fade" id="latin-america">
               <div class="row">
                 <div class="col-sm-12">
-                  <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-                  <img src="/design/images/symc-logo.svg" alt="Symantec">
+                  <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                  <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
               <hr>
-  						<div class="row">
-  						<div class="masthead col-sm-12">
-  							<h1 class="report-title">Welcome to your monthly sales retrospective</h1>
-  							<h2 class="report-subtitle">Latin America Region, June 2015</h2>
-  						</div>
-  					</div>
-  					<hr>
+              <div class="row">
+              <div class="masthead col-sm-12">
+                <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
+                <h2 class="report-subtitle">Latin America Region, June 2015</h2>
+              </div>
+            </div>
+            <hr>
             <h4>Engagement</h4>
             <div class="row">
               <div class="col-sm-8">
@@ -1317,31 +992,15 @@
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  
+                  {% for le in site.data.symc_le %}
                   <tr>
-                    <td class="metric">Accounts Contacted</td>
-                    <td class="">145</td>
-                    <td class="">159</td>
-                    <td class="">149</td>
-                    <td class="">149</td>
+                    <td class="metric">{{ le.Metric }}</td>
+                    <td class="">{{ le.April }}</td>
+                    <td class="">{{ le.May }}</td>
+                    <td class="">{{ le.June }}</td>
+                    <td class="">{{ le.July }}</td>
                   </tr>
-                  
-                  <tr>
-                    <td class="metric">Accounts Engaged</td>
-                    <td class="">85</td>
-                    <td class="">139</td>
-                    <td class="">95</td>
-                    <td class="">95</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">New Accounts Engaged (Qtr)</td>
-                    <td class="">85</td>
-                    <td class="">91</td>
-                    <td class="">29</td>
-                    <td class="">29</td>
-                  </tr>
-                  
+                  {% endfor %}
                 </table>
               </div>
               <div class="col-sm-4">
@@ -1349,55 +1008,35 @@
                   <thead>
                     <tr>
                       <th></th>
-                      
-                      <th>Accounts Contacted</th>
-                      
-                      <th>Accounts Engaged</th>
-                      
-                      <th>New Accounts Engaged (Qtr)</th>
-                      
+                      {% for le in site.data.symc_le %}
+                      <th>{{ le.Metric }}</th>
+                      {% endfor %}
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      
-                      <td>145</td>
-                      
-                      <td>85</td>
-                      
-                      <td>85</td>
-                      
+                      {% for le in site.data.symc_le %}
+                      <td>{{ le.April }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>May</td>
-                      
-                      <td>159</td>
-                      
-                      <td>139</td>
-                      
-                      <td>91</td>
-                      
+                      {% for le in site.data.symc_le %}
+                      <td>{{ le.May }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>June</td>
-                      
-                      <td>149</td>
-                      
-                      <td>95</td>
-                      
-                      <td>29</td>
-                      
+                      {% for le in site.data.symc_le %}
+                      <td>{{ le.June }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>July</td>
-                      
-                      <td>149</td>
-                      
-                      <td>95</td>
-                      
-                      <td>29</td>
-                      
+                      {% for le in site.data.symc_le %}
+                      <td>{{ le.July }}</td>
+                      {% endfor %}
                     </tr>
                   </tbody>
                 </table>
@@ -1444,23 +1083,15 @@
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  
+                  {% for lt in site.data.symc_lt %}
                   <tr>
-                    <td class="metric">Time with Customers</td>
-                    <td class="">229</td>
-                    <td class="">592</td>
-                    <td class="">246</td>
-                    <td class="">246</td>
+                    <td class="metric">{{ lt.Metric }}</td>
+                    <td class="">{{ lt.April }}</td>
+                    <td class="">{{ lt.May }}</td>
+                    <td class="">{{ lt.June }}</td>
+                    <td class="">{{ lt.July }}</td>
                   </tr>
-                  
-                  <tr>
-                    <td class="metric">Time with Key Accounts</td>
-                    <td class=""></td>
-                    <td class=""></td>
-                    <td class=""></td>
-                    <td class=""></td>
-                  </tr>
-                  
+                  {% endfor %}
                 </table>
               </div>
               <div class="col-sm-4">
@@ -1468,45 +1099,35 @@
                   <thead>
                     <tr>
                       <th></th>
-                      
-                      <th>Time with Customers</th>
-                      
-                      <th>Time with Key Accounts</th>
-                      
+                      {% for lt in site.data.symc_lt %}
+                      <th>{{ lt.Metric }}</th>
+                      {% endfor %}
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      
-                      <td>229</td>
-                      
-                      <td></td>
-                      
+                      {% for lt in site.data.symc_lt %}
+                      <td>{{ lt.April }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>May</td>
-                      
-                      <td>592</td>
-                      
-                      <td></td>
-                      
+                      {% for lt in site.data.symc_lt %}
+                      <td>{{ lt.May }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>June</td>
-                      
-                      <td>246</td>
-                      
-                      <td></td>
-                      
+                      {% for lt in site.data.symc_lt %}
+                      <td>{{ lt.June }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>July</td>
-                      
-                      <td>246</td>
-                      
-                      <td></td>
-                      
+                      {% for lt in site.data.symc_lt %}
+                      <td>{{ lt.July }}</td>
+                      {% endfor %}
                     </tr>
                   </tbody>
                 </table>
@@ -1553,63 +1174,15 @@
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  
+                  {% for ls in site.data.symc_ls %}
                   <tr>
-                    <td class="metric">Salespeople</td>
-                    <td class="">19</td>
-                    <td class="">19</td>
-                    <td class="">19</td>
-                    <td class="">19</td>
+                    <td class="metric">{{ ls.Metric }}</td>
+                    <td class="">{{ ls.April }}</td>
+                    <td class="">{{ ls.May }}</td>
+                    <td class="">{{ ls.June }}</td>
+                    <td class="">{{ ls.July }}</td>
                   </tr>
-                  
-                  <tr>
-                    <td class="metric">Accounts Contacted / Salesperson</td>
-                    <td class="">8</td>
-                    <td class="">8</td>
-                    <td class="">8</td>
-                    <td class="">8</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">Accounts Engaged / Salesperson</td>
-                    <td class="">4</td>
-                    <td class="">7</td>
-                    <td class="">5</td>
-                    <td class="">5</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">Hours / week with Customer</td>
-                    <td class="">4</td>
-                    <td class="">9</td>
-                    <td class="">8</td>
-                    <td class="">8</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">Breadth of customer network</td>
-                    <td class="">17</td>
-                    <td class="">17</td>
-                    <td class="">18</td>
-                    <td class="">18</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">Size of customer network</td>
-                    <td class="">36</td>
-                    <td class="">36</td>
-                    <td class="">40</td>
-                    <td class="">40</td>
-                  </tr>
-                  
-                  <tr>
-                    <td class="metric">Hours in Internal Meetings</td>
-                    <td class="">8</td>
-                    <td class="">7</td>
-                    <td class="">9</td>
-                    <td class="">9</td>
-                  </tr>
-                  
+                  {% endfor %}
                 </table>
               </div>
               <div class="col-sm-4">
@@ -1617,95 +1190,35 @@
                   <thead>
                     <tr>
                       <th></th>
-                      
-                      <th>Salespeople</th>
-                      
-                      <th>Accounts Contacted / Salesperson</th>
-                      
-                      <th>Accounts Engaged / Salesperson</th>
-                      
-                      <th>Hours / week with Customer</th>
-                      
-                      <th>Breadth of customer network</th>
-                      
-                      <th>Size of customer network</th>
-                      
-                      <th>Hours in Internal Meetings</th>
-                      
+                      {% for ls in site.data.symc_ls %}
+                      <th>{{ ls.Metric }}</th>
+                      {% endfor %}
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      
-                      <td>19</td>
-                      
-                      <td>8</td>
-                      
-                      <td>4</td>
-                      
-                      <td>4</td>
-                      
-                      <td>17</td>
-                      
-                      <td>36</td>
-                      
-                      <td>8</td>
-                      
+                      {% for ls in site.data.symc_ls %}
+                      <td>{{ ls.April }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>May</td>
-                      
-                      <td>19</td>
-                      
-                      <td>8</td>
-                      
-                      <td>7</td>
-                      
-                      <td>9</td>
-                      
-                      <td>17</td>
-                      
-                      <td>36</td>
-                      
-                      <td>7</td>
-                      
+                      {% for ls in site.data.symc_ls %}
+                      <td>{{ ls.May }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>June</td>
-                      
-                      <td>19</td>
-                      
-                      <td>8</td>
-                      
-                      <td>5</td>
-                      
-                      <td>8</td>
-                      
-                      <td>18</td>
-                      
-                      <td>40</td>
-                      
-                      <td>9</td>
-                      
+                      {% for ls in site.data.symc_ls %}
+                      <td>{{ ls.June }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <td>July</td>
-                      
-                      <td>19</td>
-                      
-                      <td>8</td>
-                      
-                      <td>5</td>
-                      
-                      <td>8</td>
-                      
-                      <td>18</td>
-                      
-                      <td>40</td>
-                      
-                      <td>9</td>
-                      
+                      {% for ls in site.data.symc_ls %}
+                      <td>{{ ls.July }}</td>
+                      {% endfor %}
                     </tr>
                   </tbody>
                 </table>
@@ -1741,9 +1254,9 @@
                 </script>
                 </div>
               </div>
-  					</div>
-  				</div>
-  			</div>
+            </div>
+          </div>
+        </div>
       </div>
-  		</body>
-  		</html>
+      </body>
+      </html>

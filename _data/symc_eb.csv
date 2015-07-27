@@ -1,0 +1,5 @@
+Metric,Value,vDir,vTxt,Benchmark,bDir,bTxt,Peer,pDir,pTxt
+Customer Network Size,88,top,success,66,bottom,danger,77,bottom,danger
+Hrs./Wk per Customer,88,top,success,55,bottom,danger,99,bottom,danger
+Internal,77,top,success,66,bottom,danger,99,bottom,danger
+Other,66,top,success,66,bottom,danger,88,bottom,danger
