@@ -401,7 +401,7 @@ report-title: Account Engagement Report
             <h4>Time with Customer</h4>
             <div class="row">
               <div class="col-sm-4">
-                <p><span class="h1 figure">231</span><span class="h5">total hours</span></p>
+                <p><span class="h1 figure">231</span>hours</p>
               </div>
               <div class="col-sm-8">
                 <div id="customer-chart"></div>
@@ -427,28 +427,35 @@ report-title: Account Engagement Report
                         },
                         yAxis: {
                             title: {
-                                text: null
+                                text: 'Hours'
                             }
                         },
                         xAxis: {
-                          categories: ['Jul','Aug','Sep'],
+                          categories: ['July','August','September'],
                           title: {
                             text: null
                           }
                         },
+                        plotOptions: {
+                            series: {
+                                marker: {
+                                    radius: 6
+                                },
+                                dataLabels: {
+                                    align: 'left',
+                                    enabled: true
+                                }
+                            }
+                        },
                         series: [{
                           name: 'Value',
-                          data: [975, 1297, null],
+                          data: [975, null, null],
                           color: '#05B0E6'
                         }, {
-                          name: 'Benchmark',
-                          data: [875, 997, null],
+                          name: 'Previous Qtr',
+                          data: [775, null, null],
                           color: '#666',
                           dashStyle: 'shortdot'
-                        }, {
-                          name: 'Previous Qtr',
-                          data: [775, 1397, null],
-                          color: '#666'
                         }],
                         credits: {
                           enabled: false
@@ -465,7 +472,7 @@ report-title: Account Engagement Report
             <h4>Time with Key Contacts</h4>
             <div class="row">
               <div class="col-sm-4">
-                <p><span class="h1 figure">41</span><span class="h5">hours</span></p>
+                <p><span class="h1 figure">41</span>hours</p>
               </div>
               <div class="col-sm-8">
                 <div id="key-contacts-chart"></div>
@@ -491,28 +498,35 @@ report-title: Account Engagement Report
                         },
                         yAxis: {
                             title: {
-                                text: null
+                                text: 'Hours'
                             }
                         },
                         xAxis: {
-                          categories: ['Jul','Aug','Sep'],
+                          categories: ['July','August','September'],
                           title: {
                             text: null
                           }
                         },
+                        plotOptions: {
+                            series: {
+                                marker: {
+                                    radius: 6
+                                },
+                                dataLabels: {
+                                    align: 'left',
+                                    enabled: true
+                                }
+                            }
+                        },
                         series: [{
                           name: 'Value',
-                          data: [126, 167, null],
+                          data: [126, null, null],
                           color: '#05B0E6'
                         }, {
-                          name: 'Benchmark',
-                          data: [106, 106, null],
+                          name: 'Previous Qtr',
+                          data: [106, null, null],
                           color: '#666',
                           dashStyle: 'shortdot'
-                        }, {
-                          name: 'Previous Qtr',
-                          data: [96, 187, null],
-                          color: '#666'
                         }],
                         credits: {
                           enabled: false
@@ -532,42 +546,137 @@ report-title: Account Engagement Report
                 <table class="table">
                   <tr>
                     <th style="width:50%"></th>
-                    <th style="width:16.666%">July</th>
-                    <th style="width:16.666%">Prev Qtr (Apr)</th>
-                    <th style="width:16.666%">Benchmark</th>
+                    <th style="width:12.5%">April</th>
+                    <th style="width:12.5%">June</th>
+                    <th style="width:12.5%">July</th>
                   </tr>
                   {% for ea in site.data.symc_ea %}
                   <tr>
                     <td>{{ ea.Metric }}</td>
-                    <td>{{ ea.Value }}</td>
-                    <td>{{ ea.PrevQtr }} <span class="glyphicon glyphicon-triangle-{{ea.pqDir}} text-{{ea.pqTxt}}"></span></td>
-                    <td>{{ ea.Benchmark }} </td>
+                    <td>{{ ea.April }}<span class="glyphicon glyphicon-triangle-{{ea.pqDir}} text-{{ea.pqTxt}}"></span></td>
+                    <td>{{ ea.June }} <span class="glyphicon glyphicon-triangle-{{ea.pqDir}} text-{{ea.pqTxt}}"></span></td>
+                    <td>{{ ea.July }} </td>
                   </tr>
                   {% endfor %}
                 </table>
               </div>
             </div>
           </div>
-            <hr>
-            <h4>AE Behaviors</h4>
+          <hr>
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-sm-4">
+                <p>
+                  <span class="h5">Customer Network Size</span><br>
+                  <span class="h1 figure">88</span>ppl
+                </p>
+                <div id="network-size-chart"></div>
+                 <script>
+                  $(function () {
+                    Highcharts.setOptions(Highcharts.theme);
+                    $('#network-size-chart').highcharts({
+                        chart: {
+                            type: 'column',
+                            // width: 230,
+                            // marginRight: 125
+                            height: 120
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: {
+                            title: {
+                                text: null
+                            },
+                          // plotLines: [{
+                          //     color: '#000',
+                          //     width: 2,
+                          //     value: 110,
+                          //     label: {
+                          //         text: 'Benchmark',
+                          //         align: 'right',
+                          //         x: -10
+                          //     }
+                          // }]
+                        },
+                        xAxis: {
+                          categories: ['Q2','Peer','Benchmark'],
+                          title: {
+                            text: null
+                          }
+                        },
+                        plotOptions: {
+                            series: {
+                                marker: {
+                                    radius: 2
+                                },
+                                dataLabels: {
+                                    align: 'left',
+                                    enabled: true
+                                }
+                            }
+                        },
+                        series: [{
+                          data: [120,80,90]
+                        }],
+                        credits: {
+                          enabled: false
+                        },
+                        exporting: {
+                          enabled: false
+                        }
+                    });
+                });
+                </script>
+                <table class="table hidden">
+                  <tr>
+                    <th>Q2</th>
+                    <th>Benchmark</th>
+                    <th>Peer</th>
+                  </tr>
+                  <tr>
+                    <td>88 <span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
+                    <td>88 <span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
+                    <td>88 <span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <p>
+                  <span class="h5">Hours per Week per Customer</span><br>
+                  <span class="h1 figure">88</span>hrs</p>
                 <table class="table">
                   <tr>
-                    <th style="width:50%"></th>
-                    <th style="width:16.666%">Value</th>
-                    <th style="width:16.666%">Benchmark</th>
-                    <th style="width:16.666%">Peer</th>
+                    <th>Q2</th>
+                    <th>Benchmark</th>
+                    <th>Peer</th>
                   </tr>
-                  {% for eb in site.data.symc_eb %}
                   <tr>
-                    <td>{{ eb.Metric }}</td>
-                    <td>{{ eb.Value }} <span class="glyphicon glyphicon-triangle-{{eb.vDir}} text-{{eb.vTxt}}"></span></td>
-                    <td>{{ eb.Benchmark }} <span class="glyphicon glyphicon-triangle-{{eb.bDir}} text-{{eb.bTxt}}"></span></td>
-                    <td>{{ eb.Peer }} <span class="glyphicon glyphicon-triangle-{{eb.pDir}} text-{{eb.pTxt}}"></span></td>
+                    <td>88 <span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
+                    <td>88 <span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
+                    <td>88 <span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
                   </tr>
-                  {% endfor %}
                 </table>
+              </div>
+              <div class="col-sm-4">
+                <p>
+                  <span class="h5">Internal Meeting Time</span><br>
+                  <span class="h1 figure">88</span>hrs
+                </p>
+                <table class="table">
+                  <tr>
+                    <th>Q2</th>
+                    <th>Benchmark</th>
+                    <th>Peer</th>
+                  </tr>
+                  <tr>
+                    <td>88 <span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
+                    <td>88 <span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
+                    <td>88 <span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
+                  </tr>
+                </table>  
               </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="west-region">

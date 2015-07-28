@@ -11,7 +11,7 @@
   <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
   <link rel="stylesheet" href="/design/css/main.css">
-  <link rel="canonical" href="https://volometrix.github.io/design/">
+  <link rel="canonical" href="https://volometrix.github.io/design/pie.html">
   <link rel="alternate" type="application/rss+xml" title="Personal Dashboard" href="https://volometrix.github.io/design/feed.xml" />
   <link rel="stylesheet" href="/design/css/bootstrap.min.css">
   <link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
@@ -234,16 +234,62 @@
         <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Design</h1>
-      <p class="lead">Principles, guidelines and assets for designing and building Volometrix products</p>
-      <p><strong>Version:</strong> This version was created for Gene.</p>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-12">
-      
-      
+      <div id="pie"></div>
+<script>
+    $(function () {
+    $('#pie').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        title: {
+            text: '',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 40
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: true,
+                    distance: -50,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white',
+                        textShadow: '0px 1px 2px black'
+                    }
+                },
+                startAngle: 180,
+                //endAngle: 90,
+                //center: ['50%', '75%']
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            innerSize: '50%',
+            data: [
+                ['', 40],
+                ['', 30],
+                ['', 30],
+                {
+                    name: 'Proprietary or Undetectable',
+                    y: 0.2,
+                    dataLabels: {
+                        enabled: false
+                    }
+                }
+            ]
+        }]
+    });
+});
+
+
+</script>
     </div>
   </div>
 </div>
