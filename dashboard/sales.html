@@ -410,7 +410,7 @@ report-title: Account Engagement Report
                     Highcharts.setOptions(Highcharts.theme);
                     $('#customer-chart').highcharts({
                         chart: {
-                            type: 'column',
+                            type: 'spline',
                             // width: 230,
                             marginRight: 125,
                             height: 200
@@ -452,11 +452,11 @@ report-title: Account Engagement Report
                         },
                         series: [{
                           name: 'Current Qtr',
-                          data: [975, null, null],
+                          data: [975, 902, null],
                           color: '#05B0E6'
                         }, {
                           name: 'Previous Qtr',
-                          data: [775, null, null],
+                          data: [775, 665, null],
                           color: '#666',
                           dashStyle: 'shortdot'
                         }],
@@ -484,7 +484,7 @@ report-title: Account Engagement Report
                     Highcharts.setOptions(Highcharts.theme);
                     $('#key-contacts-chart').highcharts({
                         chart: {
-                            type: 'column',
+                            type: 'spline',
                             // width: 230,
                             marginRight: 125,
                             height: 200
@@ -526,11 +526,11 @@ report-title: Account Engagement Report
                         },
                         series: [{
                           name: 'Current Qtr',
-                          data: [126, null, null],
+                          data: [126, 156, null],
                           color: '#05B0E6'
                         }, {
                           name: 'Previous Qtr',
-                          data: [106, null, null],
+                          data: [106, 90, null],
                           color: '#666',
                           dashStyle: 'shortdot'
                         }],
@@ -552,16 +552,16 @@ report-title: Account Engagement Report
                 <table class="table">
                   <tr>
                     <th style="width:50%"></th>
-                    <th style="width:12.5%">April</th>
-                    <th style="width:12.5%">June</th>
                     <th style="width:12.5%">July</th>
+                    <th style="width:12.5%">Prior Quarter (April)</th>
+                    <th style="width:12.5%">Prior Quarter (Total)</th>
                   </tr>
                   {% for ea in site.data.symc_ea %}
                   <tr>
                     <td>{{ ea.Metric }}</td>
+                    <td>{{ ea.July }} </td>
                     <td>{{ ea.April }}<span class="glyphicon glyphicon-triangle-{{ea.pqDir}} text-{{ea.pqTxt}}"></span></td>
                     <td>{{ ea.June }} <span class="glyphicon glyphicon-triangle-{{ea.pqDir}} text-{{ea.pqTxt}}"></span></td>
-                    <td>{{ ea.July }} </td>
                   </tr>
                   {% endfor %}
                 </table>

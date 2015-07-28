@@ -404,7 +404,7 @@
                     Highcharts.setOptions(Highcharts.theme);
                     $('#customer-chart').highcharts({
                         chart: {
-                            type: 'column',
+                            type: 'spline',
                             // width: 230,
                             marginRight: 125,
                             height: 200
@@ -446,11 +446,11 @@
                         },
                         series: [{
                           name: 'Current Qtr',
-                          data: [975, null, null],
+                          data: [975, 902, null],
                           color: '#05B0E6'
                         }, {
                           name: 'Previous Qtr',
-                          data: [775, null, null],
+                          data: [775, 665, null],
                           color: '#666',
                           dashStyle: 'shortdot'
                         }],
@@ -478,7 +478,7 @@
                     Highcharts.setOptions(Highcharts.theme);
                     $('#key-contacts-chart').highcharts({
                         chart: {
-                            type: 'column',
+                            type: 'spline',
                             // width: 230,
                             marginRight: 125,
                             height: 200
@@ -520,11 +520,11 @@
                         },
                         series: [{
                           name: 'Current Qtr',
-                          data: [126, null, null],
+                          data: [126, 156, null],
                           color: '#05B0E6'
                         }, {
                           name: 'Previous Qtr',
-                          data: [106, null, null],
+                          data: [106, 90, null],
                           color: '#666',
                           dashStyle: 'shortdot'
                         }],
@@ -546,30 +546,30 @@
                 <table class="table">
                   <tr>
                     <th style="width:50%"></th>
-                    <th style="width:12.5%">April</th>
-                    <th style="width:12.5%">June</th>
                     <th style="width:12.5%">July</th>
+                    <th style="width:12.5%">Prior Quarter (April)</th>
+                    <th style="width:12.5%">Prior Quarter (Total)</th>
                   </tr>
                   
                   <tr>
                     <td>Accounts Engaged</td>
+                    <td>227 </td>
                     <td>260<span class="glyphicon glyphicon-triangle-top text-success"></span></td>
                     <td>342 <span class="glyphicon glyphicon-triangle-top text-success"></span></td>
-                    <td>227 </td>
                   </tr>
                   
                   <tr>
                     <td>Accounts Contacted</td>
+                    <td>380 </td>
                     <td>460<span class="glyphicon glyphicon-triangle-top text-success"></span></td>
                     <td>469 <span class="glyphicon glyphicon-triangle-top text-success"></span></td>
-                    <td>380 </td>
                   </tr>
                   
                   <tr>
-                    <td>New Accounts Engaged (Qtr)</td>
+                    <td>New Accounts Engaged – FY15</td>
+                    <td>60 </td>
                     <td>260<span class="glyphicon glyphicon-triangle-top text-success"></span></td>
                     <td>180 <span class="glyphicon glyphicon-triangle-top text-success"></span></td>
-                    <td>60 </td>
                   </tr>
                   
                 </table>
