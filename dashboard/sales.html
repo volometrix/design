@@ -400,10 +400,10 @@ report-title: Account Engagement Report
             <hr>
             <h4>Time with Customer</h4>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-2">
                 <p><span class="h1 figure">231</span>hours</p>
               </div>
-              <div class="col-sm-8">
+              <div class="col-sm-10">
                 <div id="customer-chart"></div>
                 <script>
                   $(function () {
@@ -412,22 +412,25 @@ report-title: Account Engagement Report
                         chart: {
                             type: 'spline',
                             // width: 230,
-                            // marginRight: 125
+                            marginRight: 125,
                             height: 200
                         },
-                        // legend: {
-                        //     align: 'right',
-                        //     verticalAlign: 'top',
-                        //     layout: 'vertical',
-                        //     x: 0,
-                        //     y: 0
-                        // },
+                        legend: {
+                            align: 'right',
+                            verticalAlign: 'top',
+                            layout: 'vertical',
+                            x: 0,
+                            y: 0
+                        },
                         title: {
                             text: null
                         },
                         yAxis: {
                             title: {
-                                text: 'Hours'
+                                text: 'Time (hrs)'
+                            },
+                            labels: {
+                              enabled: false
                             }
                         },
                         xAxis: {
@@ -448,7 +451,7 @@ report-title: Account Engagement Report
                             }
                         },
                         series: [{
-                          name: 'Value',
+                          name: 'Current Qtr',
                           data: [975, null, null],
                           color: '#05B0E6'
                         }, {
@@ -471,10 +474,10 @@ report-title: Account Engagement Report
             <hr>
             <h4>Time with Key Contacts</h4>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-2">
                 <p><span class="h1 figure">41</span>hours</p>
               </div>
-              <div class="col-sm-8">
+              <div class="col-sm-10">
                 <div id="key-contacts-chart"></div>
                  <script>
                   $(function () {
@@ -483,22 +486,25 @@ report-title: Account Engagement Report
                         chart: {
                             type: 'spline',
                             // width: 230,
-                            // marginRight: 125
+                            marginRight: 125,
                             height: 200
                         },
-                        // legend: {
-                        //     align: 'right',
-                        //     verticalAlign: 'top',
-                        //     layout: 'vertical',
-                        //     x: 0,
-                        //     y: 0
-                        // },
+                        legend: {
+                            align: 'right',
+                            verticalAlign: 'top',
+                            layout: 'vertical',
+                            x: 0,
+                            y: 0
+                        },
                         title: {
                             text: null
                         },
                         yAxis: {
                             title: {
-                                text: 'Hours'
+                                text: 'Time (hrs)'
+                            },
+                            labels: {
+                              enabled: false
                             }
                         },
                         xAxis: {
@@ -519,7 +525,7 @@ report-title: Account Engagement Report
                             }
                         },
                         series: [{
-                          name: 'Value',
+                          name: 'Current Qtr',
                           data: [126, null, null],
                           color: '#05B0E6'
                         }, {
@@ -590,19 +596,22 @@ report-title: Account Engagement Report
                             title: {
                                 text: null
                             },
-                          // plotLines: [{
-                          //     color: '#000',
-                          //     width: 2,
-                          //     value: 110,
-                          //     label: {
-                          //         text: 'Benchmark',
-                          //         align: 'right',
-                          //         x: -10
-                          //     }
-                          // }]
+                            labels: {
+                              enabled: false
+                            },
+                          plotLines: [{
+                              color: '#666',
+                              width: 2,
+                              value: 110,
+                              label: {
+                                  text: 'BM',
+                                  align: 'right',
+                                  x: 0
+                              }
+                          }]
                         },
                         xAxis: {
-                          categories: ['Q2','Peer','Benchmark'],
+                          categories: ['Q2','Peer'],
                           title: {
                             text: null
                           }
@@ -613,13 +622,14 @@ report-title: Account Engagement Report
                                     radius: 2
                                 },
                                 dataLabels: {
-                                    align: 'left',
+                                    align: 'center',
+                                    verticalalign: 'bottom',
                                     enabled: true
                                 }
                             }
                         },
                         series: [{
-                          data: [120,80,90]
+                          data: [120,80]
                         }],
                         credits: {
                           enabled: false
