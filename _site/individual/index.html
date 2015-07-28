@@ -1162,6 +1162,9 @@ a .glyphicon-info-sign:hover {
 #xaxis-label-1 {
     fill: red;
 }
+.table.borderless td, .table.borderless th {
+    border: none;
+}
 </style>
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -1175,21 +1178,23 @@ a .glyphicon-info-sign:hover {
     <div class="panel-body">
       <p>Send and receive more effective email <a href="#" data-toggle="popover" data-placement="top" data-html="true" data-content="<strong>A meeting’s quality is determined by its MQI</strong><br>, the Meeting Quality Index, which uses meeting components like the duration of the meeting, number of attendees, level of engagement, number of declines/double books, and number of levels present to rate the meeting.<br><a href='#'>Learn more</a>."><i class="glyphicon glyphicon-info-sign"></i></a>.</p>
         <div class="row">
-            <div class="col-md-6">
-                <div id="email-effectiveness-chart"></div>          
-            </div>
-            <div class="col-md-6">
-                <table class="table table-condensed">
+            <div class="col-md-4">
+                <div style="text-align:center;">
+                    <p><span class="figure">6</span> hours with email<br>
+                    <strong>8</strong> peer average</p>
+                </div>
+
+                <table class="table table-striped">
                     <tr>
                         <th></th>
                         <th>You</th>
                         <th>Peers</th>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>Hours</td>
                         <td>6</td>
                         <td>8</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td>Sent </td>
                         <td>8</td>
@@ -1206,6 +1211,9 @@ a .glyphicon-info-sign:hover {
                         <td>0.2</td>
                     </tr>
                 </table>
+            </div>
+            <div class="col-md-8">
+                <div id="email-effectiveness-chart"></div>          
             </div>
         </div>
       <script>
@@ -1271,7 +1279,7 @@ a .glyphicon-info-sign:hover {
         });
         </script>
         <br>
-        <p style="text-align:center;"><strong>14.9%</strong> of your email time was spent in high-quality email, on average your peers spent 14.9% of their meeting time in high-quality email.</p>
+        <!-- <p style="text-align:center;hidden"><strong>14.9%</strong> of your email time was spent in high-quality email, on average your peers spent 14.9% of their meeting time in high-quality email.</p> -->
         </div>
     </div>
     <div class="modal fade" id="meetingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1286,7 +1294,7 @@ a .glyphicon-info-sign:hover {
                  <h5>Here are all the meetings you attended this week.</h5>
                  <br>
                  <div>
-                    <table class="table">
+                    <table class="table borderless">
                         <th>
                             <td>Date</td>
                             <td>Subject</td>
