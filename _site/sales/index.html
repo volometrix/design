@@ -404,18 +404,18 @@
                     Highcharts.setOptions(Highcharts.theme);
                     $('#customer-chart').highcharts({
                         chart: {
-                            type: 'spline',
+                            type: 'line',
                             // width: 230,
-                            marginRight: 125,
+                            // marginRight: 125,
                             height: 200
                         },
-                        legend: {
-                            align: 'right',
-                            verticalAlign: 'top',
-                            layout: 'vertical',
-                            x: 0,
-                            y: 0
-                        },
+                        // legend: {
+                        //     align: 'right',
+                        //     verticalAlign: 'top',
+                        //     layout: 'vertical',
+                        //     x: 0,
+                        //     y: 0
+                        // },
                         title: {
                             text: null
                         },
@@ -450,7 +450,7 @@
                           color: '#05B0E6'
                         }, {
                           name: 'Previous Qtr',
-                          data: [775, 665, null],
+                          data: [775, 665, 702],
                           color: '#666',
                           dashStyle: 'shortdot'
                         }],
@@ -478,18 +478,18 @@
                     Highcharts.setOptions(Highcharts.theme);
                     $('#key-contacts-chart').highcharts({
                         chart: {
-                            type: 'spline',
+                            type: 'line',
                             // width: 230,
-                            marginRight: 125,
+                            // marginRight: 125,
                             height: 200
                         },
-                        legend: {
-                            align: 'right',
-                            verticalAlign: 'top',
-                            layout: 'vertical',
-                            x: 0,
-                            y: 0
-                        },
+                        // legend: {
+                        //     align: 'right',
+                        //     verticalAlign: 'top',
+                        //     layout: 'vertical',
+                        //     x: 0,
+                        //     y: 0
+                        // },
                         title: {
                             text: null
                         },
@@ -524,7 +524,7 @@
                           color: '#05B0E6'
                         }, {
                           name: 'Previous Qtr',
-                          data: [106, 90, null],
+                          data: [106, 121, 101],
                           color: '#666',
                           dashStyle: 'shortdot'
                         }],
@@ -583,6 +583,7 @@
                   <span class="h5">Customer Network Size</span><br>
                   <span class="h1 figure">88</span>ppl
                 </p>
+                <!--
                 <div id="network-size-chart"></div>
                  <script>
                   $(function () {
@@ -648,7 +649,8 @@
                     });
                 });
                 </script>
-                <table class="table hidden">
+              -->
+                <table class="table">
                   <tr>
                     <th>Q2</th>
                     <th>Benchmark</th>
