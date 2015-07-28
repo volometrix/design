@@ -15,55 +15,42 @@
     $(function () {
       $('#time-breakdown-chart').highcharts({
         chart: {
-          plotBackgroundColor: null,
-          plotBorderWidth: 0,
-          plotShadow: false
+            type: 'spline'
         },
-        title: null,
-        tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        title: {
+            text: null
+        },
+        xAxis: {
+            categories: ['Time']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null
+            }
+        },
+        legend: {
+            reversed: true
         },
         plotOptions: {
-          pie: {
-            dataLabels: {
-              enabled: true,
-              distance: -50,
-              style: {
-                fontWeight: 'bold',
-                color: 'white',
-                textShadow: '0px 1px 2px black'
-              }
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ['50%', '75%']
-          }
-        },
-        exporting: {
-          enabled: false
-        },
-        credits: {
-          enabled: false
+            series: {
+                stacking: 'normal'
+            }
         },
         series: [{
-          type: 'pie',
-          name: '',
-          innerSize: '50%',
-          data: [
-          ['Manage Down',     10.38],
-          ['Manage Across',   56.33],
-          ['Manage Up',       24.03],
-          ['Desk Time',        4.77],
-          {
-            name: 'Proprietary or Undetectable',
-            y: 0.2,
-            dataLabels: {
-              enabled: false
-            }
-          }
-          ]
+            name: 'Manage Across',
+            data: [10.5],
+            color: '#6a3d9a'
+        }, {
+            name: 'Manage Up',
+            data: [12],
+            color: '#3bbbf3'
+        }, {
+            name: 'Desktime',
+            data: [6],
+            color: '#1f78b4'
         }]
-      });
+    });
 });
 </script>
 </div>     

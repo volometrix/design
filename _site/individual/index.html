@@ -649,98 +649,56 @@ var progressBar = (function(){
           Highcharts.setOptions(Highcharts.theme);
           $('#time-breakdown-chart').highcharts({
             chart: {
-              type: 'column',
-              height: 285
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                width: 320,
+                height: 320
             },
             title: {
-              text: null
-            },
-            xAxis: {
-              categories: ['Manage Across', 'Manage Up', 'Desktime']
-            },
-            yAxis: {
-              title: {
                 text: null
-              },
             },
-            legend: {
-              enabled: false  
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
             },
-            // plotOptions: {
-            //   line: {
-            //     dataLabels: {
-            //       enabled: false
-            //     },
-            //     enableMouseTracking: false
-            //   },
-            // },
-            series: [{
-              data: [56.33,24.03,4.77],
-            }],
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
             credits: {
               enabled: false
             },
             exporting: {
               enabled: false
-            }
+            },
+            series: [{
+                name: "Time",
+                colorByPoint: true,
+                data: [{
+                    name: "Manage Across",
+                    y: 56.33
+                }, {
+                    name: "Manage Up",
+                    y: 24.03
+                    // sliced: true,
+                    // selected: true
+                }, {
+                    name: "Desktime",
+                    y: 10.38
+                }]
+              }]
+            });
           });
-        });
-//     $(function () {
-//       $('#time-breakdown-chart').highcharts({
-//         chart: {
-//           plotBackgroundColor: null,
-//           plotBorderWidth: 0,
-//           plotShadow: false
-//         },
-//         title: null,
-//         tooltip: {
-//           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-//         },
-//         plotOptions: {
-//           pie: {
-//             dataLabels: {
-//               enabled: true,
-//               distance: -50,
-//               style: {
-//                 fontWeight: 'bold',
-//                 color: 'white',
-//                 textShadow: '0px 1px 2px black'
-//               }
-//             },
-//             startAngle: -90,
-//             endAngle: 90,
-//             center: ['50%', '75%']
-//           }
-//         },
-//         exporting: {
-//           enabled: false
-//         },
-//         credits: {
-//           enabled: false
-//         },
-//         series: [{
-//           type: 'pie',
-//           name: '',
-//           innerSize: '50%',
-//           data: [
-//           ['Manage Down',     10.38],
-//           ['Manage Across',   56.33],
-//           ['Manage Up',       24.03],
-//           ['Desk Time',        4.77],
-//           {
-//             name: 'Proprietary or Undetectable',
-//             y: 0.2,
-//             dataLabels: {
-//               enabled: false
-//             }
-//           }
-//           ]
-//         }]
-//       });
-// });
-</script>
-</div>     
-</div>
+      </script>
+    </div>     
+  </div>
 </div>
       </div>
     </div>
@@ -1290,15 +1248,15 @@ a .glyphicon-info-sign:hover {
                 series: [{
                     name: 'You',
                     marker: {
-                        radius: 3
+                        radius: 4
                     },
                     data: [107, 31, 45, 23]
                 }, {
                     name: 'Peer',
                     marker: {
-                        radius: 0
+                        radius: 3
                     },
-                    dashStyle: 'dash',
+                    dashStyle: 'dot',
                     type: 'spline',
                     color: '#666',
                     data: [133, 156, 36, 13]
@@ -1465,15 +1423,15 @@ a .glyphicon-info-sign:hover {
                 series: [{
                     name: 'You',
                     marker: {
-                        radius: 3
+                        radius: 4
                     },
                     data: [9, 10, 6, 7, 8].sort(function(){ return .5 - Math.random() })
                 }, {
                     name: 'Peer',
                     marker: {
-                        radius: 0
+                        radius: 3
                     },
-                    dashStyle: 'dash',
+                    dashStyle: 'dot',
                     type: 'spline',
                     color: '#666',
                     data: [10, 6, 8, 9, 7].sort(function(){ return .5 - Math.random() })
@@ -1689,16 +1647,16 @@ a .glyphicon-info-sign:hover {
                             series: [{
                                 name: 'You',
                                 marker: {
-                                    radius: 3
+                                    radius: 4
                                 },
                                 data: [400, 200, 400, 800].sort(function(){ return .5 - Math.random() }),
                             }, {
                                 name: 'Peers',
                                 type: 'spline',
                                 marker: {
-                                    radius: 0
+                                    radius: 3
                                 },
-                                dashStyle: 'dash',
+                                dashStyle: 'dot',
                                 color: '#666',
                                 data: [400, 200, 400, 800].sort(function(){ return .5 - Math.random() }),
                             }],
@@ -1947,16 +1905,16 @@ a .glyphicon-info-sign:hover {
         series: [{
           name: 'You',
           marker: {
-            radius: 3
+            radius: 4
           },
           data: [ 2, 9, 10, 6 ]
           .sort(function(){ return .5 - Math.random() }),
         }, {
           name: 'Peers',
           marker: {
-            radius: 0
+            radius: 3
           },
-          dashStyle: 'dash',
+          dashStyle: 'dot',
           color: '#666',
           type: 'spline',
           data: [10, 6, 8, 9].sort(function(){ return .5 - Math.random() })
@@ -2225,7 +2183,7 @@ a .glyphicon-info-sign:hover {
           series: {
             marker: {
               enabled: true,
-              radius: 2
+              radius: 4
             }
           }
         },
@@ -2235,7 +2193,10 @@ a .glyphicon-info-sign:hover {
           data: [ 2, 1, 5, 6 ].sort(function(){ return .5 - Math.random() })
         }, {
           name: 'Peer',
-          dashStyle: 'dash',
+          marker: {
+            radius: 3
+          },
+          dashStyle: 'dot',
           color: '#666',
           type: 'spline',
           data: [3, 6, 1, 3 ].sort(function(){ return .5 - Math.random() })
@@ -2371,7 +2332,7 @@ a .glyphicon-info-sign:hover {
             series: {
               marker: {
                 enabled: true,
-                radius: 2
+                radius: 4
               }
             }
           },
@@ -2382,7 +2343,10 @@ a .glyphicon-info-sign:hover {
             data: [ 12, 19, 10, 16].sort(function(){ return .5 - Math.random() })
           }, {
             name: 'Peer',
-            dashStyle: 'dash',
+            dashStyle: 'dot',
+            marker: {
+              radius: 3
+            },
             color: '#666',
             type: 'spline',
             data: [10, 16, 18, 9].sort(function(){ return .5 - Math.random() })

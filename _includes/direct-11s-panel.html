@@ -61,7 +61,7 @@
             series: {
               marker: {
                 enabled: true,
-                radius: 2
+                radius: 4
               }
             }
           },
@@ -72,7 +72,10 @@
             data: [ 12, 19, 10, 16].sort(function(){ return .5 - Math.random() })
           }, {
             name: 'Peer',
-            dashStyle: 'dash',
+            dashStyle: 'dot',
+            marker: {
+              radius: 3
+            },
             color: '#666',
             type: 'spline',
             data: [10, 16, 18, 9].sort(function(){ return .5 - Math.random() })

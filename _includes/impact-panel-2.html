@@ -52,16 +52,16 @@
                             series: [{
                                 name: 'You',
                                 marker: {
-                                    radius: 3
+                                    radius: 4
                                 },
                                 data: [400, 200, 400, 800].sort(function(){ return .5 - Math.random() }),
                             }, {
                                 name: 'Peers',
                                 type: 'spline',
                                 marker: {
-                                    radius: 0
+                                    radius: 3
                                 },
-                                dashStyle: 'dash',
+                                dashStyle: 'dot',
                                 color: '#666',
                                 data: [400, 200, 400, 800].sort(function(){ return .5 - Math.random() }),
                             }],
