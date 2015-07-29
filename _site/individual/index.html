@@ -404,13 +404,13 @@ var progressBar = (function(){
     <div class="chart-wrapper">   
       <div class="productivity-lykert" style="text-align:center;">
         <p>
-          <strong>Very productive</strong>
+          <strong>Very unproductive</strong>
           <input type="radio" name="productivity-rating" value="1" readonly>
           <input type="radio" name="productivity-rating" value="2">
           <input type="radio" name="productivity-rating" value="3">
           <input type="radio" name="productivity-rating" value="4">
           <input type="radio" name="productivity-rating" value="5">
-          <strong>Very unproductive</strong>
+          <strong>Very productive</strong>
         </p>
       </div>
       <div>
@@ -423,8 +423,7 @@ var progressBar = (function(){
               height: 185
             },
             title: {
-              text: '4 Week Trend',
-              align: 'left'
+              text: null
             },
             xAxis: {
               categories: ['Week 1', '2', '3', 'Week 4']
@@ -479,15 +478,15 @@ var progressBar = (function(){
         });
         </script>
 <div id="productivity-four-week-trend-chart"></div>
-<div class="productivity-rating-legend" style="text-align:center;position:absolute;bottom:0;left:0;right:0;">
+<div class="productivity-rating-legend" style="text-align:center;position:absolute;bottom:15px;left:0;right:0;">
   <p>
-    <strong><small>Very productive</small></strong>
-    <span style="width:15px;height:15px;border-radius:100%;background:#33A02C;display:inline-block;">&nbsp;</span>
-    <span style="width:15px;height:15px;border-radius:100%;background:#A6D53A;display:inline-block;">&nbsp;</span>
-    <span style="width:15px;height:15px;border-radius:100%;background:#FB9330;display:inline-block;">&nbsp;</span>
-    <span style="width:15px;height:15px;border-radius:100%;background:#FB9A99;display:inline-block;">&nbsp;</span>
-    <span style="width:15px;height:15px;border-radius:100%;background:#E31A1C;display:inline-block;">&nbsp;</span>
     <strong><small>Very unproductive</small></strong>
+    <span style="width:15px;height:15px;border-radius:100%;background:#E31A1C;display:inline-block;">&nbsp;</span>
+    <span style="width:15px;height:15px;border-radius:100%;background:#FB9A99;display:inline-block;">&nbsp;</span>
+    <span style="width:15px;height:15px;border-radius:100%;background:#FB9330;display:inline-block;">&nbsp;</span>
+    <span style="width:15px;height:15px;border-radius:100%;background:#A6D53A;display:inline-block;">&nbsp;</span>
+    <span style="width:15px;height:15px;border-radius:100%;background:#33A02C;display:inline-block;">&nbsp;</span>
+    <strong><small>Very productive</small></strong>
   </p>
 </div>
 </div>
@@ -528,7 +527,7 @@ var progressBar = (function(){
       </div>
       <div class="panel-body">
             <div class="panel-subtitle">
-                  <p>Based on your concerns, here are your highlights for last week.</p>
+                  <p>Based on your goals, here are your highlights from last week./p>
             </div>	
             <h5>What was your focus for the week?</h5>     
             <p>Reduced meetings by 2%, great job!</p>
@@ -546,87 +545,86 @@ var progressBar = (function(){
       <div class="col-md-8">
         
 <div class="panel panel-default">
-      <div class="panel-heading">
-            <div class="panel-title">
-                  <span class="h5">Key People </span>
+  <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">Key People </span>
                   <!-- <a href="#" data-toggle="modal" data-target="#balanceModal"  class="pull-right btn btn-default btn-xs">
                         details
-                  </a> -->    
-            </div>
-
-      </div>
-      <div class="panel-body">
-            <div class="panel-subtitle">
-                  <p>This shows which people you collaborate with the most for this week.</p>
-            </div>	
-            <div class="chart-wrapper">   
-                  <div class="">
-                        <span class="big figure">45</span> hours spent with key people.
+                      </a> -->    
+                    </div>
                   </div>
-                  <div>
+                  <div class="panel-body">
+                    <div class="panel-subtitle">
+                      <p>Identify your top collaborators and discover if you're spending enough time in meetings with key contacts. Set goals for different people to create a strong internal network.</p>
+                    </div>	
+                    <div class="chart-wrapper">   
+                      <div class="">
+                        <span class="big figure">45</span> hours spent with key people.
+                      </div>
+                      <div>
                         <table class="table">
-                              <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Title</th>
-                                    <th>Email Sent</th>
-                                    <th>Email Rec'd</th>
-                                    <th>Mtgs Together</th>
-                                    <th>Watching?</th>
-                              </tr>
-                              <tr>
-                                    <td>1</td>
-                                    <td>Milt Hinton</td>
-                                    <td>SVP Sales</td>
-                                    <td>16</td>
-                                    <td>12</td>
-                                    <td>23</td>
-                                    <td><input type="checkbox" checked></td>
-                              </tr>
-                              <tr>
-                                    <td>2</td>
-                                    <td>James Jammerson</td>
-                                    <td>CTO</td>
-                                    <td>14</td>
-                                    <td>14</td>
-                                    <td>18</td>
-                                    <td><input type="checkbox" checked></td>
-                              </tr>
-                              <tr>
-                                    <td>3</td>
-                                    <td>Stephen Vaughan</td>
-                                    <td>VP Operations</td>
-                                    <td>13</td>
-                                    <td>1o</td>
-                                    <td>5</td>
-                                    <td><input type="checkbox" checked></td>
-                              </tr>
+                          <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Email Sent</th>
+                            <th>Email Rec'd</th>
+                            <th>Mtgs Together</th>
+                            <th>Watching?</th>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>Milt Hinton</td>
+                            <td>SVP Sales</td>
+                            <td>16</td>
+                            <td>12</td>
+                            <td>23</td>
+                            <td><input type="checkbox" checked></td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>James Jammerson</td>
+                            <td>CTO</td>
+                            <td>14</td>
+                            <td>14</td>
+                            <td>18</td>
+                            <td><input type="checkbox" checked></td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>Stephen Vaughan</td>
+                            <td>VP Operations</td>
+                            <td>13</td>
+                            <td>1o</td>
+                            <td>5</td>
+                            <td><input type="checkbox" checked></td>
+                          </tr>
                         </table>
                         <p><small><a href="#">Watch other people.</a></small></p>
+                      </div>
+                    </div>     
                   </div>
-             </div>     
-      </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-            <div class="modal-content">
-                  <div class="modal-header">
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                         </button>
                         <h5 class="modal-title" id="myModalLabel">Modal</h5>
-                  </div>
-                  <div class="modal-body">
+                      </div>
+                      <div class="modal-body">
                         <h5>Title</h5>
                         <p>Body</p>
-                  </div>
-                  <div class="modal-footer">
+                      </div>
+                      <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary">Save</button>
+                      </div>
+                    </div>
                   </div>
-            </div>
-      </div>
-</div>
+                </div>
 
       </div>
       <div class="col-md-4">
@@ -639,7 +637,7 @@ var progressBar = (function(){
   </div>
   <div class="panel-body">
   <div class="panel-subtitle">
-    <p>This shows how your time is being spent with different groups of people (based on meetings).</p>
+    <p>Gain insights into the groups that you frequently collaborate with based on the time you spend in meetings. Identify teams that require the majority of your time and opportunities to collaborate more effectively.</p>
   </div>	
   <div class="chart-wrapper">
     <!-- <p><a href="#">Level</a> <a href="#">Groups</a> <a href="#">Function</a> <a href="#">Location</a></p> -->
@@ -653,8 +651,8 @@ var progressBar = (function(){
                 plotBorderWidth: null,
                 plotShadow: false,
                 type: 'pie',
-                width: 320,
-                height: 320
+                width: 250,
+                height: 250
             },
             title: {
                 text: null
@@ -1176,7 +1174,7 @@ a .glyphicon-info-sign:hover {
         </div>
     </div>
     <div class="panel-body">
-      <p>Send and receive more effective email <a href="#" data-toggle="popover" data-placement="top" data-html="true" data-content="<strong>A meeting’s quality is determined by its MQI</strong><br>, the Meeting Quality Index, which uses meeting components like the duration of the meeting, number of attendees, level of engagement, number of declines/double books, and number of levels present to rate the meeting.<br><a href='#'>Learn more</a>."><i class="glyphicon glyphicon-info-sign"></i></a>.</p>
+      <p>Email is essential for collaboration, but excessive amounts can be distracting and counterproductive. Use this table and chart to assess whether you're sending the optimal amount of email, and prioritizing actionable subject lines for greater efficiency.</p>
         <div class="row">
             <div class="col-md-4">
                 <div style="text-align:center;">
@@ -1875,6 +1873,9 @@ a .glyphicon-info-sign:hover {
     </div>
   </div>
   <div class="panel-body">
+    <div class="panel-subtitle">
+      <p>Some weeks are busier than others, but it's important to maintain your work/life balance. Your goal is to work (on average) between x and x hours per day.</p>
+    </div>
     <script>
     $(function(){
       $('#hours-worked-chart').highcharts({
@@ -2145,7 +2146,7 @@ a .glyphicon-info-sign:hover {
   </div>
   <div class="panel-body">
     <div class="panel-subtitle">
-      <p> Hours spent in 1:1s with your manager.</p>
+      <p>Dedicated time with your manager provides an opportunity for mentorship and feedback. Make sure you're scheduling enough time with your manager each week. Your goal is x one-on-one meeting hours per week with your manager.</p>
     </div>   
     <script>
     $(function () {
@@ -2290,7 +2291,7 @@ a .glyphicon-info-sign:hover {
   </div>
   <div class="panel-body">
     <div class="panel-subtitle">
-      <p>Hours spent in 1:1s with your direct reports (if applicable).</p>
+      <p>Make sure your schedule is accessible to your direct reports. Your goal is an average of x one-on-one meeting hours per direct report.</p>
     </div>  
     <div class="chart-wrapper">   
       <div class="chart-description">
