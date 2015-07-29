@@ -162,11 +162,12 @@ page-title: Personal Goals Dashboard
     });
     $('#show-help-trigger').click(function(){
       $('body').toggleClass('show-index-true');
+      $('body').highcharts().reflow();
     });
   });
   </script>
 </head>
-<body role="document" class="show-index-true">
+<body role="document">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
