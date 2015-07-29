@@ -248,6 +248,9 @@
   dd {
     margin-bottom:15px;
   }
+  #user-index {
+    display: none;
+  }
   @media screen and (min-width: 960px) {
     .show-index-true #user-index {
       position:fixed;
@@ -258,6 +261,7 @@
       padding:25px 15px;
       background:#efefef;
       overflow-x: auto;
+      display: none;
     }
     .show-index-true .row {
       padding-right:150px;
@@ -273,8 +277,7 @@
     });
     $('#show-help-trigger').click(function(){
       $('body').toggleClass('show-index-true');
-      $('body').highcharts().reflow();
-    });
+    }).css('display','none');
   });
   </script>
 </head>
@@ -585,7 +588,7 @@ var progressBar = (function(){
   </div>
   <div class="panel-body">
   <div class="panel-subtitle">
-    <p>Gain insights into the groups that you frequently collaborate with based on the time you spend in meetings. Identify teams that require the majority of your time and opportunities to collaborate more effectively.</p>
+    <p>Gain insights into the groups that you frequently collaborate with based on the time you spend in meetings. <!-- Identify teams that require the majority of your time and opportunities to collaborate more effectively -->.</p>
   </div>	
   <div class="chart-wrapper">
     <!-- <p><a href="#">Level</a> <a href="#">Groups</a> <a href="#">Function</a> <a href="#">Location</a></p> -->
@@ -599,8 +602,8 @@ var progressBar = (function(){
                 plotBorderWidth: null,
                 plotShadow: false,
                 type: 'pie',
-                width: 250,
-                height: 250
+                // width: 280,
+                height: 280
             },
             title: {
                 text: null
@@ -1647,7 +1650,7 @@ a .glyphicon-info-sign:hover {
       </div>
       <div class="panel-body">
             <div class="panel-subtitle">
-                <p>When you email your colleagues or invite them to meetings, you take time out of their schedules. This shows how much time you imposed on your coworkers compared to their average.</p>
+                <p>When you email your colleagues or invite them to meetings, you take time out of their schedules. <!-- This shows how much time you imposed on your coworkers compared to their average. --></p>
             </div>  
             <div class="chart-wrapper">   
                   <div class="chart-description">
@@ -1909,7 +1912,7 @@ a .glyphicon-info-sign:hover {
   </div>
   <div class="panel-body">
     <div class="panel-subtitle">
-      <p>Dedicated time with your manager provides an opportunity for mentorship and feedback. Make sure you're scheduling enough time with your manager each week. Your goal is x one-on-one meeting hours per week with your manager.</p>
+      <p>Dedicated time with your manager provides an opportunity for mentorship and feedback. <!-- Make sure you're scheduling enough time with your manager each week.  -->Your goal is x one-on-one meeting hours per week with your manager.</p>
     </div>   
     <script>
     $(function () {

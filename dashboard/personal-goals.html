@@ -137,6 +137,9 @@ page-title: Personal Goals Dashboard
   dd {
     margin-bottom:15px;
   }
+  #user-index {
+    display: none;
+  }
   @media screen and (min-width: 960px) {
     .show-index-true #user-index {
       position:fixed;
@@ -147,6 +150,7 @@ page-title: Personal Goals Dashboard
       padding:25px 15px;
       background:#efefef;
       overflow-x: auto;
+      display: none;
     }
     .show-index-true .row {
       padding-right:150px;
@@ -162,8 +166,7 @@ page-title: Personal Goals Dashboard
     });
     $('#show-help-trigger').click(function(){
       $('body').toggleClass('show-index-true');
-      $('body').highcharts().reflow();
-    });
+    }).css('display','none');
   });
   </script>
 </head>
