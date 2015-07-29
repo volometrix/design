@@ -134,6 +134,24 @@ page-title: Personal Goals Dashboard
   .days-chart-legend {
     top: 275px;
   }
+  dd {
+    margin-bottom:15px;
+  }
+  @media screen and (min-width: 960px) {
+    .show-index-true #user-index {
+      position:fixed;
+      right:0;
+      top:30px;
+      bottom:0;
+      width:250px;
+      padding:25px 15px;
+      background:#efefef;
+      overflow-x: auto;
+    }
+    .show-index-true .row {
+      padding-right:150px;
+    }
+  }
   </style>
   <script>
   $(function(){
@@ -142,10 +160,13 @@ page-title: Personal Goals Dashboard
     $('#moment-save').click(function(){
       $('#moment-panel').slideUp();
     });
+    $('#show-help-trigger').click(function(){
+      $('body').toggleClass('show-index-true');
+    });
   });
   </script>
 </head>
-<body role="document">
+<body role="document" class="show-index-true">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -175,6 +196,9 @@ page-title: Personal Goals Dashboard
             </ul>
           </li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" id="show-help-trigger">Help</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -190,7 +214,7 @@ page-title: Personal Goals Dashboard
       <div class="col-md-12">
         <div id="moment-panel" class="moment" style="text-align:center;display:none;">
           <h1 class="moment-greeting">
-            Hello, Chelsey
+            Hello, Kelsey
           </h1>
           <p>Last week your focus was reducing meetings.</p>
           <p>Do you feel you achieved this goal?</p>
@@ -255,6 +279,24 @@ page-title: Personal Goals Dashboard
       </div>
       <div class="col-md-4">
         {% include direct-11s-panel.html %}
+      </div>
+    </div>
+    <div id="user-index" class="row">
+      <div class="col-md-12">
+        <h2>Info</h2>
+        <h4>Kelsey Grammer</h4>
+        <p><a href="#">kgrammer@gmail.com</a></p>
+        <h4>Definitions</h4>
+        <dl>
+          <dt>Peer</dt>
+          <dd>A member of you company in the same level (e.g. Financial Analyst 3)</dd>
+          <dt>Level</dt>
+          <dd>Level is the organization hierarchy</dd>
+          <dt>Value</dt>
+          <dd>Define value</dd>
+          <dt>No of people</dt>
+          <dd>1,230</dd>
+        </dl>
       </div>
     </div>
     {% include welcome-modal.html %}
