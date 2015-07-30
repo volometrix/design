@@ -286,16 +286,17 @@ page-title: Personal Goals Dashboard
         {% include manager-11s-panel.html %}
       </div>
       <div class="col-md-4">
-        {% include direct-11s-panel.html %}
+        <div class="show-code">{% include direct-11s-panel.html %}</div>
       </div>
     </div>
-    <div id="user-index" class="row">
+    <hr>
+    <div class="row">
       <div class="col-md-12">
-        <h2>Info</h2>
-        <h4>Kelsey Grammer</h4>
-        <p><a href="#">kgrammer@gmail.com</a></p>
-        <h4>Definitions</h4>
-        <dl>
+        <dl class="dl-horizontal">
+          <dt>Name</dt>
+          <dd>Kelsey Grammer</dd>
+          <dt>Email</dt>
+          <dd><a href="#">kgrammer@gmail.com</a></dd>
           <dt>Peer</dt>
           <dd>A member of you company in the same level (e.g. Financial Analyst 3)</dd>
           <dt>Level</dt>
@@ -307,9 +308,11 @@ page-title: Personal Goals Dashboard
         </dl>
       </div>
     </div>
+    <hr>
     {% include welcome-modal.html %}
     <script>
     $(function(){
+      $('#progress-bar-2-compare').addClass('show-code');
       var highestCol = Math.max($('.panel-body').height());
       $('.equalHeight').height(highestCol);
       $('.panel-body').css({ 
@@ -318,5 +321,6 @@ page-title: Personal Goals Dashboard
     });
     </script>
   </div>
+  {% include db-footer.html %}
 </body>
 </html>

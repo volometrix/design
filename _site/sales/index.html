@@ -122,6 +122,10 @@
       h1, h2, h3 {
         page-break-after: avoid;
       }
+      .figure {
+        font-size: 36px;
+        font-weight: 300;
+      }
       body, article {
         width: 100%;
         margin: 0;
@@ -135,7 +139,7 @@
         width: 595px;
         margin:0;
       }
-      .col-sm-8 {
+      .col-xs-8 {
         width: 300px;
         float:left;
       }
@@ -173,11 +177,11 @@
         margin:0 !important;
         line-height: 1;
       }
-      .tab-content > .tab-pane {
+      /*.tab-content > .tab-pane {
         display: block !important; 
         opacity: 1 !important; 
         visibility: visible !important
-      }
+      }*/
       @page {
         margin: 2cm;
       }
@@ -365,7 +369,7 @@
     <div id="print-wrapper">
       <div class="container nav-container">
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-xs-12">
             <br><br>
             <!-- <ul class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active"><a href="#east-region" aria-controls="home" role="tab" data-toggle="tab">East Region</a></li>
@@ -379,14 +383,14 @@
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane fade in active" id="east-region">
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-xs-12">
                 <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                 <img src="/design/images/symc-logo.svg" alt="Symantec">
               </div>
             </div>
             <hr>
             <div class="row">
-              <div class="masthead col-sm-12">
+              <div class="masthead col-xs-12">
                 <h1 class="report-title">Account Engagement Report</h1>
                 <h2 class="report-subtitle">East Region, June 2015</h2>
               </div>
@@ -394,10 +398,10 @@
             <hr>
             <h4>Time with Customer</h4>
             <div class="row">
-              <div class="col-sm-2">
+              <div class="col-xs-2">
                 <p><span class="h1 figure">231</span>hours</p>
               </div>
-              <div class="col-sm-10">
+              <div class="col-xs-10">
                 <div id="customer-chart"></div>
                 <script>
                   $(function () {
@@ -407,7 +411,7 @@
                             type: 'line',
                             // width: 230,
                             // marginRight: 125,
-                            height: 200
+                            height: 175
                         },
                         // legend: {
                         //     align: 'right',
@@ -466,12 +470,12 @@
               </div>
             </div>
             <hr>
-            <h4>Time with Key Contacts</h4>
+            <h4>Time with Key Accounts</h4>
             <div class="row">
-              <div class="col-sm-2">
+              <div class="col-xs-2">
                 <p><span class="h1 figure">41</span>hours</p>
               </div>
-              <div class="col-sm-10">
+              <div class="col-xs-10">
                 <div id="key-contacts-chart"></div>
                  <script>
                   $(function () {
@@ -479,17 +483,8 @@
                     $('#key-contacts-chart').highcharts({
                         chart: {
                             type: 'line',
-                            // width: 230,
-                            // marginRight: 125,
-                            height: 200
+                            height: 175
                         },
-                        // legend: {
-                        //     align: 'right',
-                        //     verticalAlign: 'top',
-                        //     layout: 'vertical',
-                        //     x: 0,
-                        //     y: 0
-                        // },
                         title: {
                             text: null
                         },
@@ -539,10 +534,9 @@
                 </script>
               </div>
             </div>
-            <hr>
             <h4>Accounts</h4>
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-xs-12">
                 <table class="table">
                   <tr>
                     <th style="width:50%"></th>
@@ -555,101 +549,33 @@
                     <td>Accounts Engaged</td>
                     <td>227 </td>
                     <td>260<span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
-                    <td>342 <span class="glyphicon glyphicon-triangle-bottom text-success"></span></td>
+                    <td>342</td>
                   </tr>
                   
                   <tr>
                     <td>Accounts Contacted</td>
                     <td>380 </td>
                     <td>460<span class="glyphicon glyphicon-triangle-top text-danger"></span></td>
-                    <td>469 <span class="glyphicon glyphicon-triangle-top text-danger"></span></td>
+                    <td>469</td>
                   </tr>
                   
                   <tr>
                     <td>New Accounts Engaged – FY15</td>
                     <td>60 </td>
                     <td>260<span class="glyphicon glyphicon-triangle-top text-danger"></span></td>
-                    <td>180 <span class="glyphicon glyphicon-triangle-top text-danger"></span></td>
+                    <td>180</td>
                   </tr>
                   
                 </table>
               </div>
             </div>
-          </div>
-          <hr>
+          <h4>AE Behavior</h4>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <p>
                   <span class="h5">Customer Network Size</span><br>
                   <span class="h1 figure">88</span>ppl
                 </p>
-                <!--
-                <div id="network-size-chart"></div>
-                 <script>
-                  $(function () {
-                    Highcharts.setOptions(Highcharts.theme);
-                    $('#network-size-chart').highcharts({
-                        chart: {
-                            type: 'column',
-                            // width: 230,
-                            // marginRight: 125
-                            height: 120
-                        },
-                        legend: {
-                            enabled: false
-                        },
-                        title: {
-                            text: null
-                        },
-                        yAxis: {
-                            title: {
-                                text: null
-                            },
-                            labels: {
-                              enabled: false
-                            },
-                          plotLines: [{
-                              color: '#666',
-                              width: 2,
-                              value: 110,
-                              label: {
-                                  text: 'BM',
-                                  align: 'right',
-                                  x: 0
-                              }
-                          }]
-                        },
-                        xAxis: {
-                          categories: ['Q2','Peer'],
-                          title: {
-                            text: null
-                          }
-                        },
-                        plotOptions: {
-                            series: {
-                                marker: {
-                                    radius: 2
-                                },
-                                dataLabels: {
-                                    align: 'center',
-                                    verticalalign: 'bottom',
-                                    enabled: true
-                                }
-                            }
-                        },
-                        series: [{
-                          data: [120,80]
-                        }],
-                        credits: {
-                          enabled: false
-                        },
-                        exporting: {
-                          enabled: false
-                        }
-                    });
-                });
-                </script>
-              -->
                 <table class="table">
                   <tr>
                     <th>Q2</th>
@@ -663,9 +589,9 @@
                   </tr>
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <p>
-                  <span class="h5">Hours per Week per Customer</span><br>
+                  <span class="h5">Hrs/Wk per Customer</span><br>
                   <span class="h1 figure">88</span>hrs</p>
                 <table class="table">
                   <tr>
@@ -680,7 +606,7 @@
                   </tr>
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <p>
                   <span class="h5">Internal Meeting Time</span><br>
                   <span class="h1 figure">88</span>hrs
@@ -699,15 +625,17 @@
                 </table>  
               </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade" id="west-region">
+          </div>
+
+          <!-- <div role="tabpanel" class="tab-pane fade" id="west-region">
               <div class="row">
-                <div class="col-sm-12">
+                <div class="col-xs-12">
                   <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                   <img src="/design/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
               <div class="row">
-              <div class="masthead col-sm-12">
+              <div class="masthead col-xs-12">
                 <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
                 <h2 class="report-subtitle">West Region, June 2015</h2>
               </div>
@@ -715,7 +643,7 @@
             <hr>
             <h4>Engagement</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table">
                   <tr>
                     <th></th>
@@ -751,7 +679,7 @@
                   
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="we-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -842,7 +770,7 @@
             </div>
             <h4>Time</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table">
                   <tr>
                     <th></th>
@@ -870,7 +798,7 @@
                   
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="wt-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -951,7 +879,7 @@
             </div>
             <h4>Sales</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table">
                   <tr>
                     <th></th>
@@ -1019,7 +947,7 @@
                   
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="ws-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -1148,18 +1076,18 @@
                 </script>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <div role="tabpanel" class="tab-pane fade" id="latin-america">
+            <!-- <div role="tabpanel" class="tab-pane fade" id="latin-america">
               <div class="row">
-                <div class="col-sm-12">
+                <div class="col-xs-12">
                   <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                   <img src="/design/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
               <hr>
               <div class="row">
-              <div class="masthead col-sm-12">
+              <div class="masthead col-xs-12">
                 <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
                 <h2 class="report-subtitle">Latin America Region, June 2015</h2>
               </div>
@@ -1167,7 +1095,7 @@
             <hr>
             <h4>Engagement</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table">
                   <tr>
                     <th></th>
@@ -1203,7 +1131,7 @@
                   
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="le-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -1294,7 +1222,7 @@
             </div>
             <h4>Time</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table" id="lt-datatable">
                   <tr>
                     <th></th>
@@ -1322,7 +1250,7 @@
                   
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="lt-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -1403,7 +1331,7 @@
             </div>
             <h4>Sales</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table">
                   <tr>
                     <th></th>
@@ -1471,7 +1399,7 @@
                   
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="ls-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -1600,7 +1528,7 @@
                 </script>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

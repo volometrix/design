@@ -14,6 +14,7 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="/design/css/bootstrap.min.css">
   <link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="/design/css/prism.css">
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="/design/javascript/jquery-2.1.3.min.js"></script>
@@ -28,6 +29,7 @@
   <script src="/design/javascript/d3.min.js"></script>
   <script src="/design/javascript/data.js"></script>
   <script src="/design/javascript/jquery.sparkline.js"></script>
+  <script src="/design/javascript/toolkit.js"></script>
   <style>
     body {
     padding-top: 30px;
@@ -350,10 +352,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="panel-title">
-            <span class="h5">Meeting and Email Summary</span> 
-            <!-- <a href="#" data-toggle="modal" data-target="#meetingModal" class="pull-right btn btn-default btn-xs">
-                details
-            </a>   -->  
+            <span class="h5">Meeting and Email Summary</span>  
         </div>
     </div>
     <div class="panel-body" style="min-height:225px;">
@@ -363,9 +362,6 @@
 <script>
 var progressBar = (function(){
     Highcharts.setOptions(Highcharts.theme);
-    // Highcharts.setOptions({
-    //     colors: ['#6a3d9a','#3bbbf3','#1f78b4']
-    // });
     $('#progress-bar-2-compare').highcharts({
         chart: {
             type: 'bar',
@@ -1278,18 +1274,7 @@ a .glyphicon-info-sign:hover {
                     yAxis: {
                       title: {
                         text: 'Hours in Email'
-                      }
-                      ,
-                      plotLines: [{
-                        color: '#000000',
-                        width: 1,
-                        value: 8,
-                        label: {
-                          text: 'Goal',
-                          align: 'right',
-                          x: 0
-                        }
-                      }]
+                      },
                     },
                     legend: {
                       enabled: true
@@ -2049,7 +2034,7 @@ a .glyphicon-info-sign:hover {
 
       </div>
       <div class="col-md-4">
-        
+        <div class="show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -2192,16 +2177,17 @@ a .glyphicon-info-sign:hover {
     </div>
   </div>
 </div>
-</div>
+</div></div>
       </div>
     </div>
-    <div id="user-index" class="row">
+    <hr>
+    <div class="row">
       <div class="col-md-12">
-        <h2>Info</h2>
-        <h4>Kelsey Grammer</h4>
-        <p><a href="#">kgrammer@gmail.com</a></p>
-        <h4>Definitions</h4>
-        <dl>
+        <dl class="dl-horizontal">
+          <dt>Name</dt>
+          <dd>Kelsey Grammer</dd>
+          <dt>Email</dt>
+          <dd><a href="#">kgrammer@gmail.com</a></dd>
           <dt>Peer</dt>
           <dd>A member of you company in the same level (e.g. Financial Analyst 3)</dd>
           <dt>Level</dt>
@@ -2213,6 +2199,7 @@ a .glyphicon-info-sign:hover {
         </dl>
       </div>
     </div>
+    <hr>
     
 <style>
 #intro-modal .modal-content,
@@ -2419,6 +2406,7 @@ $(function() {
 </div>
     <script>
     $(function(){
+      $('#progress-bar-2-compare').addClass('show-code');
       var highestCol = Math.max($('.panel-body').height());
       $('.equalHeight').height(highestCol);
       $('.panel-body').css({ 
@@ -2427,5 +2415,9 @@ $(function() {
     });
     </script>
   </div>
+    <script src="/design/javascript/toolkit.js"></script>
+  <script src="/design/javascript/prism.js"></script>
+  </body>
+</html>
 </body>
 </html>

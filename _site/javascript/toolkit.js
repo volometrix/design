@@ -48,7 +48,7 @@ $.fn.showCode = function() {
     var obj = $(this);
     $.each( obj, function(index){
       var html = $(this).html().replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      $(this).append('<a href="#" class="toggle-code btn btn-default btn-xs">code</a>'+
+      $(this).append('<a href="#" class="toggle-code">code</a>'+
                       '<pre class="code-block"><code class="language-markup">'+html+'</code></pre>');
     });
     $('.code-block').hide();

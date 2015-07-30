@@ -1,26 +1,37 @@
 ---
 layout: default
+title: Product  
+permalink: /product/
+page-title: Product Styleguilde
 ---
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Styleguide</h1>
+      <h1>Product</h1>
       <p class="lead">Principles, guidelines and assets for designing and building Volometrix products</p>
-      <p><strong>Version:</strong> This version was created for Gene.</p>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">This Section</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              {% for section in site.data.product-nav %}
+              <li><a href="#{{ section.name }}-section">{{ section.name | capitalize }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-12">
-      {% assign components_by_type = site.components | group_by: "type" %}
-      {% for type in components_by_type %}
-        <h5>{{ type.name }}</h5>
-        {% for entry in type.items %}
-          {% include component.html %}
-        {% endfor %}
-      {% endfor %}
-    </div>
-  </div>
+  <hr id="charts-section">
   <div class="row">
     <div class="col-md-8">
       <h3>Charts</h3>
@@ -34,6 +45,11 @@ layout: default
       <h5 id="grouped-column-goal-chart">Grouped Column w/ Goal</h5><div class="show-code">{% include hours-worked-panel.html %}</div><hr>
       <h5 id="half-donut-chart">Donut (Half)</h5><div class="show-code">{% include reoccurring-meetings-panel.html %}</div><hr>
       <h5 id="line-chart">Line Chart</h5><div class="show-code">{% include time-panel-mgr.html %}</div><hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      
     </div>
   </div>
 </div>
