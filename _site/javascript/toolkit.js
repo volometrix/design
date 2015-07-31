@@ -45,34 +45,34 @@ tk.buildSwatches = function () {
 // <use xlink:href="#f-icon-notes" /> <use xlink:href="#f-icon-code" />
 
 
-$.fn.showCode = function() {
-  $('body').append('<div class="page-menu btn-group" style="position:fixed;right:5px;top:55px;">'+
-                    // '<a href="#" class="btn btn-default" id="show-help-trigger">Help</a>'+
-                    '<a href="#" class="btn btn-default btn-xs" id="show-code-trigger">Show Code</a></div>');
-  $('#show-code-trigger').click(function(e){
-      e.preventDefault();
-      $('.toggle-code').toggle();
-      $(this).text(($(this).text() === 'Hide Code') ? 'Show Code' : 'Hide Code');
-  });
-  var obj = $(this);
-  $.each( obj, function(index){
-    var html = $(this).html().replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    $(this).append('<a href="#" class="toggle-code btn btn-default btn-xs"><b>&lt;&nbsp;/&gt;</b></a>'+
-                   '<pre class="code-block"><code class="language-markup">'+html+'</code></pre>');
-  });
-  $('.code-block').hide();
-  $('.toggle-code').click(function(e){
-    e.preventDefault();
-    $(this).next('.code-block').slideToggle('fast');
-  }).css({
-    'position':'absolute',
-    'top': 0,
-    'left': 15+'px'
-  }).hide();
+// $.fn.showCode = function() {
+//   $('body').append('<div class="page-menu btn-group" style="position:fixed;right:5px;top:55px;">'+
+//                     // '<a href="#" class="btn btn-default" id="show-help-trigger">Help</a>'+
+//                     '<a href="#" class="btn btn-default btn-xs" id="show-code-trigger">Show Code</a></div>');
+//   $('#show-code-trigger').click(function(e){
+//       e.preventDefault();
+//       $('.toggle-code').toggle();
+//       $(this).text(($(this).text() === 'Hide Code') ? 'Show Code' : 'Hide Code');
+//   });
+//   var obj = $(this);
+//   $.each( obj, function(index){
+//     var html = $(this).html().replace(/</g, '&lt;').replace(/>/g, '&gt;');
+//     $(this).append('<a href="#" class="toggle-code btn btn-default btn-xs"><b>&lt;&nbsp;/&gt;</b></a>'+
+//                    '<pre class="code-block"><code class="language-markup">'+html+'</code></pre>');
+//   });
+//   $('.code-block').hide();
+//   $('.toggle-code').click(function(e){
+//     e.preventDefault();
+//     $(this).next('.code-block').slideToggle('fast');
+//   }).css({
+//     'position':'absolute',
+//     'top': 0,
+//     'left': 15+'px'
+//   }).hide();
 
-};
+// };
 
-(function () {
-	tk.buildSwatches();
-  $('.show-code').showCode();
-}());
+// (function () {
+// 	tk.buildSwatches();
+//   $('.show-code').showCode();
+// }());
