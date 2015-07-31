@@ -45,46 +45,34 @@ tk.buildSwatches = function () {
 // <use xlink:href="#f-icon-notes" /> <use xlink:href="#f-icon-code" />
 
 
-  $.fn.showCode = function() {
-    var obj = $(this);
-    $.each( obj, function(index){
-      var html = $(this).html().replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      $(this).append('<a href="#" class="toggle-code btn btn-default">code</a>'+
-                      '<pre class="code-block"><code class="language-markup">'+html+'</code></pre>');
-    });
-    $('.code-block').hide();
-    $('.toggle-code').click(function(e){
-      e.preventDefault();
-      $(this).next('.code-block').slideToggle('fast');
-      // $(this).text(($(this).text() === 'Hide Code') ? 'Show Code' : 'Hide Code');
-    }).css({
-      'position':'absolute',
-      'top': 0,
-      'right': 15+'px'
-    }).hide();
-  };
-
-$.fn.addUIMenu = function() {
-    var obj = $(this);
-      obj.append('<div class="page-menu btn-group" style="position:fixed;right:25px;top:65px;">'+
+$.fn.showCode = function() {
+  $('body').append('<div class="page-menu btn-group" style="position:fixed;right:5px;top:55px;">'+
                     // '<a href="#" class="btn btn-default" id="show-help-trigger">Help</a>'+
-                    '<a href="#" class="btn btn-default id="show-code-trigger">Code</a>'+
-                  '</div>');
-    
-    $('#show-code-trigger').click(function(){
+                    '<a href="#" class="btn btn-default btn-xs" id="show-code-trigger">Show Code</a></div>');
+  $('#show-code-trigger').click(function(e){
+      e.preventDefault();
       $('.toggle-code').toggle();
-      console.log('clicked!');
-    });
+      $(this).text(($(this).text() === 'Hide Code') ? 'Show Code' : 'Hide Code');
+  });
+  var obj = $(this);
+  $.each( obj, function(index){
+    var html = $(this).html().replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    $(this).append('<a href="#" class="toggle-code btn btn-default btn-xs"><b>&lt;&nbsp;/&gt;</b></a>'+
+                   '<pre class="code-block"><code class="language-markup">'+html+'</code></pre>');
+  });
+  $('.code-block').hide();
+  $('.toggle-code').click(function(e){
+    e.preventDefault();
+    $(this).next('.code-block').slideToggle('fast');
+  }).css({
+    'position':'absolute',
+    'top': 0,
+    'left': 15+'px'
+  }).hide();
 
-    // $('#show-help-trigger').click(function(){
-    //   $('body').toggleClass('show-index-true');
-    // }).hide();
-  };
+};
 
 (function () {
-
 	tk.buildSwatches();
-  $('.container').addUIMenu();
   $('.show-code').showCode();
-
 }());
