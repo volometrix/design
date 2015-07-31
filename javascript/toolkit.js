@@ -44,11 +44,12 @@ tk.buildSwatches = function () {
 // Show Me Code plugin
 // <use xlink:href="#f-icon-notes" /> <use xlink:href="#f-icon-code" />
 
-$.fn.showCode = function() {
+
+  $.fn.showCode = function() {
     var obj = $(this);
     $.each( obj, function(index){
       var html = $(this).html().replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      $(this).append('<a href="#" class="toggle-code">code</a>'+
+      $(this).append('<a href="#" class="toggle-code btn btn-default">code</a>'+
                       '<pre class="code-block"><code class="language-markup">'+html+'</code></pre>');
     });
     $('.code-block').hide();
@@ -56,12 +57,34 @@ $.fn.showCode = function() {
       e.preventDefault();
       $(this).next('.code-block').slideToggle('fast');
       // $(this).text(($(this).text() === 'Hide Code') ? 'Show Code' : 'Hide Code');
+    }).css({
+      'position':'absolute',
+      'top': 0,
+      'right': 15+'px'
+    }).hide();
+  };
+
+$.fn.addUIMenu = function() {
+    var obj = $(this);
+      obj.append('<div class="page-menu btn-group" style="position:fixed;right:25px;top:65px;">'+
+                    // '<a href="#" class="btn btn-default" id="show-help-trigger">Help</a>'+
+                    '<a href="#" class="btn btn-default id="show-code-trigger">Code</a>'+
+                  '</div>');
+    
+    $('#show-code-trigger').click(function(){
+      $('.toggle-code').toggle();
+      console.log('clicked!');
     });
+
+    // $('#show-help-trigger').click(function(){
+    //   $('body').toggleClass('show-index-true');
+    // }).hide();
   };
 
 (function () {
 
 	tk.buildSwatches();
-	$('.show-code').showCode();
+  $('.container').addUIMenu();
+  $('.show-code').showCode();
 
 }());

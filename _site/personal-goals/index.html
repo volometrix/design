@@ -273,18 +273,6 @@
     }
   }
   </style>
-  <script>
-  $(function(){
-    $('#moment-panel').slideDown('slow');
-    $('#moment-input').focus().css('text-align','center');
-    $('#moment-save').click(function(){
-      $('#moment-panel').slideUp();
-    });
-    $('#show-help-trigger').click(function(){
-      $('body').toggleClass('show-index-true');
-    }).css('display','none');
-  });
-  </script>
 </head>
 <body role="document">
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -317,7 +305,8 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" id="show-help-trigger">Help</a></li>
+          <!-- <li><a href="#" id="show-help-trigger">Help</a></li>
+          <li><a href="#" id="show-code-trigger">Code</a></li> -->
         </ul>
       </div>
     </div>
@@ -332,23 +321,32 @@
     <hr>
     <div class="row">
       <div class="col-md-12">
-        <div id="moment-panel" class="moment" style="text-align:center;display:none;">
-          <h1 class="moment-greeting">
-            Hello, Kelsey
-          </h1>
-          <p>Did you feel more productive last week?</p>
-          <div class="btn-group" role="group" aria-label="...">
-            <a id="moment-yes" href="#" class="btn btn-default">Yes</a>&nbsp;&nbsp;<a id="moment-no" href="#" class="btn btn-default">No</a>
-          </div>
-          <p>What is your focus for this week?</p>
-          <p><input id="moment-input" type="text" style="border:none;background:transparent;border-bottom:solid 1px #555;"></p>
-          <p><a href="#" id="moment-save" class="btn btn-default">Save</a></p>
-        </div>
+        <div class="show-code"><div id="moment-panel" class="moment" style="text-align:center;display:none;">
+  <h1 class="moment-greeting">
+    Hello, Kelsey
+  </h1>
+  <p>Did you feel more productive last week?</p>
+  <div class="btn-group" role="group" aria-label="...">
+    <a id="moment-yes" href="#" class="btn btn-default">Yes</a>&nbsp;&nbsp;<a id="moment-no" href="#" class="btn btn-default">No</a>
+  </div>
+  <p>What is your focus for this week?</p>
+  <p><input id="moment-input" type="text" style="border:none;background:transparent;border-bottom:solid 1px #555;"></p>
+  <p><a href="#" id="moment-save" class="btn btn-default">Save</a></p>
+  <script>
+    $(function(){
+      $('#moment-panel').slideDown('slow');
+      $('#moment-input').focus().css('text-align','center');
+      $('#moment-save').click(function(){
+        $('#moment-panel').slideUp();
+      });
+    });
+  </script>
+</div></div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        
+        <div class="show-code">
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="panel-title">
@@ -418,12 +416,12 @@ var progressBar = (function(){
         }]
     });
 })();
-</script>
+</script></div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
-        
+        <div class="show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -551,10 +549,10 @@ var progressBar = (function(){
     </div>
   </div>
 </div>
-
+</div>
       </div>
       <div class="col-md-4">
-        
+        <div class="show-code">
 <div class="panel panel-default">
       <div class="panel-heading">
             <div class="panel-title">
@@ -575,10 +573,10 @@ var progressBar = (function(){
             <h5>Are there any productivity roadblocks?</h5>
             <p>You and one additional 2-hour blocks of time to work. Well done!</p>
       </div>
-</div>
+</div></div>
       </div>
       <div class="col-md-4">
-        
+        <div class="show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -647,12 +645,12 @@ var progressBar = (function(){
       </script>
     </div>     
   </div>
-</div>
+</div></div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        
+        <div class="show-code">
 <style>
 [data-toggle="popover"]:hover {
   text-decoration: underline;
@@ -905,12 +903,12 @@ a .glyphicon-info-sign:hover {
             </div>
         </div>
     </div>
-</div>  
+</div> </div> 
       </div>
     </div>
     <div class="row">
       <div class="col-md-8">
-        
+        <div class="show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -992,10 +990,10 @@ a .glyphicon-info-sign:hover {
                     </div>
                   </div>
                 </div>
-
+</div>
       </div>
       <div class="col-md-4">
-        <style>
+        <div class="show-code"><style>
       
   .goal-met-true {
     color: #A6D53A;
@@ -1172,12 +1170,12 @@ a .glyphicon-info-sign:hover {
             </div>
       </div>
 </div>
-
+</div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        
+        <div class="show-code">
 <style>
 [data-toggle="popover"]:hover {
   text-decoration: underline;
@@ -1403,12 +1401,12 @@ a .glyphicon-info-sign:hover {
     </div>
   </div>
 </div>
-</div>  
+</div> </div> 
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
-        
+        <div class="show-code">
 <div class="panel panel-default">
     <div class="panel-heading">
          <div class="panel-title">
@@ -1536,10 +1534,10 @@ a .glyphicon-info-sign:hover {
         </div>
     </div>
 </div>
-
+</div>
       </div>
       <div class="col-md-4">
-        <div class="panel panel-default">
+        <div class="show-code"><div class="panel panel-default">
       <div class="panel-heading">
             <div class="panel-title">
                   <span class="h5">After-hours Work </span>
@@ -1624,10 +1622,10 @@ a .glyphicon-info-sign:hover {
             </div>
       </div>
 </div>
-
+</div>
       </div>
       <div class="col-md-4">
-        
+        <div class="show-code">
 <div class="panel panel-default">
       <div class="panel-heading">
             <div class="panel-title">
@@ -1752,12 +1750,12 @@ a .glyphicon-info-sign:hover {
             </div>
         </div>
     </div>
-</div>
+</div></div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
-        
+        <div class="show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -1886,10 +1884,10 @@ a .glyphicon-info-sign:hover {
     </div>
   </div>
 </div>
-</div>
+</div></div>
       </div>
       <div class="col-md-4">
-        
+        <div class="show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -2031,7 +2029,7 @@ a .glyphicon-info-sign:hover {
   </div>
 </div>
 </div>
-
+</div>
       </div>
       <div class="col-md-4">
         <div class="show-code">
@@ -2183,20 +2181,20 @@ a .glyphicon-info-sign:hover {
     <hr>
     <div class="row">
       <div class="col-md-12">
-        <dl class="dl-horizontal">
-          <dt>Name</dt>
-          <dd>Kelsey Grammer</dd>
-          <dt>Email</dt>
-          <dd><a href="#">kgrammer@gmail.com</a></dd>
-          <dt>Peer</dt>
-          <dd>A member of you company in the same level (e.g. Financial Analyst 3)</dd>
-          <dt>Level</dt>
-          <dd>Level is the organization hierarchy</dd>
-          <dt>Value</dt>
-          <dd>Define value</dd>
-          <dt>No of people</dt>
-          <dd>1,230</dd>
-        </dl>
+        <div class="show-code"><dl class="dl-horizontal">
+ <dt>Name</dt>
+ <dd>Kelsey Grammer</dd>
+ <dt>Email</dt>
+ <dd><a href="#">kgrammer@gmail.com</a></dd>
+ <dt>Peer</dt>
+ <dd>A member of you company in the same level (e.g. Financial Analyst 3)</dd>
+ <dt>Level</dt>
+ <dd>Level is the organization hierarchy</dd>
+ <dt>Value</dt>
+ <dd>Define value</dd>
+ <dt>No of people</dt>
+ <dd>1,230</dd>
+</dl></div>
       </div>
     </div>
     <hr>
@@ -2406,12 +2404,16 @@ $(function() {
 </div>
     <script>
     $(function(){
-      $('#progress-bar-2-compare').addClass('show-code');
+      // $('#progress-bar-2-compare').addClass('show-code');
       var highestCol = Math.max($('.panel-body').height());
       $('.equalHeight').height(highestCol);
       $('.panel-body').css({ 
         'height' : highestCol 
       });
+      // $('.toggle-code').hide();
+      // $('#show-code-trigger').click(function(){
+      //   $('.toggle-code').toggle();
+      // });
     });
     </script>
   </div>

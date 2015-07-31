@@ -1,12 +1,124 @@
----
-layout: 
-title: 
-permalink: /network/
-page-title: Your Network
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+  
+  <title>Our Meetings</title>
 
-{% include db-header.html %}
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/design/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="/design/css/prism.css">
 
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="/design/javascript/jquery-2.1.3.min.js"></script>
+  <script src="/design/javascript/jquery.cookie.min.js"></script>
+  <script src="/design/javascript/bootstrap.min.js"></script>
+  <script src="/design/javascript/highcharts.js"></script>
+  <script src="/design/javascript/exporting.js"></script>
+  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
+  <script src="/design/javascript/drilldown.js"></script>
+  <script src="/design/javascript/jquery.dataTables.min.js"></script>
+  <script src="/design/javascript/dataTables.bootstrap.js"></script>
+  <script src="/design/javascript/d3.min.js"></script>
+  <script src="/design/javascript/data.js"></script>
+  <script src="/design/javascript/jquery.sparkline.js"></script>
+  <script src="/design/javascript/toolkit.js"></script>
+  <style>
+    body {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: #f9f9f9;
+    color: #555;
+  }
+
+  .btn-default {
+    border-color: #ddd;
+  }
+
+  .theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .theme-showcase > p > .btn {
+    margin: 5px 0;
+  }
+
+  .theme-showcase .navbar .container {
+    width: auto;
+  }
+
+  /* Bootstrap overrides */
+  .panel-body {
+    /*min-height: 350px;*/
+    position: relative;
+  }
+  .chart {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+  .panel .panel-heading {
+    background: #fff;
+    border-bottom: none;
+  }
+  .modal .modal-footer {
+    text-align: left;
+  }
+  .goal-met-true {
+    color: #A6D53A;
+  }
+  .goal-met-false {
+    color: #FC9430;
+  }
+  .figure {
+    font-size: 48px;
+    font-weight: 300;
+  }
+  </style>
+</head>
+<body role="document">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Volometrix</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="#">METRICS</a></li>
+          <li><a href="#about">COLLABORATION</a></li>
+          <li><a href="#contact">TOPICS</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 <style>
 body {
   padding-top: 50px;
@@ -40,29 +152,23 @@ body {
   font-size: 15px;
   z-index: 120;
 }
-
 .tooltip p.main {
   font-size: 15px;
   text-align: center;
   padding:0;
   margin:0;
 }
-
 hr.tooltip-hr {
   padding:3px 0 0 0;
   margin:3px 0 3px 0;
 }
-
 .tooltip .title {
   font-size: 20px;
   line-height: 24px;
 }
- 
 .tooltip .name {
   font-weight:bold;
 }
-
-
 line.link {
   fill: none;
   stroke-width: 1.5px;
@@ -106,11 +212,11 @@ line.link {
       var ttleft = ((curX) < $(window).width() / 2) ? curX - toolTipW - xOffset*2 : curX + xOffset;
       if (ttleft < windowX + xOffset){
         ttleft = windowX + xOffset;
-      } 
+      }
       var tttop = ((curY - windowY + yOffset*2 + toolTipeH) > $(window).height()) ? curY - toolTipeH - yOffset*2 : curY + yOffset;
       if (tttop < windowY + yOffset){
         tttop = curY + yOffset;
-      } 
+      }
       $(ttid).css('top', tttop + 'px').css('left', ttleft + 'px');
     }
 
@@ -719,32 +825,29 @@ line.link {
       </div>
       <div class="row">
         <div class="col-md-12">
-{% highlight javascript %}
-{
-  "nodes": [
-    {
-      "name": "node 1",
-      "artist": "artist name",
-      "id": "unique_id_1",
-      "playcount": 123
-    },
-    {
-      "name": "node 2",
-      # ...
-    }
-  ],
-  "links": [
-    {
-      "source": "unique_id_1",
-      "target": "unique_id_2"
-    },
-    {
-      # ...
-    }
-  ]
-}
-
-{% endhighlight %}
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+  <span class="s2">&quot;nodes&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;node 1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;artist&quot;</span><span class="o">:</span> <span class="s2">&quot;artist name&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;unique_id_1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;playcount&quot;</span><span class="o">:</span> <span class="mi">123</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;node 2&quot;</span><span class="p">,</span>
+      <span class="err">#</span> <span class="p">...</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;unique_id_1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;unique_id_2&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="err">#</span> <span class="p">...</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span></code></pre></div>
         </div>
       </div>
     </div>

@@ -1,0 +1,9 @@
+# Naming
+uiname: personalgoals
+mods:
+  - label: momentum
+    title: Momentum
+    description: This is the Momentum panel
+  - label: meetingemailsummary
+    title: Meeting and Email Summary
+    description: this is the description

@@ -1,55 +1,53 @@
 ---
-layout: default
+layout: offcanvas
 title: Product  
 permalink: /product/
 page-title: Product Styleguilde
+page-type: product
 ---
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>Product</h1>
-      <p class="lead">Principles, guidelines and assets for designing and building Volometrix products</p>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">This Section</a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              {% for section in site.data.product-nav %}
-              <li><a href="#{{ section.name }}-section">{{ section.name | capitalize }}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
+<hr id="charts-section">
+<h3>Charts</h3>
+<hr>
+  <p class="filter-group">Filter: <a href="#" data-filter="*">All</a> <a href="#" data-filter=".personal-goals">Personal Goals</a></p>
+<hr>
+<h4>Personal Goals</h4>
+<div class="grid">
+  <div class="grid-item personal-goals">
+    <h5 id="stacked-bar-chart">Stacked Bar</h5><div class="show-code">{% include progress-bar-2.html %}</div><hr>
   </div>
-  <hr id="charts-section">
-  <div class="row">
-    <div class="col-md-8">
-      <h3>Charts</h3>
-      <hr>
-      <h5 id="stacked-bar-chart">Stacked Bar</h5><div class="show-code">{% include progress-bar-2.html %}</div><hr>
-      <h5 id="area-range-chart">Area Range Line Chart</h5><div class="show-code">{% include area-range-line.html %}</div><hr>
-      <h5 id="radar-chart">Radar Chart</h5><div class="show-code">{% include radar-chart.html %}</div><hr>
-      <h5 id="column-chart">Column Chart</h5><div class="show-code">{% include column-chart.html %}</div><hr>
-      <h5 id="area-spline-trend-chart">Area Spline w/ Trend</h5><div class="show-code">{% include impact-panel-2.html %}</div><hr>
-      <h5 id="grouped-column-chart">Grouped Column</h5><div class="show-code">{% include after-hours-email-panel.html %}</div><hr>
-      <h5 id="grouped-column-goal-chart">Grouped Column w/ Goal</h5><div class="show-code">{% include hours-worked-panel.html %}</div><hr>
-      <h5 id="half-donut-chart">Donut (Half)</h5><div class="show-code">{% include reoccurring-meetings-panel.html %}</div><hr>
-      <h5 id="line-chart">Line Chart</h5><div class="show-code">{% include time-panel-mgr.html %}</div><hr>
-    </div>
+  <div class="grid-item">
+    <h5 id="area-range-chart">Area Range Line Chart</h5><div class="show-code">{% include area-range-line.html %}</div><hr>
   </div>
-  <div class="row">
-    <div class="col-md-8">
-      
-    </div>
+  <div class="grid-item">
+    <h5 id="radar-chart">Radar Chart</h5><div class="show-code">{% include radar-chart.html %}</div><hr>
+  </div>
+  <div class="grid-item">
+    <h5 id="column-chart">Column Chart</h5><div class="show-code">{% include column-chart.html %}</div><hr>
+  </div>
+  <div class="grid-item">
+    <h5 id="area-spline-trend-chart">Area Spline w/ Trend</h5><div class="show-code">{% include impact-panel-2.html %}</div><hr>
+  </div>
+  <div class="grid-item">
+    <h5 id="grouped-column-chart">Grouped Column</h5><div class="show-code">{% include after-hours-email-panel.html %}</div><hr>
+  </div>
+  <div class="grid-item">
+    <h5 id="half-donut-chart">Donut (Half)</h5><div class="show-code">{% include reoccurring-meetings-panel.html %}</div><hr>    
+  </div>
+  <div class="grid-item">
+    <h5 id="line-chart">Line Chart</h5><div class="show-code">{% include time-panel-mgr.html %}</div><hr>
   </div>
 </div>
+<script>
+$(function(){
+  var $grid = $('.grid').isotope({
+    itemSelector: '.grid-item'
+  });
+  $('.filter-group').on('click', 'a', function(){
+    var filterValue = $(this).attr('data-filter');
+    $grid.isotope({ 
+      filter: filterValue,
+      layoutMode: 'fitRows'
+    });
+  });
+});
+</script>

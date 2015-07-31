@@ -160,18 +160,6 @@ page-title: Personal Goals Dashboard
     }
   }
   </style>
-  <script>
-  $(function(){
-    $('#moment-panel').slideDown('slow');
-    $('#moment-input').focus().css('text-align','center');
-    $('#moment-save').click(function(){
-      $('#moment-panel').slideUp();
-    });
-    $('#show-help-trigger').click(function(){
-      $('body').toggleClass('show-index-true');
-    }).css('display','none');
-  });
-  </script>
 </head>
 <body role="document">
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -204,7 +192,8 @@ page-title: Personal Goals Dashboard
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" id="show-help-trigger">Help</a></li>
+          <!-- <li><a href="#" id="show-help-trigger">Help</a></li>
+          <li><a href="#" id="show-code-trigger">Code</a></li> -->
         </ul>
       </div>
     </div>
@@ -219,71 +208,60 @@ page-title: Personal Goals Dashboard
     <hr>
     <div class="row">
       <div class="col-md-12">
-        <div id="moment-panel" class="moment" style="text-align:center;display:none;">
-          <h1 class="moment-greeting">
-            Hello, Kelsey
-          </h1>
-          <p>Did you feel more productive last week?</p>
-          <div class="btn-group" role="group" aria-label="...">
-            <a id="moment-yes" href="#" class="btn btn-default">Yes</a>&nbsp;&nbsp;<a id="moment-no" href="#" class="btn btn-default">No</a>
-          </div>
-          <p>What is your focus for this week?</p>
-          <p><input id="moment-input" type="text" style="border:none;background:transparent;border-bottom:solid 1px #555;"></p>
-          <p><a href="#" id="moment-save" class="btn btn-default">Save</a></p>
-        </div>
+        <div class="show-code">{% include moment-panel.html %}</div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        {% include progress-bar-panel-2.html %}
+        <div class="show-code">{% include progress-bar-panel-2.html %}</div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
-        {% include last-week-productivity-panel.html %}
+        <div class="show-code">{% include last-week-productivity-panel.html %}</div>
       </div>
       <div class="col-md-4">
-        {% include goals-for-the-week-panel.html %}
+        <div class="show-code">{% include goals-for-the-week-panel.html %}</div>
       </div>
       <div class="col-md-4">
-        {% include time-breakdown-panel.html %}
+        <div class="show-code">{% include time-breakdown-panel.html %}</div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        {% include meeting-panel-2.html %}  
+        <div class="show-code">{% include meeting-panel-2.html %} </div> 
       </div>
     </div>
     <div class="row">
       <div class="col-md-8">
-        {% include key-people-panel.html %}
+        <div class="show-code">{% include key-people-panel.html %}</div>
       </div>
       <div class="col-md-4">
-        {% include work-panel-2.html %}
+        <div class="show-code">{% include work-panel-2.html %}</div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        {% include email-effectiveness-panel.html %}  
+        <div class="show-code">{% include email-effectiveness-panel.html %} </div> 
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
-        {% include email-panel-2.html %}
+        <div class="show-code">{% include email-panel-2.html %}</div>
       </div>
       <div class="col-md-4">
-        {% include after-hours-work-panel.html %}
+        <div class="show-code">{% include after-hours-work-panel.html %}</div>
       </div>
       <div class="col-md-4">
-        {% include impact-panel-2.html %}
+        <div class="show-code">{% include impact-panel-2.html %}</div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
-        {% include hours-worked-panel.html %}
+        <div class="show-code">{% include hours-worked-panel.html %}</div>
       </div>
       <div class="col-md-4">
-        {% include manager-11s-panel.html %}
+        <div class="show-code">{% include manager-11s-panel.html %}</div>
       </div>
       <div class="col-md-4">
         <div class="show-code">{% include direct-11s-panel.html %}</div>
@@ -292,32 +270,23 @@ page-title: Personal Goals Dashboard
     <hr>
     <div class="row">
       <div class="col-md-12">
-        <dl class="dl-horizontal">
-          <dt>Name</dt>
-          <dd>Kelsey Grammer</dd>
-          <dt>Email</dt>
-          <dd><a href="#">kgrammer@gmail.com</a></dd>
-          <dt>Peer</dt>
-          <dd>A member of you company in the same level (e.g. Financial Analyst 3)</dd>
-          <dt>Level</dt>
-          <dd>Level is the organization hierarchy</dd>
-          <dt>Value</dt>
-          <dd>Define value</dd>
-          <dt>No of people</dt>
-          <dd>1,230</dd>
-        </dl>
+        <div class="show-code">{% include user-info.html %}</div>
       </div>
     </div>
     <hr>
     {% include welcome-modal.html %}
     <script>
     $(function(){
-      $('#progress-bar-2-compare').addClass('show-code');
+      // $('#progress-bar-2-compare').addClass('show-code');
       var highestCol = Math.max($('.panel-body').height());
       $('.equalHeight').height(highestCol);
       $('.panel-body').css({ 
         'height' : highestCol 
       });
+      // $('.toggle-code').hide();
+      // $('#show-code-trigger').click(function(){
+      //   $('.toggle-code').toggle();
+      // });
     });
     </script>
   </div>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -131,9 +130,77 @@
   </style>
 </head>
 
+  <script src="/design/javascript/isotope.pkgd.min.js"></script>
+  <style>
+    /*
+     * Style tweaks
+     * --------------------------------------------------
+     */
+    html,
+    body {
+      overflow-x: hidden; /* Prevent scroll on narrow devices */
+    }
+    .container {
+      padding-top: 70px;
+    }
+    .row-offcanvas {
+      position: relative;
+    }
+    footer {
+      padding: 30px 0;
+    }
+    /*
+     * Off Canvas
+     * --------------------------------------------------
+     */
+    @media screen and (min-width: 768px) {
+      #sidebar {
+        position: fixed;
+        right:0;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .row-offcanvas {
+        position: relative;
+        -webkit-transition: all .25s ease-out;
+             -o-transition: all .25s ease-out;
+                transition: all .25s ease-out;
+      }
 
+      .row-offcanvas-right {
+        right: 0;
+      }
+
+      .row-offcanvas-left {
+        left: 0;
+      }
+
+      .row-offcanvas-right
+      .sidebar-offcanvas {
+        right: -50%; /* 6 columns */
+      }
+
+      .row-offcanvas-left
+      .sidebar-offcanvas {
+        left: -50%; /* 6 columns */
+      }
+
+      .row-offcanvas-right.active {
+        right: 50%; /* 6 columns */
+      }
+
+      .row-offcanvas-left.active {
+        left: 50%; /* 6 columns */
+      }
+
+      .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 50%; /* 6 columns */
+      }
+    } 
+  </style>
   <body>
-
     <header class="site-header">
 
   <div class="wrapper">
@@ -236,56 +303,23 @@
 
 </header>
 
-
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>Product</h1>
-      <p class="lead">Principles, guidelines and assets for designing and building Volometrix products</p>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">This Section</a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              
-              <li><a href="#charts-section">Charts</a></li>
-              
-              <li><a href="#colors-section">Colors</a></li>
-              
-              <li><a href="#grid-section">Grid</a></li>
-              
-              <li><a href="#icons-section">Icons</a></li>
-              
-              <li><a href="#layout-section">Layout</a></li>
-              
-              <li><a href="#typography-section">Typography</a></li>
-              
-              <li><a href="#writing style-section">Writing style</a></li>
-              
-              <li><a href="#components-section">Components</a></li>
-              
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </div>
-  <hr id="charts-section">
-  <div class="row">
-    <div class="col-md-8">
-      <h3>Charts</h3>
-      <hr>
-      <h5 id="stacked-bar-chart">Stacked Bar</h5><div class="show-code">
+    <div class="container">
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <div class="row">
+            <div class="">
+              <hr id="charts-section">
+<h3>Charts</h3>
+<hr>
+  <p class="filter-group">Filter: <a href="#" data-filter="*">All</a> <a href="#" data-filter=".personal-goals">Personal Goals</a></p>
+<hr>
+<h4>Personal Goals</h4>
+<div class="grid">
+  <div class="grid-item personal-goals">
+    <h5 id="stacked-bar-chart">Stacked Bar</h5><div class="show-code">
 <div id="progress-bar-2" style="min-width: 310px; height: 95px; margin: 0 auto">
     <script>
     $(function () {
@@ -344,7 +378,9 @@
 });
 </script>
 </div></div><hr>
-      <h5 id="area-range-chart">Area Range Line Chart</h5><div class="show-code"><div id="area-range-line-chart" class="source-code">
+  </div>
+  <div class="grid-item">
+    <h5 id="area-range-chart">Area Range Line Chart</h5><div class="show-code"><div id="area-range-line-chart" class="source-code">
     <script>
     $(function () {
         Highcharts.setOptions(Highcharts.theme);
@@ -460,7 +496,9 @@
 });
 </script>
 </div></div><hr>
-      <h5 id="radar-chart">Radar Chart</h5><div class="show-code">
+  </div>
+  <div class="grid-item">
+    <h5 id="radar-chart">Radar Chart</h5><div class="show-code">
 <div id="radar-chart"></div>
 <script>
 	$(function() {
@@ -517,7 +555,9 @@
     });
 });
 </script></div><hr>
-      <h5 id="column-chart">Column Chart</h5><div class="show-code">
+  </div>
+  <div class="grid-item">
+    <h5 id="column-chart">Column Chart</h5><div class="show-code">
 <div id="column-chart"></div>
 <script>
 $(function () {
@@ -775,7 +815,9 @@ $(function () {
     });
 });
 </script></div><hr>
-      <h5 id="area-spline-trend-chart">Area Spline w/ Trend</h5><div class="show-code">
+  </div>
+  <div class="grid-item">
+    <h5 id="area-spline-trend-chart">Area Spline w/ Trend</h5><div class="show-code">
 <div class="panel panel-default">
       <div class="panel-heading">
             <div class="panel-title">
@@ -901,7 +943,9 @@ $(function () {
         </div>
     </div>
 </div></div><hr>
-      <h5 id="grouped-column-chart">Grouped Column</h5><div class="show-code"><div class="panel panel-default">
+  </div>
+  <div class="grid-item">
+    <h5 id="grouped-column-chart">Grouped Column</h5><div class="show-code"><div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
       <span class="h5">After Hours Email</span>
@@ -1034,137 +1078,9 @@ $(function(){
     </div>
 </div>
 </div><hr>
-      <h5 id="grouped-column-goal-chart">Grouped Column w/ Goal</h5><div class="show-code">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="panel-title">
-      <span class="h5">Hours Worked </span>
-      <a href="#" data-toggle="modal" data-target="#hours-worked-modal"  class="pull-right btn btn-default btn-xs">
-        details
-      </a>    
-    </div>
   </div>
-  <div class="panel-body">
-    <div class="panel-subtitle">
-      <p>Some weeks are busier than others, but it's important to maintain your work/life balance. Your goal is to work (on average) between x and x hours per day.</p>
-    </div>
-    <script>
-    $(function(){
-      $('#hours-worked-chart').highcharts({
-        chart: {
-          type: 'areaspline',
-          height: 185
-        },
-        title: {
-          text: ''
-        },
-        colors: ['#3BB5EA', '#A6CEE3'],
-        xAxis: {
-          categories: ['Week 1', '2', '3', 'Week 4'],
-          title : {
-            text: null
-          },
-        },
-        yAxis: {
-          title: {
-            text: 'Hours Per Day'
-          },
-          plotBands: [{
-            from: 7,
-            to: 9,
-            color: 'rgba(68, 170, 213, .2)'
-          }]
-        },
-        plotOptions: {
-          line: {
-            dataLabels: {
-              enabled: false
-            },
-            enableMouseTracking: false
-          }
-        },
-        series: [{
-          name: 'You',
-          marker: {
-            radius: 4
-          },
-          data: [ 2, 9, 10, 6 ]
-          .sort(function(){ return .5 - Math.random() }),
-        }, {
-          name: 'Peers',
-          marker: {
-            radius: 3
-          },
-          dashStyle: 'dot',
-          color: '#666',
-          type: 'spline',
-          data: [10, 6, 8, 9].sort(function(){ return .5 - Math.random() })
-        }],
-        credits: {
-          enabled: false
-        },
-        exporting: {
-          enabled: false
-        }
-      });
-});
-</script>
-<div class="chart-description">
-  <span class="figure">10</span> average hours per day<br>
-  <strong>11</strong> peer average
-</div>
-<div id="hours-worked-chart" class="chart"></div> 
-</div>
-</div>
-<div class="modal fade" id="hours-worked-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-        </button>
-        <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
-
-      </div>
-      <div class="modal-body">
-       <h5>Here are all the meetings you attended this week.</h5>
-
-       <br>
-       <div>
-        <table class="table">
-          <tr>
-            <th>Person</th>
-            <th>Sent</th>
-            <th>Received</th>
-            <th>Total</th>
-          </tr>
-          <tr>
-            <td>Kent, Lead Engineer</td>
-            <td>1</td>
-            <td>18</td>
-            <td>20.1</td>
-          </tr>
-          <tr>
-            <td>Kent, Lead Engineer</td>
-            <td>1</td>
-            <td>18</td>
-            <td>20.1</td>
-          </tr>
-          <tr>
-            <td>Kent, Lead Engineer</td>
-            <td>1</td>
-            <td>18</td>
-            <td>20.1</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
-  </div>
-</div>
-</div></div><hr>
-      <h5 id="half-donut-chart">Donut (Half)</h5><div class="show-code">
+  <div class="grid-item">
+    <h5 id="half-donut-chart">Donut (Half)</h5><div class="show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -1306,8 +1222,10 @@ $(function(){
     </div>
   </div>
 </div>
-</div></div><hr>
-      <h5 id="line-chart">Line Chart</h5><div class="show-code">
+</div></div><hr>    
+  </div>
+  <div class="grid-item">
+    <h5 id="line-chart">Line Chart</h5><div class="show-code">
 <p><small>The average amount of time your  is spending sending and receiving email each week.</small></p>
 <p><span class="figure">7</span> hours worked per day on average <br>
     9 hours worked on average for the company</p>
@@ -1457,24 +1375,52 @@ credits: {
         </div>
     </div>
 </div><hr>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      
-    </div>
   </div>
 </div>
-
+<script>
+$(function(){
+  var $grid = $('.grid').isotope({
+    itemSelector: '.grid-item'
+  });
+  $('.filter-group').on('click', 'a', function(){
+    var filterValue = $(this).attr('data-filter');
+    $grid.isotope({ 
+      filter: filterValue,
+      layoutMode: 'fitRows'
+    });
+  });
+});
+</script>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+          <div class="list-group">
+           
+              <a href="#charts-section" class="list-group-item">Charts</a>
+            
+              <a href="#colors-section" class="list-group-item">Colors</a>
+            
+              <a href="#grid-section" class="list-group-item">Grid</a>
+            
+              <a href="#icons-section" class="list-group-item">Icons</a>
+            
+              <a href="#layout-section" class="list-group-item">Layout</a>
+            
+              <a href="#typography-section" class="list-group-item">Typography</a>
+            
+              <a href="#writing style-section" class="list-group-item">Writing style</a>
+            
+              <a href="#components-section" class="list-group-item">Components</a>
+            
+          </div>
+        </div>
       </div>
     </div>
-
     <footer>
   <script src="/design/javascript/toolkit.js"></script>
   <script src="/design/javascript/personalDashboardHCTheme.js"></script>
   <script src="/design/javascript/prism.js"></script>
 </footer>
-
   </body>
-
 </html>
