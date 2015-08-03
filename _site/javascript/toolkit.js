@@ -72,7 +72,7 @@ tk.buildSwatches = function () {
 
 // };
 
-// (function () {
-// 	tk.buildSwatches();
-//   $('.show-code').showCode();
-// }());
+(function () {
+	tk.buildSwatches();
+  // $('.show-code').showCode();
+}());
