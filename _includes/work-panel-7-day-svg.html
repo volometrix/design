@@ -1,82 +1,65 @@
----
-layout: default
-title:
-permalink: /wt/
-report-title: Work Time
----
 <style>
-.svg-days-chart circle {
+.days-chart-svg  {
+  width: 315px;
+  height: 80px;
+  margin-top: 30px;
+}
+.days-chart-svg circle {
   fill: #999999;
   stroke: #D7D7D7;
   stroke-width: 3;
 }
-.svg-days-chart .goal-met-true {
+.days-chart-svg .goal-met-true {
   fill: #33A02C;
   stroke: #A6D53A;
   stroke-width: 3;
 }
-.svg-days-chart .goal-met-false {
+.days-chart-svg .goal-met-false {
   fill: #FC9430;
   stroke: #FDBF6F;
   stroke-width: 3;
 }
 </style>
-<div id="wt7" class="svg-days-chart"></div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">Work Time</span>
+      <a href="#" data-toggle="modal" data-target="#workModal" class="pull-right btn btn-default btn-xs">
+        <small>details</small>
+      </a>    
+    </div>
+
+  </div>
+  <div class="panel-body" style="position:relative">
+    <div class="panel-subtitle">
+      <p>Ensure you have ample time scheduled to work and think. Your goal is <strong>4 days</strong> with one or more two-hour blocks with no meetings</p>
+    </div>  
+    <div class="chart-wrapper" style="height:250px;">   
+      <div class="chart-description">
+        <span class="big figure">1</span>
+        day with a two-hour block
+      </div>
+      <br><br>
+      <div id="wt7" class="days-chart-svg"></div>
+      <ul class="days-chart days-chart-legend x-hidden">
+          <li class="day work-day key"></li>
+          <li>&nbsp;</li>
+          <li><small>two hour block available</small></li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li class="day goal-met-false key"></li>
+          <li>&nbsp;</li>
+          <li><small>no focus time</small></li>
+      </ul>
+    </div>
+  </div>
+</div>
 <script>
-$(function () {
+$(function () {$(function () {
   var renderer;
   renderer = new Highcharts.Renderer(
     $('#wt7')[0],
-    315,
-    80
-    );
-  renderer.rect(28, 33, 260, 4, 0).attr({
-    fill: '#D7D7D7'
-  }).add();
-  renderer.circle(33, 35, 12).attr({
-    'class': 'goal-met-true'
-  }).add();
-  renderer.circle(93, 35, 12).attr({
-    'class': 'goal-met-false'
-  }).add();
-  renderer.circle(153, 35, 12).attr({
-    'class': 'goal-met-false'
-  }).add();
-  renderer.circle(213, 35, 12).attr({
-    'class': 'goal-met-true'
-  }).add();
-  renderer.circle(276, 35, 12).attr({
-    'class': 'goal-met-true'
-  }).add();
-  renderer.text('Mo',25,65).css({
-    fontSize: '9pt',
-    color: '#4a4a4a'
-  }).add();
-  renderer.text('Tu',85,65).css({
-    fontSize: '9pt',
-    color: '#4a4a4a'
-  }).add();
-  renderer.text('We',145,65).css({
-    fontSize: '9pt',
-    color: '#4a4a4a'
-  }).add();
-  renderer.text('Th',205,65).css({
-    fontSize: '9pt',
-    color: '#4a4a4a'
-  }).add();
-  renderer.text('Fr',267,65).css({
-    fontSize: '9pt',
-    color: '#4a4a4a'
-  }).add();
-});
-</script>
-<hr>
-<div id="wt5" class="svg-days-chart"></div>
-<script>
-$(function () {
-  var renderer;
-  renderer = new Highcharts.Renderer(
-    $('#wt5')[0],
     315,
     80
     );
@@ -128,5 +111,6 @@ $(function () {
     fontSize: '9pt',
     color: '#4a4a4a'
   }).add();
+});
 });
 </script>
