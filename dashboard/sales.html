@@ -1,6 +1,6 @@
 ---
 layout: 
-title:
+title: Sales
 permalink: /sales/
 page-title: SYMC | Volometrix Account Engagement Report
 report-title: Account Engagement Report
@@ -85,6 +85,9 @@ report-title: Account Engagement Report
   } 
   .masthead {
     text-align: center;
+    margin: 15px 0;
+    padding: 25px 0 15px 0;
+    border-top: solid 1px #eee;
   }
   .masthead .report-title {
     margin:15px auto 0 auto;
@@ -110,7 +113,11 @@ report-title: Account Engagement Report
     font-weight: 200;
   }
   .section-title {
-    padding-bottom: 15px;
+    padding: 6px;
+    font-weight: bold;
+    background: #f7f7f7;
+    border-top: solid 1px #ddd;
+    border-bottom: solid 1px #ddd;
   }
 
     /* Print */
@@ -162,10 +169,8 @@ report-title: Account Engagement Report
         font-weight: 300;
       }
       .section-title {
-        font-size: 18px;
-        font-weight: 300;
-        margin-top:0;
       }
+
       #print-container .table {
         font-size: 11px;
       }
@@ -351,7 +356,6 @@ report-title: Account Engagement Report
             }
         }
         doChunk();
-
     });
     </script>
   </head>
@@ -386,42 +390,46 @@ report-title: Account Engagement Report
       <div id="print-container" class="box container">
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane fade in active" id="east-region">
-            <div class="row">
+            <div class="row cobranding">
               <div class="col-xs-12">
                 <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                 <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
               </div>
             </div>
-            <hr>
             <div class="row">
               <div class="masthead col-xs-12">
                 <h2 class="report-title">{{ page.report-title }}</h2>
                 <h4 class="report-subtitle">East Region, July 2015</h4>
               </div>
             </div>
-            <hr>
-            <h5 class="section-title">Meeting and email time with customer</h5>
+            <p class="section-title">Meeting and email time with customer</p>
             <div class="row">
-              <div class="col-xs-3">
-                <p><span class="h1 figure">5.6</span>average hours/week</p>
-                <p>32% AEs meeting benchmark</p>
-                <p>231 total hours</p>
+              <div class="col-xs-4">
+                <p><span class="h3">5.6</span> average hours/week</p>
+                <p><span class="h4">32%</span> AEs meeting benchmark</p>
+                <p><span class="h4">231</span> total hours</p>
               </div>
-              <div class="col-xs-9">
+              <div class="col-xs-8">
                 <div id="customer-chart"></div>
                 <script>
                   $(function () {
                     Highcharts.setOptions(Highcharts.theme);
                     $('#customer-chart').highcharts({
                         chart: {
-                            type: 'line',
-                            height: 200
+                            type: 'column',
+                            height: 220
                         },
                         title: {
                             text: 'Quarter Over Quarter Comparison',
                             style: {
                               'color': '#444444',
                               'font-size': '14px'
+                            }
+                        },
+                        legend: {
+                            itemStyle: {
+                                'color': '#444444',
+                                'fontSize': '11px'
                             }
                         },
                         yAxis: {
@@ -433,17 +441,7 @@ report-title: Account Engagement Report
                             },
                             labels: {
                               enabled: false
-                            },
-                          //   plotLines: [{
-                          //     color: '#A6D53A',
-                          //     width: 2,
-                          //     value: 800,
-                          //     label: {
-                          //       text: 'Goal',
-                          //       align: 'right',
-                          //       x: 0
-                          //     }
-                          // }],
+                            }
                         },
                         xAxis: {
                           categories: ['July','August','September'],
@@ -484,22 +482,21 @@ report-title: Account Engagement Report
                 </script>
               </div>
             </div>
-            <hr>
-            <h5 class="section-title">Meeting and email time with key accounts</h5>
+            <p class="section-title">Meeting and email time with key accounts</p>
             <div class="row">
-              <div class="col-xs-3">
-                <p><span class="h1 figure">.95</span>average hours/week</p>
-                <p>41 total hours</p>
+              <div class="col-xs-4">
+                <p><span class="h3">0.95</span> average hours/week</p>
+                <p><span class="h4">41</span> total hours</p>
               </div>
-              <div class="col-xs-9">
+              <div class="col-xs-8">
                 <div id="key-contacts-chart"></div>
                  <script>
                   $(function () {
                     Highcharts.setOptions(Highcharts.theme);
                     $('#key-contacts-chart').highcharts({
                         chart: {
-                            type: 'line',
-                            height: 200
+                            type: 'column',
+                            height: 220
                         },
                         title: {
                             text: 'Quarter Over Quarter Comparison',
@@ -512,22 +509,13 @@ report-title: Account Engagement Report
                             title: {
                                 text: 'Time (hrs)',
                                 style: {
+                                'color': '#444444',
                                 'font-size': '11px'
                               }
                             },
                             labels: {
                               enabled: false
-                            },
-                          //   plotLines: [{
-                          //     color: '#A6D53A',
-                          //     width: 2,
-                          //     value: 120,
-                          //     label: {
-                          //       text: 'Goal',
-                          //       align: 'right',
-                          //       x: 0
-                          //     }
-                          // }]
+                            }
                         },
                         xAxis: {
                           categories: ['July', 'August','September'],
@@ -541,18 +529,17 @@ report-title: Account Engagement Report
                                     radius: 6
                                 },
                                 dataLabels: {
-                                    align: 'left',
+                                    // align: 'left',
                                     enabled: true
                                 }
                             }
                         },
                         series: [{
                           name: 'current quarter',
-                          data: [126, null, null],
-                          // color: '#05B0E6'
+                          data: [126, null, null]
                         }, {
                           name: 'previous quarter',
-                          data: [106, 104, 101]
+                          data: [101, 104, 101]
                         }, {
                           name: 'benchmark',
                           data: [110, null, null]
@@ -571,7 +558,7 @@ report-title: Account Engagement Report
             <br>
             <div class="row">
               <div class="col-xs-12">
-                <table class="table table-condensed">
+                <table class="table">
                   <tr>
                     <th width="27.777%">Account summary</th>
                     <th>July</th>
@@ -589,13 +576,13 @@ report-title: Account Engagement Report
                 </table>
               </div>
             </div>
-            <h5 class="section-title">Behavioral metrics per AE</h5>
+            <p class="section-title">Behavioral metrics per AE</p>
             <div class="row">
               <div class="col-xs-4">
-                <p><strong>Customer network size</strong><br>
-                  <span class="h1 figure">88</span>people
+                <p>Customer network size<br>
+                  <span class="h3">88</span>people
                 </p>
-                <table class="table table-condensed">
+                <table class="table">
                   <tr>
                     <th>Q2</th>
                     <th>BM</th>
@@ -610,8 +597,8 @@ report-title: Account Engagement Report
               </div>
               <div class="col-xs-4">
                 <p>
-                  <strong>Hrs/wk per customer</strong><br>
-                  <span class="h1 figure">88</span>hrs</p>
+                  Hrs/wk per customer<br>
+                  <span class="h3">88</span>hrs</p>
                 <table class="table table-condensed">
                   <tr>
                     <th>Q2</th>
@@ -627,8 +614,8 @@ report-title: Account Engagement Report
               </div>
               <div class="col-xs-4">
                 <p>
-                  <strong>Internal meeting time</strong><br>
-                  <span class="h1 figure">88</span>hrs
+                  Internal meeting time<br>
+                  <span class="h3">88</span>hrs
                 </p>
                 <table class="table table-condensed">
                   <tr>
