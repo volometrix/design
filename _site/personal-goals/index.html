@@ -2142,26 +2142,355 @@ $(function () {$(function () {
 </div></div>
       </div>
     </div>
-    <hr>
     <div class="row">
       <div class="col-md-12">
-        <div class="show-code"><dl class="dl-horizontal">
- <dt>Name</dt>
- <dd>Kelsey Grammer</dd>
- <dt>Email</dt>
- <dd><a href="#">kgrammer@gmail.com</a></dd>
- <dt>Peer</dt>
- <dd>A member of you company in the same level (e.g. Financial Analyst 3)</dd>
- <dt>Level</dt>
- <dd>Level is the organization hierarchy</dd>
- <dt>Value</dt>
- <dd>Define value</dd>
- <dt>No of people</dt>
- <dd>1,230</dd>
-</dl></div>
+        <div class="show-code"><div style="text-align:center">
+	<hr>
+	<p class="h-card">
+		This dashboard was created for <br>
+		<strong><a href="#">James Jammerson</a></strong>, <a href="#">jjammerson@company.com</a>, VP of Sales Operations <br>
+		Peers: 25 other at the VP level, Level: VP 3, Total in organization: 1,230
+	</p>
+	<br>
+	<p><a href="#" id="def-toggle" class="btn btn-default btn-xs">Definitions</a></p>
+	<br>
+	<div id="defs">
+		<table id="defs-datatable" class="table sort-table table-bordered" style="text-align:left; background:#fff;">
+	    <thead>
+	      <tr>
+	        <th style="width:30%">Metric</th>
+	        <th>Description</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      
+	      <tr>
+	        <td>Collaboration Hours</td>
+	        <td>The average time you spent with email and meetings each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Utilization</td>
+	        <td>The length of time between your first email or meeting and last email or meeting each day.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Collaboration Hours Outside 8-5</td>
+	        <td>The average time you spent with email and meetings outside regular business hours each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Meeting Hours</td>
+	        <td>The average time you spent in meetings each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Mail Hours</td>
+	        <td>The average time you spent with email each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Organizational Load</td>
+	        <td>The time you cost the organization with email and meetings.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Push Hours</td>
+	        <td>The average time others spent on email and meetings you created each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Fragmentation</td>
+	        <td>The number of 2-hour blocks of time you had between meetings each day 8 am to 5 pm.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Double Booked Hours</td>
+	        <td>The average time you were scheduled in simultaneous meetings each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Low Engagement Hours</td>
+	        <td>The average time you spent in double booked or redundant meetings or sending more than two emails per hour in meetings each week. </td>
+	      </tr>
+	      
+	      <tr>
+	        <td>External Meeting Hours</td>
+	        <td>The average time you spent with people outside of your organization.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Redundant Meeting Hours</td>
+	        <td>The average time you spent in redundant meetings. </td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Meetings Attended</td>
+	        <td>The average number of meetings you attend each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Time Spent in Meetings 30-59 min Duration</td>
+	        <td>The average number of 30 to 59 minute meetings you attend each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Received Mail</td>
+	        <td>The average number of emails you receive each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Sent Mail</td>
+	        <td>The average number of emails you send each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Attachments</td>
+	        <td>The average number of email attachments you send each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Management Interactions</td>
+	        <td>The average number of meetings you had with a person at least one level above you each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Skip Level Interactions</td>
+	        <td>The average number of meetings you had with a person at least two levels above you each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>One-on-one Manager Interactions</td>
+	        <td>The average number of one-on-one meetings you attended each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>One-on-one Manager Hours</td>
+	        <td>The average time you spent in one-on-one meetings each week.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Manager Centralization</td>
+	        <td>The percent of a team's meetings and emails in which the manager of the team was involved</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Hours with Manager</td>
+	        <td>The average time you spent meeting with your direct manager</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Manager Load Absorption</td>
+	        <td>The average ratio of time you spent in meetings compared to your managers.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Internal Network Size</td>
+	        <td>The number of connections you have within your company. A connection is made with at least two emails or meetings involving less than five people. </td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Internal Network Breadth</td>
+	        <td>The number of internal departments in which you have at least one connection.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>External Network Size</td>
+	        <td>The number of connections you have outside your company. A connection is made with an email or meeting involving less than five people. </td>
+	      </tr>
+	      
+	      <tr>
+	        <td>External Network Breadth</td>
+	        <td>The number of external domains in which you have at least one connection. A connection is made with at least two meetings or emails involving less than 5 people.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Function Depth</td>
+	        <td>The average number of connections within your job function.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Level Depth</td>
+	        <td>The average number of connections within your job level.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Region Depth</td>
+	        <td>The average number of connections within your geographic region.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Organizational Depth</td>
+	        <td>The average number of connections within your organization.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Network Velocity</td>
+	        <td>The average number of new connections per month.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Network Efficiency</td>
+	        <td>The average time spent collaborating with each internal connection per month</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Insularity by Organization</td>
+	        <td>The percent of time you spent emailing and meeting within your organization, relative to your total time emailing and meeting</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Insularity by Function</td>
+	        <td>The percent of time you spent emailing and meeting within your job function, , relative to your total time emailing and meeting.</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Insularity by Region</td>
+	        <td>The percent of time you spent emailing and meeting within your geographic region, , relative to your total time emailing and meeting</td>
+	      </tr>
+	      
+	      <tr>
+	        <td>Insularity by Level</td>
+	        <td>The percent of time you spent emailing and meeting within our organization level, , relative to your total time emailing and meeting</td>
+	      </tr>
+	                  
+	    </tbody>
+	  </table>
+	  <!-- <dl class="dl-horizontal" style="text-align:left">
+		  
+		  <dt>Collaboration Hours</dt>
+		  <dd>The average time you spent with email and meetings each week.</dd>
+		  
+		  <dt>Utilization</dt>
+		  <dd>The length of time between your first email or meeting and last email or meeting each day.</dd>
+		  
+		  <dt>Collaboration Hours Outside 8-5</dt>
+		  <dd>The average time you spent with email and meetings outside regular business hours each week.</dd>
+		  
+		  <dt>Meeting Hours</dt>
+		  <dd>The average time you spent in meetings each week.</dd>
+		  
+		  <dt>Mail Hours</dt>
+		  <dd>The average time you spent with email each week.</dd>
+		  
+		  <dt>Organizational Load</dt>
+		  <dd>The time you cost the organization with email and meetings.</dd>
+		  
+		  <dt>Push Hours</dt>
+		  <dd>The average time others spent on email and meetings you created each week.</dd>
+		  
+		  <dt>Fragmentation</dt>
+		  <dd>The number of 2-hour blocks of time you had between meetings each day 8 am to 5 pm.</dd>
+		  
+		  <dt>Double Booked Hours</dt>
+		  <dd>The average time you were scheduled in simultaneous meetings each week.</dd>
+		  
+		  <dt>Low Engagement Hours</dt>
+		  <dd>The average time you spent in double booked or redundant meetings or sending more than two emails per hour in meetings each week. </dd>
+		  
+		  <dt>External Meeting Hours</dt>
+		  <dd>The average time you spent with people outside of your organization.</dd>
+		  
+		  <dt>Redundant Meeting Hours</dt>
+		  <dd>The average time you spent in redundant meetings. </dd>
+		  
+		  <dt>Meetings Attended</dt>
+		  <dd>The average number of meetings you attend each week.</dd>
+		  
+		  <dt>Time Spent in Meetings 30-59 min Duration</dt>
+		  <dd>The average number of 30 to 59 minute meetings you attend each week.</dd>
+		  
+		  <dt>Received Mail</dt>
+		  <dd>The average number of emails you receive each week.</dd>
+		  
+		  <dt>Sent Mail</dt>
+		  <dd>The average number of emails you send each week.</dd>
+		  
+		  <dt>Attachments</dt>
+		  <dd>The average number of email attachments you send each week.</dd>
+		  
+		  <dt>Management Interactions</dt>
+		  <dd>The average number of meetings you had with a person at least one level above you each week.</dd>
+		  
+		  <dt>Skip Level Interactions</dt>
+		  <dd>The average number of meetings you had with a person at least two levels above you each week.</dd>
+		  
+		  <dt>One-on-one Manager Interactions</dt>
+		  <dd>The average number of one-on-one meetings you attended each week.</dd>
+		  
+		  <dt>One-on-one Manager Hours</dt>
+		  <dd>The average time you spent in one-on-one meetings each week.</dd>
+		  
+		  <dt>Manager Centralization</dt>
+		  <dd>The percent of a team's meetings and emails in which the manager of the team was involved</dd>
+		  
+		  <dt>Hours with Manager</dt>
+		  <dd>The average time you spent meeting with your direct manager</dd>
+		  
+		  <dt>Manager Load Absorption</dt>
+		  <dd>The average ratio of time you spent in meetings compared to your managers.</dd>
+		  
+		  <dt>Internal Network Size</dt>
+		  <dd>The number of connections you have within your company. A connection is made with at least two emails or meetings involving less than five people. </dd>
+		  
+		  <dt>Internal Network Breadth</dt>
+		  <dd>The number of internal departments in which you have at least one connection.</dd>
+		  
+		  <dt>External Network Size</dt>
+		  <dd>The number of connections you have outside your company. A connection is made with an email or meeting involving less than five people. </dd>
+		  
+		  <dt>External Network Breadth</dt>
+		  <dd>The number of external domains in which you have at least one connection. A connection is made with at least two meetings or emails involving less than 5 people.</dd>
+		  
+		  <dt>Function Depth</dt>
+		  <dd>The average number of connections within your job function.</dd>
+		  
+		  <dt>Level Depth</dt>
+		  <dd>The average number of connections within your job level.</dd>
+		  
+		  <dt>Region Depth</dt>
+		  <dd>The average number of connections within your geographic region.</dd>
+		  
+		  <dt>Organizational Depth</dt>
+		  <dd>The average number of connections within your organization.</dd>
+		  
+		  <dt>Network Velocity</dt>
+		  <dd>The average number of new connections per month.</dd>
+		  
+		  <dt>Network Efficiency</dt>
+		  <dd>The average time spent collaborating with each internal connection per month</dd>
+		  
+		  <dt>Insularity by Organization</dt>
+		  <dd>The percent of time you spent emailing and meeting within your organization, relative to your total time emailing and meeting</dd>
+		  
+		  <dt>Insularity by Function</dt>
+		  <dd>The percent of time you spent emailing and meeting within your job function, , relative to your total time emailing and meeting.</dd>
+		  
+		  <dt>Insularity by Region</dt>
+		  <dd>The percent of time you spent emailing and meeting within your geographic region, , relative to your total time emailing and meeting</dd>
+		  
+		  <dt>Insularity by Level</dt>
+		  <dd>The percent of time you spent emailing and meeting within our organization level, , relative to your total time emailing and meeting</dd>
+		   
+		</dl> -->
+	</div>
+	<hr>
+	<script>
+  $(function(){
+  	$('#defs').hide();
+    $('#def-toggle').click(function(e){
+    	e.preventDefault();
+      $('#defs').slideToggle();
+    });
+    $('#defs-datatable').dataTable({
+      "order": [[0,"asc"]],
+      "paging": false
+    });
+  });
+  </script>
+</div></div>
       </div>
     </div>
-    <hr>
     
 <style>
 #intro-modal .modal-content,
@@ -2368,17 +2697,11 @@ $(function() {
 </div>
     <script>
       $(function(){
-        // $('#progress-bar-2-compare').addClass('show-code');
         var highestCol = Math.max($('.panel-body').height());
         $('.equalHeight').height(highestCol);
         $('.panel-body').css({ 
           'height' : highestCol 
-        });
-        // $('.toggle-code').hide();
-        // $('#show-code-trigger').click(function(){
-        //   $('.toggle-code').toggle();
-        // });
-        
+        });        
         $('.show-code').showCode();
       });
     </script>

@@ -1,14 +1,49 @@
-<dl class="dl-horizontal">
- <dt>Name</dt>
- <dd>Kelsey Grammer</dd>
- <dt>Email</dt>
- <dd><a href="#">kgrammer@gmail.com</a></dd>
- <dt>Peer</dt>
- <dd>A member of you company in the same level (e.g. Financial Analyst 3)</dd>
- <dt>Level</dt>
- <dd>Level is the organization hierarchy</dd>
- <dt>Value</dt>
- <dd>Define value</dd>
- <dt>No of people</dt>
- <dd>1,230</dd>
-</dl>
+<div style="text-align:center">
+	<hr>
+	<p class="h-card">
+		This dashboard was created for <br>
+		<strong><a href="#">James Jammerson</a></strong>, <a href="#">jjammerson@company.com</a>, VP of Sales Operations <br>
+		Peers: 25 other at the VP level, Level: VP 3, Total in organization: 1,230
+	</p>
+	<br>
+	<p><a href="#" id="def-toggle" class="btn btn-default btn-xs">Definitions</a></p>
+	<br>
+	<div id="defs">
+		<table id="defs-datatable" class="table sort-table table-bordered" style="text-align:left; background:#fff;">
+	    <thead>
+	      <tr>
+	        <th style="width:30%">Metric</th>
+	        <th>Description</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      {% for def in site.data.KPITaxonomy %}
+	      <tr>
+	        <td>{{ def.metric }}</td>
+	        <td>{{ def.description }}</td>
+	      </tr>
+	      {% endfor %}            
+	    </tbody>
+	  </table>
+	  <!-- <dl class="dl-horizontal" style="text-align:left">
+		  {% for def in site.data.KPITaxonomy %}
+		  <dt>{{ def.metric }}</dt>
+		  <dd>{{ def.description }}</dd>
+		  {% endfor %} 
+		</dl> -->
+	</div>
+	<hr>
+	<script>
+  $(function(){
+  	$('#defs').hide();
+    $('#def-toggle').click(function(e){
+    	e.preventDefault();
+      $('#defs').slideToggle();
+    });
+    $('#defs-datatable').dataTable({
+      "order": [[0,"asc"]],
+      "paging": false
+    });
+  });
+  </script>
+</div>

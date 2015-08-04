@@ -271,27 +271,19 @@ dd {
         <div class="show-code">{% include direct-11s-panel.html %}</div>
       </div>
     </div>
-    <hr>
     <div class="row">
       <div class="col-md-12">
         <div class="show-code">{% include user-info.html %}</div>
       </div>
     </div>
-    <hr>
     {% include welcome-modal.html %}
     <script>
       $(function(){
-        // $('#progress-bar-2-compare').addClass('show-code');
         var highestCol = Math.max($('.panel-body').height());
         $('.equalHeight').height(highestCol);
         $('.panel-body').css({ 
           'height' : highestCol 
-        });
-        // $('.toggle-code').hide();
-        // $('#show-code-trigger').click(function(){
-        //   $('.toggle-code').toggle();
-        // });
-        
+        });        
         $('.show-code').showCode();
       });
     </script>
