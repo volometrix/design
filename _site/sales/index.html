@@ -399,6 +399,7 @@
             <p class="section-title">Meeting and email time with customer</p>
             <div class="row">
               <div class="col-xs-4">
+                <p>&nbsp;</p>
                 <p><span class="h3">5.6</span> average hours/week</p>
                 <p><span class="h4">32%</span> AEs meeting benchmark</p>
                 <p><span class="h4">231</span> total hours</p>
@@ -417,7 +418,7 @@
                             text: 'Quarter Over Quarter Comparison',
                             style: {
                               'color': '#444444',
-                              'font-size': '14px'
+                              'font-size': '12px'
                             }
                         },
                         legend: {
@@ -446,18 +447,14 @@
                         plotOptions: {
                             series: {
                                 dataLabels: {
-                                    align: 'left',
-                                    enabled: true
-                                },
-                                marker: {
-                                    radius: 6
+                                    enabled: true,
+                                    allowOverlap: true
                                 }
                             }
                         },
                         series: [{
                           name: 'current quarter',
-                          data: [975,null,null]
-                          // color: '#05B0E6'
+                          data: [975, null, null]
                         }, {
                           name: 'previous quarter',
                           data: [775, 690, 702]
@@ -479,6 +476,7 @@
             <p class="section-title">Meeting and email time with key accounts</p>
             <div class="row">
               <div class="col-xs-4">
+                <p>&nbsp;</p>
                 <p><span class="h3">0.95</span> average hours/week</p>
                 <p><span class="h4">41</span> total hours</p>
               </div>
@@ -496,7 +494,7 @@
                             text: 'Quarter Over Quarter Comparison',
                             style: {
                               'color': '#444444',
-                              'font-size': '14px'
+                              'font-size': '12px'
                             }
                         },
                         yAxis: {
@@ -523,8 +521,8 @@
                                     radius: 6
                                 },
                                 dataLabels: {
-                                    // align: 'left',
-                                    enabled: true
+                                    enabled: true,
+                                    allowOverlap: true
                                 }
                             }
                         },
@@ -587,10 +585,9 @@
             <p class="section-title">Behavioral metrics per AE</p>
             <div class="row">
               <div class="col-xs-4">
-                <p>Customer network size<br>
-                  <span class="h3">88</span>people
-                </p>
-                <table class="table">
+                <p style="margin:8px 0 12px 0;">Customer network size<br>
+                  <span class="h3">234</span> people</p>
+                <table class="table table-condensed">
                   <tr>
                     <th>Q2</th>
                     <th>BM</th>
@@ -604,9 +601,9 @@
                 </table>
               </div>
               <div class="col-xs-4">
-                <p>
+                <p style="margin:8px 0 12px 0;">
                   Hrs/wk per customer<br>
-                  <span class="h3">88</span>hrs</p>
+                  <span class="h3">22</span> hours</p>
                 <table class="table table-condensed">
                   <tr>
                     <th>Q2</th>
@@ -621,10 +618,9 @@
                 </table>
               </div>
               <div class="col-xs-4">
-                <p>
+                <p style="margin:8px 0 12px 0;">
                   Internal meeting time<br>
-                  <span class="h3">88</span>hrs
-                </p>
+                  <span class="h3">18</span> hours</p>
                 <table class="table table-condensed">
                   <tr>
                     <th>Q2</th>
