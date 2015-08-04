@@ -403,8 +403,9 @@ report-title: Account Engagement Report
             <h5 class="section-title">Meeting and email time with customer</h5>
             <div class="row">
               <div class="col-xs-3">
-                <p><span class="h1 figure">5.6</span>ave hrs/wk</p>
-                <p>231 hours total</p>
+                <p><span class="h1 figure">5.6</span>average hours/week</p>
+                <p>32% AEs meeting benchmark</p>
+                <p>231 total hours</p>
               </div>
               <div class="col-xs-9">
                 <div id="customer-chart"></div>
@@ -417,7 +418,7 @@ report-title: Account Engagement Report
                             height: 200
                         },
                         title: {
-                            text: 'Quarterly Trend',
+                            text: 'Quarter Over Quarter Comparison',
                             style: {
                               'color': '#444444',
                               'font-size': '14px'
@@ -433,19 +434,19 @@ report-title: Account Engagement Report
                             labels: {
                               enabled: false
                             },
-                            plotLines: [{
-                              color: '#A6D53A',
-                              width: 2,
-                              value: 800,
-                              label: {
-                                text: 'Goal',
-                                align: 'right',
-                                x: 0
-                              }
-                          }],
+                          //   plotLines: [{
+                          //     color: '#A6D53A',
+                          //     width: 2,
+                          //     value: 800,
+                          //     label: {
+                          //       text: 'Goal',
+                          //       align: 'right',
+                          //       x: 0
+                          //     }
+                          // }],
                         },
                         xAxis: {
-                          categories: ['July','September'],
+                          categories: ['July','August','September'],
                           title: {
                             text: null
                           }
@@ -463,11 +464,14 @@ report-title: Account Engagement Report
                         },
                         series: [{
                           name: 'current quarter',
-                          data: [975, null]
+                          data: [975,null,null]
                           // color: '#05B0E6'
                         }, {
                           name: 'previous quarter',
-                          data: [775, 702]
+                          data: [775, 690, 702]
+                        }, {
+                          name: 'benchmark',
+                          data: [825, null, null]
                         }],
                         credits: {
                           enabled: false
@@ -484,8 +488,8 @@ report-title: Account Engagement Report
             <h5 class="section-title">Meeting and email time with key accounts</h5>
             <div class="row">
               <div class="col-xs-3">
-                <p><span class="h1 figure">0.95</span>ave hrs/wk</p>
-                <p>41 hours total</p>
+                <p><span class="h1 figure">.95</span>average hours/week</p>
+                <p>41 total hours</p>
               </div>
               <div class="col-xs-9">
                 <div id="key-contacts-chart"></div>
@@ -498,7 +502,7 @@ report-title: Account Engagement Report
                             height: 200
                         },
                         title: {
-                            text: 'Quarterly Trend',
+                            text: 'Quarter Over Quarter Comparison',
                             style: {
                               'color': '#444444',
                               'font-size': '14px'
@@ -514,19 +518,19 @@ report-title: Account Engagement Report
                             labels: {
                               enabled: false
                             },
-                            plotLines: [{
-                              color: '#A6D53A',
-                              width: 2,
-                              value: 120,
-                              label: {
-                                text: 'Goal',
-                                align: 'right',
-                                x: 0
-                              }
-                          }]
+                          //   plotLines: [{
+                          //     color: '#A6D53A',
+                          //     width: 2,
+                          //     value: 120,
+                          //     label: {
+                          //       text: 'Goal',
+                          //       align: 'right',
+                          //       x: 0
+                          //     }
+                          // }]
                         },
                         xAxis: {
-                          categories: ['July','September'],
+                          categories: ['July', 'August','September'],
                           title: {
                             text: null
                           }
@@ -544,13 +548,14 @@ report-title: Account Engagement Report
                         },
                         series: [{
                           name: 'current quarter',
-                          data: [126, null],
+                          data: [126, null, null],
                           // color: '#05B0E6'
                         }, {
                           name: 'previous quarter',
-                          data: [106, 101],
-                          // color: '#666',
-                          // dashStyle: 'shortdot'
+                          data: [106, 104, 101]
+                        }, {
+                          name: 'benchmark',
+                          data: [110, null, null]
                         }],
                         credits: {
                           enabled: false
@@ -563,6 +568,7 @@ report-title: Account Engagement Report
                 </script>
               </div>
             </div>
+            <br>
             <div class="row">
               <div class="col-xs-12">
                 <table class="table table-condensed">
