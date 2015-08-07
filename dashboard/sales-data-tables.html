@@ -206,17 +206,50 @@ report-title: Account Engagement Report
           <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
         </div>
         <div class="col-xs-9">
-          <div id="time-regional-aves"></div>
+          <div id="all-regions-time-by-month-chart"></div>
           <script>
             $(function () {
-              $('#time-regional-aves').highcharts({
+              var data = [{
+                'Region': 'East',
+                'April': 8,
+                'May':  10,
+                'June': 10,
+                'July': 9
+              },{
+                'Region': 'West',
+                'April': 8,
+                'May':  10,
+                'June': 10,
+                'July': 11
+              },{
+                'Region': 'LAMC',
+                'April': 4,
+                'May':  9,
+                'June': 8,
+                'July': 8
+              }];
+            $('#all-regions-time-data').DataTable({
+                data: data,
+                columns: [
+                  { data: 'Region' },
+                  { data: 'April' },
+                  { data: 'May' },
+                  { data: 'June' },
+                  { data: 'July' }
+                ],
+                paging: false,
+                searching: false,
+                info: false,
+                ordering: false
+              });
+              $('#all-regions-time-by-month-chart').highcharts({
                   chart: {
                       type: 'column',
                       height: 220
                   },
                   colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                   title: {
-                      text: 'Regional Averages',
+                      text: 'All Regions by Month',
                       style: {
                         'color': '#444444',
                         'font-size': '14px'
@@ -239,8 +272,7 @@ report-title: Account Engagement Report
                   xAxis: {
                     title: {
                       text: null
-                    },
-                    categories: ['East','West','LAMC','AMS (All)']
+                    }
                   },
                   plotOptions: {
                       series: {
@@ -250,34 +282,17 @@ report-title: Account Engagement Report
                           }
                       }
                   },
+                  data: {
+                    table: 'all-regions-time-data'
+                  },
                   series: [{
-                    name: 'April',
-                    data: [ 
-                      { y:8 },
-                      { y:8 }, 
-                      { y:4, color: '#FDC44C' }  
-                    ]
-                  },{
-                    name: 'May',
-                    data: [ 
-                      { y:10 },
-                      { y:10 }, 
-                      { y:9 }
-                    ]
-                  },{
-                    name: 'June',
-                    data: [ 
-                      { y:10 },
-                      { y:10 }, 
-                      { y:8 }  
-                    ]
-                  },{
-                    name: 'July',
-                    data: [ 
-                      { y:9 },
-                      { y:11, color: '#70AD47'}, 
-                      { y:7 } 
-                    ]
+                    name: 'April'
+                  }, {
+                    name: 'May'
+                  }, {
+                    name: 'June'
+                  }, {
+                    name: 'July'
                   }],
                   credits: {
                     enabled: false
@@ -288,17 +303,65 @@ report-title: Account Engagement Report
                });
           });
           </script>
-          <div id="time-mgr-aves"></div>
+          <div id="all-regions-time-by-rep"></div>
+          <table id="all-regions-time-data" class="hidden"></table>
           <script>
             $(function () {
-              $('#time-mgr-aves').highcharts({
+              var data = [
+                {
+                  name: 'Al-Shorafa',
+                  data: 11
+                }, {
+                  name: 'Quigley',
+                  data: 11
+                }, {
+                  name: 'Young',
+                  data: 9
+                }, {
+                  name: 'Bradley',
+                  data: 7
+                }, {
+                  name: 'Ross',
+                  data: 7
+                }, {
+                  name: 'Wrast',
+                  data: 12
+                }, {
+                  name: 'Miranda',
+                  data: 12
+                }, {
+                  name: 'Moran',
+                  data: 10
+                }, {
+                  name: 'Holleron',
+                  data: 7
+                }, {
+                  name: 'Mexico',
+                  data: 8
+                }, {
+                  name: 'Brazil',
+                  data: 7
+                }
+              ];
+              $('#all-regions-time-by-rep-table').DataTable({
+                data: data,
+                columns: [
+                  { data: 'name' },
+                  { data: 'data' }
+                ],
+                paging: false,
+                searching: false,
+                info: false,
+                order: [1,'dsc']
+              });
+              $('#all-regions-time-by-rep').highcharts({
                   chart: {
                       type: 'column',
                       height: 220
                   },
                   colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                   title: {
-                      text: 'Manager Averages',
+                      text: 'Eastern Region Manager Averages',
                       style: {
                         'color': '#444444',
                         'font-size': '14px'
@@ -310,9 +373,6 @@ report-title: Account Engagement Report
                           'fontSize': '11px'
                       },
                       enabled: false
-                  },
-                  xAxis: {
-                    categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
                   },
                   yAxis: {
                       title: {
@@ -334,8 +394,11 @@ report-title: Account Engagement Report
                           }
                       }
                   },
+                  data: {
+                    table: 'all-regions-time-by-rep-table'
+                  },
                   series: [{
-                    data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                    name: 'Average'
                   }],
                   credits: {
                     enabled: false
@@ -346,9 +409,10 @@ report-title: Account Engagement Report
               });
           });
           </script>
+          <table id="all-regions-time-by-rep-table" class="hidden"></table>
         </div>
       </div>
-      <p class="section-title">Meeting and email contact with customer</p>
+      <p class="section-title">Meeting and contacts with customer</p>
       <div class="row">
         <div class="col-xs-3">
           <p>&nbsp;</p>
@@ -356,99 +420,17 @@ report-title: Account Engagement Report
           <p>Reps averaged <strong>6.8 hours</strong> with customers.</p>
         </div>
         <div class="col-xs-9">
-          <div id="contact-regional-aves"></div>
+          <div id="all-regions-contacts-by-month-chart"></div>
           <script>
             $(function () {
-              $('#contact-regional-aves').highcharts({
+              $('#all-regions-contacts-by-month-chart').highcharts({
                   chart: {
                       type: 'column',
                       height: 220
                   },
                   colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                   title: {
-                      text: 'Regional Averages',
-                      style: {
-                        'color': '#444444',
-                        'font-size': '14px'
-                      }
-                  },
-                  legend: {
-                      enabled: true
-                  },
-                  yAxis: {
-                      title: {
-                          text: 'Ave hours per week',
-                          style: {
-                          'font-size': '11px'
-                        }
-                      },
-                      labels: {
-                        enabled: true
-                      }
-                  },
-                  xAxis: {
-                    title: {
-                      text: null
-                    },
-                    categories: ['East','West','LAMC','AMS (All)']
-                  },
-                  plotOptions: {
-                      series: {
-                          dataLabels: {
-                              enabled: true,
-                              allowOverlap: true
-                          }
-                      }
-                  },
-                  series: [{
-                    name: 'April',
-                    data: [ 
-                      { y:11 },
-                      { y:13 }, 
-                      { y:3, color: '#FDC44C' }  
-                    ]
-                  },{
-                    name: 'May',
-                    data: [ 
-                      { y:14 },
-                      { y:16, color: '#70AD47' }, 
-                      { y:5 }
-                    ]
-                  },{
-                    name: 'June',
-                    data: [ 
-                      { y:13 },
-                      { y:16 }, 
-                      { y:5 }  
-                    ]
-                  },{
-                    name: 'July',
-                    data: [ 
-                      { y:12 },
-                      { y:15 }, 
-                      { y:5 } 
-                    ]
-                  }],
-                  credits: {
-                    enabled: false
-                  },
-                  exporting: {
-                    enabled: false
-                  }
-               });
-          });
-          </script>
-          <div id="contact-mgr-aves"></div>
-          <script>
-            $(function () {
-              $('#contact-mgr-aves').highcharts({
-                  chart: {
-                      type: 'column',
-                      height: 220
-                  },
-                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                  title: {
-                      text: 'Manager Averages',
+                      text: 'All Regions by Month',
                       style: {
                         'color': '#444444',
                         'font-size': '14px'
@@ -458,11 +440,7 @@ report-title: Account Engagement Report
                       itemStyle: {
                           'color': '#444444',
                           'fontSize': '11px'
-                      },
-                      enabled: false
-                  },
-                  xAxis: {
-                    categories: [ 'Miranda', 'Wrast', 'Quigley', 'Moran', 'Holleron',  'Al-Shorafa', 'Young', 'Bradley', 'Ross', 'Mexico', 'Brazil' ]
+                      }
                   },
                   yAxis: {
                       title: {
@@ -475,9 +453,14 @@ report-title: Account Engagement Report
                         enabled: true
                       }
                   },
+                  xAxis: {
+                    categories: ['April','May', 'June', 'July'],
+                    title: {
+                      text: null
+                    }
+                  },
                   plotOptions: {
                       series: {
-                          colorByPoint: true,
                           dataLabels: {
                               enabled: true,
                               allowOverlap: true
@@ -485,8 +468,78 @@ report-title: Account Engagement Report
                       }
                   },
                   series: [{
-                    data: [ 17.9, 15.5, 14.2, 13.9, 13.8, 13.3, 12.7, 11, 10.3, 5.7, 4.1 ]
+                    name: 'East',
+                    data: [ 11, 14, 13, 12 ] 
+                  }, {
+                    name: 'West',
+                    data: [ 13, 16, 16, 15 ]
+                  }, {
+                    name: 'LAMC',
+                    data: [ 3, 5, 5, 5 ]
+                  }, {
+                    name: 'AMS (All)',
+                    data: [ 10, 13, 12, 12 ]
                   }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+          <div id="all-regions-contacts-by-rep"></div>
+          <script>
+            $(function () {
+              $('#all-regions-contacts-by-rep').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220,
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'Eastern Region Manager Averages',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      },
+                      enabled: false
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave. hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: [ 'Quigley', 'Al-Shorafa',  'Young', 'Bradley', 'Ross',  'Miranda', 'Wrast', 'Moran', 'Holleron', 'Mexico', 'Brazil' ],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                      data: [ {y:14.2,color:'#ffc'}, 13.3, 12.7, 11.0, 10.3, 17.9, 15.5, 13.9, 13.8, 5.7, 4.1 ],
+                    }],
                   credits: {
                     enabled: false
                   },
@@ -506,99 +559,18 @@ report-title: Account Engagement Report
           <p>Reps averaged <strong>40 customers</strong> in their network.</p>
         </div>
         <div class="col-xs-9">
-          <div id="breadth-regional-aves"></div>
+          <div id="all-regions-network-by-month-chart"></div>
           <script>
             $(function () {
-              $('#breadth-regional-aves').highcharts({
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-network-by-month-chart').highcharts({
                   chart: {
                       type: 'column',
                       height: 220
                   },
                   colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                   title: {
-                      text: 'Regional Averages',
-                      style: {
-                        'color': '#444444',
-                        'font-size': '14px'
-                      }
-                  },
-                  legend: {
-                      enabled: true
-                  },
-                  yAxis: {
-                      title: {
-                          text: 'Ave hours per week',
-                          style: {
-                          'font-size': '11px'
-                        }
-                      },
-                      labels: {
-                        enabled: true
-                      }
-                  },
-                  xAxis: {
-                    title: {
-                      text: null
-                    },
-                    categories: ['East','West','LAMC','AMS (All)']
-                  },
-                  plotOptions: {
-                      series: {
-                          dataLabels: {
-                              enabled: true,
-                              allowOverlap: true
-                          }
-                      }
-                  },
-                  series: [{
-                    name: 'April',
-                    data: [ 
-                      { y:17 },
-                      { y:18 }, 
-                      { y:9, color: '#FDC44C' }  
-                    ]
-                  },{
-                    name: 'May',
-                    data: [ 
-                      { y:18 },
-                      { y:19 }, 
-                      { y:12 }
-                    ]
-                  },{
-                    name: 'June',
-                    data: [ 
-                      { y:19 },
-                      { y:20, color: '#70AD47' }, 
-                      { y:14 }  
-                    ]
-                  },{
-                    name: 'July',
-                    data: [ 
-                      { y:16 },
-                      { y:18 }, 
-                      { y:11 } 
-                    ]
-                  }],
-                  credits: {
-                    enabled: false
-                  },
-                  exporting: {
-                    enabled: false
-                  }
-               });
-          });
-          </script>
-          <div id="breadth-mgr-aves"></div>
-          <script>
-            $(function () {
-              $('#breadth-mgr-aves').highcharts({
-                  chart: {
-                      type: 'column',
-                      height: 220
-                  },
-                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                  title: {
-                      text: 'Manager Averages',
+                      text: 'All Regions by Month',
                       style: {
                         'color': '#444444',
                         'font-size': '14px'
@@ -608,11 +580,7 @@ report-title: Account Engagement Report
                       itemStyle: {
                           'color': '#444444',
                           'fontSize': '11px'
-                      },
-                      enabled: false
-                  },
-                  xAxis: {
-                    categories: [ 'Wrast', 'Young', 'Quigley', 'Miranda', 'Al-Shorafa', 'Moran', 'Holleron', 'Ross', 'Bradley', 'Mexico', 'Brazil' ]
+                      }
                   },
                   yAxis: {
                       title: {
@@ -625,9 +593,14 @@ report-title: Account Engagement Report
                         enabled: true
                       }
                   },
+                  xAxis: {
+                    categories: ['April','May', 'June', 'July'],
+                    title: {
+                      text: null
+                    }
+                  },
                   plotOptions: {
                       series: {
-                          colorByPoint: true,
                           dataLabels: {
                               enabled: true,
                               allowOverlap: true
@@ -635,8 +608,76 @@ report-title: Account Engagement Report
                       }
                   },
                   series: [{
-                    data: [ 22, 19, 19, 19, 18, 18, 17, 16, 15, 13, 12 ]
+                    name: 'East',
+                    data: [ 38, 42, 44, 36 ] 
+                  }, {
+                    name: 'West',
+                    data: [ 39, 40, 45, 38 ]
+                  }, {
+                    name: 'LAMC',
+                    data: [ 18, 25, 30, 24 ]
                   }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+          <div id="all-regions-network-by-rep"></div>
+          <script>
+            $(function () {
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-network-by-rep').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220,
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'Eastern Region Manager Averages',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      },
+                      enabled: false
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave. hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: [ 'Al-Shorafa',  'Quigley', 'Young', 'Ross',  'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron',  'Brazil',  'Mexico' ],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                      data: [ 47, 44, 41, 34, 31, 49, 41, 41, 31, 26, 27 ],
+                    }],
                   credits: {
                     enabled: false
                   },
@@ -648,7 +689,7 @@ report-title: Account Engagement Report
           </script>
         </div>
       </div>
-      <p class="section-title">Customer network size</p>
+      <p class="section-title">Customer network breadth</p>
       <div class="row">
         <div class="col-xs-3">
           <p>&nbsp;</p>
@@ -656,99 +697,18 @@ report-title: Account Engagement Report
           <p>Reps averaged <strong>16.8 hours</strong>.</p>
         </div>
         <div class="col-xs-9">
-          <div id="size-regional-aves"></div>
+          <div id="all-regions-breadth-by-month-chart"></div>
           <script>
             $(function () {
-              $('#size-regional-aves').highcharts({
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-breadth-by-month-chart').highcharts({
                   chart: {
                       type: 'column',
                       height: 220
                   },
                   colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                   title: {
-                      text: 'Regional Averages',
-                      style: {
-                        'color': '#444444',
-                        'font-size': '14px'
-                      }
-                  },
-                  legend: {
-                      enabled: true
-                  },
-                  yAxis: {
-                      title: {
-                          text: 'Ave hours per week',
-                          style: {
-                          'font-size': '11px'
-                        }
-                      },
-                      labels: {
-                        enabled: true
-                      }
-                  },
-                  xAxis: {
-                    title: {
-                      text: null
-                    },
-                    categories: ['East','West','LAMC','AMS (All)']
-                  },
-                  plotOptions: {
-                      series: {
-                          dataLabels: {
-                              enabled: true,
-                              allowOverlap: true
-                          }
-                      }
-                  },
-                  series: [{
-                    name: 'April',
-                    data: [ 
-                      { y:38 },
-                      { y:39 }, 
-                      { y:18, color: '#FDC44C' }  
-                    ]
-                  },{
-                    name: 'May',
-                    data: [ 
-                      { y:42 },
-                      { y:40 }, 
-                      { y:25 }
-                    ]
-                  },{
-                    name: 'June',
-                    data: [ 
-                      { y:44 },
-                      { y:45, color: '#70AD47' }, 
-                      { y:30 }  
-                    ]
-                  },{
-                    name: 'July',
-                    data: [ 
-                      { y:36 },
-                      { y:38 }, 
-                      { y:24 } 
-                    ]
-                  }],
-                  credits: {
-                    enabled: false
-                  },
-                  exporting: {
-                    enabled: false
-                  }
-               });
-          });
-          </script>
-          <div id="size-mgr-aves"></div>
-          <script>
-            $(function () {
-              $('#size-mgr-aves').highcharts({
-                  chart: {
-                      type: 'column',
-                      height: 220
-                  },
-                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                  title: {
-                      text: 'Manager Averages',
+                      text: 'All Regions by Month',
                       style: {
                         'color': '#444444',
                         'font-size': '14px'
@@ -758,11 +718,7 @@ report-title: Account Engagement Report
                       itemStyle: {
                           'color': '#444444',
                           'fontSize': '11px'
-                      },
-                      enabled: false
-                  },
-                  xAxis: {
-                    categories: [ 'Wrast', 'Al-Shorafa', 'Quigley', 'Young', 'Moran', 'Miranda', 'Ross', 'Bradley', 'Holleron', 'Mexico', 'Brazil' ]
+                      }
                   },
                   yAxis: {
                       title: {
@@ -775,6 +731,80 @@ report-title: Account Engagement Report
                         enabled: true
                       }
                   },
+                  xAxis: {
+                    categories: ['April','May', 'June', 'July'],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                    name: 'East',
+                    data: [ 17, 18, 19, 16 ] 
+                  }, {
+                    name: 'West',
+                    data: [ 18, 19, 20, 18 ]
+                  }, {
+                    name: 'LAMC',
+                    data: [ 9, 12, 14, 11 ]
+                  }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+          <div id="all-regions-breadth-by-rep"></div>
+          <script>
+            $(function () {
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-breadth-by-rep').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220,
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'Eastern Region Manager Averages',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      },
+                      enabled: false
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave. hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: [ 'Young', 'Quigley', 'Al-Shorafa', 'Ross', 'Bradley', 'Wrast', 'Miranda', 'Moran', 'Holleron', 'Mexico', 'Brazil' ],
+                    title: {
+                      text: null
+                    }
+                  },
                   plotOptions: {
                       series: {
                           colorByPoint: true,
@@ -785,8 +815,8 @@ report-title: Account Engagement Report
                       }
                   },
                   series: [{
-                    data: [ 49, 47, 44, 41, 41, 41, 34, 31, 31, 27, 26 ]
-                  }],
+                      data: [ 19, 19, 18, 16, 15, 22, 19, 18, 17, 13, 12 ],
+                    }],
                   credits: {
                     enabled: false
                   },
