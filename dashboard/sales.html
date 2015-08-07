@@ -36,53 +36,17 @@ report-title: Account Engagement Report
   <script src="{{ site.baseurl }}/javascript/jquery.sparkline.js"></script>
   <style>
   body {
-    background: #eee;
     color: #444;
     font-size: 13px;
+    margin-top:0;
   }
   .container {
     max-width: 850px;
   }
   .nav {
-    margin-top: 25px;
+    margin-top: 0;
+    padding:0;
   }
-  .box {
-    position: relative;
-    padding: 25px 50px;
-    margin: 0 auto 150px auto;
-    background-color: #fff;
-    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-  }
-  .box:before, .box:after {
-    position: absolute;
-    width: 40%;
-    height: 10px;
-    content: ' ';
-    left: 12px;
-    bottom: 12px;
-    background: transparent;
-    -webkit-transform: skew(-5deg) rotate(-5deg);
-    -moz-transform: skew(-5deg) rotate(-5deg);
-    -ms-transform: skew(-5deg) rotate(-5deg);
-    -o-transform: skew(-5deg) rotate(-5deg);
-    transform: skew(-5deg) rotate(-5deg);
-    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    z-index: -1;
-  } 
-  .box:after
-  {
-    left: auto;
-    right: 12px;
-    -webkit-transform: skew(5deg) rotate(5deg);
-    -moz-transform: skew(5deg) rotate(5deg);
-    -ms-transform: skew(5deg) rotate(5deg);
-    -o-transform: skew(5deg) rotate(5deg);
-    transform: skew(5deg) rotate(5deg);
-  } 
   .masthead {
     text-align: center;
     margin: 15px 0;
@@ -97,16 +61,6 @@ report-title: Account Engagement Report
   }
   table td.metric {
     width:50%;
-  }
-  #instructions {
-    position: fixed;
-    right: 5px;
-    top: 5px;
-    background: rgba(0,0,0,.09);
-    padding:5px;
-    font-size: 12px;
-    border-radius: 4px; 
-    visibility: hidden;
   }
   .figure {
     font-size: 36px;
@@ -186,11 +140,6 @@ report-title: Account Engagement Report
         margin:0 !important;
         line-height: 1;
       }
-      /*.tab-content > .tab-pane {
-        display: block !important; 
-        opacity: 1 !important; 
-        visibility: visible !important
-      }*/
       @page {
         margin: 2cm;
       }
@@ -202,1013 +151,608 @@ report-title: Account Engagement Report
       }
     }
     </style>
-    <script>
-      $(function () {
-        /**
-         * Create a constructor for sparklines that takes some sensible defaults and merges in the individual
-         * chart options. This function is also available from the jQuery plugin as $(element).highcharts('SparkLine').
-         */
-        Highcharts.SparkLine = function (options, callback) {
-            var defaultOptions = {
-                chart: {
-                    renderTo: (options.chart && options.chart.renderTo) || this,
-                    backgroundColor: null,
-                    borderWidth: 0,
-                    type: 'area',
-                    margin: [0, 0, 0, 0],
-                    // width: 80,
-                    height: 20,
-                    style: {
-                        overflow: 'visible'
-                    },
-                    skipClone: true
-                },
-                title: {
-                    text: ''
-                },
-                credits: {
-                    enabled: false
-                },
-                exporting: {
-                    enabled: false
-                },
-                xAxis: {
-                    labels: {
-                        enabled: false
-                    },
-                    title: {
-                        text: null
-                    },
-                    startOnTick: false,
-                    endOnTick: false,
-                    tickPositions: []
-                },
-                yAxis: {
-                    endOnTick: false,
-                    startOnTick: false,
-                    labels: {
-                        enabled: false
-                    },
-                    title: {
-                        text: null
-                    },
-                    tickPositions: [0]
-                },
-                legend: {
-                    enabled: false
-                },
-                tooltip: {
-                    backgroundColor: null,
-                    borderWidth: 0,
-                    shadow: false,
-                    useHTML: true,
-                    hideDelay: 0,
-                    shared: true,
-                    padding: 0,
-                    positioner: function (w, h, point) {
-                        return { x: point.plotX - w / 2, y: point.plotY - h};
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        animation: false,
-                        lineWidth: 1,
-                        shadow: false,
-                        states: {
-                            hover: {
-                                lineWidth: 1
-                            }
-                        },
-                        marker: {
-                            radius: 1,
-                            states: {
-                                hover: {
-                                    radius: 2
-                                }
-                            }
-                        },
-                        fillOpacity: 0.25
-                    },
-                    column: {
-                        negativeColor: '#910000',
-                        borderColor: 'silver'
-                    }
-                }
-            };
-            options = Highcharts.merge(defaultOptions, options);
-
-            return new Highcharts.Chart(options, callback);
-        };
-
-        var start = +new Date(),
-            $tds = $("td[data-sparkline]"),
-            fullLen = $tds.length,
-            n = 0;
-
-        // Creating 153 sparkline charts is quite fast in modern browsers, but IE8 and mobile
-        // can take some seconds, so we split the input into chunks and apply them in timeouts
-        // in order avoid locking up the browser process and allow interaction.
-        function doChunk() {
-            var time = +new Date(),
-                i,
-                len = $tds.length,
-                $td,
-                stringdata,
-                arr,
-                data,
-                chart;
-
-            for (i = 0; i < len; i += 1) {
-                $td = $($tds[i]);
-                stringdata = $td.data('sparkline');
-                arr = stringdata.split('; ');
-                data = $.map(arr[0].split(', '), parseFloat);
-                chart = {};
-
-                if (arr[1]) {
-                    chart.type = arr[1];
-                }
-                $td.highcharts('SparkLine', {
-                    series: [{
-                        data: data,
-                        pointStart: 1
-                    }],
-                    tooltip: {
-                        headerFormat: '<span style="font-size: 10px">' + $td.parent().parent().find('th').html(),
-                        pointFormat: '<b>{point.y}</b>'
-                    },
-                    chart: chart
-                });
-
-                n += 1;
-
-                // If the process takes too much time, run a timeout to allow interaction with the browser
-                if (new Date() - time > 500) {
-                    $tds.splice(0, i + 1);
-                    setTimeout(doChunk, 0);
-                    break;
-                }
-
-                // Print a feedback on the performance
-                if (n === fullLen) {
-                    $('#result').html('Generated ' + fullLen + ' sparklines in ' + (new Date() - start) + ' ms');
-                }
-            }
-        }
-        doChunk();
-    });
-    </script>
   </head>
   <body>
-    <div id="instructions">
-      <p>To Print (works best in Chrome)</p>
-      <ol>
-        <li><a href="#" id="print" class="btn btn-default">Print</a> <small>(or press CTRL + P)</small></li>
-        <script>
-          $(function(){
-            $('#print').click(function() {
-                window.print();
-            })
-          })
-        </script>
-        <li>Save As PDF</li>
-      </ol>
+    <div class="container">
+      <div class="row" style="margin-top:5px;padding:15px 0;border-bottom:solid 1px #eee;">
+        <div class="col-xs-12">
+          <p class="pull-right" style="text-align:right;">
+            <span class="h4">Account Engagement Report</span><br>
+            <span><strong>July 2015</strong></span>
+          </p>
+          <p><img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+          <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec"></p>
+        </div>
+      </div>
+      <div class="row hidden">
+        <div class="col-xs-3">
+          <div style="border-bottom: solid 5px #666; background:#f7f7f7;padding:5px 15px;">
+            <span class="text-uppercase">East</span><br>
+            <span class="h2">9.2</span> <strong>hours</strong>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div style="border-bottom: solid 5px #666; background:#f7f7f7;padding:5px 15px;">
+            <span class="text-uppercase">West</span><br>
+            <span class="h2">10.1</span> <strong>hours</strong>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div style="border-bottom: solid 5px #666; background:#f7f7f7;padding:5px 15px;">
+              <span class="text-uppercase">LAMC</span><br>
+              <span class="h2">7.0</span> <strong>hours</strong>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div style="border-bottom: solid 5px #666; background:#f7f7f7;padding:5px 15px;">
+            <span class="text-uppercase">AMS (All)</span><br>
+            <span class="h2">26.3</span> <strong>hours</strong>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row hidden">
+        <div class="masthead col-xs-12">
+          <h2 class="report-title">{{ page.report-title }}</h2>
+          <h4 class="report-subtitle">Region and District Summary</h4>
+        </div>
+      </div>
+      <h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
+      <p class="section-title">Meeting and email time with customer</p>
+      <div class="row">
+        <div class="col-xs-3">
+          <p>&nbsp;</p>
+          <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+          <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        </div>
+        <div class="col-xs-9">
+          <div id="all-regions-time-by-month-chart"></div>
+          <script>
+            $(function () {
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-time-by-month-chart').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'All Regions by Month',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      }
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: ['April','May', 'June', 'July'],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                    name: 'East',
+                    data: [ 8, 10, 10, 9 ] 
+                  }, {
+                    name: 'West',
+                    data: [ 8, 10, 10, 11 ]
+                  }, {
+                    name: 'LAMC',
+                    data: [ 4, 9, 8, 8 ]
+                  }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+          <div id="all-regions-time-by-rep"></div>
+          <script>
+            $(function () {
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-time-by-rep').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220,
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'Eastern Region Manager Averages',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      },
+                      enabled: false
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave. hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: [ 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross', 'Wrast', 'Miranda','Moran', 'Holleron', 'Mexico', 'Brazil' ],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                      data: [ 11, 11, 9, 7, 7, 12 , 2, 10, 7, 8, 7 ],
+                    }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+        </div>
+      </div>
+      <p class="section-title">Meeting and contacts with customer</p>
+      <div class="row">
+        <div class="col-xs-3">
+          <p>&nbsp;</p>
+          <p><span class="h3">12</span><strong>%</strong> met of sales reps met the benchmark of <strong>8.5 hours</strong>.</p>
+          <p>Reps averaged <strong>6.8 hours</strong> with customers.</p>
+        </div>
+        <div class="col-xs-9">
+          <div id="all-regions-contacts-by-month-chart"></div>
+          <script>
+            $(function () {
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-contacts-by-month-chart').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'All Regions by Month',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      }
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave. hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: ['April','May', 'June', 'July'],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                    name: 'East',
+                    data: [ 11, 14, 13, 12 ] 
+                  }, {
+                    name: 'West',
+                    data: [ 13, 16, 16, 15 ]
+                  }, {
+                    name: 'LAMC',
+                    data: [ 3, 5, 5, 5 ]
+                  }, {
+                    name: 'AMS (All)',
+                    data: [ 10, 13, 12, 12 ]
+                  }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+          <div id="all-regions-contacts-by-rep"></div>
+          <script>
+            $(function () {
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-contacts-by-rep').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220,
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'Eastern Region Manager Averages',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      },
+                      enabled: false
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave. hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: [ 'Quigley', 'Al-Shorafa',  'Young', 'Bradley', 'Ross',  'Miranda', 'Wrast', 'Moran', 'Holleron', 'Mexico', 'Brazil' ],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                      data: [ 14.2, 13.3, 12.7, 11.0, 10.3, 17.9, 15.5, 13.9, 13.8, 5.7, 4.1 ],
+                    }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+        </div>
+      </div>
+      <p class="section-title">Customer network size</p>
+      <div class="row">
+        <div class="col-xs-3">
+          <p>&nbsp;</p>
+          <p><span class="h3">32</span><strong>%</strong> met of sales reps met the benchmark of <strong>40 customers</strong> in their network.</p>
+          <p>Reps averaged <strong>40 customers</strong> in their network.</p>
+        </div>
+        <div class="col-xs-9">
+          <div id="all-regions-network-by-month-chart"></div>
+          <script>
+            $(function () {
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-network-by-month-chart').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'All Regions by Month',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      }
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave. hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: ['April','May', 'June', 'July'],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                    name: 'East',
+                    data: [ 38, 42, 44, 36 ] 
+                  }, {
+                    name: 'West',
+                    data: [ 39, 40, 45, 38 ]
+                  }, {
+                    name: 'LAMC',
+                    data: [ 18, 25, 30, 24 ]
+                  }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+          <div id="all-regions-network-by-rep"></div>
+          <script>
+            $(function () {
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-network-by-rep').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220,
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'Eastern Region Manager Averages',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      },
+                      enabled: false
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave. hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: [ 'Al-Shorafa',  'Quigley', 'Young', 'Ross',  'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron',  'Brazil',  'Mexico' ],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                      data: [ 47, 44, 41, 34, 31, 49, 41, 41, 31, 26, 27 ],
+                    }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+        </div>
+      </div>
+      <p class="section-title">Customer network breadth</p>
+      <div class="row">
+        <div class="col-xs-3">
+          <p>&nbsp;</p>
+          <p><span class="h3">36</span><strong>%</strong> met of sales reps met the benchmark of <strong>18 customers</strong> in their network.</p>
+          <p>Reps averaged <strong>16.8 hours</strong>.</p>
+        </div>
+        <div class="col-xs-9">
+          <div id="all-regions-breadth-by-month-chart"></div>
+          <script>
+            $(function () {
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-breadth-by-month-chart').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'All Regions by Month',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      }
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave. hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: ['April','May', 'June', 'July'],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                    name: 'East',
+                    data: [ 17, 18, 19, 16 ] 
+                  }, {
+                    name: 'West',
+                    data: [ 18, 19, 20, 18 ]
+                  }, {
+                    name: 'LAMC',
+                    data: [ 9, 12, 14, 11 ]
+                  }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+          <div id="all-regions-breadth-by-rep"></div>
+          <script>
+            $(function () {
+              // Highcharts.setOptions(Highcharts.theme);
+              $('#all-regions-breadth-by-rep').highcharts({
+                  chart: {
+                      type: 'column',
+                      height: 220,
+                  },
+                  colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                  title: {
+                      text: 'Eastern Region Manager Averages',
+                      style: {
+                        'color': '#444444',
+                        'font-size': '14px'
+                      }
+                  },
+                  legend: {
+                      itemStyle: {
+                          'color': '#444444',
+                          'fontSize': '11px'
+                      },
+                      enabled: false
+                  },
+                  yAxis: {
+                      title: {
+                          text: 'Ave. hours per week',
+                          style: {
+                          'font-size': '11px'
+                        }
+                      },
+                      labels: {
+                        enabled: true
+                      }
+                  },
+                  xAxis: {
+                    categories: [ 'Young', 'Quigley', 'Al-Shorafa', 'Ross', 'Bradley', 'Wrast', 'Miranda', 'Moran', 'Holleron', 'Mexico', 'Brazil' ],
+                    title: {
+                      text: null
+                    }
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              allowOverlap: true
+                          }
+                      }
+                  },
+                  series: [{
+                      data: [ 19, 19, 18, 16, 15, 22, 19, 18, 17, 13, 12 ],
+                    }],
+                  credits: {
+                    enabled: false
+                  },
+                  exporting: {
+                    enabled: false
+                  }
+              });
+          });
+          </script>
+        </div>
+      </div>
     </div>
-    <div id="print-wrapper">
-      <div class="container nav-container">
-        <div class="row">
-          <div class="col-xs-12">
-            <br><br>
-            <!-- <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#east-region" aria-controls="home" role="tab" data-toggle="tab">East Region</a></li>
-              <li role="presentation"><a href="#west-region" aria-controls="profile" role="tab" data-toggle="tab">West Region</a></li>
-              <li role="presentation"><a href="#latin-america" aria-controls="messages" role="tab" data-toggle="tab">Latin America</a></li>
-            </ul> -->
-          </div>
-        </div>
-      </div>
-      <div id="print-container" class="box container">
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane fade in active" id="east-region">
-            <div class="row cobranding">
-              <div class="col-xs-12">
-                <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-                <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
-              </div>
-            </div>
-            <div class="row">
-              <div class="masthead col-xs-12">
-                <h2 class="report-title">{{ page.report-title }}</h2>
-                <h4 class="report-subtitle">East Region, July 2015</h4>
-              </div>
-            </div>
-            <p class="section-title">Meeting and email time with customer</p>
-            <div class="row">
-              <div class="col-xs-4">
-                <p>&nbsp;</p>
-                <p><span class="h3">5.6</span> average hours/week</p>
-                <p><span class="h4">32%</span> AEs meeting benchmark</p>
-                <p><span class="h4">231</span> total hours</p>
-              </div>
-              <div class="col-xs-8">
-                <div id="customer-chart"></div>
-                <script>
-                  $(function () {
-                    Highcharts.setOptions(Highcharts.theme);
-                    $('#customer-chart').highcharts({
-                        chart: {
-                            type: 'column',
-                            height: 220
-                        },
-                        title: {
-                            text: 'Quarter Over Quarter Comparison',
-                            style: {
-                              'color': '#444444',
-                              'font-size': '12px'
-                            }
-                        },
-                        legend: {
-                            itemStyle: {
-                                'color': '#444444',
-                                'fontSize': '11px'
-                            }
-                        },
-                        yAxis: {
-                            title: {
-                                text: 'AE time spent (avg. hrs/wk)',
-                                style: {
-                                'font-size': '11px'
-                              }
-                            },
-                            labels: {
-                              enabled: false
-                            }
-                        },
-                        xAxis: {
-                          categories: ['July','August','September'],
-                          title: {
-                            text: null
-                          }
-                        },
-                        plotOptions: {
-                            series: {
-                                dataLabels: {
-                                    enabled: true,
-                                    allowOverlap: true
-                                }
-                            }
-                        },
-                        series: [{
-                          name: 'current quarter',
-                          data: [975, null, null]
-                        }, {
-                          name: 'previous quarter',
-                          data: [775, 690, 702]
-                        }, {
-                          name: 'benchmark',
-                          data: [825, null, null]
-                        }],
-                        credits: {
-                          enabled: false
-                        },
-                        exporting: {
-                          enabled: false
-                        }
-                    });
-                });
-                </script>
-              </div>
-            </div>
-            <p class="section-title">Meeting and email time with key accounts</p>
-            <div class="row">
-              <div class="col-xs-4">
-                <p>&nbsp;</p>
-                <p><span class="h3">0.95</span> average hours/week</p>
-                <p><span class="h4">41</span> total hours</p>
-              </div>
-              <div class="col-xs-8">
-                <div id="key-contacts-chart"></div>
-                 <script>
-                  $(function () {
-                    Highcharts.setOptions(Highcharts.theme);
-                    $('#key-contacts-chart').highcharts({
-                        chart: {
-                            type: 'column',
-                            height: 220
-                        },
-                        title: {
-                            text: 'Quarter Over Quarter Comparison',
-                            style: {
-                              'color': '#444444',
-                              'font-size': '12px'
-                            }
-                        },
-                        yAxis: {
-                            title: {
-                                text: 'Time (hrs)',
-                                style: {
-                                'color': '#444444',
-                                'font-size': '11px'
-                              }
-                            },
-                            labels: {
-                              enabled: false
-                            }
-                        },
-                        xAxis: {
-                          categories: ['July', 'August','September'],
-                          title: {
-                            text: null
-                          }
-                        },
-                        plotOptions: {
-                            series: {
-                                marker: {
-                                    radius: 6
-                                },
-                                dataLabels: {
-                                    enabled: true,
-                                    allowOverlap: true
-                                }
-                            }
-                        },
-                        series: [{
-                          name: 'current quarter',
-                          data: [126, null, null]
-                        }, {
-                          name: 'previous quarter',
-                          data: [101, 104, 101]
-                        }, {
-                          name: 'benchmark',
-                          data: [110, null, null]
-                        }],
-                        credits: {
-                          enabled: false
-                        },
-                        exporting: {
-                          enabled: false
-                        }
-                    });
-                });
-                </script>
-              </div>
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-xs-12">
-                <table class="table">
-                  <tr>
-                    <th width="27.777%">Account summary</th>
-                    <th>July</th>
-                    <th>Prior quarter (April)</th>
-                    <th>Prior quarter (ave/wk)</th>
-                  </tr>
-                  {% for ea in site.data.symc_ea %}
-                  <tr>
-                    <td>{{ ea.Metric }}</td>
-                    <td>{{ ea.July }} </td>
-                    <td>{{ ea.April }} <span class="glyphicon glyphicon-triangle-{{ea.pqDir}} text-{{ea.pqTxt}}"></span></td>
-                    <td>{{ ea.June }}</td>
-                  </tr>
-                  {% endfor %}
-                </table>
-              </div>
-            </div>
-            <p class="section-title">Behavioral metrics per AE</p>
-            <div class="row">
-              <div class="col-xs-4">
-                <p style="margin:8px 0 12px 0;">Customer network size<br>
-                  <span class="h3">234</span> people</p>
-                <table class="table table-condensed">
-                  <tr>
-                    <th>Q2</th>
-                    <th>BM</th>
-                    <th>Trend</th>
-                  </tr>
-                  <tr>
-                    <td>78</td>
-                    <td>+2%</td>
-                    <td data-sparkline="77, 88, 66 "/>
-                  </tr>
-                </table>
-              </div>
-              <div class="col-xs-4">
-                <p style="margin:8px 0 12px 0;">
-                  Hrs/wk per customer<br>
-                  <span class="h3">22</span> hours</p>
-                <table class="table table-condensed">
-                  <tr>
-                    <th>Q2</th>
-                    <th>BM</th>
-                    <th>Trend</th>
-                  </tr>
-                  <tr>
-                    <td>90</td>
-                    <td><span class="badge alert-danger">-3%</span></td>
-                    <td data-sparkline="77, 55, 66"/>
-                  </tr>
-                </table>
-              </div>
-              <div class="col-xs-4">
-                <p style="margin:8px 0 12px 0;">
-                  Internal meeting time<br>
-                  <span class="h3">18</span> hours</p>
-                <table class="table table-condensed">
-                  <tr>
-                    <th>Q2</th>
-                    <th>BM</th>
-                    <th>Trend</th>
-                  </tr>
-                  <tr>
-                    <td>88</td>
-                    <td><span class="badge alert-success">+1%</span></td>
-                    <td data-sparkline="77, 66, 88"/>
-                  </tr>
-                </table>  
-              </div>
-            </div>
-          </div>
-
-          <!-- <div role="tabpanel" class="tab-pane fade" id="west-region">
-              <div class="row">
-                <div class="col-xs-12">
-                  <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-                  <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
-                </div>
-              </div>
-              <div class="row">
-              <div class="masthead col-xs-12">
-                <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
-                <h2 class="report-subtitle">West Region, June 2015</h2>
-              </div>
-            </div>
-            <hr>
-            <h4>Engagement</h4>
-            <div class="row">
-              <div class="col-xs-8">
-                <table class="table">
-                  <tr>
-                    <th></th>
-                    <th>April</th>
-                    <th>May</th>
-                    <th>June</th>
-                    <th>July</th>
-                  </tr>
-                  {% for we in site.data.symc_we %}
-                  <tr>
-                    <td class="metric">{{ we.Metric }}</td>
-                    <td class="">{{ we.April }}</td>
-                    <td class="">{{ we.May }}</td>
-                    <td class="">{{ we.June }}</td>
-                    <td class="">{{ we.July }}</td>
-                  </tr>
-                  {% endfor %}
-                </table>
-              </div>
-              <div class="col-xs-4">
-                <table id="we-datatable" class="hidden">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {% for we in site.data.symc_we %}
-                      <th>{{ we.Metric }}</th>
-                      {% endfor %}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>April</td>
-                      {% for we in site.data.symc_we %}
-                      <td>{{ we.April }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>May</td>
-                      {% for we in site.data.symc_we %}
-                      <td>{{ we.May }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>June</td>
-                      {% for we in site.data.symc_we %}
-                      <td>{{ we.June }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>July</td>
-                      {% for we in site.data.symc_we %}
-                      <td>{{ we.July }}</td>
-                      {% endfor %}
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="we-table"></div>
-                <script>
-                  $(function () {
-                    Highcharts.setOptions(Highcharts.theme);
-                    $('#we-table').highcharts({
-                        data: {
-                          table: 'we-datatable'
-                        },
-                        chart: {
-                            type: 'spline',
-                            height: 200,
-                            width: 230
-                        },
-                        title: {
-                            text: null
-                        },
-                        yAxis: {
-                            title: {
-                                text: null
-                            }
-                        },
-                        credits: {
-                          enabled: false
-                        },
-                        exporting: {
-                          enabled: false
-                        }
-                    });
-                });
-                </script>
-              </div>
-            </div>
-            <h4>Time</h4>
-            <div class="row">
-              <div class="col-xs-8">
-                <table class="table">
-                  <tr>
-                    <th></th>
-                    <th>April</th>
-                    <th>May</th>
-                    <th>June</th>
-                    <th>July</th>
-                  </tr>
-                  {% for wt in site.data.symc_wt %}
-                  <tr>
-                    <td class="metric">{{ wt.Metric }}</td>
-                    <td class="">{{ wt.April }}</td>
-                    <td class="">{{ wt.May }}</td>
-                    <td class="">{{ wt.June }}</td>
-                    <td class="">{{ wt.July }}</td>
-                  </tr>
-                  {% endfor %}
-                </table>
-              </div>
-              <div class="col-xs-4">
-                <table id="wt-datatable" class="hidden">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {% for wt in site.data.symc_wt %}
-                      <th>{{ wt.Metric }}</th>
-                      {% endfor %}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>April</td>
-                      {% for wt in site.data.symc_wt %}
-                      <td>{{ wt.April }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>May</td>
-                      {% for wt in site.data.symc_wt %}
-                      <td>{{ wt.May }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>June</td>
-                      {% for wt in site.data.symc_wt %}
-                      <td>{{ wt.June }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>July</td>
-                      {% for wt in site.data.symc_wt %}
-                      <td>{{ wt.July }}</td>
-                      {% endfor %}
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="wt-table"></div>
-                <script>
-                  $(function () {
-                    Highcharts.setOptions(Highcharts.theme);
-                    $('#wt-table').highcharts({
-                        data: {
-                          table: 'wt-datatable'
-                        },
-                        chart: {
-                            type: 'spline',
-                            height: 200,
-                            width: 230
-                        },
-                        title: {
-                            text: null
-                        },
-                        yAxis: {
-                            title: {
-                                text: null
-                            }
-                        },
-                        credits: {
-                          enabled: false
-                        },
-                        exporting: {
-                          enabled: false
-                        }
-                    });
-                });
-                </script>
-              </div>
-            </div>
-            <h4>Sales</h4>
-            <div class="row">
-              <div class="col-xs-8">
-                <table class="table">
-                  <tr>
-                    <th></th>
-                    <th>April</th>
-                    <th>May</th>
-                    <th>June</th>
-                    <th>July</th>
-                  </tr>
-                  {% for ws in site.data.symc_ws %}
-                  <tr>
-                    <td class="metric">{{ ws.Metric }}</td>
-                    <td class="">{{ ws.April }}</td>
-                    <td class="">{{ ws.May }}</td>
-                    <td class="">{{ ws.June }}</td>
-                    <td class="">{{ ws.July }}</td>
-                  </tr>
-                  {% endfor %}
-                </table>
-              </div>
-              <div class="col-xs-4">
-                <table id="ws-datatable" class="hidden">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {% for ws in site.data.symc_ws %}
-                      <th>{{ ws.Metric }}</th>
-                      {% endfor %}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>April</td>
-                      {% for ws in site.data.symc_ws %}
-                      <td>{{ ws.April }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>May</td>
-                      {% for ws in site.data.symc_ws %}
-                      <td>{{ ws.May }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>June</td>
-                      {% for ws in site.data.symc_ws %}
-                      <td>{{ ws.June }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>July</td>
-                      {% for ws in site.data.symc_ws %}
-                      <td>{{ ws.July }}</td>
-                      {% endfor %}
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="ws-table"></div>
-                <script>
-                  $(function () {
-                    Highcharts.setOptions(Highcharts.theme);
-                    $('#ws-table').highcharts({
-                        data: {
-                          table: 'ws-datatable'
-                        },
-                        chart: {
-                            type: 'spline',
-                            height: 300,
-                            width: 230
-                        },
-                        title: {
-                            text: null
-                        },
-                        yAxis: {
-                            title: {
-                                text: null
-                            }
-                        },
-                        credits: {
-                          enabled: false
-                        },
-                        exporting: {
-                          enabled: false
-                        }
-                    });
-                });
-                </script>
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div role="tabpanel" class="tab-pane fade" id="latin-america">
-              <div class="row">
-                <div class="col-xs-12">
-                  <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-                  <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-              <div class="masthead col-xs-12">
-                <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
-                <h2 class="report-subtitle">Latin America Region, June 2015</h2>
-              </div>
-            </div>
-            <hr>
-            <h4>Engagement</h4>
-            <div class="row">
-              <div class="col-xs-8">
-                <table class="table">
-                  <tr>
-                    <th></th>
-                    <th>April</th>
-                    <th>May</th>
-                    <th>June</th>
-                    <th>July</th>
-                  </tr>
-                  {% for le in site.data.symc_le %}
-                  <tr>
-                    <td class="metric">{{ le.Metric }}</td>
-                    <td class="">{{ le.April }}</td>
-                    <td class="">{{ le.May }}</td>
-                    <td class="">{{ le.June }}</td>
-                    <td class="">{{ le.July }}</td>
-                  </tr>
-                  {% endfor %}
-                </table>
-              </div>
-              <div class="col-xs-4">
-                <table id="le-datatable" class="hidden">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {% for le in site.data.symc_le %}
-                      <th>{{ le.Metric }}</th>
-                      {% endfor %}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>April</td>
-                      {% for le in site.data.symc_le %}
-                      <td>{{ le.April }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>May</td>
-                      {% for le in site.data.symc_le %}
-                      <td>{{ le.May }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>June</td>
-                      {% for le in site.data.symc_le %}
-                      <td>{{ le.June }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>July</td>
-                      {% for le in site.data.symc_le %}
-                      <td>{{ le.July }}</td>
-                      {% endfor %}
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="le-table"></div>
-                <script>
-                  $(function () {
-                    Highcharts.setOptions(Highcharts.theme);
-                    $('#le-table').highcharts({
-                        data: {
-                          table: 'le-datatable'
-                        },
-                        chart: {
-                            type: 'spline',
-                            height: 200,
-                            width: 230
-                        },
-                        title: {
-                            text: null
-                        },
-                        yAxis: {
-                            title: {
-                                text: null
-                            }
-                        },
-                        credits: {
-                          enabled: false
-                        },
-                        exporting: {
-                          enabled: false
-                        }
-                    });
-                });
-                </script>
-              </div>
-            </div>
-            <h4>Time</h4>
-            <div class="row">
-              <div class="col-xs-8">
-                <table class="table" id="lt-datatable">
-                  <tr>
-                    <th></th>
-                    <th>April</th>
-                    <th>May</th>
-                    <th>June</th>
-                    <th>July</th>
-                  </tr>
-                  {% for lt in site.data.symc_lt %}
-                  <tr>
-                    <td class="metric">{{ lt.Metric }}</td>
-                    <td class="">{{ lt.April }}</td>
-                    <td class="">{{ lt.May }}</td>
-                    <td class="">{{ lt.June }}</td>
-                    <td class="">{{ lt.July }}</td>
-                  </tr>
-                  {% endfor %}
-                </table>
-              </div>
-              <div class="col-xs-4">
-                <table id="lt-datatable" class="hidden">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {% for lt in site.data.symc_lt %}
-                      <th>{{ lt.Metric }}</th>
-                      {% endfor %}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>April</td>
-                      {% for lt in site.data.symc_lt %}
-                      <td>{{ lt.April }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>May</td>
-                      {% for lt in site.data.symc_lt %}
-                      <td>{{ lt.May }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>June</td>
-                      {% for lt in site.data.symc_lt %}
-                      <td>{{ lt.June }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>July</td>
-                      {% for lt in site.data.symc_lt %}
-                      <td>{{ lt.July }}</td>
-                      {% endfor %}
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="lt-table"></div>
-                <script>
-                  $(function () {
-                    Highcharts.setOptions(Highcharts.theme);
-                    $('#lt-table').highcharts({
-                        data: {
-                          table: 'lt-datatable'
-                        },
-                        chart: {
-                            type: 'spline',
-                            height: 200,
-                            width: 230
-                        },
-                        title: {
-                            text: null
-                        },
-                        yAxis: {
-                            title: {
-                                text: null
-                            }
-                        },
-                        credits: {
-                          enabled: false
-                        },
-                        exporting: {
-                          enabled: false
-                        }
-                    });
-                });
-                </script>
-              </div>
-            </div>
-            <h4>Sales</h4>
-            <div class="row">
-              <div class="col-xs-8">
-                <table class="table">
-                  <tr>
-                    <th></th>
-                    <th>April</th>
-                    <th>May</th>
-                    <th>June</th>
-                    <th>July</th>
-                  </tr>
-                  {% for ls in site.data.symc_ls %}
-                  <tr>
-                    <td class="metric">{{ ls.Metric }}</td>
-                    <td class="">{{ ls.April }}</td>
-                    <td class="">{{ ls.May }}</td>
-                    <td class="">{{ ls.June }}</td>
-                    <td class="">{{ ls.July }}</td>
-                  </tr>
-                  {% endfor %}
-                </table>
-              </div>
-              <div class="col-xs-4">
-                <table id="ls-datatable" class="hidden">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {% for ls in site.data.symc_ls %}
-                      <th>{{ ls.Metric }}</th>
-                      {% endfor %}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>April</td>
-                      {% for ls in site.data.symc_ls %}
-                      <td>{{ ls.April }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>May</td>
-                      {% for ls in site.data.symc_ls %}
-                      <td>{{ ls.May }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>June</td>
-                      {% for ls in site.data.symc_ls %}
-                      <td>{{ ls.June }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>July</td>
-                      {% for ls in site.data.symc_ls %}
-                      <td>{{ ls.July }}</td>
-                      {% endfor %}
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="ls-table"></div>
-                <script>
-                  $(function () {
-                    Highcharts.setOptions(Highcharts.theme);
-                    $('#ls-table').highcharts({
-                        data: {
-                          table: 'ls-datatable'
-                        },
-                        chart: {
-                            type: 'spline',
-                            height: 300,
-                            width: 230
-                        },
-                        title: {
-                            text: null
-                        },
-                        yAxis: {
-                            title: {
-                                text: null
-                            }
-                        },
-                        credits: {
-                          enabled: false
-                        },
-                        exporting: {
-                          enabled: false
-                        }
-                    });
-                });
-                </script>
-                </div>
-              </div>
-            </div> -->
-          </div>
-        </div>
-      </div>
-      </body>
-      </html>
+  </body>
+</html>

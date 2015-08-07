@@ -1,79 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+
+  <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="../../favicon.ico">
-  
-  <title>Personal Goals Dashboard</title>
-
-  <!-- Latest compiled and minified CSS -->
+  <title>
+      Personal Dashboard
+      </title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  <link rel="stylesheet" href="/design/css/main.css">
+  <link rel="canonical" href="https://volometrix.github.io/design/product/charts/">
+  <link rel="alternate" type="application/rss+xml" title="Personal Dashboard" href="https://volometrix.github.io/design/feed.xml" />
   <link rel="stylesheet" href="/design/css/bootstrap.min.css">
   <link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
   <link rel="stylesheet" href="/design/css/prism.css">
-
-  <!-- Latest compiled and minified JavaScript -->
   <script src="/design/javascript/jquery-2.1.3.min.js"></script>
-  <script src="/design/javascript/jquery.cookie.min.js"></script>
   <script src="/design/javascript/bootstrap.min.js"></script>
   <script src="/design/javascript/highcharts.js"></script>
   <script src="/design/javascript/exporting.js"></script>
-  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
   <script src="/design/javascript/drilldown.js"></script>
+  <script src="/design/javascript/data.js"></script>
+  <script src="/design/javascript/highcharts-more.js"></script>
+  <script src="/design/javascript/d3.v3.4.8.js"></script>
+  <script src="/design/javascript/dimple.v2.0.0.min.js"></script>
+  <script src="/design/javascript/jquery.cookie.min.js"></script>
+  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
   <script src="/design/javascript/jquery.dataTables.min.js"></script>
   <script src="/design/javascript/dataTables.bootstrap.js"></script>
-  <script src="/design/javascript/d3.min.js"></script>
-  <script src="/design/javascript/data.js"></script>
   <script src="/design/javascript/jquery.sparkline.js"></script>
-  <script src="/design/javascript/toolkit.js"></script>
   <style>
-    body {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    background: #f9f9f9;
-    color: #555;
-  }
-
-  .btn-default {
-    border-color: #ddd;
-  }
-
-  .theme-dropdown .dropdown-menu {
-    position: static;
-    display: block;
-    margin-bottom: 20px;
-  }
-
-  .theme-showcase > p > .btn {
-    margin: 5px 0;
-  }
-
-  .theme-showcase .navbar .container {
-    width: auto;
-  }
-
-  /* Bootstrap overrides */
-  .panel-body {
-    /*min-height: 350px;*/
-    position: relative;
-  }
-  .chart {
-    position: absolute;
-    bottom:0;
-    left:0;
-    right:0;
-  }
-  .panel .panel-heading {
-    background: #fff;
-    border-bottom: none;
-  }
-  .modal .modal-footer {
-    text-align: left;
-  }
+    .panel .panel-heading {
+      background: #fff;
+      border-bottom:none;
+      padding-bottom:0;
+    }
+    
   .goal-met-true {
     color: #A6D53A;
   }
@@ -81,252 +44,242 @@
     color: #FC9430;
   }
   .figure {
-    font-size: 48px;
-    font-weight: 300;
+    font-size: 64px;
+    font-weight: 200;
+  }
+   .days-chart, .days-chart-legend {
+    position: absolute;
+    top:105px;
+    text-align: center;
+    left:50%;
+    margin-left: -195px;
+    width:350px;
+  }
+  .days-chart-vis {
+    margin-top:75px;
+  }
+  .days-chart .timeline {
+    background: #fff url('/design/images/days-chart-bkd.png') no-repeat 0 12.5px !important;
+    margin: 0 -2px;
+  }
+  .days-chart.work-week-days .timeline {
+    width: 10%;
+  }
+  .days-chart.full-week-days .timeline {
+    width: 5%;
+  }
+  .days-chart .work-day {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .work-day.key,
+  .days-chart .goal-met-false.key {
+    height: 12px;
+    width: 12px;
+  }
+  .days-chart li {
+    display:inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 25px;
+    white-space: nowrap;
+  }
+  .days-chart .day {
+    width: 25px;
+    margin:0 -1px;
+    border-radius: 100%;
+    background-color: #d7d7d7;
+  }
+  .days-chart .sep {
+    width:10%;
+    background: #fff url(' /design/images/days-chart-bkd.png') no-repeat 0 12.5px;
+    margin:0 -2px;
+  }
+  .days-chart .goal-met-true {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .goal-met-false {
+    background-color: #FFC960;
+    background-image: -webkit-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: -o-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: linear-gradient(#FFC960 0%, #FFA00C 100%);
+  }
+  .figure {
+    font-size: 38px;
+    font-weight: 300; 
+  }
+  .day-label {
+    font-size: 11px;
+    color: #555555;
+    position: absolute;
+    bottom:-20px;
+    width:100%;
+    text-align: center;
+    text-align: -webkit-center;
+    display: block;
+  }
+  .days-chart-legend {
+    top: 275px;
+  }
+  .toggle-code {
+    display: none;
+  }
+  .show-code {
+    position:relative;
+    overflow: visible;
+  }
+  .show-code:hover .toggle-code {
+    display: block;
   }
   </style>
 </head>
-<body role="document">
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Volometrix</a>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/design/">
+      
+      Personal Dashboard
+      
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/design/executive/">Executive</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/design/personal-goals/">Personal Goals</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/design/sales/">Sales</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class=""><a href="#">METRICS</a></li>
-          <li><a href="#about">COLLABORATION</a></li>
-          <li><a href="#contact">TOPICS</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-header">Nav header</li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-<style>
-body {
-  padding-top: 50px;
-  padding-bottom: 30px;
-  background: #f9f9f9;
-  color:#555;
-}
-.theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
-}
-.theme-showcase > p > .btn {
-  margin: 5px 0;
-}
-.theme-showcase .navbar .container {
-  width: auto;
-}
-.panel-body {
-  min-height: 350px;
-  position: relative;
-}
-.panel-body p {
-  font-size: 12px;
-}
-.chart {
-  position: absolute;
-  bottom:0;
-  left:0;
-  right:0;
-}
-.chart-description {
-  position: absolute;
-  top:60px; left: 0; right: 0;
-  text-align: center !important;
-  z-index: 1;
-}
-.panel .panel-heading {
-  background: #fff;
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-.panel-subtitle p {
-  max-width: 46em;
-}
-.modal .modal-footer {
-  text-align: left;
-}
-.days-chart, .days-chart-legend {
-  position: absolute;
-  top:105px;
-  text-align: center;
-  left:50%;
-  margin-left: -195px;
-  width:350px;
-}
-.days-chart-vis {
-  margin-top:75px;
-}
-.days-chart .timeline {
-  background: #fff url('/design/images/days-chart-bkd.png') no-repeat 0 12.5px !important;
-  margin: 0 -2px;
-}
-.days-chart.work-week-days .timeline {
-  width: 10%;
-}
-.days-chart.full-week-days .timeline {
-  width: 5%;
-}
-.days-chart .work-day {
-  background-color: #ABE200;
-  background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
-  background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
-  background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
-}
-.days-chart .work-day.key,
-.days-chart .goal-met-false.key {
-  height: 12px;
-  width: 12px;
-}
-.days-chart li {
-  display:inline-block;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  height: 25px;
-  white-space: nowrap;
-}
-.days-chart .day {
-  width: 25px;
-  margin:0 -1px;
-  border-radius: 100%;
-  background-color: #d7d7d7;
-}
-.days-chart .sep {
-  width:10%;
-  background: #fff url(' /design/images/days-chart-bkd.png') no-repeat 0 12.5px;
-  margin:0 -2px;
-}
-.days-chart .goal-met-true {
-  background-color: #ABE200;
-  background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
-  background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
-  background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
-}
-.days-chart .goal-met-false {
-  background-color: #FFC960;
-  background-image: -webkit-linear-gradient(#FFC960 0%, #FFA00C 100%);
-  background-image: -o-linear-gradient(#FFC960 0%, #FFA00C 100%);
-  background-image: linear-gradient(#FFC960 0%, #FFA00C 100%);
-}
-.figure {
-  font-size: 38px;
-  font-weight: 300; 
-}
-.day-label {
-  font-size: 11px;
-  color: #555555;
-  position: absolute;
-  bottom:-20px;
-  width:100%;
-  text-align: center;
-  text-align: -webkit-center;
-  display: block;
-}
-.days-chart-legend {
-  top: 275px;
-}
-dd {
-  margin-bottom:15px;
-}
-#user-index {
-  display: none;
-}
-@media screen and (min-width: 960px) {
-  .show-index-true #user-index {
-    position:fixed;
-    right:0;
-    top:30px;
-    bottom:0;
-    width:250px;
-    padding:25px 15px;
-    background:#efefef;
-    overflow-x: auto;
-    display: none;
-  }
-  .show-index-true .row {
-    padding-right:150px;
-  }
-}
-.toggle-code {
-  display: none;
-}
-.show-code:hover .toggle-code {
-  display: block;
-}
-</style>
-</head>
-<body role="document">
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Volometrix</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">METRICS</a></li>
-          <li><a href="#about">COLLABORATION</a></li>
-          <li><a href="#contact">TOPICS</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-header">Nav header</li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <!-- <li><a href="#" id="show-help-trigger">Help</a></li>
-          <li><a href="#" id="show-code-trigger">Code</a></li> -->
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="container" role="main">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 style="font-weight:200;">How you spent your time</h1>
-        <p>This dashboard shows you recent activity quality and quantity of time you spend in email and meetings.</p>
-      </div>
-    </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="row">
+  <div class="col-md-12">
+    <h3>Charts</h3>
+    <ul class="list-inline chart-filters">
+      <li><strong>Filter by Dashboard:</strong></li>
+      <li><a href="#" class="personal-goals">Personal Goals</a></li>
+      <li><a href="#" class="executive">Executive</a></li>
+      <li><a href="#" class="sales">Sales</a></li>
+      <li><a href="#" class="all">All</a></li>
+    </ul>
     <hr>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="show-code"><div id="moment-panel" class="moment" style="text-align:center;display:none;">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <div class="charts-container">
+      <div class="chart personal-goals show-code"><div id="moment-panel" class="moment" style="text-align:center;display:none;">
   <h1 class="moment-greeting">
     Hello, Kelsey
   </h1>
@@ -347,11 +300,7 @@ dd {
     });
   </script>
 </div></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="panel-title">
@@ -421,12 +370,8 @@ var progressBar = (function(){
         }]
     });
 })();
-</script></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="show-code">
+</script></div>   
+      <div class="chart personal-goals show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -555,9 +500,7 @@ var progressBar = (function(){
   </div>
 </div>
 </div>
-      </div>
-      <div class="col-md-4">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <div class="panel panel-default">
       <div class="panel-heading">
             <div class="panel-title">
@@ -579,9 +522,7 @@ var progressBar = (function(){
             <p>You and one additional 2-hour blocks of time to work. Well done!</p>
       </div>
 </div></div>
-      </div>
-      <div class="col-md-4">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -651,11 +592,7 @@ var progressBar = (function(){
     </div>     
   </div>
 </div></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <style>
 [data-toggle="popover"]:hover {
   text-decoration: underline;
@@ -909,11 +846,7 @@ a .glyphicon-info-sign:hover {
         </div>
     </div>
 </div> </div> 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -996,9 +929,7 @@ a .glyphicon-info-sign:hover {
                   </div>
                 </div>
 </div>
-      </div>
-      <div class="col-md-4">
-        <div class="show-code"><style>
+      <div class="chart personal-goals show-code"><style>
 .days-chart-svg  {
   width: 315px;
   height: 80px;
@@ -1105,11 +1036,7 @@ $(function () {
 </script>
 <hr>
 <div id="wt5" class="svg-days-chart"></div></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <style>
 [data-toggle="popover"]:hover {
   text-decoration: underline;
@@ -1336,11 +1263,7 @@ a .glyphicon-info-sign:hover {
   </div>
 </div>
 </div> </div> 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <div class="panel panel-default">
     <div class="panel-heading">
          <div class="panel-title">
@@ -1469,9 +1392,7 @@ a .glyphicon-info-sign:hover {
     </div>
 </div>
 </div>
-      </div>
-      <div class="col-md-4">
-        <div class="show-code"><style>
+      <div class="chart personal-goals show-code"><style>
 .days-chart-svg  {
   width: 315px;
   height: 80px;
@@ -1587,9 +1508,7 @@ $(function () {$(function () {
 });
 });
 </script></div>
-      </div>
-      <div class="col-md-4">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <div class="panel panel-default">
       <div class="panel-heading">
             <div class="panel-title">
@@ -1715,11 +1634,7 @@ $(function () {$(function () {
         </div>
     </div>
 </div></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -1849,9 +1764,7 @@ $(function () {$(function () {
   </div>
 </div>
 </div></div>
-      </div>
-      <div class="col-md-4">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -1994,9 +1907,7 @@ $(function () {$(function () {
 </div>
 </div>
 </div>
-      </div>
-      <div class="col-md-4">
-        <div class="show-code">
+      <div class="chart personal-goals show-code">
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">
@@ -2140,11 +2051,7 @@ $(function () {$(function () {
   </div>
 </div>
 </div></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="show-code"><div style="text-align:center;margin-top:25px;">
+      <div class="chart personal-goals show-code"><div style="text-align:center;margin-top:25px;">
 	<p class="h-card">
 		This dashboard is provided for <br>
 		<strong><a href="name@company.com">Mr James Jammerson</a></strong>, VP of Sales Operations<br>
@@ -2488,226 +2395,49 @@ $(function () {$(function () {
   });
   </script>
 </div></div>
+    </div>
+  </div>
+</div>
+<style>
+  .chart-filters li a {
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+  }
+  .chart-filters li.active a {
+    font-weight: bold;
+  }
+</style>
+<script>
+  $(function(){
+    // Filter by Dashboard
+    $('.chart-filters a').click(function(){
+      var chartClass = $(this).attr('class');
+      console.log(chartClass)
+      $('.chart-filters a').parent().removeClass('active');
+      $(this).parent().addClass('active');
+      if(chartClass === 'all') {
+        $('.charts-container').children('div.chart').slideDown();
+      } else {
+        $('.charts-container').children('div:not(.'+ chartClass +')').slideUp();
+        $('.charts-container').children('div.'+chartClass).slideDown();
+      }
+      return false;
+    });
+    $('.show-code').showCode();
+  });
+</script>
       </div>
     </div>
-    
-<style>
-#intro-modal .modal-content,
-#intro-modal .modal-body {
-	background: #C1E9FE !important;
-	max-width: 550px;
-	margin: auto;
-}
-#intro-modal .modal-header {
-	margin-bottom: none;
-	border-bottom: none;
-}
-#intro-modal .modal-body {
-	padding:0;
-}
-#intro-modal .intro-container {
-	position: relative;	
-}
-#intro-modal .intro-heading {
-	font-size: 24px;
-	margin: 0;
-}
-#intro-modal .intro-subheading {
-	font-size: 18px;
-}
-#intro-modal .intro-step {
-	padding: 0 35px 0 35px;
-	display: none;
-}
-#intro-modal .intro-step:hover {
-	cursor: pointer;
-}
-#intro-modal .intro-progress {
-	text-align: center;	
-	margin:0 -75px 0 0;
-	position: absolute;
-	bottom: -35px;
-	right: 50%;
-	width: 150px;
-}
-#intro-modal .intro-progress ul {
-	display: block;
-	text-align: center;
-}
-#intro-modal .intro-progress li {
-	background-color: #222;
-	list-style: none;
-	display: inline-block;
-	width:10px; 
-	height:10px;
-	border-radius: 10px;
-	margin-right: 2px;
-	margin-left: 2px;
-	padding:0;
-}
-#intro-modal .intro-progress li.active {
-	background-color:#C1E9FE;
-}
-#intro-modal .intro-step .btn {
-	position: absolute;
-	display: block;
-	bottom: 15px; 
-	left:50%;
-	margin-left: -50px;
-	width: 100px;
-	text-align: center;
-	visibility: hidden;
-}
-#intro-modal .modal-content .intro-step {
-	background: #C1E9FE url( "/design/images/tutorial/intro-step.png" ) no-repeat bottom right ;
-	min-height: 550px;
-}
-#intro-modal .modal-content .meeting-step {
-	background-image: url( "/design/images/tutorial/meeting-effectiveness-step.png" ) ;
-}
-#intro-modal .modal-content .work-time-step {
-	background-image: url( "/design/images/tutorial/work-time-step.png" ) ;
-}
-#intro-modal .modal-content .email-time-step {
-	background-image: url( "/design/images/tutorial/email-time-step.png" ) ;
-}
-#intro-modal .modal-content .after-hours-step {
-	background-image: url( "/design/images/tutorial/after-hours-step.png" ) ;
-}
-#intro-modal .modal-content .time-demand-step {
-	background-image: url( "/design/images/tutorial/time-demand-step.png" ) ;
-}
-#intro-modal .modal-content .final-step {
-	background-image: url( "/design/images/tutorial/finished-step.png" ) ;
-}
-</style>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js"></script>
-<script>
-$(function() {
-	$.fn.takeTour = function () {
-		if( $.cookie('toured') === null ) {
-				$('#intro-modal').modal('show');
-				$.cookie('toured','7');
-		};
-		$('.intro-container').parent().append('<div class="intro-progress"><ul></ul></div>');
-		var count = $('.intro-step').length;
-		for ( var i = 0; i < count; i++ ){
-			$('.intro-progress').append('<li class="progress-step"></li>');
-		}
-		$('.intro-progress .progress-step').first().addClass('active');
-		$('.intro-step').append('<a href="#" title="Use the &rarr; key too" class="btn btn-primary next-step">Next</a>');
-		$('.intro-step').first().show();
-		$('.intro-step:last-child').addClass('final-step');
-		$('.intro-step:first-child').addClass('first-step');
-		var advanceStep = function(obj) {
-				var currentStep, nextStep;
-				currentStep = obj;
-				nextStep 		= obj.next();
-				$('.intro-progress .progress-step').eq($('.intro-step').index(nextStep)).addClass('active');
-				nextStep.fadeIn();
-				currentStep.hide();
-		}
-		var reverseStep = function(obj) {
-				var currentStep, prevStep;
-				currentStep = obj;
-				prevStep 		= obj.prev();
-				$('.intro-progress .progress-step').eq($('.intro-step').index(currentStep)).removeClass('active');
-				prevStep.fadeIn();
-				currentStep.hide();
-		}
-		$('.intro-step').click(function(){
-			var btn = $(this);
-				if ( btn.hasClass('final-step')) {
-					$('#intro-modal').modal('hide');
-				} else {
-					advanceStep(btn);
-				}
-		});
-		$('.intro-progress .progress-step').click(function(){
-			$('.intro-step:visible').hide();
-			$('.intro-step').eq($(this).index()-1).fadeIn();
-			$('.intro-progress .progress-step').removeClass('active');
-			$('.intro-progress .progress-step').slice(0, $(this).index()).addClass('active');
-		});
-		$(document).unbind().bind('keydown', function(e) {
-			if ( e.keyCode == 39 ) {
-				var btn = $('.intro-step:visible');
-				if ( btn.hasClass('final-step')) {
-					$('#intro-modal').modal('hide');
-				} else {
-					advanceStep(btn);
-				}
-			}
-			if ( e.keyCode == 37 ) {
-				var btn = $('.intro-step:visible');
-				if ( !btn.hasClass('first-step')) {
-					reverseStep(btn);
-				}
-			}
-		});	
-	}
-	$('.intro-container').takeTour();
-});
-</script>
-<div class="modal" id="intro-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			</div>
-			<div class="modal-body intro-container">
-				<div class="intro-step welcome-step">
-					<h1 class="intro-heading">Introduction</h1>
-					<h3 class="intro-subheading">Welcome to your new personal goals dashboard!</h3>
-					<p>Complete this quick walk-through to get acquainted with the different modules and discover how to get the most out of your dashboard.</p>
-				</div>
-				<div class="intro-step meeting-step">
-					<h1 class="intro-heading">Meeting Effectiveness</h1>
-					<h3 class="intro-subheading">Organize and attend effective meetings.</h3>
-					<p>Productive collaboration is the result of several key meeting elements. Use the Meetings module to measure the quality of your meetings based on their duration, size, engagement level and timing.</p>
-				</div>
-				<div class="intro-step work-time-step">
-					<h1 class="intro-heading">Work Time</h1>
-					<h3 class="intro-subheading">Schedule time to focus.</h3>
-					<p>Time fragmentation is critical for both concentration and mental recovery. To enhance your productivity, use the Work Time module to set a goal each week for the number of days that you'd like to reserve at least one 2-hour block of time without meetings.</p>
-				</div>
-				<div class="intro-step email-time-step">
-					<h1 class="intro-heading">Email Time	</h1>
-					<h3 class="intro-subheading">Track the time you spend in email.</h3>
-					<p>When used appropriately, email is a great communication tool. However, inboxes can weigh you and your team down. Track the number of emails you send and receive in the Email Time module to identify the best balance for your own productivity.</p>
-				</div>
-				<div class="intro-step after-hours-step">
-					<h1 class="intro-heading">After-Hours Work</h1>
-					<h3 class="intro-subheading">Achieve the work/life balance that's best for you.</h3>
-					<p>It's okay to go the extra mile, but balance is important. Discover how you manage your work and personal life with the After-Hours module, which highlights days where you spent time in meetings or email outside of your regular work day.</p>
-				</div>
-				<div class="intro-step time-demand-step">
-					<h1 class="intro-heading">Time Demand on Colleagues</h1>
-					<h3 class="intro-subheading">See how your meeting and emails impact your colleagues' schedules.</h3>
-					<p>Communication is crucial for your job, but every email and meeting demands time from your coworkers. Track your organizational load through the Time Demand on Colleagues module, which shows the number of hours you impose on your colleagues' schedules.</p>
-				</div>
-				<div class="intro-step final-step">
-					<h1 class="intro-heading">Get started!</h1>
-					<h3 class="intro-subheading">You're ready to start settings goals and prioritizing your time.</h3>
-					<p>If you have any lingering questions, you can read the <a href="#">Resources Page</a> for more information. Replay this tutorial anytime by clicking the tutorial button in the upper right corner of your dashboard.</p>
-				</div>
-			</div>
-	</div>
-</div>
-    <script>
-      $(function(){
-        var highestCol = Math.max($('.panel-body').height());
-        $('.equalHeight').height(highestCol);
-        $('.panel-body').css({ 
-          'height' : highestCol 
-        });        
-        // $('.show-code').showCode();
-      });
-    </script>
-  </div>
-    <script src="/design/javascript/toolkit.js"></script>
+
+    <footer>
+  <script src="/design/javascript/toolkit.js"></script>
+  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
   <script src="/design/javascript/prism.js"></script>
+</footer>
+
   </body>
-</html>
-</body>
+
 </html>

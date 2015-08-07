@@ -1,0 +1,71 @@
+---
+layout: default
+title:
+permalink: /product/charts/
+---
+<div class="row">
+  <div class="col-md-12">
+    <h3>Charts</h3>
+    <ul class="list-inline chart-filters">
+      <li><strong>Filter by Dashboard:</strong></li>
+      <li><a href="#" class="personal-goals">Personal Goals</a></li>
+      <li><a href="#" class="executive">Executive</a></li>
+      <li><a href="#" class="sales">Sales</a></li>
+      <li><a href="#" class="all">All</a></li>
+    </ul>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <div class="charts-container">
+      <div class="chart personal-goals show-code">{% include moment-panel.html %}</div>
+      <div class="chart personal-goals show-code">{% include progress-bar-panel-2.html %}</div>   
+      <div class="chart personal-goals show-code">{% include last-week-productivity-panel.html %}</div>
+      <div class="chart personal-goals show-code">{% include goals-for-the-week-panel.html %}</div>
+      <div class="chart personal-goals show-code">{% include time-breakdown-panel.html %}</div>
+      <div class="chart personal-goals show-code">{% include meeting-panel-2.html %} </div> 
+      <div class="chart personal-goals show-code">{% include key-people-panel.html %}</div>
+      <div class="chart personal-goals show-code">{% include work-panel-5-day-svg.html %}</div>
+      <div class="chart personal-goals show-code">{% include email-effectiveness-panel.html %} </div> 
+      <div class="chart personal-goals show-code">{% include email-panel-2.html %}</div>
+      <div class="chart personal-goals show-code">{% include work-panel-7-day-svg.html %}</div>
+      <div class="chart personal-goals show-code">{% include impact-panel-2.html %}</div>
+      <div class="chart personal-goals show-code">{% include hours-worked-panel.html %}</div>
+      <div class="chart personal-goals show-code">{% include manager-11s-panel.html %}</div>
+      <div class="chart personal-goals show-code">{% include direct-11s-panel.html %}</div>
+      <div class="chart personal-goals show-code">{% include user-info.html %}</div>
+    </div>
+  </div>
+</div>
+<style>
+  .chart-filters li a {
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+  }
+  .chart-filters li.active a {
+    font-weight: bold;
+  }
+</style>
+<script>
+  $(function(){
+    // Filter by Dashboard
+    $('.chart-filters a').click(function(){
+      var chartClass = $(this).attr('class');
+      console.log(chartClass)
+      $('.chart-filters a').parent().removeClass('active');
+      $(this).parent().addClass('active');
+      if(chartClass === 'all') {
+        $('.charts-container').children('div.chart').slideDown();
+      } else {
+        $('.charts-container').children('div:not(.'+ chartClass +')').slideUp();
+        $('.charts-container').children('div.'+chartClass).slideDown();
+      }
+      return false;
+    });
+    $('.show-code').showCode();
+  });
+</script>

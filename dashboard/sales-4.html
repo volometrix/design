@@ -1,8 +1,9 @@
 ---
 layout: 
-title:
+title: 
 permalink: 
 page-title: SYMC | Volometrix Account Engagement Report
+report-title: Account Engagement Report
 ---
 <!DOCTYPE html>
 <html>
@@ -10,7 +11,7 @@ page-title: SYMC | Volometrix Account Engagement Report
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SYMC-Monthly-Sales-Report</title>
+  <title>{{ page.ui-title }}</title>
   <!-- {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %} -->
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
@@ -34,80 +35,92 @@ page-title: SYMC | Volometrix Account Engagement Report
   <script src="{{ site.baseurl }}/javascript/dataTables.bootstrap.js"></script>
   <script src="{{ site.baseurl }}/javascript/jquery.sparkline.js"></script>
   <style>
-    body {
-      background: #eee;
-    }
-    .container {
-      max-width: 850px;
-    }
-    .nav {
-      margin-top: 25px;
-    }
-    .box {
-      position: relative;
-      padding: 50px;
-      margin: 0 auto 150px auto;
-      background-color: #fff;
-      -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-      -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-    }
-    .box:before, .box:after {
-      position: absolute;
-      width: 40%;
-      height: 10px;
-      content: ' ';
-      left: 12px;
-      bottom: 12px;
-      background: transparent;
-      -webkit-transform: skew(-5deg) rotate(-5deg);
-      -moz-transform: skew(-5deg) rotate(-5deg);
-      -ms-transform: skew(-5deg) rotate(-5deg);
-      -o-transform: skew(-5deg) rotate(-5deg);
-      transform: skew(-5deg) rotate(-5deg);
-      -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      z-index: -1;
-    } 
-
-    .box:after {
-      left: auto;
-      right: 12px;
-      -webkit-transform: skew(5deg) rotate(5deg);
-      -moz-transform: skew(5deg) rotate(5deg);
-      -ms-transform: skew(5deg) rotate(5deg);
-      -o-transform: skew(5deg) rotate(5deg);
-      transform: skew(5deg) rotate(5deg);
-    } 
-    .masthead {
-      text-align: center;
-    }
-    th {
-      background: #f9f9f9;
-    }
-    table td.metric {
-      width:50%;
-    }
-    table td.month {
-      width: 12.5%;
-    }
-    table td.value {
-      width:25%;
-    }
-    table td.benchmark {
-      width:25%;
-    }
-    #instructions {
-      position: fixed;
-      right: 5px;
-      top: 5px;
-      background: rgba(0,0,0,.09);
-      padding:5px;
-      font-size: 12px;
-      border-radius: 4px; 
-      z-index: 10;
-    }
+  body {
+    /*background: #eee;*/
+    color: #444;
+    font-size: 13px;
+    margin-top:0;
+  }
+  .container {
+    max-width: 850px;
+  }
+  .nav {
+    margin-top: 0;
+    padding:0;
+  }
+/*  .box {
+    position: relative;
+    padding: 25px 50px;
+    margin: 0 auto 150px auto;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  }
+  .box:before, .box:after {
+    position: absolute;
+    width: 40%;
+    height: 10px;
+    content: ' ';
+    left: 12px;
+    bottom: 12px;
+    background: transparent;
+    -webkit-transform: skew(-5deg) rotate(-5deg);
+    -moz-transform: skew(-5deg) rotate(-5deg);
+    -ms-transform: skew(-5deg) rotate(-5deg);
+    -o-transform: skew(-5deg) rotate(-5deg);
+    transform: skew(-5deg) rotate(-5deg);
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    z-index: -1;
+  } 
+  .box:after
+  {
+    left: auto;
+    right: 12px;
+    -webkit-transform: skew(5deg) rotate(5deg);
+    -moz-transform: skew(5deg) rotate(5deg);
+    -ms-transform: skew(5deg) rotate(5deg);
+    -o-transform: skew(5deg) rotate(5deg);
+    transform: skew(5deg) rotate(5deg);
+  }*/ 
+  .masthead {
+    text-align: center;
+    margin: 15px 0;
+    padding: 25px 0 15px 0;
+    border-top: solid 1px #eee;
+  }
+  .masthead .report-title {
+    margin:15px auto 0 auto;
+  }
+  th {
+    background: #f9f9f9;
+  }
+  table td.metric {
+    width:50%;
+  }
+  #instructions {
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    background: rgba(0,0,0,.09);
+    padding:5px;
+    font-size: 12px;
+    border-radius: 4px; 
+    visibility: hidden;
+  }
+  .figure {
+    font-size: 36px;
+    font-weight: 200;
+  }
+  .section-title {
+    padding: 6px;
+    font-weight: bold;
+    background: #f7f7f7;
+    border-top: solid 1px #ddd;
+    border-bottom: solid 1px #ddd;
+  }
 
     /* Print */
 
@@ -122,20 +135,24 @@ page-title: SYMC | Volometrix Account Engagement Report
       h1, h2, h3 {
         page-break-after: avoid;
       }
+      .figure {
+        font-size: 36px;
+        font-weight: 300;
+      }
       body, article {
         width: 100%;
         margin: 0;
         padding: 0;
       }
-      .tab-pane {
+/*      .tab-pane {
         page-break-before: always !important;
         page-break-after: always !important;
       }
       #print-wrapper  .container {
         width: 595px;
         margin:0;
-      }
-      .col-sm-8 {
+      }*/
+      .col-xs-8 {
         width: 300px;
         float:left;
       }
@@ -154,10 +171,8 @@ page-title: SYMC | Volometrix Account Engagement Report
         font-weight: 300;
       }
       .section-title {
-        font-size: 18px;
-        font-weight: 300;
-        margin-top:0;
       }
+
       #print-container .table {
         font-size: 11px;
       }
@@ -173,11 +188,11 @@ page-title: SYMC | Volometrix Account Engagement Report
         margin:0 !important;
         line-height: 1;
       }
-      .tab-content > .tab-pane {
+      /*.tab-content > .tab-pane {
         display: block !important; 
         opacity: 1 !important; 
         visibility: visible !important
-      }
+      }*/
       @page {
         margin: 2cm;
       }
@@ -202,8 +217,8 @@ page-title: SYMC | Volometrix Account Engagement Report
                     backgroundColor: null,
                     borderWidth: 0,
                     type: 'area',
-                    margin: [2, 0, 2, 0],
-                    width: 120,
+                    margin: [0, 0, 0, 0],
+                    // width: 80,
                     height: 20,
                     style: {
                         overflow: 'visible'
@@ -283,6 +298,7 @@ page-title: SYMC | Volometrix Account Engagement Report
                 }
             };
             options = Highcharts.merge(defaultOptions, options);
+
             return new Highcharts.Chart(options, callback);
         };
 
@@ -363,12 +379,13 @@ page-title: SYMC | Volometrix Account Engagement Report
     <div id="print-wrapper">
       <div class="container nav-container">
         <div class="row">
-          <div class="col-sm-12">
-            <ul class="nav nav-tabs" role="tablist">
+          <div class="col-xs-12">
+            <br><br>
+            <!-- <ul class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active"><a href="#east-region" aria-controls="home" role="tab" data-toggle="tab">East Region</a></li>
               <li role="presentation"><a href="#west-region" aria-controls="profile" role="tab" data-toggle="tab">West Region</a></li>
               <li role="presentation"><a href="#latin-america" aria-controls="messages" role="tab" data-toggle="tab">Latin America</a></li>
-            </ul>
+            </ul> -->
           </div>
         </div>
       </div>
@@ -376,111 +393,82 @@ page-title: SYMC | Volometrix Account Engagement Report
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane fade in active" id="east-region">
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-xs-12">
                 <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                 <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
               </div>
             </div>
-            <hr>
             <div class="row">
-              <div class="masthead col-sm-12">
-                <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
-                <h2 class="report-subtitle">East Region, June 2015</h2>
+              <div class="masthead col-xs-12">
+                <h2 class="report-title">{{ page.report-title }}</h2>
+                <h4 class="report-subtitle">East Region, July 2015</h4>
               </div>
             </div>
-            <hr>
-            <h4>Engagement</h4>
+            <p class="section-title">Meeting and email time with customer</p>
             <div class="row">
-              <div class="col-sm-8">
-                <table class="table">
-                  <tr>
-                    <th></th>
-                    <th>April</th>
-                    <th>May</th>
-                    <th>June</th>
-                    <th>July</th>
-                  </tr>
-                  {% for ee in site.data.symc_ee %}
-                  <tr>
-                    <td class="metric">{{ ee.Metric }}</td>
-                    <td class="">{{ ee.April }}</td>
-                    <td class="">{{ ee.May }}</td>
-                    <td class="">{{ ee.June }}</td>
-                    <td class="">{{ ee.July }}</td>
-                  </tr>
-                  {% endfor %}
-                </table>
+              <div class="col-xs-4">
+                <p>&nbsp;</p>
+                <p><span class="h3">5.6</span> average hours/week</p>
+                <p><span class="h4">32%</span> AEs meeting benchmark</p>
+                <p><span class="h4">231</span> total hours</p>
               </div>
-              <div class="col-sm-4">
-                <table id="ee-datatable" class="hidden">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {% for ee in site.data.symc_ee %}
-                      <th>{{ ee.Metric }}</th>
-                      {% endfor %}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>April</td>
-                      {% for ee in site.data.symc_ee %}
-                      <td>{{ ee.April }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>May</td>
-                      {% for ee in site.data.symc_ee %}
-                      <td>{{ ee.May }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>June</td>
-                      {% for ee in site.data.symc_ee %}
-                      <td>{{ ee.June }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>July</td>
-                      {% for ee in site.data.symc_ee %}
-                      <td>{{ ee.July }}</td>
-                      {% endfor %}
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="ee-table"></div>
+              <div class="col-xs-8">
+                <div id="customer-chart"></div>
                 <script>
                   $(function () {
                     Highcharts.setOptions(Highcharts.theme);
-                    $('#ee-table').highcharts({
+                    $('#customer-chart').highcharts({
                         chart: {
-                            type: 'spline',
-                            height: 200,
-                            width: 230
+                            type: 'column',
+                            height: 220
                         },
                         title: {
-                            text: null
+                            text: 'Quarter Over Quarter Comparison',
+                            style: {
+                              'color': '#444444',
+                              'font-size': '12px'
+                            }
+                        },
+                        legend: {
+                            itemStyle: {
+                                'color': '#444444',
+                                'fontSize': '11px'
+                            }
                         },
                         yAxis: {
                             title: {
-                                text: null
+                                text: 'AE time spent (avg. hrs/wk)',
+                                style: {
+                                'font-size': '11px'
+                              }
+                            },
+                            labels: {
+                              enabled: false
                             }
                         },
                         xAxis: {
-                          categories: ['Apr','May','Jun','Jul'],
+                          categories: ['July','August','September'],
                           title: {
                             text: null
                           }
                         },
+                        plotOptions: {
+                            series: {
+                                dataLabels: {
+                                    enabled: true,
+                                    allowOverlap: true
+                                }
+                            }
+                        },
                         series: [{
-                          name: 'Accounts Engaged',
-                          data: [260, 342, 227, 227]
+                          name: 'current quarter',
+                          data: [975, null, null]
                         }, {
-                          name: 'Accounts Contacted',
-                          data: [460, 469, 380, 380]
+                          name: 'previous quarter',
+                          data: [775, 690, 702]
                         }, {
-                          name: 'New Accounts Engaged',
-                          data: [260, 180, 90, 90]
+                          name: 'benchmark',
+                          data: [825, null, null]
                         }],
                         credits: {
                           enabled: false
@@ -493,86 +481,69 @@ page-title: SYMC | Volometrix Account Engagement Report
                 </script>
               </div>
             </div>
-            <h4>Time</h4>
+            <p class="section-title">Meeting and email time with key accounts</p>
             <div class="row">
-              <div class="col-sm-8">
-                <table class="table">
-                  <tr>
-                    <th></th>
-                    <th>April</th>
-                    <th>May</th>
-                    <th>June</th>
-                    <th>July</th>
-                  </tr>
-                  {% for et in site.data.symc_et %}
-                  <tr>
-                    <td class="metric">{{ et.Metric }}</td>
-                    <td class="">{{ et.April }}</td>
-                    <td class="">{{ et.May }}</td>
-                    <td class="">{{ et.June }}</td>
-                    <td class="">{{ et.July }}</td>
-                  </tr>
-                  {% endfor %}
-                </table>
+              <div class="col-xs-4">
+                <p>&nbsp;</p>
+                <p><span class="h3">0.95</span> average hours/week</p>
+                <p><span class="h4">41</span> total hours</p>
               </div>
-              <div class="col-sm-4">
-                <table id="et-datatable" class="hidden">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {% for et in site.data.symc_et %}
-                      <th>{{ et.Metric }}</th>
-                      {% endfor %}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>April</td>
-                      {% for et in site.data.symc_et %}
-                      <td>{{ et.April }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>May</td>
-                      {% for et in site.data.symc_et %}
-                      <td>{{ et.May }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>June</td>
-                      {% for et in site.data.symc_et %}
-                      <td>{{ et.June }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>July</td>
-                      {% for et in site.data.symc_et %}
-                      <td>{{ et.July }}</td>
-                      {% endfor %}
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="et-table"></div>
-                <script>
+              <div class="col-xs-8">
+                <div id="key-contacts-chart"></div>
+                 <script>
                   $(function () {
                     Highcharts.setOptions(Highcharts.theme);
-                    $('#et-table').highcharts({
-                        data: {
-                          table: 'et-datatable'
-                        },
+                    $('#key-contacts-chart').highcharts({
                         chart: {
-                            type: 'spline',
-                            height: 200,
-                            width: 230
+                            type: 'column',
+                            height: 220
                         },
                         title: {
-                            text: null
+                            text: 'Quarter Over Quarter Comparison',
+                            style: {
+                              'color': '#444444',
+                              'font-size': '12px'
+                            }
                         },
                         yAxis: {
                             title: {
-                                text: null
+                                text: 'Time (hrs)',
+                                style: {
+                                'color': '#444444',
+                                'font-size': '11px'
+                              }
+                            },
+                            labels: {
+                              enabled: false
                             }
                         },
+                        xAxis: {
+                          categories: ['July', 'August','September'],
+                          title: {
+                            text: null
+                          }
+                        },
+                        plotOptions: {
+                            series: {
+                                marker: {
+                                    radius: 6
+                                },
+                                dataLabels: {
+                                    enabled: true,
+                                    allowOverlap: true
+                                }
+                            }
+                        },
+                        series: [{
+                          name: 'current quarter',
+                          data: [126, null, null]
+                        }, {
+                          name: 'previous quarter',
+                          data: [101, 104, 101]
+                        }, {
+                          name: 'benchmark',
+                          data: [110, null, null]
+                        }],
                         credits: {
                           enabled: false
                         },
@@ -584,108 +555,91 @@ page-title: SYMC | Volometrix Account Engagement Report
                 </script>
               </div>
             </div>
-            <h4>Sales</h4>
+            <br>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-12">
                 <table class="table">
                   <tr>
-                    <th></th>
-                    <th>April</th>
-                    <th>May</th>
-                    <th>June</th>
+                    <th width="27.777%">Account summary</th>
                     <th>July</th>
+                    <th>Prior quarter (April)</th>
+                    <th>Prior quarter (ave/wk)</th>
                   </tr>
-                  {% for es in site.data.symc_es %}
+                  {% for ea in site.data.symc_ea %}
                   <tr>
-                    <td class="metric">{{ es.Metric }}</td>
-                    <td class="">{{ es.April }}</td>
-                    <td class="">{{ es.May }}</td>
-                    <td class="">{{ es.June }}</td>
-                    <td class="">{{ es.July }}</td>
+                    <td>{{ ea.Metric }}</td>
+                    <td>{{ ea.July }} </td>
+                    <td>{{ ea.April }} <span class="glyphicon glyphicon-triangle-{{ea.pqDir}} text-{{ea.pqTxt}}"></span></td>
+                    <td>{{ ea.June }}</td>
                   </tr>
                   {% endfor %}
                 </table>
               </div>
-              <div class="col-sm-4">
-                <table id="es-datatable" class="hidden">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {% for es in site.data.symc_es %}
-                      <th>{{ es.Metric }}</th>
-                      {% endfor %}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>April</td>
-                      {% for es in site.data.symc_es %}
-                      <td>{{ es.April }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>May</td>
-                      {% for es in site.data.symc_es %}
-                      <td>{{ es.May }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>June</td>
-                      {% for es in site.data.symc_es %}
-                      <td>{{ es.June }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <td>July</td>
-                      {% for es in site.data.symc_es %}
-                      <td>{{ es.July }}</td>
-                      {% endfor %}
-                    </tr>
-                  </tbody>
+            </div>
+            <p class="section-title">Behavioral metrics per AE</p>
+            <div class="row">
+              <div class="col-xs-4">
+                <p style="margin:8px 0 12px 0;">Customer network size<br>
+                  <span class="h3">234</span> people</p>
+                <table class="table table-condensed">
+                  <tr>
+                    <th>Q2</th>
+                    <th>BM</th>
+                    <th>Trend</th>
+                  </tr>
+                  <tr>
+                    <td>78</td>
+                    <td>+2%</td>
+                    <td data-sparkline="77, 88, 66 "/>
+                  </tr>
                 </table>
-                <div id="es-table"></div>
-                <script>
-                  $(function () {
-                    Highcharts.setOptions(Highcharts.theme);
-                    $('#es-table').highcharts({
-                        data: {
-                          table: 'es-datatable'
-                        },
-                        chart: {
-                            type: 'spline',
-                            height: 300,
-                            width: 230
-                        },
-                        title: {
-                            text: null
-                        },
-                        yAxis: {
-                            title: {
-                                text: null
-                            }
-                        },
-                        credits: {
-                          enabled: false
-                        },
-                        exporting: {
-                          enabled: false
-                        }
-                    });
-                });
-                </script>
+              </div>
+              <div class="col-xs-4">
+                <p style="margin:8px 0 12px 0;">
+                  Hrs/wk per customer<br>
+                  <span class="h3">22</span> hours</p>
+                <table class="table table-condensed">
+                  <tr>
+                    <th>Q2</th>
+                    <th>BM</th>
+                    <th>Trend</th>
+                  </tr>
+                  <tr>
+                    <td>90</td>
+                    <td><span class="badge alert-danger">-3%</span></td>
+                    <td data-sparkline="77, 55, 66"/>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-xs-4">
+                <p style="margin:8px 0 12px 0;">
+                  Internal meeting time<br>
+                  <span class="h3">18</span> hours</p>
+                <table class="table table-condensed">
+                  <tr>
+                    <th>Q2</th>
+                    <th>BM</th>
+                    <th>Trend</th>
+                  </tr>
+                  <tr>
+                    <td>88</td>
+                    <td><span class="badge alert-success">+1%</span></td>
+                    <td data-sparkline="77, 66, 88"/>
+                  </tr>
+                </table>  
               </div>
             </div>
           </div>
 
-            <div role="tabpanel" class="tab-pane fade" id="west-region">
+          <!-- <div role="tabpanel" class="tab-pane fade" id="west-region">
               <div class="row">
-                <div class="col-sm-12">
+                <div class="col-xs-12">
                   <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                   <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
               <div class="row">
-              <div class="masthead col-sm-12">
+              <div class="masthead col-xs-12">
                 <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
                 <h2 class="report-subtitle">West Region, June 2015</h2>
               </div>
@@ -693,7 +647,7 @@ page-title: SYMC | Volometrix Account Engagement Report
             <hr>
             <h4>Engagement</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table">
                   <tr>
                     <th></th>
@@ -713,7 +667,7 @@ page-title: SYMC | Volometrix Account Engagement Report
                   {% endfor %}
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="we-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -784,7 +738,7 @@ page-title: SYMC | Volometrix Account Engagement Report
             </div>
             <h4>Time</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table">
                   <tr>
                     <th></th>
@@ -804,7 +758,7 @@ page-title: SYMC | Volometrix Account Engagement Report
                   {% endfor %}
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="wt-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -875,7 +829,7 @@ page-title: SYMC | Volometrix Account Engagement Report
             </div>
             <h4>Sales</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table">
                   <tr>
                     <th></th>
@@ -895,7 +849,7 @@ page-title: SYMC | Volometrix Account Engagement Report
                   {% endfor %}
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="ws-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -964,18 +918,18 @@ page-title: SYMC | Volometrix Account Engagement Report
                 </script>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <div role="tabpanel" class="tab-pane fade" id="latin-america">
+            <!-- <div role="tabpanel" class="tab-pane fade" id="latin-america">
               <div class="row">
-                <div class="col-sm-12">
+                <div class="col-xs-12">
                   <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
                   <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
               <hr>
               <div class="row">
-              <div class="masthead col-sm-12">
+              <div class="masthead col-xs-12">
                 <h1 class="report-title">Welcome to your monthly sales retrospective</h1>
                 <h2 class="report-subtitle">Latin America Region, June 2015</h2>
               </div>
@@ -983,7 +937,7 @@ page-title: SYMC | Volometrix Account Engagement Report
             <hr>
             <h4>Engagement</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table">
                   <tr>
                     <th></th>
@@ -1003,7 +957,7 @@ page-title: SYMC | Volometrix Account Engagement Report
                   {% endfor %}
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="le-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -1074,7 +1028,7 @@ page-title: SYMC | Volometrix Account Engagement Report
             </div>
             <h4>Time</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table" id="lt-datatable">
                   <tr>
                     <th></th>
@@ -1094,7 +1048,7 @@ page-title: SYMC | Volometrix Account Engagement Report
                   {% endfor %}
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="lt-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -1165,7 +1119,7 @@ page-title: SYMC | Volometrix Account Engagement Report
             </div>
             <h4>Sales</h4>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-xs-8">
                 <table class="table">
                   <tr>
                     <th></th>
@@ -1185,7 +1139,7 @@ page-title: SYMC | Volometrix Account Engagement Report
                   {% endfor %}
                 </table>
               </div>
-              <div class="col-sm-4">
+              <div class="col-xs-4">
                 <table id="ls-datatable" class="hidden">
                   <thead>
                     <tr>
@@ -1254,7 +1208,7 @@ page-title: SYMC | Volometrix Account Engagement Report
                 </script>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

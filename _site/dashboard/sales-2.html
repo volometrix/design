@@ -1,9 +1,3 @@
----
-layout: 
-title:
-permalink: 
-page-title: SYMC | Volometrix Account Engagement Report
----
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,28 +5,29 @@ page-title: SYMC | Volometrix Account Engagement Report
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SYMC-Monthly-Sales-Report</title>
-  <!-- {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %} -->
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/dataTables.bootstrap.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/prism.css">
-  <script src="{{ site.baseurl }}/javascript/jquery-2.1.3.min.js"></script>
-  <script src="{{ site.baseurl }}/javascript/bootstrap.min.js"></script>
-  <script src="{{ site.baseurl }}/javascript/highcharts.js"></script>
-  <script src="{{ site.baseurl }}/javascript/exporting.js"></script>
-  <script src="{{ site.baseurl }}/javascript/drilldown.js"></script>
-  <script src="{{ site.baseurl }}/javascript/data.js"></script>
-  <script src="{{ site.baseurl }}/javascript/highcharts-more.js"></script>
-  <script src="{{ site.baseurl }}/javascript/d3.v3.4.8.js"></script>
-  <script src="{{ site.baseurl }}/javascript/dimple.v2.0.0.min.js"></script>
-  <script src="{{ site.baseurl }}/javascript/jquery.cookie.min.js"></script>
-  <script src="{{ site.baseurl }}/javascript/personalDashboardHCTheme.js"></script>
-  <script src="{{ site.baseurl }}/javascript/jquery.dataTables.min.js"></script>
-  <script src="{{ site.baseurl }}/javascript/dataTables.bootstrap.js"></script>
-  <script src="{{ site.baseurl }}/javascript/jquery.sparkline.js"></script>
+  <!-- Personal Dashboard -->
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  <link rel="stylesheet" href="/design/css/main.css">
+  <link rel="canonical" href="https://volometrix.github.io/design/dashboard/sales-2.html">
+  <link rel="alternate" type="application/rss+xml" title="Personal Dashboard" href="https://volometrix.github.io/design/feed.xml" />
+  <link rel="stylesheet" href="/design/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="/design/css/prism.css">
+  <script src="/design/javascript/jquery-2.1.3.min.js"></script>
+  <script src="/design/javascript/bootstrap.min.js"></script>
+  <script src="/design/javascript/highcharts.js"></script>
+  <script src="/design/javascript/exporting.js"></script>
+  <script src="/design/javascript/drilldown.js"></script>
+  <script src="/design/javascript/data.js"></script>
+  <script src="/design/javascript/highcharts-more.js"></script>
+  <script src="/design/javascript/d3.v3.4.8.js"></script>
+  <script src="/design/javascript/dimple.v2.0.0.min.js"></script>
+  <script src="/design/javascript/jquery.cookie.min.js"></script>
+  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
+  <script src="/design/javascript/jquery.dataTables.min.js"></script>
+  <script src="/design/javascript/dataTables.bootstrap.js"></script>
+  <script src="/design/javascript/jquery.sparkline.js"></script>
   <style>
     body {
       background: #eee;
@@ -377,8 +372,8 @@ page-title: SYMC | Volometrix Account Engagement Report
           <div role="tabpanel" class="tab-pane fade in active" id="east-region">
             <div class="row">
               <div class="col-sm-12">
-                <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-                <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
+                <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                <img src="/design/images/symc-logo.svg" alt="Symantec">
               </div>
             </div>
             <hr>
@@ -400,15 +395,31 @@ page-title: SYMC | Volometrix Account Engagement Report
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  {% for ee in site.data.symc_ee %}
+                  
                   <tr>
-                    <td class="metric">{{ ee.Metric }}</td>
-                    <td class="">{{ ee.April }}</td>
-                    <td class="">{{ ee.May }}</td>
-                    <td class="">{{ ee.June }}</td>
-                    <td class="">{{ ee.July }}</td>
+                    <td class="metric">Accounts Engaged</td>
+                    <td class="">260</td>
+                    <td class="">342</td>
+                    <td class="">227</td>
+                    <td class="">300</td>
                   </tr>
-                  {% endfor %}
+                  
+                  <tr>
+                    <td class="metric">Accounts Contacted</td>
+                    <td class="">460</td>
+                    <td class="">469</td>
+                    <td class="">380</td>
+                    <td class="">400</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">New Accounts Engaged (Qtr)</td>
+                    <td class="">260</td>
+                    <td class="">180</td>
+                    <td class="">60</td>
+                    <td class="">300</td>
+                  </tr>
+                  
                 </table>
               </div>
               <div class="col-sm-4">
@@ -416,35 +427,55 @@ page-title: SYMC | Volometrix Account Engagement Report
                   <thead>
                     <tr>
                       <th></th>
-                      {% for ee in site.data.symc_ee %}
-                      <th>{{ ee.Metric }}</th>
-                      {% endfor %}
+                      
+                      <th>Accounts Engaged</th>
+                      
+                      <th>Accounts Contacted</th>
+                      
+                      <th>New Accounts Engaged (Qtr)</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      {% for ee in site.data.symc_ee %}
-                      <td>{{ ee.April }}</td>
-                      {% endfor %}
+                      
+                      <td>260</td>
+                      
+                      <td>460</td>
+                      
+                      <td>260</td>
+                      
                     </tr>
                     <tr>
                       <td>May</td>
-                      {% for ee in site.data.symc_ee %}
-                      <td>{{ ee.May }}</td>
-                      {% endfor %}
+                      
+                      <td>342</td>
+                      
+                      <td>469</td>
+                      
+                      <td>180</td>
+                      
                     </tr>
                     <tr>
                       <td>June</td>
-                      {% for ee in site.data.symc_ee %}
-                      <td>{{ ee.June }}</td>
-                      {% endfor %}
+                      
+                      <td>227</td>
+                      
+                      <td>380</td>
+                      
+                      <td>60</td>
+                      
                     </tr>
                     <tr>
                       <td>July</td>
-                      {% for ee in site.data.symc_ee %}
-                      <td>{{ ee.July }}</td>
-                      {% endfor %}
+                      
+                      <td>300</td>
+                      
+                      <td>400</td>
+                      
+                      <td>300</td>
+                      
                     </tr>
                   </tbody>
                 </table>
@@ -504,15 +535,23 @@ page-title: SYMC | Volometrix Account Engagement Report
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  {% for et in site.data.symc_et %}
+                  
                   <tr>
-                    <td class="metric">{{ et.Metric }}</td>
-                    <td class="">{{ et.April }}</td>
-                    <td class="">{{ et.May }}</td>
-                    <td class="">{{ et.June }}</td>
-                    <td class="">{{ et.July }}</td>
+                    <td class="metric">Time with Customers</td>
+                    <td class="">975</td>
+                    <td class="">1297</td>
+                    <td class="">709</td>
+                    <td class="">900</td>
                   </tr>
-                  {% endfor %}
+                  
+                  <tr>
+                    <td class="metric">Time with Key Accounts</td>
+                    <td class="">126</td>
+                    <td class="">167</td>
+                    <td class="">90</td>
+                    <td class="">100</td>
+                  </tr>
+                  
                 </table>
               </div>
               <div class="col-sm-4">
@@ -520,35 +559,45 @@ page-title: SYMC | Volometrix Account Engagement Report
                   <thead>
                     <tr>
                       <th></th>
-                      {% for et in site.data.symc_et %}
-                      <th>{{ et.Metric }}</th>
-                      {% endfor %}
+                      
+                      <th>Time with Customers</th>
+                      
+                      <th>Time with Key Accounts</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      {% for et in site.data.symc_et %}
-                      <td>{{ et.April }}</td>
-                      {% endfor %}
+                      
+                      <td>975</td>
+                      
+                      <td>126</td>
+                      
                     </tr>
                     <tr>
                       <td>May</td>
-                      {% for et in site.data.symc_et %}
-                      <td>{{ et.May }}</td>
-                      {% endfor %}
+                      
+                      <td>1297</td>
+                      
+                      <td>167</td>
+                      
                     </tr>
                     <tr>
                       <td>June</td>
-                      {% for et in site.data.symc_et %}
-                      <td>{{ et.June }}</td>
-                      {% endfor %}
+                      
+                      <td>709</td>
+                      
+                      <td>90</td>
+                      
                     </tr>
                     <tr>
                       <td>July</td>
-                      {% for et in site.data.symc_et %}
-                      <td>{{ et.July }}</td>
-                      {% endfor %}
+                      
+                      <td>900</td>
+                      
+                      <td>100</td>
+                      
                     </tr>
                   </tbody>
                 </table>
@@ -595,15 +644,63 @@ page-title: SYMC | Volometrix Account Engagement Report
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  {% for es in site.data.symc_es %}
+                  
                   <tr>
-                    <td class="metric">{{ es.Metric }}</td>
-                    <td class="">{{ es.April }}</td>
-                    <td class="">{{ es.May }}</td>
-                    <td class="">{{ es.June }}</td>
-                    <td class="">{{ es.July }}</td>
+                    <td class="metric">Salespeople</td>
+                    <td class="">43</td>
+                    <td class="">43</td>
+                    <td class="">43</td>
+                    <td class=""></td>
                   </tr>
-                  {% endfor %}
+                  
+                  <tr>
+                    <td class="metric">Accounts Contacted / Salesperson</td>
+                    <td class="">11</td>
+                    <td class="">11</td>
+                    <td class="">9</td>
+                    <td class="">10</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Engaged / Salesperson</td>
+                    <td class="">6</td>
+                    <td class="">8</td>
+                    <td class="">5</td>
+                    <td class="">6</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Hours / week with Customer</td>
+                    <td class="">8</td>
+                    <td class="">10</td>
+                    <td class="">10</td>
+                    <td class="">10</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Breadth of customer network</td>
+                    <td class="">17</td>
+                    <td class="">18</td>
+                    <td class="">19</td>
+                    <td class="">20</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Size of customer network</td>
+                    <td class="">38</td>
+                    <td class="">42</td>
+                    <td class="">45</td>
+                    <td class="">40</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Hours in Internal Meetings</td>
+                    <td class="">5</td>
+                    <td class="">6</td>
+                    <td class="">4</td>
+                    <td class="">8</td>
+                  </tr>
+                  
                 </table>
               </div>
               <div class="col-sm-4">
@@ -611,35 +708,95 @@ page-title: SYMC | Volometrix Account Engagement Report
                   <thead>
                     <tr>
                       <th></th>
-                      {% for es in site.data.symc_es %}
-                      <th>{{ es.Metric }}</th>
-                      {% endfor %}
+                      
+                      <th>Salespeople</th>
+                      
+                      <th>Accounts Contacted / Salesperson</th>
+                      
+                      <th>Accounts Engaged / Salesperson</th>
+                      
+                      <th>Hours / week with Customer</th>
+                      
+                      <th>Breadth of customer network</th>
+                      
+                      <th>Size of customer network</th>
+                      
+                      <th>Hours in Internal Meetings</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      {% for es in site.data.symc_es %}
-                      <td>{{ es.April }}</td>
-                      {% endfor %}
+                      
+                      <td>43</td>
+                      
+                      <td>11</td>
+                      
+                      <td>6</td>
+                      
+                      <td>8</td>
+                      
+                      <td>17</td>
+                      
+                      <td>38</td>
+                      
+                      <td>5</td>
+                      
                     </tr>
                     <tr>
                       <td>May</td>
-                      {% for es in site.data.symc_es %}
-                      <td>{{ es.May }}</td>
-                      {% endfor %}
+                      
+                      <td>43</td>
+                      
+                      <td>11</td>
+                      
+                      <td>8</td>
+                      
+                      <td>10</td>
+                      
+                      <td>18</td>
+                      
+                      <td>42</td>
+                      
+                      <td>6</td>
+                      
                     </tr>
                     <tr>
                       <td>June</td>
-                      {% for es in site.data.symc_es %}
-                      <td>{{ es.June }}</td>
-                      {% endfor %}
+                      
+                      <td>43</td>
+                      
+                      <td>9</td>
+                      
+                      <td>5</td>
+                      
+                      <td>10</td>
+                      
+                      <td>19</td>
+                      
+                      <td>45</td>
+                      
+                      <td>4</td>
+                      
                     </tr>
                     <tr>
                       <td>July</td>
-                      {% for es in site.data.symc_es %}
-                      <td>{{ es.July }}</td>
-                      {% endfor %}
+                      
+                      <td></td>
+                      
+                      <td>10</td>
+                      
+                      <td>6</td>
+                      
+                      <td>10</td>
+                      
+                      <td>20</td>
+                      
+                      <td>40</td>
+                      
+                      <td>8</td>
+                      
                     </tr>
                   </tbody>
                 </table>
@@ -680,8 +837,8 @@ page-title: SYMC | Volometrix Account Engagement Report
             <div role="tabpanel" class="tab-pane fade" id="west-region">
               <div class="row">
                 <div class="col-sm-12">
-                  <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-                  <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
+                  <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                  <img src="/design/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
               <div class="row">
@@ -702,15 +859,31 @@ page-title: SYMC | Volometrix Account Engagement Report
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  {% for we in site.data.symc_we %}
+                  
                   <tr>
-                    <td class="metric">{{ we.Metric }}</td>
-                    <td class="">{{ we.April }}</td>
-                    <td class="">{{ we.May }}</td>
-                    <td class="">{{ we.June }}</td>
-                    <td class="">{{ we.July }}</td>
+                    <td class="metric">Accounts Contacted</td>
+                    <td class="">331</td>
+                    <td class="">362</td>
+                    <td class="">310</td>
+                    <td class="">310</td>
                   </tr>
-                  {% endfor %}
+                  
+                  <tr>
+                    <td class="metric">Accounts Engaged</td>
+                    <td class="">211</td>
+                    <td class="">278</td>
+                    <td class="">198</td>
+                    <td class="">198</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">New Accounts Engaged (Qtr)</td>
+                    <td class="">211</td>
+                    <td class="">146</td>
+                    <td class="">45</td>
+                    <td class="">45</td>
+                  </tr>
+                  
                 </table>
               </div>
               <div class="col-sm-4">
@@ -718,35 +891,55 @@ page-title: SYMC | Volometrix Account Engagement Report
                   <thead>
                     <tr>
                       <th></th>
-                      {% for we in site.data.symc_we %}
-                      <th>{{ we.Metric }}</th>
-                      {% endfor %}
+                      
+                      <th>Accounts Contacted</th>
+                      
+                      <th>Accounts Engaged</th>
+                      
+                      <th>New Accounts Engaged (Qtr)</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      {% for we in site.data.symc_we %}
-                      <td>{{ we.April }}</td>
-                      {% endfor %}
+                      
+                      <td>331</td>
+                      
+                      <td>211</td>
+                      
+                      <td>211</td>
+                      
                     </tr>
                     <tr>
                       <td>May</td>
-                      {% for we in site.data.symc_we %}
-                      <td>{{ we.May }}</td>
-                      {% endfor %}
+                      
+                      <td>362</td>
+                      
+                      <td>278</td>
+                      
+                      <td>146</td>
+                      
                     </tr>
                     <tr>
                       <td>June</td>
-                      {% for we in site.data.symc_we %}
-                      <td>{{ we.June }}</td>
-                      {% endfor %}
+                      
+                      <td>310</td>
+                      
+                      <td>198</td>
+                      
+                      <td>45</td>
+                      
                     </tr>
                     <tr>
                       <td>July</td>
-                      {% for we in site.data.symc_we %}
-                      <td>{{ we.July }}</td>
-                      {% endfor %}
+                      
+                      <td>310</td>
+                      
+                      <td>198</td>
+                      
+                      <td>45</td>
+                      
                     </tr>
                   </tbody>
                 </table>
@@ -793,15 +986,23 @@ page-title: SYMC | Volometrix Account Engagement Report
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  {% for wt in site.data.symc_wt %}
+                  
                   <tr>
-                    <td class="metric">{{ wt.Metric }}</td>
-                    <td class="">{{ wt.April }}</td>
-                    <td class="">{{ wt.May }}</td>
-                    <td class="">{{ wt.June }}</td>
-                    <td class="">{{ wt.July }}</td>
+                    <td class="metric">Time with Customers</td>
+                    <td class="">797</td>
+                    <td class="">959</td>
+                    <td class="">540</td>
+                    <td class="">540</td>
                   </tr>
-                  {% endfor %}
+                  
+                  <tr>
+                    <td class="metric">Time with Key Accounts</td>
+                    <td class="">129</td>
+                    <td class="">104</td>
+                    <td class="">62</td>
+                    <td class="">62</td>
+                  </tr>
+                  
                 </table>
               </div>
               <div class="col-sm-4">
@@ -809,35 +1010,45 @@ page-title: SYMC | Volometrix Account Engagement Report
                   <thead>
                     <tr>
                       <th></th>
-                      {% for wt in site.data.symc_wt %}
-                      <th>{{ wt.Metric }}</th>
-                      {% endfor %}
+                      
+                      <th>Time with Customers</th>
+                      
+                      <th>Time with Key Accounts</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      {% for wt in site.data.symc_wt %}
-                      <td>{{ wt.April }}</td>
-                      {% endfor %}
+                      
+                      <td>797</td>
+                      
+                      <td>129</td>
+                      
                     </tr>
                     <tr>
                       <td>May</td>
-                      {% for wt in site.data.symc_wt %}
-                      <td>{{ wt.May }}</td>
-                      {% endfor %}
+                      
+                      <td>959</td>
+                      
+                      <td>104</td>
+                      
                     </tr>
                     <tr>
                       <td>June</td>
-                      {% for wt in site.data.symc_wt %}
-                      <td>{{ wt.June }}</td>
-                      {% endfor %}
+                      
+                      <td>540</td>
+                      
+                      <td>62</td>
+                      
                     </tr>
                     <tr>
                       <td>July</td>
-                      {% for wt in site.data.symc_wt %}
-                      <td>{{ wt.July }}</td>
-                      {% endfor %}
+                      
+                      <td>540</td>
+                      
+                      <td>62</td>
+                      
                     </tr>
                   </tbody>
                 </table>
@@ -884,15 +1095,63 @@ page-title: SYMC | Volometrix Account Engagement Report
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  {% for ws in site.data.symc_ws %}
+                  
                   <tr>
-                    <td class="metric">{{ ws.Metric }}</td>
-                    <td class="">{{ ws.April }}</td>
-                    <td class="">{{ ws.May }}</td>
-                    <td class="">{{ ws.June }}</td>
-                    <td class="">{{ ws.July }}</td>
+                    <td class="metric">Salespeople</td>
+                    <td class="">35</td>
+                    <td class="">35</td>
+                    <td class="">34</td>
+                    <td class="">34</td>
                   </tr>
-                  {% endfor %}
+                  
+                  <tr>
+                    <td class="metric">Accounts Contacted / Salesperson</td>
+                    <td class="">9</td>
+                    <td class="">10</td>
+                    <td class="">9</td>
+                    <td class="">9</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Engaged / Salesperson</td>
+                    <td class="">6</td>
+                    <td class="">8</td>
+                    <td class="">6</td>
+                    <td class="">6</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Hours / week with Customer</td>
+                    <td class="">8</td>
+                    <td class="">9</td>
+                    <td class="">10</td>
+                    <td class="">10</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Breadth of customer network</td>
+                    <td class="">6</td>
+                    <td class="">6</td>
+                    <td class="">6</td>
+                    <td class="">6</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Size of customer network</td>
+                    <td class="">12</td>
+                    <td class="">12</td>
+                    <td class="">13</td>
+                    <td class="">13</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Hours in Internal Meetings</td>
+                    <td class="">6</td>
+                    <td class="">7</td>
+                    <td class="">5</td>
+                    <td class="">5</td>
+                  </tr>
+                  
                 </table>
               </div>
               <div class="col-sm-4">
@@ -900,35 +1159,95 @@ page-title: SYMC | Volometrix Account Engagement Report
                   <thead>
                     <tr>
                       <th></th>
-                      {% for ws in site.data.symc_ws %}
-                      <th>{{ ws.Metric }}</th>
-                      {% endfor %}
+                      
+                      <th>Salespeople</th>
+                      
+                      <th>Accounts Contacted / Salesperson</th>
+                      
+                      <th>Accounts Engaged / Salesperson</th>
+                      
+                      <th>Hours / week with Customer</th>
+                      
+                      <th>Breadth of customer network</th>
+                      
+                      <th>Size of customer network</th>
+                      
+                      <th>Hours in Internal Meetings</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      {% for ws in site.data.symc_ws %}
-                      <td>{{ ws.April }}</td>
-                      {% endfor %}
+                      
+                      <td>35</td>
+                      
+                      <td>9</td>
+                      
+                      <td>6</td>
+                      
+                      <td>8</td>
+                      
+                      <td>6</td>
+                      
+                      <td>12</td>
+                      
+                      <td>6</td>
+                      
                     </tr>
                     <tr>
                       <td>May</td>
-                      {% for ws in site.data.symc_ws %}
-                      <td>{{ ws.May }}</td>
-                      {% endfor %}
+                      
+                      <td>35</td>
+                      
+                      <td>10</td>
+                      
+                      <td>8</td>
+                      
+                      <td>9</td>
+                      
+                      <td>6</td>
+                      
+                      <td>12</td>
+                      
+                      <td>7</td>
+                      
                     </tr>
                     <tr>
                       <td>June</td>
-                      {% for ws in site.data.symc_ws %}
-                      <td>{{ ws.June }}</td>
-                      {% endfor %}
+                      
+                      <td>34</td>
+                      
+                      <td>9</td>
+                      
+                      <td>6</td>
+                      
+                      <td>10</td>
+                      
+                      <td>6</td>
+                      
+                      <td>13</td>
+                      
+                      <td>5</td>
+                      
                     </tr>
                     <tr>
                       <td>July</td>
-                      {% for ws in site.data.symc_ws %}
-                      <td>{{ ws.July }}</td>
-                      {% endfor %}
+                      
+                      <td>34</td>
+                      
+                      <td>9</td>
+                      
+                      <td>6</td>
+                      
+                      <td>10</td>
+                      
+                      <td>6</td>
+                      
+                      <td>13</td>
+                      
+                      <td>5</td>
+                      
                     </tr>
                   </tbody>
                 </table>
@@ -969,8 +1288,8 @@ page-title: SYMC | Volometrix Account Engagement Report
             <div role="tabpanel" class="tab-pane fade" id="latin-america">
               <div class="row">
                 <div class="col-sm-12">
-                  <img src="{{ site.baseurl }}/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-                  <img src="{{ site.baseurl }}/images/symc-logo.svg" alt="Symantec">
+                  <img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+                  <img src="/design/images/symc-logo.svg" alt="Symantec">
                 </div>
               </div>
               <hr>
@@ -992,15 +1311,31 @@ page-title: SYMC | Volometrix Account Engagement Report
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  {% for le in site.data.symc_le %}
+                  
                   <tr>
-                    <td class="metric">{{ le.Metric }}</td>
-                    <td class="">{{ le.April }}</td>
-                    <td class="">{{ le.May }}</td>
-                    <td class="">{{ le.June }}</td>
-                    <td class="">{{ le.July }}</td>
+                    <td class="metric">Accounts Contacted</td>
+                    <td class="">145</td>
+                    <td class="">159</td>
+                    <td class="">149</td>
+                    <td class="">149</td>
                   </tr>
-                  {% endfor %}
+                  
+                  <tr>
+                    <td class="metric">Accounts Engaged</td>
+                    <td class="">85</td>
+                    <td class="">139</td>
+                    <td class="">95</td>
+                    <td class="">95</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">New Accounts Engaged (Qtr)</td>
+                    <td class="">85</td>
+                    <td class="">91</td>
+                    <td class="">29</td>
+                    <td class="">29</td>
+                  </tr>
+                  
                 </table>
               </div>
               <div class="col-sm-4">
@@ -1008,35 +1343,55 @@ page-title: SYMC | Volometrix Account Engagement Report
                   <thead>
                     <tr>
                       <th></th>
-                      {% for le in site.data.symc_le %}
-                      <th>{{ le.Metric }}</th>
-                      {% endfor %}
+                      
+                      <th>Accounts Contacted</th>
+                      
+                      <th>Accounts Engaged</th>
+                      
+                      <th>New Accounts Engaged (Qtr)</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      {% for le in site.data.symc_le %}
-                      <td>{{ le.April }}</td>
-                      {% endfor %}
+                      
+                      <td>145</td>
+                      
+                      <td>85</td>
+                      
+                      <td>85</td>
+                      
                     </tr>
                     <tr>
                       <td>May</td>
-                      {% for le in site.data.symc_le %}
-                      <td>{{ le.May }}</td>
-                      {% endfor %}
+                      
+                      <td>159</td>
+                      
+                      <td>139</td>
+                      
+                      <td>91</td>
+                      
                     </tr>
                     <tr>
                       <td>June</td>
-                      {% for le in site.data.symc_le %}
-                      <td>{{ le.June }}</td>
-                      {% endfor %}
+                      
+                      <td>149</td>
+                      
+                      <td>95</td>
+                      
+                      <td>29</td>
+                      
                     </tr>
                     <tr>
                       <td>July</td>
-                      {% for le in site.data.symc_le %}
-                      <td>{{ le.July }}</td>
-                      {% endfor %}
+                      
+                      <td>149</td>
+                      
+                      <td>95</td>
+                      
+                      <td>29</td>
+                      
                     </tr>
                   </tbody>
                 </table>
@@ -1083,15 +1438,23 @@ page-title: SYMC | Volometrix Account Engagement Report
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  {% for lt in site.data.symc_lt %}
+                  
                   <tr>
-                    <td class="metric">{{ lt.Metric }}</td>
-                    <td class="">{{ lt.April }}</td>
-                    <td class="">{{ lt.May }}</td>
-                    <td class="">{{ lt.June }}</td>
-                    <td class="">{{ lt.July }}</td>
+                    <td class="metric">Time with Customers</td>
+                    <td class="">229</td>
+                    <td class="">592</td>
+                    <td class="">246</td>
+                    <td class="">246</td>
                   </tr>
-                  {% endfor %}
+                  
+                  <tr>
+                    <td class="metric">Time with Key Accounts</td>
+                    <td class=""></td>
+                    <td class=""></td>
+                    <td class=""></td>
+                    <td class=""></td>
+                  </tr>
+                  
                 </table>
               </div>
               <div class="col-sm-4">
@@ -1099,35 +1462,45 @@ page-title: SYMC | Volometrix Account Engagement Report
                   <thead>
                     <tr>
                       <th></th>
-                      {% for lt in site.data.symc_lt %}
-                      <th>{{ lt.Metric }}</th>
-                      {% endfor %}
+                      
+                      <th>Time with Customers</th>
+                      
+                      <th>Time with Key Accounts</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      {% for lt in site.data.symc_lt %}
-                      <td>{{ lt.April }}</td>
-                      {% endfor %}
+                      
+                      <td>229</td>
+                      
+                      <td></td>
+                      
                     </tr>
                     <tr>
                       <td>May</td>
-                      {% for lt in site.data.symc_lt %}
-                      <td>{{ lt.May }}</td>
-                      {% endfor %}
+                      
+                      <td>592</td>
+                      
+                      <td></td>
+                      
                     </tr>
                     <tr>
                       <td>June</td>
-                      {% for lt in site.data.symc_lt %}
-                      <td>{{ lt.June }}</td>
-                      {% endfor %}
+                      
+                      <td>246</td>
+                      
+                      <td></td>
+                      
                     </tr>
                     <tr>
                       <td>July</td>
-                      {% for lt in site.data.symc_lt %}
-                      <td>{{ lt.July }}</td>
-                      {% endfor %}
+                      
+                      <td>246</td>
+                      
+                      <td></td>
+                      
                     </tr>
                   </tbody>
                 </table>
@@ -1174,15 +1547,63 @@ page-title: SYMC | Volometrix Account Engagement Report
                     <th>June</th>
                     <th>July</th>
                   </tr>
-                  {% for ls in site.data.symc_ls %}
+                  
                   <tr>
-                    <td class="metric">{{ ls.Metric }}</td>
-                    <td class="">{{ ls.April }}</td>
-                    <td class="">{{ ls.May }}</td>
-                    <td class="">{{ ls.June }}</td>
-                    <td class="">{{ ls.July }}</td>
+                    <td class="metric">Salespeople</td>
+                    <td class="">19</td>
+                    <td class="">19</td>
+                    <td class="">19</td>
+                    <td class="">19</td>
                   </tr>
-                  {% endfor %}
+                  
+                  <tr>
+                    <td class="metric">Accounts Contacted / Salesperson</td>
+                    <td class="">8</td>
+                    <td class="">8</td>
+                    <td class="">8</td>
+                    <td class="">8</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Accounts Engaged / Salesperson</td>
+                    <td class="">4</td>
+                    <td class="">7</td>
+                    <td class="">5</td>
+                    <td class="">5</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Hours / week with Customer</td>
+                    <td class="">4</td>
+                    <td class="">9</td>
+                    <td class="">8</td>
+                    <td class="">8</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Breadth of customer network</td>
+                    <td class="">17</td>
+                    <td class="">17</td>
+                    <td class="">18</td>
+                    <td class="">18</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Size of customer network</td>
+                    <td class="">36</td>
+                    <td class="">36</td>
+                    <td class="">40</td>
+                    <td class="">40</td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="metric">Hours in Internal Meetings</td>
+                    <td class="">8</td>
+                    <td class="">7</td>
+                    <td class="">9</td>
+                    <td class="">9</td>
+                  </tr>
+                  
                 </table>
               </div>
               <div class="col-sm-4">
@@ -1190,35 +1611,95 @@ page-title: SYMC | Volometrix Account Engagement Report
                   <thead>
                     <tr>
                       <th></th>
-                      {% for ls in site.data.symc_ls %}
-                      <th>{{ ls.Metric }}</th>
-                      {% endfor %}
+                      
+                      <th>Salespeople</th>
+                      
+                      <th>Accounts Contacted / Salesperson</th>
+                      
+                      <th>Accounts Engaged / Salesperson</th>
+                      
+                      <th>Hours / week with Customer</th>
+                      
+                      <th>Breadth of customer network</th>
+                      
+                      <th>Size of customer network</th>
+                      
+                      <th>Hours in Internal Meetings</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>April</td>
-                      {% for ls in site.data.symc_ls %}
-                      <td>{{ ls.April }}</td>
-                      {% endfor %}
+                      
+                      <td>19</td>
+                      
+                      <td>8</td>
+                      
+                      <td>4</td>
+                      
+                      <td>4</td>
+                      
+                      <td>17</td>
+                      
+                      <td>36</td>
+                      
+                      <td>8</td>
+                      
                     </tr>
                     <tr>
                       <td>May</td>
-                      {% for ls in site.data.symc_ls %}
-                      <td>{{ ls.May }}</td>
-                      {% endfor %}
+                      
+                      <td>19</td>
+                      
+                      <td>8</td>
+                      
+                      <td>7</td>
+                      
+                      <td>9</td>
+                      
+                      <td>17</td>
+                      
+                      <td>36</td>
+                      
+                      <td>7</td>
+                      
                     </tr>
                     <tr>
                       <td>June</td>
-                      {% for ls in site.data.symc_ls %}
-                      <td>{{ ls.June }}</td>
-                      {% endfor %}
+                      
+                      <td>19</td>
+                      
+                      <td>8</td>
+                      
+                      <td>5</td>
+                      
+                      <td>8</td>
+                      
+                      <td>18</td>
+                      
+                      <td>40</td>
+                      
+                      <td>9</td>
+                      
                     </tr>
                     <tr>
                       <td>July</td>
-                      {% for ls in site.data.symc_ls %}
-                      <td>{{ ls.July }}</td>
-                      {% endfor %}
+                      
+                      <td>19</td>
+                      
+                      <td>8</td>
+                      
+                      <td>5</td>
+                      
+                      <td>8</td>
+                      
+                      <td>18</td>
+                      
+                      <td>40</td>
+                      
+                      <td>9</td>
+                      
                     </tr>
                   </tbody>
                 </table>

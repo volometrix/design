@@ -6,548 +6,271 @@ type: Your
 page-title: Executive Dashboard
 ---
 {% include db-header.html %}
-<script>
-$(function () {
-  /**
-   * Create a constructor for sparklines that takes some sensible defaults and merges in the individual
-   * chart options. This function is also available from the jQuery plugin as $(element).highcharts('SparkLine').
-   */
-  Highcharts.SparkLine = function (options, callback) {
-      var defaultOptions = {
-          chart: {
-              renderTo: (options.chart && options.chart.renderTo) || this,
-              backgroundColor: null,
-              borderWidth: 0,
-              type: 'area',
-              margin: [0, 0, 0, 0],
-              // width: 80,
-              height: 20,
-              style: {
-                  overflow: 'visible'
-              },
-              skipClone: true
-          },
-          title: {
-              text: ''
-          },
-          credits: {
-              enabled: false
-          },
-          exporting: {
-              enabled: false
-          },
-          xAxis: {
-              labels: {
-                  enabled: false
-              },
-              title: {
-                  text: null
-              },
-              startOnTick: false,
-              endOnTick: false,
-              tickPositions: []
-          },
-          yAxis: {
-              endOnTick: false,
-              startOnTick: false,
-              labels: {
-                  enabled: false
-              },
-              title: {
-                  text: null
-              },
-              tickPositions: [0]
-          },
-          legend: {
-              enabled: false
-          },
-          tooltip: {
-              backgroundColor: null,
-              borderWidth: 0,
-              shadow: false,
-              useHTML: true,
-              hideDelay: 0,
-              shared: true,
-              padding: 0,
-              positioner: function (w, h, point) {
-                  return { x: point.plotX - w / 2, y: point.plotY - h};
-              }
-          },
-          plotOptions: {
-              series: {
-                  animation: false,
-                  lineWidth: 1,
-                  shadow: false,
-                  states: {
-                      hover: {
-                          lineWidth: 1
-                      }
-                  },
-                  marker: {
-                      radius: 1,
-                      states: {
-                          hover: {
-                              radius: 2
-                          }
-                      }
-                  },
-                  fillOpacity: 0.15
-              },
-              column: {
-                  negativeColor: '#910000',
-                  borderColor: 'silver'
-              }
-          }
-      };
-      options = Highcharts.merge(defaultOptions, options);
 
-      return new Highcharts.Chart(options, callback);
-  };
-
-  var start = +new Date(),
-      $tds = $("span[data-sparkline]"),
-      fullLen = $tds.length,
-      n = 0;
-
-  // Creating 153 sparkline charts is quite fast in modern browsers, but IE8 and mobile
-  // can take some seconds, so we split the input into chunks and apply them in timeouts
-  // in order avoid locking up the browser process and allow interaction.
-  function doChunk() {
-      var time = +new Date(),
-          i,
-          len = $tds.length,
-          $td,
-          stringdata,
-          arr,
-          data,
-          chart;
-
-      for (i = 0; i < len; i += 1) {
-          $td = $($tds[i]);
-          stringdata = $td.data('sparkline');
-          arr = stringdata.split('; ');
-          data = $.map(arr[0].split(', '), parseFloat);
-          chart = {};
-
-          if (arr[1]) {
-              chart.type = arr[1];
-          }
-          $td.highcharts('SparkLine', {
-              series: [{
-                  data: data,
-                  pointStart: 1
-              }],
-              // tooltip: {
-              //     headerFormat: '<span style="font-size: 10px">' + $td.parent().parent().find('th').html(),
-              //     pointFormat: '<b>{point.y}</b>'
-              // },
-              chart: chart
-          });
-
-          n += 1;
-
-          // If the process takes too much time, run a timeout to allow interaction with the browser
-          if (new Date() - time > 500) {
-              $tds.splice(0, i + 1);
-              setTimeout(doChunk, 0);
-              break;
-          }
-
-          // Print a feedback on the performance
-          if (n === fullLen) {
-              $('#result').html('Generated ' + fullLen + ' sparklines in ' + (new Date() - start) + ' ms');
-          }
-      }
-  }
-  doChunk();
-
-});
-</script>
 <div class="container" role="main">
   <div class="row page-header clearfix">
     <br><span class="pull-right">Time Period <select name="" id=""><option value="">July 2015</option></select></span>
     <span class="h2">{{ page.page-title }}</span>
   </div>
-  <div class="row hidden">
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body" style="position:relative;overflow:hidden">
-            <span class="text-uppercase">Leader</span><br>
-            <span class="h3"><a href="#" style="color:#A6D53A">District 12</a></span><br>
-            <span class="text-muted text-uppercase">Engaged +5%</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body" style="position:relative">
-          <span class="text-uppercase">Laggard</span><br>
-          <span class="h3"><a href="#" style="color:#e31a1c">District 2</a></span><br>
-          <span class="text-muted text-uppercase">Engaged +5%</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-6">
-              <span class="text-uppercase">You</span><br>
-              <span class="h3"><a href="#" style="color:#A6D53A">Level 6</a></span><br>
-              <span class="text-muted text-uppercase">Engaged 5%</span>
-            </div>
-            <div class="col-md-6">
-              <span class="text-uppercase">Peer</span><br>
-              <span class="h3"><a href="#" style="color:#e31a1c">Level 1</a></span><br>
-              <span class="text-muted text-uppercase">Engaged 4%</span>
-            </div>
-          </div>
-          <div id="trend"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <h3 style="font-weight:300;margin-bottom:20px;">Accounts Covered</h3>
+
   <div class="row">
     <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body" style="position:relative;overflow:hidden">
-          <span class="text-uppercase">Cold</span><br>
-          <span class="h1">30%</span><span class="badge alert-success">
-          <i class="glyphicon glyphicon-triangle-bottom"></i> 1%</span><br>
-          <!-- <span data-sparkline="16, 34, 74, 41 " style="position:absolute;right:-4px;bottom:0;left:-2px;" /> -->
-        </div>
-      </div>
+      <h3 style="font-weight:300;">Accounts Covered</h3>
+      <p><span class="h1">30</span><strong>%</strong> Cold</p>
+      <table class="table table-condensed table-hover">
+        <tr>
+          <td>Cold</td>
+          <td style="text-align:right;">30% <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 1%</span></td>
+        </tr>
+        <tr class="active">
+          <td>Engaged</td>
+          <td style="text-align:right;">17% <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 3%</span></td>
+        </tr>
+        <tr>
+          <td>Contacted</td>
+          <td style="text-align:right;">50% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 5%</span></td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+      <div id="ent-accts-trend"></div>
+      <script>
+      $(function () {
+        Highcharts.setOptions(Highcharts.theme);
+        $('#ent-accts-trend').highcharts({
+          chart: {
+            type: 'column',
+            height: 175
+          },
+          title: {
+            text: null
+          },
+          xAxis: {
+            categories: ['Apr', 'May', 'Jun', 'Jul'],
+          },
+          yAxis: {
+            title: {
+              text: '% of Accounts'
+            }
+          },
+          plotOptions: {
+            column : {
+              stacking: 'percent'
+            }
+          },
+          series: [{
+            name: 'Cold',
+            data: [8, 7, 4, 5]
+          }, {
+            name: 'Contacted',
+            data: [4, 5, 4, 3]
+          }, {
+            name: 'Engaged',
+            data: [2, 2, 3, 4]
+          }], 
+          credits: {
+            enabled: false
+          },
+          exporting: {
+            enabled: false
+          }
+        });
+      });
+      </script>
     </div>
-    <div class="col-md-4">
-      <div class="panel panel-default text-centered">
-        <div class="panel-body" style="position:relative;overflow:hidden">
-          <span class="text-uppercase">Engaged</span><br>
-          <span class="h1">17%</span><span class="badge alert-warning">
-          <i class="glyphicon glyphicon-triangle-bottom"></i> 3%</span><br>
-          <!-- <span data-sparkline="12, 14, 34, 41 ;" style="position:absolute;right:-4px;bottom:0;left:-1px;" /> -->
-        </div>
-      </div>
+    <div class="col-md-8">
+      <br>
+      <p><span class="h5 text-center">District Breakdown: % Engaged Accounts</span><a href="#" class="btn btn-default btn-xs pull-right" style="" id="toggle-data">Data</a></p>
+      <div id="ent-chart-2"></div>
     </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body" style="position:relative;overflow:hidden">
-          <span class="text-uppercase">Contacted</span><br>
-          <span class="h1">50%</span><span class="badge alert-danger">
-          <i class="glyphicon glyphicon-triangle-bottom"></i> 5%</span><br>
-          <!-- <span data-sparkline="20, 44, 84, 91 " style="position:absolute;right:-4px;bottom:0;left:-2px;" /> -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div id="ent-accts-trend"></div>
-          <script>
-            $(function () {
-              Highcharts.setOptions(Highcharts.theme);
-              $('#ent-accts-trend').highcharts({
-                chart: {
-                  type: 'column',
-                  height: 225
-                },
-                title: {
-                  text: 'Accounts Overview'
-                },
-                xAxis: {
-                  categories: ['Apr', 'May', 'Jun', 'Jul'],
-                },
-                yAxis: {
-                  title: {
-                    text: '% of Accounts'
-                  }
-                },
-                plotOptions: {
-                  column : {
-                    stacking: 'percent'
-                  }
-                },
-                series: [{
-                  name: 'Cold',
-                  data: [8, 7, 4, 5]
-                }, {
-                  name: 'Contacted',
-                  data: [4, 5, 4, 3]
-                }, {
-                  name: 'Engaged',
-                  data: [2, 2, 3, 4]
-                }], 
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-              });
-            });
-            </script>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div id="ent-chart-2"></div>  
-            <script>
-              $(function () {
-                $('#ent-chart-2').highcharts({
-                  chart: {
-                    height: 225
-                  },
-                  title: {
-                    text: 'District Breakdown: % Engaged Accounts'
-                  },
-                  xAxis: {
-                    categories: ['D8', 'D5', 'D7', 'D10', 'D4','D2', 'D9', 'D3', 'D1', 'D6'],
-                    title: {
-                      text: null
-                    }
-                  },
-                  yAxis: {
-                    title: {
-                      text: 'Average Time with Customer'
-                    },
-                    plotLines: [{
-                      color: '#000000',
-                      width: 1,
-                      value: 65,
-                      zIndex:10,
-                      label: {
-                        text: 'Goal',
-                        align: 'right',
-                        x: 0
-                      }
-                    }]
-                  },
-                  legend: {
-                    enabled: false
-                  },
-                  plotOptions: {
-                    line: {
-                      dataLabels: {
-                        enabled: false
-                      },
-                      enableMouseTracking: false,
-                    },
-                    series: {
-                      marker: {
-                        enabled: true,
-                        radius: 2
-                      }
-                    }
-                  },
-                  series: [{
-                    type: 'column',
-                    color: '#3BB5EA',
-                    data: [ 
-                    { y:25, color: '#3BB5EA'},
-                    { y:28, color: '#3BB5EA'},
-                    { y:35, color: '#3BB5EA'},
-                    { y:39, color: '#3BB5EA'},
-                    { y:45, color: '#3BB5EA'},
-                    { y:55, color: '#3BB5EA'},
-                    { y:58, color: '#3BB5EA'},
-                    { y:70, color: '#A6D53A'},
-                    { y:85, color: '#A6D53A'},
-                    { y:89, color: '#A6D53A'}
-                    ]
-                  }],
-                  credits: {
-                    enabled: false
-                  },
-                  exporting: {
-                    enabled: false
-                  }
-                });
-              });
-              </script>
-          </div>
-        </div>
-      </div>
-    </div>
-    <h3 style="font-weight:300;margin-bottom:20px;margin-top:-15px;">AE Behaviors</h3>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <span class="text-uppercase">Hours with Customer</span><br>
-            <span class="h1">27</span><span class="badge alert-success">
-            <i class="glyphicon glyphicon-triangle-top"></i> 1%</span><br>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <span class="text-uppercase">Meeting Hours</span><br>
-            <span class="h1">48</span><span class="badge alert-warning">
-            <i class="glyphicon glyphicon-triangle-top"></i> 3%</span><br>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <span class="text-uppercase">Hours with External People</span><br>
-            <span class="h1">35</span><span class="badge alert-danger">
-            <i class="glyphicon glyphicon-triangle-top"></i> 5%</span><br>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <span class="text-uppercase">Hours with Internal People</span><br>
-            <span class="h1">43</span><span class="badge alert-danger">
-            <i class="glyphicon glyphicon-triangle-top"></i> 5%</span><br>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div id="ent-level-trend"></div>
-              <script>
-              $(function () {
-                $('#ent-level-trend').highcharts({
-                  chart: {
-                    type: 'areaspline',
-                    height: 225
-                  },
-                  title: {
-                    text: 'AE Behaviors Trend'
-                  },
-                  colors: ['#3BB5EA', '#A6CEE3'],
-                  xAxis: {
-                    categories: ['Jul', 'Aug', 'Sep', 'Oct'],
-                  },
-                  yAxis: {
-                    title: {
-                      text: null
-                    }
-                  },
-                  legend: {
-                    enabled: false
-                  },
-                  plotOptions: {
-                    line: {
-                      dataLabels: {
-                        enabled: false
-                      },
-                      enableMouseTracking: false
-                    }
-                  },
-                  series: [{
-                    name: 'Peer',
-                    marker: {
-                      radius: 3
-                    },
-                    data: [61, 73, 89, 75]
-                  }],
-                  credits: {
-                    enabled: false
-                  },
-                  exporting: {
-                    enabled: false
-                  }
-                });
-              });
-              </script>
-            
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div id="ent-chart-levels"></div>
-            <script>
-            $(function () {
-              $('#ent-chart-levels').highcharts({
-                  chart: {
-                type: 'column',
-                height: 225
-              },
-              title: {
-                text: 'District Breakdown: Average Time with Customer'
-              },
-              xAxis: {
-                categories: ['D8', 'D5', 'D7', 'D10', 'D4','D2', 'D9', 'D3', 'D1', 'D6'],
-                title: {
-                  text: null
-                }
-              },
-              yAxis: {
-                title: {
-                  text: 'Average Hours Per Week'
-                },
-                // max: 700,
-                plotLines: [{
-                  color: '#000000',
-                  width: 1,
-                  value: 25,
-                  zIndex:10,
-                  label: {
-                    text: 'Benchmark',
-                    align: 'right',
-                    x: 0
-                  }
-                }]
-              },
-              legend: {
-                enabled: false
-              },
-              plotOptions: {
-                line: {
-                  dataLabels: {
-                    enabled: false
-                  },
-                  enableMouseTracking: false,
-                },
-                series: {
-                  marker: {
-                    enabled: true,
-                    radius: 2
-                  }
-                }
-              },
-              series: [{
-                type: 'column',
-                color: '#3BB5EA',
-                data: [ 
-                    { y:5, color: '#3BB5EA'},
-                    { y:8, color: '#3BB5EA'},
-                    { y:15, color: '#3BB5EA'},
-                    { y:19, color: '#3BB5EA'},
-                    { y:21, color: '#3BB5EA'},
-                    { y:23, color: '#3BB5EA'},
-                    { y:24, color: '#3BB5EA'},
-                    { y:28, color: '#A6D53A'},
-                    { y:31, color: '#A6D53A'},
-                    { y:32, color: '#A6D53A'}
-                  ]
-              }],
-              credits: {
-                enabled: false
-              },
-              exporting: {
-                enabled: false
+    <script>
+    $(function(){
+      $('#toggle-data').click(function(){
+        $('#data').slideToggle();
+      });
+      $('#districts-datatable').dataTable({
+        "order": [[0,"asc"]],
+        "paging": false
+      });
+    });
+    </script>
+    <div id="data" class="col-md-12" style="padding:0 15px 15px 15px; background:#f9f9f9; margin:0 0.5% 15px 0.5%; border-radius: 0 0 5px 5px; border: solid 1px #ccc; border-top:none; box-shadow: 0 1px 2px #ccc; width:99%; display:none;"><br>
+      <table id="districts-datatable" class="table sort-table">
+        <thead>
+          <tr>
+            <th>District</th>
+            <th>Cold</th>
+            <th>Contacted</th>
+            <th>Engaged</th>
+            <!-- <th>Total</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          {% for dist in site.data.ExecutiveDashboardDistricts %}
+          <tr>
+            <td>{{ dist.District }}</td>
+            <td>{{ dist.Cold }}</td>
+            <td>{{ dist.Contacted }}</td>
+            <td>{{ dist.Engaged }}</td>
+            <!-- <td>{{ dist.Total }}</td> -->
+          </tr>
+          {% endfor %}            
+        </tbody>
+      </table>
+      <script>
+      $(function () {
+        $('#ent-chart-2').highcharts({
+          chart: {
+            height: 375
+          },
+          title: {
+            text: ''
+          },
+          xAxis: {
+            categories: ['D8', 'D5', 'D7', 'D10', 'D4','D2', 'D9', 'D3', 'D1', 'D6'],
+            title: {
+              text: null
+            }
+          },
+          yAxis: {
+            title: {
+              text: 'Average Time with Customer'
+            },
+            plotLines: [{
+              color: '#000000',
+              width: 1,
+              value: 65,
+              zIndex:10,
+              label: {
+                text: 'Goal',
+                align: 'right',
+                x: 0
               }
-            });
-          });
-          </script>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            }]
+          },
+          legend: {
+            enabled: false
+          },
+          plotOptions: {
+            line: {
+              dataLabels: {
+                enabled: false
+              },
+              enableMouseTracking: false,
+            },
+            series: {
+              marker: {
+                enabled: true,
+                radius: 2
+              }
+            }
+          },
+          series: [{
+            type: 'column',
+            color: '#3BB5EA',
+            data: [ 
+            { y:25, color: '#3BB5EA'},
+            { y:28, color: '#3BB5EA'},
+            { y:35, color: '#3BB5EA'},
+            { y:39, color: '#3BB5EA'},
+            { y:45, color: '#3BB5EA'},
+            { y:55, color: '#3BB5EA'},
+            { y:58, color: '#3BB5EA'},
+            { y:70, color: '#A6D53A'},
+            { y:85, color: '#A6D53A'},
+            { y:89, color: '#A6D53A'}
+            ]
+          }],
+          credits: {
+            enabled: false
+          },
+          exporting: {
+            enabled: false
+          }
+        });
+});
+</script>
+</div>
+</div><!-- 
+
+
+<div class="row">
+  <div class="col-md-12" style="background:#fff; border-radius:5px; border: solid 1px #ccc;  box-shadow: 0 1px 2px #ccc;">
+    <div class="col-md-4" style="border-right:solid 1px #ccc; background: #fff; margin-left:0;min-height:425px">
+      <h3 style="font-weight:300;">AE Behaviors</h3>
+      <p><span class="h1">27</span> Average Time with Customer</p>
+      <table class="table table-condensed table-hover">
+        <tr class="active">
+          <td>Hours with Customer</td>
+          <td style="text-align:right;">27 <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 1%</span></td>
+        </tr>
+        <tr>
+          <td>Meeting Hours</td>
+          <td style="text-align:right;">48 <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 3%</span></td>
+        </tr>
+        <tr>
+          <td>Hours with External People</td>
+          <td style="text-align:right;">35 <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 5%</span></td>
+        </tr>
+        <tr>
+          <td>Hours with Internal People</td>
+          <td style="text-align:right;">43 <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 5%</span></td>
+        </tr>
+      </table>
+<div id="ent-level-trend"></div>
+<script>
+$(function () {
+  $('#ent-level-trend').highcharts({
+    chart: {
+      type: 'areaspline',
+      height: 175
+    },
+    title: {
+      text: ''
+    },
+    colors: ['#3BB5EA', '#A6CEE3'],
+    xAxis: {
+      categories: ['Jul', 'Aug', 'Sep', 'Oct'],
+    },
+    yAxis: {
+      title: {
+        text: null
+      }
+    },
+    legend: {
+      enabled: false
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: false
+        },
+        enableMouseTracking: false
+      }
+    },
+    series: [{
+      name: 'Peer',
+      marker: {
+        radius: 3
+      },
+      data: [61, 73, 89, 75]
+    }],
+    credits: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    }
+  });
+});
+</script>
+</div>
+<div class="col-md-8">
+  <br>
+  <p><span class="h5 text-center">District Breakdown: Average Time with Customer</span> <a href="#" class="btn btn-default btn-xs pull-right" style="" id="toggle-data-levels">Data</a></p>
+  <div id="ent-chart-levels"></div>
+</div>
+</div>
+</div>
+</div>
+
 {% include db-footer.html %}
