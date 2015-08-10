@@ -1,0 +1,304 @@
+{% include sales/headerRow.html %}
+<h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
+  <section class="section">        
+    <p class="section-title">Meeting and email time with customer</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="rd-time-reg-ave"></div>
+        <script>
+          $(function () {
+            $('#rd-time-reg-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Regional Averages',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    enabled: true
+                },
+                yAxis: {
+                    title: {
+                        text: 'Ave hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                xAxis: {
+                  title: {
+                    text: null
+                  },
+                  categories: ['East','West','LAMC','AMS (All)']
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  name: 'April',
+                  data: [ 
+                    { y:8 },
+                    { y:8 }, 
+                    { y:4, color: '#FDC44C' }  
+                  ]
+                },{
+                  name: 'May',
+                  data: [ 
+                    { y:10 },
+                    { y:10 }, 
+                    { y:9 }
+                  ]
+                },{
+                  name: 'June',
+                  data: [ 
+                    { y:10 },
+                    { y:10 }, 
+                    { y:8 }  
+                  ]
+                },{
+                  name: 'July',
+                  data: [ 
+                    { y:9 },
+                    { y:11, color: '#70AD47'}, 
+                    { y:7 } 
+                  ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+             });
+        });
+        </script>
+        <div id="rd-time-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#rd-time-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Manager Averages',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Ave. hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        colorByPoint: true,
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+    </div>
+    <p class="section-title">Meeting and email contact with customer</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">12</span><strong>%</strong> met of sales reps met the benchmark of <strong>8.5 hours</strong>.</p>
+        <p>Reps averaged <strong>6.8 hours</strong> with customers.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="rd-contact-reg-ave"></div>
+        <script>
+          $(function () {
+            $('#rd-contact-reg-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Regional Averages',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    enabled: true
+                },
+                yAxis: {
+                    title: {
+                        text: 'Ave hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                xAxis: {
+                  title: {
+                    text: null
+                  },
+                  categories: ['East','West','LAMC','AMS (All)']
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  name: 'April',
+                  data: [ 
+                    { y:11 },
+                    { y:13 }, 
+                    { y:3, color: '#FDC44C' }  
+                  ]
+                },{
+                  name: 'May',
+                  data: [ 
+                    { y:14 },
+                    { y:16, color: '#70AD47' }, 
+                    { y:5 }
+                  ]
+                },{
+                  name: 'June',
+                  data: [ 
+                    { y:13 },
+                    { y:16 }, 
+                    { y:5 }  
+                  ]
+                },{
+                  name: 'July',
+                  data: [ 
+                    { y:12 },
+                    { y:15 }, 
+                    { y:5 } 
+                  ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+             });
+        });
+        </script>
+        <div id="rd-contact-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#rd-contact-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Manager Averages',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'Miranda', 'Wrast', 'Quigley', 'Moran', 'Holleron',  'Al-Shorafa', 'Young', 'Bradley', 'Ross', 'Mexico', 'Brazil' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Ave. hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        colorByPoint: true,
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [ 17.9, 15.5, 14.2, 13.9, 13.8, 13.3, 12.7, 11, 10.3, 5.7, 4.1 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+    </div>
+  </section>

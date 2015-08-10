@@ -1,0 +1,276 @@
+{% include sales/headerRow.html %}
+<h3 style="text-align:center">West Region Summary for July 2015</h3><br>
+  <section class="section">
+    <p class="section-title">Meeting and email time with customer</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="wr-time-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#wr-time-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Manager Averages',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Ave. hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        colorByPoint: true,
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+    </div>
+    <p class="section-title">Meeting and email contacts with customer</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="wr-contact-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#wr-contact-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Manager Averages',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Ave. hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        colorByPoint: true,
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+    </div>
+    <p class="section-title">Customer Network Size</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="wr-network-size-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#wr-network-size-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Manager Averages',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Ave. hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        colorByPoint: true,
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+    </div>
+    <p class="section-title">Customer network breadth</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="wr-network-breadth-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#wr-network-breadth-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Manager Averages',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Ave. hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        colorByPoint: true,
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+    </div>
+  </section>

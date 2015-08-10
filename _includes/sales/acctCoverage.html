@@ -1,0 +1,94 @@
+{% include sales/headerRow.html %}
+<h3 style="text-align:center">Account Coverage July 2015</h3><br>
+  <section class="section">
+    <p class="section-title">Meeting and email time with customer</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="ac-chart"></div>
+        <script>
+        $(function () {
+            $('#ac-chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: null
+                },
+                xAxis: {
+                    categories: ['East', 'West', 'LAMC', 'Americas -Total']
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: null
+                    },
+                    stackLabels: {
+                        enabled: true,
+                        style: {
+                            fontWeight: 'bold',
+                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                        }
+                    }
+                },
+                legend: {
+                    align: 'right',
+                    x: -30,
+                    verticalAlign: 'top',
+                    y: 25,
+                    floating: true,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+                    borderColor: '#CCC',
+                    borderWidth: 1,
+                    shadow: false
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.x + '</b><br/>' +
+                            this.series.name + ': ' + this.y + '<br/>' +
+                            'Total: ' + this.point.stackTotal;
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: true,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                            style: {
+                                textShadow: '0 0 3px black'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'April',
+                    data: [5, 3, 4, 7]
+                }, {
+                    name: 'May',
+                    data: [2, 2, 3, 2]
+                }, {
+                    name: 'June',
+                    data: [3, 4, 4, 2]
+                }, {
+                    name: 'Benchmark',
+                    type: 'spline',
+                    data: [3, 4, 4, 2]
+                }],
+                exporting: {
+                  enabled: false
+                },
+                credits: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+    </div>
+  </section>
