@@ -68,6 +68,7 @@ report-title: Account Engagement Report
     font-weight: 200;
   }
   .section-title {
+    margin-top: 1px;
     padding: 6px;
     font-weight: bold;
     background: #f7f7f7;
@@ -79,6 +80,23 @@ report-title: Account Engagement Report
     padding-bottom:15px;
     margin-bottom: 15px;
     min-height: 969px;
+  }
+  .toc {
+    display: none;
+  }
+  .toc a {
+    color: #444;
+  }
+  @media only screen and (min-width: 1159px) {
+    .toc {
+      display: block;
+      position:fixed;
+      top:0;
+      right:0;
+      border-left:solid 1px #eee;
+      border-bottom: solid 1px #eee; 
+      padding:25px;
+    }
   }
 
     /* Print */
@@ -121,15 +139,13 @@ report-title: Account Engagement Report
       .masthead {
         padding:0;
       }
-      .masthead .report-title{
+      .masthead .report-title {
         font-size: 24px;
         font-weight: 300;
       }
-      .masthead .report-subtitle{
+      .masthead .report-subtitle {
         font-size: 18px;
         font-weight: 300;
-      }
-      .section-title {
       }
 
       #print-container .table {
@@ -163,7 +179,7 @@ report-title: Account Engagement Report
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <div class="toc" style="position:fixed;top:0;right:0;border-left:solid 1px #eee;border-bottom: solid 1px #eee; padding:25px;">
+          <div class="toc">
             <strong>TOC</strong>
             <ol style="margin-left:15px;">
               <li><a href="#page-1">Region and Dist. 1</a></li>
@@ -171,9 +187,7 @@ report-title: Account Engagement Report
               <li><a href="#page-3">East Region</a></li>
               <li><a href="#page-4">West Region</a></li>
               <li><a href="#page-5">LAMC Region</a></li>
-              <li><a href="#page-6">Al-Sorafa Dist.</a></li>
-              <li><a href="#page-7">A Week in the Life</a></li>
-              <li><a href="#page-8">Account Coverage</a></li>
+              <li><a href="#page-6">A Week in the Life</a></li>
             </ol>
           </div>
         </div>
@@ -189,11 +203,7 @@ report-title: Account Engagement Report
       <br id="page-5">
       {% include sales/lamcRegion.html %}
       <br id="page-6">
-      {% include sales/AlSorafaDist.html %}
-      <br id="page-7">
       {% include sales/aWeekInTheLife.html %}
-      <br id="page-8">
-      {% include sales/acctCoverage.html %}
     </div>
   </body>
 </html>

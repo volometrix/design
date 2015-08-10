@@ -62,6 +62,7 @@
     font-weight: 200;
   }
   .section-title {
+    margin-top: 1px;
     padding: 6px;
     font-weight: bold;
     background: #f7f7f7;
@@ -73,6 +74,23 @@
     padding-bottom:15px;
     margin-bottom: 15px;
     min-height: 969px;
+  }
+  .toc {
+    display: none;
+  }
+  .toc a {
+    color: #444;
+  }
+  @media only screen and (min-width: 1159px) {
+    .toc {
+      display: block;
+      position:fixed;
+      top:0;
+      right:0;
+      border-left:solid 1px #eee;
+      border-bottom: solid 1px #eee; 
+      padding:25px;
+    }
   }
 
     /* Print */
@@ -115,15 +133,13 @@
       .masthead {
         padding:0;
       }
-      .masthead .report-title{
+      .masthead .report-title {
         font-size: 24px;
         font-weight: 300;
       }
-      .masthead .report-subtitle{
+      .masthead .report-subtitle {
         font-size: 18px;
         font-weight: 300;
-      }
-      .section-title {
       }
 
       #print-container .table {
@@ -157,7 +173,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <div class="toc" style="position:fixed;top:0;right:0;border-left:solid 1px #eee;border-bottom: solid 1px #eee; padding:25px;">
+          <div class="toc">
             <strong>TOC</strong>
             <ol style="margin-left:15px;">
               <li><a href="#page-1">Region and Dist. 1</a></li>
@@ -165,9 +181,7 @@
               <li><a href="#page-3">East Region</a></li>
               <li><a href="#page-4">West Region</a></li>
               <li><a href="#page-5">LAMC Region</a></li>
-              <li><a href="#page-6">Al-Sorafa Dist.</a></li>
-              <li><a href="#page-7">A Week in the Life</a></li>
-              <li><a href="#page-8">Account Coverage</a></li>
+              <li><a href="#page-6">A Week in the Life</a></li>
             </ol>
           </div>
         </div>
@@ -189,7 +203,7 @@
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p><span class="h3">41</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
         <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
       </div>
       <div class="col-xs-9">
@@ -314,7 +328,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -322,7 +336,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [ 12, {color:'#70AD47', y:12}, 11, {color:'#70AD47', y:11}, 10, 9, 8, 7, 7, 7, {color:'#70AD47', y:7} ]
                 }],
                 credits: {
                   enabled: false
@@ -464,7 +478,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -472,7 +486,7 @@
                     }
                 },
                 series: [{
-                  data: [ 17.9, 15.5, 14.2, 13.9, 13.8, 13.3, 12.7, 11, 10.3, 5.7, 4.1 ]
+                  data: [ {color:'#70AD47', y:17.9}, {color:'#70AD47', y:15.5}, 14.2, 13.9, 13.8, 13.3, 12.7, 11, 10.3, 5.7, 4.1 ]
                 }],
                 credits: {
                   enabled: false
@@ -628,7 +642,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -636,7 +650,7 @@
                     }
                 },
                 series: [{
-                  data: [ 22, 19, 19, 19, 18, 18, 17, 16, 15, 13, 12 ]
+                  data: [ {color:'#70AD47', y:22}, {color:'#70AD47', y:19}, {color:'#70AD47', y:19}, 19, {color:'#70AD47', y:18}, 18, 17, 16, 15, 13, 12 ]
                 }],
                 credits: {
                   enabled: false
@@ -778,7 +792,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -786,7 +800,7 @@
                     }
                 },
                 series: [{
-                  data: [ 49, 47, 44, 41, 41, 41, 34, 31, 31, 27, 26 ]
+                  data: [ {color:'#70AD47', y:49}, {color:'#70AD47', y:47}, {color:'#70AD47', y:44}, {color:'#70AD47', y:41}, {color:'#70AD47', y:41}, 41, 34, 31, 31, 27, 26 ]
                 }],
                 credits: {
                   enabled: false
@@ -860,7 +874,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -928,7 +942,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -996,7 +1010,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -1064,7 +1078,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -1146,7 +1160,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -1214,7 +1228,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -1282,7 +1296,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -1350,7 +1364,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -1432,7 +1446,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -1500,7 +1514,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -1568,7 +1582,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -1636,7 +1650,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -1669,691 +1683,115 @@
     <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
   </div>
 </div>
-<h3 style="text-align:center">Al-Sorafa District for July 2015</h3><br>
-  <section class="section">
-    <p class="section-title">Meeting and email time with customer</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="ad-time-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#ad-time-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Manager Averages',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ave. hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        colorByPoint: true,
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-    </div>
-    <p class="section-title">Meeting and email contacts with customer</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="ad-contact-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#ad-contact-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Manager Averages',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ave. hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        colorByPoint: true,
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-    </div>
-    <p class="section-title">Customer Network Size</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="ad-network-size-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#ad-network-size-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Manager Averages',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ave. hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        colorByPoint: true,
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-    </div>
-    <p class="section-title">Customer network breadth</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="ad-network-breadth-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#ad-network-breadth-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Manager Averages',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ave. hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        colorByPoint: true,
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-    </div>
-  </section>
-      <br id="page-7">
-      <div class="row" style="margin-top:0;padding:15px 0 0 0;">
-  <div class="col-xs-12">
-    <p class="pull-right" style="text-align:right;">
-      <span class="h4">Account Engagement Report</span><br>
-      <span><strong>July 2015</strong></span>
-    </p>
-    <p><img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-    <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
-  </div>
-</div>
 <h3 style="text-align:center">A Week In The Life July 2015</h3><br>
   <section class="section">
-    <p class="section-title">Meeting and email time with customer</p>
+    <!-- <p class="section-title">Meeting and email time with customer</p> -->
     <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
+      <div class="col-xs-12">
+        <!-- <p>&nbsp;</p>
         <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="awl-c115"></div>
+        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p> -->
+        <div id="awl-time-chart"></div>
         <script>
           $(function () {
-            $('#awl-c115').highcharts({
+            $('#awl-time-chart').highcharts({
                 chart: {
-                    type: 'column',
-                    height: 220
+                    type: 'bar'
                 },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Club 115',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    enabled: true
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ave hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                xAxis: {
-                  title: {
-                    text: null
-                  },
-                  categories: ['East','West','LAMC','AMS (All)']
-                },
-                plotOptions: {
-                    series: {
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  name: 'April',
-                  data: [ 
-                    { y:8 },
-                    { y:8 }, 
-                    { y:4, color: '#FDC44C' }  
-                  ]
-                },{
-                  name: 'May',
-                  data: [ 
-                    { y:10 },
-                    { y:10 }, 
-                    { y:9 }
-                  ]
-                },{
-                  name: 'June',
-                  data: [ 
-                    { y:10 },
-                    { y:10 }, 
-                    { y:8 }  
-                  ]
-                },{
-                  name: 'July',
-                  data: [ 
-                    { y:9 },
-                    { y:11, color: '#70AD47'}, 
-                    { y:7 } 
-                  ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-             });
-        });
-        </script>
-        <div id="awl-east"></div>
-        <script>
-          $(function () {
-            $('#awl-east').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'East',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    enabled: true
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ave hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                xAxis: {
-                  title: {
-                    text: null
-                  },
-                  categories: ['East','West','LAMC','AMS (All)']
-                },
-                plotOptions: {
-                    series: {
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  name: 'April',
-                  data: [ 
-                    { y:8 },
-                    { y:8 }, 
-                    { y:4, color: '#FDC44C' }  
-                  ]
-                },{
-                  name: 'May',
-                  data: [ 
-                    { y:10 },
-                    { y:10 }, 
-                    { y:9 }
-                  ]
-                },{
-                  name: 'June',
-                  data: [ 
-                    { y:10 },
-                    { y:10 }, 
-                    { y:8 }  
-                  ]
-                },{
-                  name: 'July',
-                  data: [ 
-                    { y:9 },
-                    { y:11, color: '#70AD47'}, 
-                    { y:7 } 
-                  ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-             });
-        });
-        </script>
-        <div id="awl-west"></div>
-        <script>
-          $(function () {
-            $('#awl-west').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'West',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    enabled: true
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ave hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                xAxis: {
-                  title: {
-                    text: null
-                  },
-                  categories: ['East','West','LAMC','AMS (All)']
-                },
-                plotOptions: {
-                    series: {
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  name: 'April',
-                  data: [ 
-                    { y:8 },
-                    { y:8 }, 
-                    { y:4, color: '#FDC44C' }  
-                  ]
-                },{
-                  name: 'May',
-                  data: [ 
-                    { y:10 },
-                    { y:10 }, 
-                    { y:9 }
-                  ]
-                },{
-                  name: 'June',
-                  data: [ 
-                    { y:10 },
-                    { y:10 }, 
-                    { y:8 }  
-                  ]
-                },{
-                  name: 'July',
-                  data: [ 
-                    { y:9 },
-                    { y:11, color: '#70AD47'}, 
-                    { y:7 } 
-                  ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-             });
-        });
-        </script>
-        <div id="awl-lamc"></div>
-        <script>
-          $(function () {
-            $('#awl-lamc').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'LAMC',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    enabled: true
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ave hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                xAxis: {
-                  title: {
-                    text: null
-                  },
-                  categories: ['East','West','LAMC','AMS (All)']
-                },
-                plotOptions: {
-                    series: {
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  name: 'April',
-                  data: [ 
-                    { y:8 },
-                    { y:8 }, 
-                    { y:4, color: '#FDC44C' }  
-                  ]
-                },{
-                  name: 'May',
-                  data: [ 
-                    { y:10 },
-                    { y:10 }, 
-                    { y:9 }
-                  ]
-                },{
-                  name: 'June',
-                  data: [ 
-                    { y:10 },
-                    { y:10 }, 
-                    { y:8 }  
-                  ]
-                },{
-                  name: 'July',
-                  data: [ 
-                    { y:9 },
-                    { y:11, color: '#70AD47'}, 
-                    { y:7 } 
-                  ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-             });
-        });
-        </script>
-      </div>
-    </div>
-  </section>
-      <br id="page-8">
-      <div class="row" style="margin-top:0;padding:15px 0 0 0;">
-  <div class="col-xs-12">
-    <p class="pull-right" style="text-align:right;">
-      <span class="h4">Account Engagement Report</span><br>
-      <span><strong>July 2015</strong></span>
-    </p>
-    <p><img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-    <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
-  </div>
-</div>
-<h3 style="text-align:center">Account Coverage July 2015</h3><br>
-  <section class="section">
-    <p class="section-title">Meeting and email time with customer</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="ac-chart"></div>
-        <script>
-        $(function () {
-            $('#ac-chart').highcharts({
-                chart: {
-                    type: 'column'
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                colors: ['#E2A712','#C04A1B','#496B86','#608CAE','#7FA5C4','#AFC6D9','#919191'],
                 title: {
                     text: null
                 },
                 xAxis: {
-                    categories: ['East', 'West', 'LAMC', 'Americas -Total']
+                    categories: ['Club 115', 'East', 'West', 'LAMC']
                 },
                 yAxis: {
                     min: 0,
                     title: {
-                        text: null
-                    },
-                    stackLabels: {
-                        enabled: true,
-                        style: {
-                            fontWeight: 'bold',
-                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
-                        }
+                        text: 'Hours'
                     }
                 },
                 legend: {
-                    align: 'right',
-                    x: -30,
-                    verticalAlign: 'top',
-                    y: 25,
-                    floating: true,
-                    backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
-                    borderColor: '#CCC',
-                    borderWidth: 1,
-                    shadow: false
+                    reversed: true
+                },
+                plotOptions: {
+                    series: {
+                        stacking: 'normal'
+                    }
+                },
+                series: [{
+                    name: 'Customer',
+                    data: [11.3, 9.6, 10.5, 7.4]
+                }, {
+                    name: 'Other External',
+                    data: [1.9, 2.0, 3.1, 2.9]
+                }, {
+                    name: 'Other Internal',
+                    data: [15.9, 5.0, 5.5, 7.3]
+                }, {
+                    name: 'SE',
+                    data: [null, 4.8, 5.9, 4.0]
+                }, {
+                    name: 'Within Group',
+                    data: [null, 3.4, 3.1, 1.9]
+                }, {
+                    name: 'PM and Services',
+                    data: [null, 1.2, 1.1, 0.5]
+                }, {
+                    name: 'Not in Meetings/Email',
+                    data: [11.0, 13.9, 10.8, 16.1]
+                }],
+                exporting: {
+                  enabled: false
+                },
+                credits: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+
+      </div>
+    </div>
+    <p class="section-title">Account Coverage</p>
+    <div class="row">
+      <!-- <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+      </div> -->
+      <div class="col-xs-3" style="padding-right:0;">
+        <div id="ac-chart-east"></div>
+        <script>
+        $(function () {
+            $('#ac-chart-east').highcharts({
+                chart: {
+                    type: 'column',
+                    margin: [0,0,50,0]
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'East',
+                    verticalAlign: 'bottom',
+                    style: {
+                      fontSize: '13px'
+                  }
+                },
+                xAxis: {
+                    categories: ['April', 'May' ,'June', 'July']
+                },
+                yAxis: {
+                    min: 0,
+                    max: 1750,
+                    title: {
+                        text: null
+                    },
+                    labels: {
+                      enabled: false
+                    }
+                },
+                legend: {
+                  enabled: false
                 },
                 tooltip: {
                     formatter: function () {
@@ -2372,21 +1810,269 @@
                                 textShadow: '0 0 3px black'
                             }
                         }
-                    }
+                    },
+                    series: {
+                      groupPadding: 0
+                  }
                 },
                 series: [{
-                    name: 'April',
-                    data: [5, 3, 4, 7]
-                }, {
-                    name: 'May',
-                    data: [2, 2, 3, 2]
-                }, {
-                    name: 'June',
-                    data: [3, 4, 4, 2]
-                }, {
-                    name: 'Benchmark',
-                    type: 'spline',
-                    data: [3, 4, 4, 2]
+                  name: 'Contacted',
+                  data: [ 474, 466, 449, 370 ]
+                },{
+                  name: 'Engaged',
+                  data: [ 284, 349, 342, 332 ]
+                },{
+                  name: 'Cumulative Engaged',
+                  type: 'spline',
+                  lineWidth: 0,
+                  color: '#70AD47',
+                  marker: {
+                    radius: 8
+                  },
+                  data: [ 284, 454, 548, 617 ]
+                }],
+                exporting: {
+                  enabled: false
+                },
+                credits: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+      <div class="col-xs-3" style="padding-left:0;padding-right:0;">
+        <div id="ac-chart-west"></div>
+        <script>
+        $(function () {
+            $('#ac-chart-west').highcharts({
+                chart: {
+                    type: 'column',
+                    margin: [0,0,50,0]
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'West',
+                    verticalAlign: 'bottom',
+                    style: {
+                      fontSize: '13px'
+                  }
+                },
+                xAxis: {
+                    categories: ['April', 'May' ,'June', 'July']
+                },
+                yAxis: {
+                    min: 0,
+                    max:1750,
+                    title: {
+                        text: null
+                    },
+                    labels: {
+                      enabled: false
+                    }
+                },
+                legend: {
+                  enabled: false
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.x + '</b><br/>' +
+                            this.series.name + ': ' + this.y + '<br/>' +
+                            'Total: ' + this.point.stackTotal;
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: true,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                            style: {
+                                textShadow: '0 0 3px black'
+                            }
+                        }
+                    },
+                    series: {
+                      groupPadding: 0
+                  }
+                },
+                series: [{
+                  name: 'Contacted',
+                  data: [ 382, 368, 354, 321 ]
+                },{
+                  name: 'Engaged',
+                  data: [ 153, 158, 157, 127 ]
+                },{
+                  name: 'Cumulative Engaged',
+                  type: 'spline',
+                  lineWidth: 0,
+                  color: '#70AD47',
+                  marker: {
+                    radius: 8
+                  },
+                  data: [ 227, 365, 441, 503 ]
+                }],
+                exporting: {
+                  enabled: false
+                },
+                credits: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+      <div class="col-xs-3" style="padding-left:0;padding-right:0;">
+        <div id="ac-chart-lamc"></div>
+        <script>
+        $(function () {
+            $('#ac-chart-lamc').highcharts({
+                chart: {
+                    type: 'column',
+                    margin: [0,0,50,0]
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'LAMC',
+                    verticalAlign: 'bottom',
+                    style: {
+                      fontSize: '13px'
+                  }
+                },
+                xAxis: {
+                    categories: ['April', 'May' ,'June', 'July']
+                },
+                yAxis: {
+                    min: 0,
+                    max: 1750,
+                    title: {
+                        text: null
+                    },
+                    labels: {
+                      enabled: false
+                    }
+                },
+                legend: {
+                  enabled: false
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.x + '</b><br/>' +
+                            this.series.name + ': ' + this.y + '<br/>' +
+                            'Total: ' + this.point.stackTotal;
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: true,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                            style: {
+                                textShadow: '0 0 3px black'
+                            }
+                        }
+                    },
+                    series: {
+                      groupPadding: 0
+                  }
+                },
+                series: [{
+                  name: 'Contacted',
+                  data: [ 153, 158, 157, 127 ]
+                },{
+                  name: 'Engaged',
+                  data: [ 91, 144, 155, 117 ]
+                },{
+                  name: 'Cumulative Engaged',
+                  type: 'spline',
+                  lineWidth: 0,
+                  color: '#70AD47',
+                  marker: {
+                    radius: 8
+                  },
+                  data: [ 91, 181, 231, 253 ]
+                }],
+                exporting: {
+                  enabled: false
+                },
+                credits: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+      <div class="col-xs-3" style="padding-left:0;">
+        <div id="ac-chart-all"></div>
+        <script>
+        $(function () {
+            $('#ac-chart-all').highcharts({
+                chart: {
+                    type: 'column',
+                    margin: [0,0,50,0]
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Americas Total',
+                    verticalAlign: 'bottom',
+                    style: {
+                      fontSize: '13px'
+                  }
+                },
+                xAxis: {
+                    categories: ['April', 'May' ,'June', 'July']
+                },
+                yAxis: {
+                    min: 0,
+                    max: 1750,
+                    title: {
+                        text: null
+                    },
+                    labels: {
+                      enabled: false
+                    }
+                },
+                legend: {
+                  enabled: false
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.x + '</b><br/>' +
+                            this.series.name + ': ' + this.y + '<br/>' +
+                            'Total: ' + this.point.stackTotal;
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: true,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                            style: {
+                                textShadow: '0 0 3px black'
+                            }
+                        }
+                    },
+                    series: {
+                      groupPadding: 0
+                  }
+                },
+                series: [{
+                  name: 'Contacted',
+                  data: [ 807, 851, 749, 720 ]
+                },{
+                  name: 'Engaged',
+                  data: [ 506, 690, 481, 500 ]
+                },{
+                  name: 'Cumulative Engaged',
+                  type: 'spline',
+                  lineWidth: 0,
+                  color: '#70AD47',
+                  marker: {
+                    radius: 8
+                  },
+                  data: [ 284, 454, 548, 617 ]
                 }],
                 exporting: {
                   enabled: false

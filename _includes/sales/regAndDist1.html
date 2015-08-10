@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p><span class="h3">41</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
         <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
       </div>
       <div class="col-xs-9">
@@ -130,7 +130,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -138,7 +138,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [ 12, {color:'#70AD47', y:12}, 11, {color:'#70AD47', y:11}, 10, 9, 8, 7, 7, 7, {color:'#70AD47', y:7} ]
                 }],
                 credits: {
                   enabled: false
@@ -280,7 +280,7 @@
                 },
                 plotOptions: {
                     series: {
-                        colorByPoint: true,
+                        color: '#919191',
                         dataLabels: {
                             enabled: true,
                             allowOverlap: true
@@ -288,7 +288,7 @@
                     }
                 },
                 series: [{
-                  data: [ 17.9, 15.5, 14.2, 13.9, 13.8, 13.3, 12.7, 11, 10.3, 5.7, 4.1 ]
+                  data: [ {color:'#70AD47', y:17.9}, {color:'#70AD47', y:15.5}, 14.2, 13.9, 13.8, 13.3, 12.7, 11, 10.3, 5.7, 4.1 ]
                 }],
                 credits: {
                   enabled: false
