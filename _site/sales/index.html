@@ -220,12 +220,9 @@
             <ol style="margin-left:15px;">
               <li><a href="#p1">Region and Dist. 1</a></li>
               <li><a href="#p2">Region and Dist. 2</a></li>
-              <li><a href="#p3">East Region</a></li>
-              <li><a href="#p4">West Region</a></li>
-              <li><a href="#p5">LAMC Region</a></li>
-              <li><a href="#p6">A Week in the Life</a></li>
-              <li><a href="#p7">Account Coverage</a></li>
-              <li><a href="#p8">Appendix</a></li>
+              <li><a href="#p3">A Week in the Life</a></li>
+              <li><a href="#p4">Account Coverage</a></li>
+              <li><a href="#p5">Appendix</a></li>
             </ol>
           </div>
         </div>
@@ -251,7 +248,7 @@
         <p>Reps averaged <strong>9.4 hours</strong> with customers.</p>
       </div>
       <div class="col-xs-9">
-        <div id="rd-time-reg-ave"></div>
+        <div id="rd-time-reg-ave"></div><hr>
         <script>
           $(function () {
             $('#rd-time-reg-ave').highcharts({
@@ -259,7 +256,7 @@
                     type: 'column',
                     height: 220
                 },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
                     text: 'Monthly Average by Region',
                     style: {
@@ -323,9 +320,9 @@
                 },{
                   name: 'July',
                   data: [ 
-                    { y:9, color: '#FDC44C' },
-                    { y:11,color: '#FDC44C' }, 
-                    { y:7, color: '#FDC44C' } 
+                    { y:9 },
+                    { y:11 }, 
+                    { y:7 } 
                   ]
                 }],
                 credits: {
@@ -352,7 +349,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Monthly Average by District',
+                    text: 'July Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -377,7 +374,18 @@
                     },
                     labels: {
                       enabled: true
+                    },
+                    plotLines: [{
+                      color: '#919191',
+                      width: 2,
+                      value: 10.5,
+                      dashStyle: 'dot',
+                      label: {
+                        text: 'Goal',
+                        align: 'right',
+                        x: 0
                     }
+                  }]
                 },
                 plotOptions: {
                     series: {
@@ -389,7 +397,7 @@
                     }
                 },
                 series: [{
-                  data: [ 11, {color:'#70AD47', y:11}, 9, 7, 7, 12, {color:'#70AD47', y:12}, 10, 7, 8, {color:'#70AD47', y:7} ]
+                  data: [{color:'#70AD47', y:11}, 10, 10, 7, 7, {color:'#70AD47', y:12}, {color:'#70AD47', y:15}, 10, 7, 9, 8]
                 }],
                 credits: {
                   enabled: false
@@ -414,7 +422,7 @@
         <p>Reps averaged <strong>12</strong> unique accounts contacted per week.</p>
       </div>
       <div class="col-xs-9">
-        <div id="rd-contact-reg-ave"></div>
+        <div id="rd-contact-reg-ave"></div><hr>
         <script>
           $(function () {
             $('#rd-contact-reg-ave').highcharts({
@@ -422,7 +430,7 @@
                     type: 'column',
                     height: 220
                 },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
                     text: 'Monthly Average by Region',
                     style: {
@@ -482,9 +490,9 @@
                 },{
                   name: 'July',
                   data: [ 
-                    { y:12, color: '#FDC44C' },
-                    { y:15, color: '#FDC44C' }, 
-                    { y:5, color: '#FDC44C' } 
+                    { y:12 },
+                    { y:15 }, 
+                    { y:5 } 
                   ]
                 }],
                 credits: {
@@ -511,7 +519,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Monthly Average by District',
+                    text: 'July Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -525,7 +533,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'AMS (All)', 'Quigley', 'Al-Shorafa', 'Young', 'Bradley', 'Ross', 'Miranda', 'Wrast', 'Moran', 'Holleron', 'Mexico', 'Brazil']
+                  categories: ['AMS (All)', 'Quigley', 'Al-Shorafa', 'Young', 'Bradley', 'Ross', 'Miranda', 'Wrast', 'Moran', 'Holleron', 'Mexico', 'Brazil' ]
                 },
                 yAxis: {
                     title: {
@@ -536,7 +544,18 @@
                     },
                     labels: {
                       enabled: true
+                    },
+                    plotLines: [{
+                      color: '#919191',
+                      width: 2,
+                      value: 16,
+                      dashStyle: 'dot',
+                      label: {
+                        text: 'Goal',
+                        align: 'right',
+                        x: 0
                     }
+                  }]
                 },
                 plotOptions: {
                     series: {
@@ -548,7 +567,7 @@
                     }
                 },
                 series: [{
-                  data: [ {color:'#496B86',y:12}, 14.2, 13.3, 12.7, 11.0, 10.3, {color:'#70AD47', y:17.9}, {color:'#70AD47', y:15.5}, 13.9, 13.8, 5.7, 4.1 ]
+                  data: [{color:'#444', y:12}, 12.9, 13.1, 11.0, 11.1, 11.5, {color:'#70AD47', y:18.1}, {color:'#70AD47', y:16.8}, 13.5, 13.6, 5.7, 4.6]
                 }],
                 credits: {
                   enabled: false
@@ -596,7 +615,7 @@
                     type: 'column',
                     height: 220
                 },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
                     text: 'Monthly Average by Region',
                     style: {
@@ -660,9 +679,9 @@
                 },{
                   name: 'July',
                   data: [ 
-                    { y:16, color: '#FDC44C' },
-                    { y:18, color: '#FDC44C' }, 
-                    { y:11, color: '#FDC44C' } 
+                    { y:16 },
+                    { y:18 }, 
+                    { y:11 } 
                   ]
                 }],
                 credits: {
@@ -710,7 +729,18 @@
                     },
                     labels: {
                       enabled: true
+                    },
+                    plotLines: [{
+                      color: '#919191',
+                      width: 2,
+                      value: 18,
+                      dashStyle: 'dot',
+                      label: {
+                        text: 'Goal',
+                        align: 'right',
+                        x: 0
                     }
+                  }]
                 },
                 plotOptions: {
                     series: {
@@ -722,7 +752,7 @@
                     }
                 },
                 series: [{
-                  data: [  {color:'#70AD47', y:19}, {color:'#70AD47', y:19}, {color:'#70AD47', y:18}, 16, 15, {color:'#70AD47', y:22}, 19, 18, 17, 13, 12 ]
+                  data: [17, 16, 16, {color:'#70AD47', y:18}, 13, {color:'#70AD47', y:22}, 17, {color:'#70AD47', y:18}, 16, 13, 11 ]
                 }],
                 credits: {
                   enabled: false
@@ -755,7 +785,7 @@
                     type: 'column',
                     height: 220
                 },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
                     text: 'Monthly Average by Region',
                     style: {
@@ -779,7 +809,8 @@
                     },
                     labels: {
                       enabled: true
-                    }
+                    },
+
                 },
                 xAxis: {
                   title: {
@@ -819,9 +850,9 @@
                 },{
                   name: 'July',
                   data: [ 
-                    { y:36, color: '#FDC44C' },
-                    { y:38, color: '#FDC44C' }, 
-                    { y:24, color: '#FDC44C' } 
+                    { y:36 },
+                    { y:38 }, 
+                    { y:24 } 
                   ]
                 }],
                 credits: {
@@ -848,7 +879,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Monthly Average by District',
+                    text: 'July Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -862,7 +893,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Brazil', 'Mexico' ]
+                  categories: ['Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Brazil', 'Mexico']
                 },
                 yAxis: {
                     title: {
@@ -873,7 +904,18 @@
                     },
                     labels: {
                       enabled: true
+                    },
+                    plotLines: [{
+                      color: '#919191',
+                      width: 2,
+                      value: 40,
+                      dashStyle: 'dot',
+                      label: {
+                        text: 'Goal',
+                        align: 'right',
+                        x: 0
                     }
+                  }]
                 },
                 plotOptions: {
                     series: {
@@ -885,7 +927,7 @@
                     }
                 },
                 series: [{
-                  data: [ {color:'#70AD47', y:47}, {color:'#70AD47', y:44}, {color:'#70AD47', y:41}, 34, 31, {color:'#70AD47', y:49}, {color:'#70AD47', y:41}, 41, 31, 26, 27 ]
+                  data: [{color:'#70AD47', y:42}, 35, 36, 37, 26, {color:'#70AD47', y:46}, {color:'#70AD47', y:42}, 35, 27, 24, 29]
                 }],
                 credits: {
                   enabled: false
@@ -904,911 +946,6 @@
     </div>
   </section>
       <br id="p3">
-      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
-  <div class="col-xs-12">
-    <p class="pull-right" style="text-align:right;">
-      <span class="h4">Account Engagement Report</span><br>
-      <span><strong>July 2015</strong></span>
-    </p>
-    <p><img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-    <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
-  </div>
-</div>
-<h3 style="text-align:center">East Region Summary for July 2015</h3><br>
-  <section class="section">
-    <p class="section-title">Meeting and Email Time with Customer</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">39</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>9.0 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="er-contact-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#er-contact-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'East (All)', 'Al-Shorafa', 'Bradley', 'Quigley', 'Ross', 'Young' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Avg. hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [ {color:'#496B86',y:12}, 13, 11, 14, 10, 13 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-    <p class="section-title">Unique Accounts Contacted</p>
-    <div class="row">
-        <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">24</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="er-time-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#er-time-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'Club 115','East (All)', 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Avg. hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [ {color:'#FDC44C',y:11}, {color:'#496B86',y:9}, {color:'#70AD47',y:11}, 11, 9, 7, 7 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#FDC44C"></span> Special category</li>
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-    <p class="section-title">Accounts Within Rep's Network</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">32</span><strong>%</strong> met of sales reps met the benchmark of <strong>35.7 accounts</strong>.</p>
-        <p>Reps averaged <strong>16.1 accounts</strong>.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="er-network-breadth-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#er-network-breadth-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'East (All)', 'Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of accounts',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [{color:'#496B86',y:40}, {color:'#70AD47',y:47}, {color:'#70AD47',y:44}, 41, 34, {color:'#70AD47',y:31} ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-    <p class="section-title">Account Contacts Within Rep's Network</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">34</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong>.</p>
-        <p>Reps averaged <strong>16.1 accounts</strong>.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="er-network-size-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#er-network-size-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'East (All)', 'Young', 'Quigley', 'Al-Shorafa',  'Ross', 'Bradley' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of accounts',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [ {color:'#496B86',y:17}, 19, {color:'#70AD47',y:19}, {color:'#70AD47',y:18}, 16, 15 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-  </section>
-      <br id="p4">
-      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
-  <div class="col-xs-12">
-    <p class="pull-right" style="text-align:right;">
-      <span class="h4">Account Engagement Report</span><br>
-      <span><strong>July 2015</strong></span>
-    </p>
-    <p><img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-    <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
-  </div>
-</div>
-<h3 style="text-align:center">West Region Summary for July 2015</h3><br>
-  <section class="section">
-    <p class="section-title">Meeting and Email Time with Customer</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">50</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>11.1 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="wr-time-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#wr-time-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Manager Averages',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'West (All)', 'Wrast', 'Miranda', 'Moran', 'Holleron' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Avg. hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [{color:'#496B86',y:10}, 12, 12, 10, {color:'#70AD47',y:7} ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-    <p class="section-title">Unique Accounts Created</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">43</span><strong>%</strong> met of sales reps met the benchmark of <strong>16 accounts</strong>.</p>
-        <p>Reps averaged <strong>15 accounts</strong>.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="wr-contact-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#wr-contact-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average By District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'West (All)', 'Holleron', 'Miranda', 'Moran', 'Wrast' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of accounts',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [{color:'#496B86',y:15}, 14, 18, 14, 16 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-    <p class="section-title">Accounts Within Rep's Network</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">43</span><strong>%</strong> of sales reps met the benchmark of <strong>16 accounts</strong>.</p>
-        <p>Reps averaged <strong>38 accounts</strong>.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="wr-network-breadth-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#wr-network-breadth-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: ['West (All)' ,'Wrast', 'Moran', 'Miranda', 'Holleron']
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of accounts',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [{color:'#496B86',y:40}, 49, {color:'#70AD47',y:41}, {color:'#70AD47',y:41}, {color:'#70AD47',y:31}]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-    <p class="section-title">Account Contacts Within Rep's Network</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">46</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong>.</p>
-        <p>Reps averaged <strong>18 accounts</strong>.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="wr-network-size-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#wr-network-size-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'West (All)', 'Wrast', 'Miranda', 'Moran', 'Holleron' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of accounts',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [{color:'#496B86',y:19}, 22, {color:'#70AD47',y:19}, {color:'#70AD47',y:18}, {color:'#70AD47',y:17}]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-  </section>
-      <br id="p5">
-      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
-  <div class="col-xs-12">
-    <p class="pull-right" style="text-align:right;">
-      <span class="h4">Account Engagement Report</span><br>
-      <span><strong>July 2015</strong></span>
-    </p>
-    <p><img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-    <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
-  </div>
-</div>
-<h3 style="text-align:center">LAMC Region Summary for July 2015</h3><br>
-  <section class="section">
-    <p class="section-title">Meeting and Email Time with Customer</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">27</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>7.6 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="lr-time-mgr-ave"></div>
-        <p style="text-align:center;"><small><em>Benchmark currently based on Sales (AM) behaviors. More appropriate benchmark for LAMC is currently being considered.</em></small></p>
-        <script>
-          $(function () {
-            $('#lr-time-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'LAMC (All)', 'Mexico', 'Brazil', 'Other Country' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Avg. hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [ {color:'#496B86',y:7}, 8, {color:'#70AD47',y:7}, 3 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-    <p class="section-title">Unique Accounts Contacted</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">0</span><strong>%</strong> of sales reps met the benchmark of <strong>16 accounts</strong>.</p>
-        <p>Reps averaged <strong>4.9 accounts</strong>.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="lr-contact-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#lr-contact-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: ['LAMC (All)', 'Brazil', 'Mexico']
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of accounts',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [{color:'#496B86',y:5},4,6]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-    <p class="section-title">Accounts Within Rep's Network</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">13</span><strong>%</strong> of sales reps met the benchmark of <strong>40 contacts</strong>.</p>
-        <p>Reps averaged <strong>24 accounts</strong>.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="lr-network-breadth-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#lr-network-breadth-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'LAMC (All)', 'Mexico', 'Brazil', 'Other Country']
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of accounts',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [{color:'#496B86',y:25},{color:'#70AD47',y:27},{color:'#70AD47',y:26},{color:'#70AD47',y:7}]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-    <p class="section-title">Account Contacts Within Rep's Network</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">13</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong>.</p>
-        <p>Reps averaged <strong>11 accounts</strong>.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="lr-network-size-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#lr-network-size-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: ['LAMC (All)','Mexico','Brazil','Other Country']
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of accounts',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [{color:'#496B86',y:12},{color:'#70AD47',y:13},{color:'#70AD47',y:12},{color:'#70AD47',y:6}]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-  </section>
-      <br id="p6">
       <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
@@ -1898,7 +1035,7 @@
     </div>
 
   </section>
-      <br id="p7">
+      <br id="p4">
       <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
@@ -2227,7 +1364,7 @@
       </div>
     </div>
   </section>
-      <br id="p8">
+      <br id="p5">
       <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">

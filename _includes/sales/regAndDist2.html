@@ -17,7 +17,7 @@
                     type: 'column',
                     height: 220
                 },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
                     text: 'Monthly Average by Region',
                     style: {
@@ -81,9 +81,9 @@
                 },{
                   name: 'July',
                   data: [ 
-                    { y:16, color: '#FDC44C' },
-                    { y:18, color: '#FDC44C' }, 
-                    { y:11, color: '#FDC44C' } 
+                    { y:16 },
+                    { y:18 }, 
+                    { y:11 } 
                   ]
                 }],
                 credits: {
@@ -131,7 +131,18 @@
                     },
                     labels: {
                       enabled: true
+                    },
+                    plotLines: [{
+                      color: '#919191',
+                      width: 2,
+                      value: 18,
+                      dashStyle: 'dot',
+                      label: {
+                        text: 'Goal',
+                        align: 'right',
+                        x: 0
                     }
+                  }]
                 },
                 plotOptions: {
                     series: {
@@ -143,7 +154,7 @@
                     }
                 },
                 series: [{
-                  data: [  {color:'#70AD47', y:19}, {color:'#70AD47', y:19}, {color:'#70AD47', y:18}, 16, 15, {color:'#70AD47', y:22}, 19, 18, 17, 13, 12 ]
+                  data: [17, 16, 16, {color:'#70AD47', y:18}, 13, {color:'#70AD47', y:22}, 17, {color:'#70AD47', y:18}, 16, 13, 11 ]
                 }],
                 credits: {
                   enabled: false
@@ -176,7 +187,7 @@
                     type: 'column',
                     height: 220
                 },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
                     text: 'Monthly Average by Region',
                     style: {
@@ -200,7 +211,8 @@
                     },
                     labels: {
                       enabled: true
-                    }
+                    },
+
                 },
                 xAxis: {
                   title: {
@@ -240,9 +252,9 @@
                 },{
                   name: 'July',
                   data: [ 
-                    { y:36, color: '#FDC44C' },
-                    { y:38, color: '#FDC44C' }, 
-                    { y:24, color: '#FDC44C' } 
+                    { y:36 },
+                    { y:38 }, 
+                    { y:24 } 
                   ]
                 }],
                 credits: {
@@ -269,7 +281,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Monthly Average by District',
+                    text: 'July Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -283,7 +295,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Brazil', 'Mexico' ]
+                  categories: ['Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Brazil', 'Mexico']
                 },
                 yAxis: {
                     title: {
@@ -294,7 +306,18 @@
                     },
                     labels: {
                       enabled: true
+                    },
+                    plotLines: [{
+                      color: '#919191',
+                      width: 2,
+                      value: 40,
+                      dashStyle: 'dot',
+                      label: {
+                        text: 'Goal',
+                        align: 'right',
+                        x: 0
                     }
+                  }]
                 },
                 plotOptions: {
                     series: {
@@ -306,7 +329,7 @@
                     }
                 },
                 series: [{
-                  data: [ {color:'#70AD47', y:47}, {color:'#70AD47', y:44}, {color:'#70AD47', y:41}, 34, 31, {color:'#70AD47', y:49}, {color:'#70AD47', y:41}, 41, 31, 26, 27 ]
+                  data: [{color:'#70AD47', y:42}, 35, 36, 37, 26, {color:'#70AD47', y:46}, {color:'#70AD47', y:42}, 35, 27, 24, 29]
                 }],
                 credits: {
                   enabled: false
