@@ -1,80 +1,12 @@
 {% include sales/headerRow.html %}
 <h3 style="text-align:center">East Region Summary for July 2015</h3><br>
   <section class="section">
-    <p class="section-title">Meeting and email time with customer</p>
+    <p class="section-title">Meeting and Email Time with Customer</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="er-time-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#er-time-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Manager Averages',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'Club 115','East (All)', 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ave. hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [ {color:'#FDC44C',y:11}, {color:'#496B86',y:9}, {color:'#70AD47',y:11}, 11, 9, 7, 7 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-    </div>
-    <p class="section-title">Meeting and email contacts with customer</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">39</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>9.0 hours</strong> with customers.</p>
       </div>
       <div class="col-xs-9">
         <div id="er-contact-mgr-ave"></div>
@@ -87,7 +19,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -105,7 +37,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Avg. hours per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -136,13 +68,89 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
-    <p class="section-title">Customer Network Size</p>
+    <p class="section-title">Unique Accounts Contacted</p>
+    <div class="row">
+        <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">24</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="er-time-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#er-time-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Monthly Average by District',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'Club 115','East (All)', 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Avg. hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        color: '#919191',
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [ {color:'#FDC44C',y:11}, {color:'#496B86',y:9}, {color:'#70AD47',y:11}, 11, 9, 7, 7 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#FDC44C"></span> Special category</li>
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
+    </div>
+    <p class="section-title">Accounts Within Rep's Network</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">32</span><strong>%</strong> met of sales reps met the benchmark of <strong>35.7 accounts</strong>.</p>
+        <p>Reps averaged <strong>16.1 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="er-network-size-mgr-ave"></div>
@@ -155,7 +163,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -173,7 +181,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -204,13 +212,17 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
-    <p class="section-title">Customer network breadth</p>
+    <p class="section-title">Account Contacts Within Rep's Network</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">34</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong>.</p>
+        <p>Reps averaged <strong>16.1 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="er-network-breadth-mgr-ave"></div>
@@ -223,7 +235,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -241,7 +253,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -272,5 +284,9 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
   </section>

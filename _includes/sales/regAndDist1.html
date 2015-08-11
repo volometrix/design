@@ -1,12 +1,12 @@
 {% include sales/headerRow.html %}
 <h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
   <section class="section">        
-    <p class="section-title">Meeting and email time with customer</p>
+    <p class="section-title">Meeting and Email Time with Customer</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
         <p><span class="h3">41</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p>Reps averaged <strong>9.4 hours</strong> with customers.</p>
       </div>
       <div class="col-xs-9">
         <div id="rd-time-reg-ave"></div>
@@ -19,18 +19,22 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Regional Averages',
+                    text: 'Monthly Average by Region',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
                     }
                 },
                 legend: {
-                    enabled: true
+                    enabled: true,
+                      itemStyle: {
+                         fontWeight: 'normal',
+                         fontSize: '11px'
+                    }
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave hours per week',
+                        text: 'Avg. hours per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -58,7 +62,7 @@
                   data: [ 
                     { y:8 },
                     { y:8 }, 
-                    { y:4, color: '#FDC44C' }  
+                    { y:4 }  
                   ]
                 },{
                   name: 'May',
@@ -77,9 +81,9 @@
                 },{
                   name: 'July',
                   data: [ 
-                    { y:9 },
-                    { y:11, color: '#70AD47'}, 
-                    { y:7 } 
+                    { y:9, color: '#FDC44C' },
+                    { y:11,color: '#FDC44C' }, 
+                    { y:7, color: '#FDC44C' } 
                   ]
                 }],
                 credits: {
@@ -106,7 +110,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -124,7 +128,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Avg. hours per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -155,13 +159,17 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+      </ul>
     </div>
-    <p class="section-title">Meeting and email contact with customer</p>
+    <p class="section-title">Unique Accounts Contacted</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">12</span><strong>%</strong> met of sales reps met the benchmark of <strong>8.5 hours</strong>.</p>
-        <p>Reps averaged <strong>6.8 hours</strong> with customers.</p>
+        <p><span class="h3">26</span><strong>%</strong> of sales reps met the benchmark of <strong>16</strong> unique accounts contacted per week.</p>
+        <p>Reps averaged <strong>12</strong> unique accounts contacted per week.</p>
       </div>
       <div class="col-xs-9">
         <div id="rd-contact-reg-ave"></div>
@@ -174,7 +182,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Regional Averages',
+                    text: 'Monthly Average by Region',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -185,7 +193,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave hours per week',
+                        text: 'Avg. accounts contacted per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -213,13 +221,13 @@
                   data: [ 
                     { y:11 },
                     { y:13 }, 
-                    { y:3, color: '#FDC44C' }  
+                    { y:3 }  
                   ]
                 },{
                   name: 'May',
                   data: [ 
                     { y:14 },
-                    { y:16, color: '#70AD47' }, 
+                    { y:16 }, 
                     { y:5 }
                   ]
                 },{
@@ -232,9 +240,9 @@
                 },{
                   name: 'July',
                   data: [ 
-                    { y:12 },
-                    { y:15 }, 
-                    { y:5 } 
+                    { y:12, color: '#FDC44C' },
+                    { y:15, color: '#FDC44C' }, 
+                    { y:5, color: '#FDC44C' } 
                   ]
                 }],
                 credits: {
@@ -261,7 +269,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -279,7 +287,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Avg. accounts contacted per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -310,5 +318,10 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
   </section>

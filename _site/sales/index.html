@@ -84,7 +84,6 @@
   ul.region-legend {
     margin:0 0 25px 65px;
     list-style-type:none;
-    display: none;
   }
   ul.region-legend li {
     display: inline-block;
@@ -95,7 +94,28 @@
     height:15px;
     text-align: center;
     font-size: 11px;
+    font-weight: 300;
     line-height: 11px;
+  }
+  .symbol-legend {
+    list-style-type: none;
+    margin-left:0;
+    font-size: 11px;
+    font-weight: 300;
+  }
+  .symbol-legend .legend-color {
+    display: inline-block;
+    width:16px;
+    height:12px;
+    background: #ccc;
+  }
+  .row {
+    position: relative;
+  }
+  .row > .symbol-legend {
+    position:absolute;
+    bottom:15px;
+    left:15px
   }
   @media only screen and (min-width: 1159px) {
     .toc {
@@ -198,17 +218,19 @@
           <div class="toc">
             <strong>TOC</strong>
             <ol style="margin-left:15px;">
-              <li><a href="#page-1">Region and Dist. 1</a></li>
-              <li><a href="#page-2">Region and Dist. 2</a></li>
-              <li><a href="#page-3">East Region</a></li>
-              <li><a href="#page-4">West Region</a></li>
-              <li><a href="#page-5">LAMC Region</a></li>
-              <li><a href="#page-6">A Week in the Life</a></li>
+              <li><a href="#p1">Region and Dist. 1</a></li>
+              <li><a href="#p2">Region and Dist. 2</a></li>
+              <li><a href="#p3">East Region</a></li>
+              <li><a href="#p4">West Region</a></li>
+              <li><a href="#p5">LAMC Region</a></li>
+              <li><a href="#p6">A Week in the Life</a></li>
+              <li><a href="#p7">Account Coverage</a></li>
+              <li><a href="#p8">Appendix</a></li>
             </ol>
           </div>
         </div>
       </div>
-      <br id="page-1">
+      <br id="p1">
       <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
@@ -221,12 +243,12 @@
 </div>
 <h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
   <section class="section">        
-    <p class="section-title">Meeting and email time with customer</p>
+    <p class="section-title">Meeting and Email Time with Customer</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
         <p><span class="h3">41</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p>Reps averaged <strong>9.4 hours</strong> with customers.</p>
       </div>
       <div class="col-xs-9">
         <div id="rd-time-reg-ave"></div>
@@ -239,18 +261,22 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Regional Averages',
+                    text: 'Monthly Average by Region',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
                     }
                 },
                 legend: {
-                    enabled: true
+                    enabled: true,
+                      itemStyle: {
+                         fontWeight: 'normal',
+                         fontSize: '11px'
+                    }
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave hours per week',
+                        text: 'Avg. hours per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -278,7 +304,7 @@
                   data: [ 
                     { y:8 },
                     { y:8 }, 
-                    { y:4, color: '#FDC44C' }  
+                    { y:4 }  
                   ]
                 },{
                   name: 'May',
@@ -297,9 +323,9 @@
                 },{
                   name: 'July',
                   data: [ 
-                    { y:9 },
-                    { y:11, color: '#70AD47'}, 
-                    { y:7 } 
+                    { y:9, color: '#FDC44C' },
+                    { y:11,color: '#FDC44C' }, 
+                    { y:7, color: '#FDC44C' } 
                   ]
                 }],
                 credits: {
@@ -326,7 +352,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -344,7 +370,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Avg. hours per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -375,13 +401,17 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+      </ul>
     </div>
-    <p class="section-title">Meeting and email contact with customer</p>
+    <p class="section-title">Unique Accounts Contacted</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">12</span><strong>%</strong> met of sales reps met the benchmark of <strong>8.5 hours</strong>.</p>
-        <p>Reps averaged <strong>6.8 hours</strong> with customers.</p>
+        <p><span class="h3">26</span><strong>%</strong> of sales reps met the benchmark of <strong>16</strong> unique accounts contacted per week.</p>
+        <p>Reps averaged <strong>12</strong> unique accounts contacted per week.</p>
       </div>
       <div class="col-xs-9">
         <div id="rd-contact-reg-ave"></div>
@@ -394,7 +424,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Regional Averages',
+                    text: 'Monthly Average by Region',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -405,7 +435,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave hours per week',
+                        text: 'Avg. accounts contacted per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -433,13 +463,13 @@
                   data: [ 
                     { y:11 },
                     { y:13 }, 
-                    { y:3, color: '#FDC44C' }  
+                    { y:3 }  
                   ]
                 },{
                   name: 'May',
                   data: [ 
                     { y:14 },
-                    { y:16, color: '#70AD47' }, 
+                    { y:16 }, 
                     { y:5 }
                   ]
                 },{
@@ -452,9 +482,9 @@
                 },{
                   name: 'July',
                   data: [ 
-                    { y:12 },
-                    { y:15 }, 
-                    { y:5 } 
+                    { y:12, color: '#FDC44C' },
+                    { y:15, color: '#FDC44C' }, 
+                    { y:5, color: '#FDC44C' } 
                   ]
                 }],
                 credits: {
@@ -481,7 +511,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -499,7 +529,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Avg. accounts contacted per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -530,9 +560,14 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
   </section>
-      <br id="page-2">
+      <br id="p2">
       <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
@@ -545,12 +580,12 @@
 </div>
 <h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
   <section class="section">
-    <p class="section-title">Customer network breadth</p>
+    <p class="section-title">Accounts Within Rep's Network</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">32</span><strong>%</strong> met of sales reps met the benchmark of <strong>40 customers</strong> in their network.</p>
-        <p>Reps averaged <strong>40 customers</strong> in their network.</p>
+        <p><span class="h3">35</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong> in their network.</p>
+        <p>Reps averaged <strong>16 accounts</strong> in their network.</p>
       </div>
       <div class="col-xs-9">
         <div id="rd-network-size-reg-ave"></div>
@@ -563,7 +598,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Regional Averages',
+                    text: 'Monthly Average by Region',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -574,7 +609,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -602,7 +637,7 @@
                   data: [ 
                     { y:17 },
                     { y:18 }, 
-                    { y:9, color: '#FDC44C' }  
+                    { y:9 }  
                   ]
                 },{
                   name: 'May',
@@ -615,15 +650,15 @@
                   name: 'June',
                   data: [ 
                     { y:19 },
-                    { y:20, color: '#70AD47' }, 
+                    { y:20 }, 
                     { y:14 }  
                   ]
                 },{
                   name: 'July',
                   data: [ 
-                    { y:16 },
-                    { y:18 }, 
-                    { y:11 } 
+                    { y:16, color: '#FDC44C' },
+                    { y:18, color: '#FDC44C' }, 
+                    { y:11, color: '#FDC44C' } 
                   ]
                 }],
                 credits: {
@@ -650,7 +685,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -668,7 +703,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of account contacts',
                         style: {
                         'font-size': '11px'
                       }
@@ -699,13 +734,17 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+      </ul>
     </div>
-    <p class="section-title">Customer network size</p>
+    <p class="section-title">Account Contacts Within Rep's Network</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">36</span><strong>%</strong> met of sales reps met the benchmark of <strong>18 customers</strong> in their network.</p>
-        <p>Reps averaged <strong>16.8 hours</strong>.</p>
+        <p><span class="h3">32</span><strong>%</strong> of sales reps met the benchmark of <strong>40 customer contacts</strong> in their network.</p>
+        <p>Reps averaged <strong>34 contacts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="size-regional-aves"></div>
@@ -718,7 +757,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Regional Averages',
+                    text: 'Monthly Average by Region',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -729,7 +768,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave hours per week',
+                        text: 'Number of contacts',
                         style: {
                         'font-size': '11px'
                       }
@@ -757,7 +796,7 @@
                   data: [ 
                     { y:38 },
                     { y:39 }, 
-                    { y:18, color: '#FDC44C' }  
+                    { y:18 }  
                   ]
                 },{
                   name: 'May',
@@ -770,15 +809,15 @@
                   name: 'June',
                   data: [ 
                     { y:44 },
-                    { y:45, color: '#70AD47' }, 
+                    { y:45 }, 
                     { y:30 }  
                   ]
                 },{
                   name: 'July',
                   data: [ 
-                    { y:36 },
-                    { y:38 }, 
-                    { y:24 } 
+                    { y:36, color: '#FDC44C' },
+                    { y:38, color: '#FDC44C' }, 
+                    { y:24, color: '#FDC44C' } 
                   ]
                 }],
                 credits: {
@@ -805,7 +844,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -823,7 +862,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts contacted',
                         style: {
                         'font-size': '11px'
                       }
@@ -854,9 +893,13 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+      </ul>
     </div>
   </section>
-      <br id="page-3">
+      <br id="p3">
       <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
@@ -869,80 +912,12 @@
 </div>
 <h3 style="text-align:center">East Region Summary for July 2015</h3><br>
   <section class="section">
-    <p class="section-title">Meeting and email time with customer</p>
+    <p class="section-title">Meeting and Email Time with Customer</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div>
-      <div class="col-xs-9">
-        <div id="er-time-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#er-time-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Manager Averages',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: [ 'Club 115','East (All)', 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross' ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ave. hours per week',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [ {color:'#FDC44C',y:11}, {color:'#496B86',y:9}, {color:'#70AD47',y:11}, 11, 9, 7, 7 ]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-    </div>
-    <p class="section-title">Meeting and email contacts with customer</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">39</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>9.0 hours</strong> with customers.</p>
       </div>
       <div class="col-xs-9">
         <div id="er-contact-mgr-ave"></div>
@@ -955,7 +930,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -973,7 +948,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Avg. hours per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -1004,13 +979,89 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
-    <p class="section-title">Customer Network Size</p>
+    <p class="section-title">Unique Accounts Contacted</p>
+    <div class="row">
+        <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">24</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="er-time-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#er-time-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Monthly Average by District',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'Club 115','East (All)', 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Avg. hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        color: '#919191',
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [ {color:'#FDC44C',y:11}, {color:'#496B86',y:9}, {color:'#70AD47',y:11}, 11, 9, 7, 7 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#FDC44C"></span> Special category</li>
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
+    </div>
+    <p class="section-title">Accounts Within Rep's Network</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">32</span><strong>%</strong> met of sales reps met the benchmark of <strong>35.7 accounts</strong>.</p>
+        <p>Reps averaged <strong>16.1 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="er-network-size-mgr-ave"></div>
@@ -1023,7 +1074,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -1041,7 +1092,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -1072,13 +1123,17 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
-    <p class="section-title">Customer network breadth</p>
+    <p class="section-title">Account Contacts Within Rep's Network</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">34</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong>.</p>
+        <p>Reps averaged <strong>16.1 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="er-network-breadth-mgr-ave"></div>
@@ -1091,7 +1146,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -1109,7 +1164,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -1140,9 +1195,13 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
   </section>
-      <br id="page-4">
+      <br id="p4">
       <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
@@ -1155,12 +1214,12 @@
 </div>
 <h3 style="text-align:center">West Region Summary for July 2015</h3><br>
   <section class="section">
-    <p class="section-title">Meeting and email time with customer</p>
+    <p class="section-title">Meeting and Email Time with Customer</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">50</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>11.1 hours</strong> with customers.</p>
       </div>
       <div class="col-xs-9">
         <div id="wr-time-mgr-ave"></div>
@@ -1191,7 +1250,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Avg. hours per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -1222,13 +1281,17 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
-    <p class="section-title">Meeting and email contacts with customer</p>
+    <p class="section-title">Unique Accounts Created</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">43</span><strong>%</strong> met of sales reps met the benchmark of <strong>16 accounts</strong>.</p>
+        <p>Reps averaged <strong>15 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="wr-contact-mgr-ave"></div>
@@ -1241,7 +1304,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average By District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -1259,7 +1322,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -1290,13 +1353,16 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
-    <p class="section-title">Customer Network Size</p>
+    <p class="section-title">Accounts Within Rep's Network</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">43</span><strong>%</strong> of sales reps met the benchmark of <strong>16 accounts</strong>.</p>
+        <p>Reps averaged <strong>38 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="wr-network-size-mgr-ave"></div>
@@ -1309,7 +1375,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -1327,7 +1393,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -1358,13 +1424,17 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
-    <p class="section-title">Customer network breadth</p>
+    <p class="section-title">Account Contacts Within Rep's Network</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">46</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong>.</p>
+        <p>Reps averaged <strong>18 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="wr-network-breadth-mgr-ave"></div>
@@ -1377,7 +1447,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -1395,7 +1465,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -1426,9 +1496,13 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
   </section>
-      <br id="page-5">
+      <br id="p5">
       <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
@@ -1441,15 +1515,16 @@
 </div>
 <h3 style="text-align:center">LAMC Region Summary for July 2015</h3><br>
   <section class="section">
-    <p class="section-title">Meeting and email time with customer</p>
+    <p class="section-title">Meeting and Email Time with Customer</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">27</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>7.6 hours</strong> with customers.</p>
       </div>
       <div class="col-xs-9">
         <div id="lr-time-mgr-ave"></div>
+        <p style="text-align:center;"><small><em>Benchmark currently based on Sales (AM) behaviors. More appropriate benchmark for LAMC is currently being considered.</em></small></p>
         <script>
           $(function () {
             $('#lr-time-mgr-ave').highcharts({
@@ -1459,7 +1534,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -1477,7 +1552,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Avg. hours per week',
                         style: {
                         'font-size': '11px'
                       }
@@ -1508,13 +1583,17 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
-    <p class="section-title">Meeting and email contacts with customer</p>
+    <p class="section-title">Unique Accounts Contacted</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">0</span><strong>%</strong> of sales reps met the benchmark of <strong>16 accounts</strong>.</p>
+        <p>Reps averaged <strong>4.9 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="lr-contact-mgr-ave"></div>
@@ -1527,7 +1606,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -1545,7 +1624,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -1576,13 +1655,16 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
-    <p class="section-title">Customer network size</p>
+    <p class="section-title">Accounts Within Rep's Network</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">13</span><strong>%</strong> of sales reps met the benchmark of <strong>40 contacts</strong>.</p>
+        <p>Reps averaged <strong>24 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="lr-network-size-mgr-ave"></div>
@@ -1595,7 +1677,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -1613,7 +1695,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -1644,13 +1726,17 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
-    <p class="section-title">Customer network breadth</p>
+    <p class="section-title">Account Contacts Within Rep's Network</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
+        <p><span class="h3">13</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong>.</p>
+        <p>Reps averaged <strong>11 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
         <div id="lr-network-breadth-mgr-ave"></div>
@@ -1663,7 +1749,7 @@
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Manager Averages',
+                    text: 'Monthly Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -1681,7 +1767,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ave. hours per week',
+                        text: 'Number of accounts',
                         style: {
                         'font-size': '11px'
                       }
@@ -1712,9 +1798,13 @@
         });
         </script>
       </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
     </div>
   </section>
-      <br id="page-6">
+      <br id="p6">
       <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
@@ -1758,7 +1848,7 @@
                     }
                 },
                 legend: {
-                    reversed: false
+                    reversed: true
                 },
                 plotOptions: {
                     series: {
@@ -1769,26 +1859,26 @@
                   }
                 },
                 series: [{
-                    name: 'Customer',
-                    data: [11.3, 9.6, 10.5, 7.4]
-                }, {
-                    name: 'Other External',
-                    data: [1.9, 2.0, 3.1, 2.9]
-                }, {
-                    name: 'Other Internal',
-                    data: [15.9, 5.0, 5.5, 7.3]
-                }, {
-                    name: 'SE',
-                    data: [null, 4.8, 5.9, 4.0]
-                }, {
-                    name: 'Within Group',
-                    data: [null, 3.4, 3.1, 1.9]
-                }, {
-                    name: 'PM and Services',
-                    data: [null, 1.2, 1.1, 0.5]
-                }, {
                     name: 'Not in Meetings/Email',
                     data: [11.0, 13.9, 10.8, 16.1]
+                },{
+                    name: 'PM and Services',
+                    data: [null, 1.2, 1.1, 0.5]
+                },{
+                    name: 'Within Group',
+                    data: [null, 3.4, 3.1, 1.9]
+                },{
+                    name: 'SE',
+                    data: [null, 4.8, 5.9, 4.0]
+                },{
+                    name: 'Other Internal',
+                    data: [15.9, 5.0, 5.5, 7.3]
+                },{
+                    name: 'Other External',
+                    data: [1.9, 2.0, 3.1, 2.9]
+                },{
+                    name: 'Customer',
+                    data: [11.3, 9.6, 10.5, 7.4]
                 }],
                 exporting: {
                   enabled: false
@@ -1802,7 +1892,21 @@
 
       </div>
     </div>
-    <p class="section-title">Account Coverage</p>
+
+  </section>
+      <br id="p7">
+      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
+  <div class="col-xs-12">
+    <p class="pull-right" style="text-align:right;">
+      <span class="h4">Account Engagement Report</span><br>
+      <span><strong>July 2015</strong></span>
+    </p>
+    <p><img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+    <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
+  </div>
+</div>
+<h3 style="text-align:center">Account Coverage July 2015</h3><br>
+  <section class="section"><p class="section-title">Account Coverage</p>
     <div class="row">
       <!-- <div class="col-xs-3">
         <p>&nbsp;</p>
@@ -2116,6 +2220,45 @@
             });
         });
         </script>
+      </div>
+    </div>
+  </section>
+      <br id="p8">
+      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
+  <div class="col-xs-12">
+    <p class="pull-right" style="text-align:right;">
+      <span class="h4">Account Engagement Report</span><br>
+      <span><strong>July 2015</strong></span>
+    </p>
+    <p><img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
+    <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
+  </div>
+</div>
+<h3 style="text-align:center">Appendix</h3><br>
+  <section class="section">
+    <p class="section-title">Definitions</p>
+    <div class="row">
+      <div class="col-xs-8">
+      	<dl>
+      		<dt>Accounts Contacted</dt>
+      		<dd>Accounts to whom Symantec/Region sent an email or with whom they met, but collaboration wasn't substantiative enough to qualify as &#8220;engaged&#8221;</dd>
+      		<br>
+      		<dt>Accounts Engaged</dt>
+      		<dd>Accounts with whom Symantec/Region had at least one (1) meeting and spent at least 30 minutes during the period.</dd>
+      		<br>
+      		<dt>Cumulative Engaged</dt>
+      		<dd>Running total of Accounts with whom Symantec/Region has engaged since April 15.</dd>
+      	</dl>
+      </div>
+    </div>
+    <p class="section-title">Symbols</p>
+    <div class="row">
+      <div class="col-xs-8">
+      	<ul class="symbol-legend">
+      		<li><span class="legend-color" style="background:#FDC44C"></span> indicates current month</li>
+      		<li><span class="legend-color" style="background:#496B86"></span> indicates informational element not part of the current set or a summary element</li>
+      		<li><span class="legend-color" style="background:#70AD47"></span> indicates a goal was met</li>
+      	</ul>
       </div>
     </div>
   </section>

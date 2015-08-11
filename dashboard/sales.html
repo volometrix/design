@@ -90,7 +90,6 @@ report-title: Account Engagement Report
   ul.region-legend {
     margin:0 0 25px 65px;
     list-style-type:none;
-    display: none;
   }
   ul.region-legend li {
     display: inline-block;
@@ -101,7 +100,28 @@ report-title: Account Engagement Report
     height:15px;
     text-align: center;
     font-size: 11px;
+    font-weight: 300;
     line-height: 11px;
+  }
+  .symbol-legend {
+    list-style-type: none;
+    margin-left:0;
+    font-size: 11px;
+    font-weight: 300;
+  }
+  .symbol-legend .legend-color {
+    display: inline-block;
+    width:16px;
+    height:12px;
+    background: #ccc;
+  }
+  .row {
+    position: relative;
+  }
+  .row > .symbol-legend {
+    position:absolute;
+    bottom:15px;
+    left:15px
   }
   @media only screen and (min-width: 1159px) {
     .toc {
@@ -204,28 +224,34 @@ report-title: Account Engagement Report
           <div class="toc">
             <strong>TOC</strong>
             <ol style="margin-left:15px;">
-              <li><a href="#page-1">Region and Dist. 1</a></li>
-              <li><a href="#page-2">Region and Dist. 2</a></li>
-              <li><a href="#page-3">East Region</a></li>
-              <li><a href="#page-4">West Region</a></li>
-              <li><a href="#page-5">LAMC Region</a></li>
-              <li><a href="#page-6">A Week in the Life</a></li>
+              <li><a href="#p1">Region and Dist. 1</a></li>
+              <li><a href="#p2">Region and Dist. 2</a></li>
+              <li><a href="#p3">East Region</a></li>
+              <li><a href="#p4">West Region</a></li>
+              <li><a href="#p5">LAMC Region</a></li>
+              <li><a href="#p6">A Week in the Life</a></li>
+              <li><a href="#p7">Account Coverage</a></li>
+              <li><a href="#p8">Appendix</a></li>
             </ol>
           </div>
         </div>
       </div>
-      <br id="page-1">
+      <br id="p1">
       {% include sales/regAndDist1.html %}
-      <br id="page-2">
+      <br id="p2">
       {% include sales/regAndDist2.html %}
-      <br id="page-3">
+      <br id="p3">
       {% include sales/eastRegion.html %}
-      <br id="page-4">
+      <br id="p4">
       {% include sales/westRegion.html %}
-      <br id="page-5">
+      <br id="p5">
       {% include sales/lamcRegion.html %}
-      <br id="page-6">
+      <br id="p6">
       {% include sales/aWeekInTheLife.html %}
+      <br id="p7">
+      {% include sales/acctCoverage.html %}
+      <br id="p8">
+      {% include sales/appendix.html %}
     </div>
   </body>
 </html>

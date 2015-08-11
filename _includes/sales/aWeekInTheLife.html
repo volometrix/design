@@ -32,7 +32,7 @@
                     }
                 },
                 legend: {
-                    reversed: false
+                    reversed: true
                 },
                 plotOptions: {
                     series: {
@@ -43,26 +43,26 @@
                   }
                 },
                 series: [{
-                    name: 'Customer',
-                    data: [11.3, 9.6, 10.5, 7.4]
-                }, {
-                    name: 'Other External',
-                    data: [1.9, 2.0, 3.1, 2.9]
-                }, {
-                    name: 'Other Internal',
-                    data: [15.9, 5.0, 5.5, 7.3]
-                }, {
-                    name: 'SE',
-                    data: [null, 4.8, 5.9, 4.0]
-                }, {
-                    name: 'Within Group',
-                    data: [null, 3.4, 3.1, 1.9]
-                }, {
-                    name: 'PM and Services',
-                    data: [null, 1.2, 1.1, 0.5]
-                }, {
                     name: 'Not in Meetings/Email',
                     data: [11.0, 13.9, 10.8, 16.1]
+                },{
+                    name: 'PM and Services',
+                    data: [null, 1.2, 1.1, 0.5]
+                },{
+                    name: 'Within Group',
+                    data: [null, 3.4, 3.1, 1.9]
+                },{
+                    name: 'SE',
+                    data: [null, 4.8, 5.9, 4.0]
+                },{
+                    name: 'Other Internal',
+                    data: [15.9, 5.0, 5.5, 7.3]
+                },{
+                    name: 'Other External',
+                    data: [1.9, 2.0, 3.1, 2.9]
+                },{
+                    name: 'Customer',
+                    data: [11.3, 9.6, 10.5, 7.4]
                 }],
                 exporting: {
                   enabled: false
@@ -76,320 +76,5 @@
 
       </div>
     </div>
-    <p class="section-title">Account Coverage</p>
-    <div class="row">
-      <!-- <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div> -->
-      <div class="col-xs-3" style="padding-right:0;">
-        <div id="ac-chart-east"></div>
-        <script>
-        $(function () {
-            $('#ac-chart-east').highcharts({
-                chart: {
-                    type: 'column',
-                    margin: [0,0,50,0]
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'East',
-                    verticalAlign: 'bottom',
-                    style: {
-                      fontSize: '13px'
-                  }
-                },
-                xAxis: {
-                    categories: ['April', 'May' ,'June', 'July']
-                },
-                yAxis: {
-                    min: 0,
-                    max: 1750,
-                    title: {
-                        text: null
-                    },
-                    labels: {
-                      enabled: false
-                    }
-                },
-                legend: {
-                  enabled: false
-                },
-                tooltip: {
-                    formatter: function () {
-                        return '<b>' + this.x + '</b><br/>' +
-                            this.series.name + ': ' + this.y + '<br/>' +
-                            'Total: ' + this.point.stackTotal;
-                    }
-                },
-                plotOptions: {
-                    column: {
-                        stacking: 'normal',
-                        dataLabels: {
-                            enabled: true
-                        }
-                    },
-                    series: {
-                      groupPadding: 0
-                  }
-                },
-                series: [{
-                  name: 'Contacted',
-                  data: [ 474, 466, 449, 370 ]
-                },{
-                  name: 'Engaged',
-                  data: [ 284, 349, 342, 332 ]
-                },{
-                  name: 'Cumulative Engaged',
-                  type: 'spline',
-                  lineWidth: 0,
-                  color: '#70AD47',
-                  marker: {
-                    radius: 8
-                  },
-                  data: [ 284, 454, 548, 617 ]
-                }],
-                exporting: {
-                  enabled: false
-                },
-                credits: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <div class="col-xs-3" style="padding-left:0;padding-right:0;">
-        <div id="ac-chart-west"></div>
-        <script>
-        $(function () {
-            $('#ac-chart-west').highcharts({
-                chart: {
-                    type: 'column',
-                    margin: [0,0,50,0]
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'West',
-                    verticalAlign: 'bottom',
-                    style: {
-                      fontSize: '13px'
-                  }
-                },
-                xAxis: {
-                    categories: ['April', 'May' ,'June', 'July']
-                },
-                yAxis: {
-                    min: 0,
-                    max:1750,
-                    title: {
-                        text: null
-                    },
-                    labels: {
-                      enabled: false
-                    }
-                },
-                legend: {
-                  enabled: false
-                },
-                tooltip: {
-                    formatter: function () {
-                        return '<b>' + this.x + '</b><br/>' +
-                            this.series.name + ': ' + this.y + '<br/>' +
-                            'Total: ' + this.point.stackTotal;
-                    }
-                },
-                plotOptions: {
-                    column: {
-                        stacking: 'normal',
-                        dataLabels: {
-                            enabled: true
-                        }
-                    },
-                    series: {
-                      groupPadding: 0
-                  }
-                },
-                series: [{
-                  name: 'Contacted',
-                  data: [ 382, 368, 354, 321 ]
-                },{
-                  name: 'Engaged',
-                  data: [ 153, 158, 157, 127 ]
-                },{
-                  name: 'Cumulative Engaged',
-                  type: 'spline',
-                  lineWidth: 0,
-                  color: '#70AD47',
-                  marker: {
-                    radius: 8
-                  },
-                  data: [ 227, 365, 441, 503 ]
-                }],
-                exporting: {
-                  enabled: false
-                },
-                credits: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <div class="col-xs-3" style="padding-left:0;padding-right:0;">
-        <div id="ac-chart-lamc"></div>
-        <script>
-        $(function () {
-            $('#ac-chart-lamc').highcharts({
-                chart: {
-                    type: 'column',
-                    margin: [0,0,50,0]
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'LAMC',
-                    verticalAlign: 'bottom',
-                    style: {
-                      fontSize: '13px'
-                  }
-                },
-                xAxis: {
-                    categories: ['April', 'May' ,'June', 'July']
-                },
-                yAxis: {
-                    min: 0,
-                    max: 1750,
-                    title: {
-                        text: null
-                    },
-                    labels: {
-                      enabled: false
-                    }
-                },
-                legend: {
-                  enabled: false
-                },
-                tooltip: {
-                    formatter: function () {
-                        return '<b>' + this.x + '</b><br/>' +
-                            this.series.name + ': ' + this.y + '<br/>' +
-                            'Total: ' + this.point.stackTotal;
-                    }
-                },
-                plotOptions: {
-                    column: {
-                        stacking: 'normal',
-                        dataLabels: {
-                            enabled: true
-                        }
-                    },
-                    series: {
-                      groupPadding: 0
-                  }
-                },
-                series: [{
-                  name: 'Contacted',
-                  data: [ 153, 158, 157, 127 ]
-                },{
-                  name: 'Engaged',
-                  data: [ 91, 144, 155, 117 ]
-                },{
-                  name: 'Cumulative Engaged',
-                  type: 'spline',
-                  lineWidth: 0,
-                  color: '#70AD47',
-                  marker: {
-                    radius: 8
-                  },
-                  data: [ 91, 181, 231, 253 ]
-                }],
-                exporting: {
-                  enabled: false
-                },
-                credits: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <div class="col-xs-3" style="padding-left:0;">
-        <div id="ac-chart-all"></div>
-        <script>
-        $(function () {
-            $('#ac-chart-all').highcharts({
-                chart: {
-                    type: 'column',
-                    margin: [0,0,50,0]
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Americas Total',
-                    verticalAlign: 'bottom',
-                    style: {
-                      fontSize: '13px'
-                  }
-                },
-                xAxis: {
-                    categories: ['April', 'May' ,'June', 'July']
-                },
-                yAxis: {
-                    min: 0,
-                    max: 1750,
-                    title: {
-                        text: null
-                    },
-                    labels: {
-                      enabled: false
-                    }
-                },
-                legend: {
-                  enabled: false
-                },
-                tooltip: {
-                    formatter: function () {
-                        return '<b>' + this.x + '</b><br/>' +
-                            this.series.name + ': ' + this.y + '<br/>' +
-                            'Total: ' + this.point.stackTotal;
-                    }
-                },
-                plotOptions: {
-                    column: {
-                        stacking: 'normal',
-                        dataLabels: {
-                            enabled: true
-                        }
-                    },
-                    series: {
-                      groupPadding: 0
-                  }
-                },
-                series: [{
-                  name: 'Contacted',
-                  data: [ 807, 851, 749, 720 ]
-                },{
-                  name: 'Engaged',
-                  data: [ 506, 690, 481, 500 ]
-                },{
-                  name: 'Cumulative Engaged',
-                  type: 'spline',
-                  lineWidth: 0,
-                  color: '#70AD47',
-                  marker: {
-                    radius: 8
-                  },
-                  data: [ 284, 454, 548, 617 ]
-                }],
-                exporting: {
-                  enabled: false
-                },
-                credits: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-    </div>
+
   </section>
