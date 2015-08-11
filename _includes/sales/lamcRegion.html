@@ -153,78 +153,6 @@
         <p>Reps averaged <strong>24 accounts</strong>.</p>
       </div>
       <div class="col-xs-9">
-        <div id="lr-network-size-mgr-ave"></div>
-        <script>
-          $(function () {
-            $('#lr-network-size-mgr-ave').highcharts({
-                chart: {
-                    type: 'column',
-                    height: 220
-                },
-                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
-                title: {
-                    text: 'Monthly Average by District',
-                    style: {
-                      'color': '#444444',
-                      'font-size': '14px'
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
-                },
-                xAxis: {
-                  categories: ['LAMC (All)','Mexico','Brazil','Other Country']
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of accounts',
-                        style: {
-                        'font-size': '11px'
-                      }
-                    },
-                    labels: {
-                      enabled: true
-                    }
-                },
-                plotOptions: {
-                    series: {
-                        color: '#919191',
-                        dataLabels: {
-                            enabled: true,
-                            allowOverlap: true
-                        }
-                    }
-                },
-                series: [{
-                  data: [{color:'#496B86',y:12},{color:'#70AD47',y:13},{color:'#70AD47',y:12},{color:'#70AD47',y:6}]
-                }],
-                credits: {
-                  enabled: false
-                },
-                exporting: {
-                  enabled: false
-                }
-            });
-        });
-        </script>
-      </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
-    </div>
-    <p class="section-title">Account Contacts Within Rep's Network</p>
-    <div class="row">
-      <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">13</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong>.</p>
-        <p>Reps averaged <strong>11 accounts</strong>.</p>
-      </div>
-      <div class="col-xs-9">
         <div id="lr-network-breadth-mgr-ave"></div>
         <script>
           $(function () {
@@ -273,6 +201,78 @@
                 },
                 series: [{
                   data: [{color:'#496B86',y:25},{color:'#70AD47',y:27},{color:'#70AD47',y:26},{color:'#70AD47',y:7}]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
+    </div>
+    <p class="section-title">Account Contacts Within Rep's Network</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">13</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong>.</p>
+        <p>Reps averaged <strong>11 accounts</strong>.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="lr-network-size-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#lr-network-size-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Monthly Average by District',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: ['LAMC (All)','Mexico','Brazil','Other Country']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of accounts',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        color: '#919191',
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [{color:'#496B86',y:12},{color:'#70AD47',y:13},{color:'#70AD47',y:12},{color:'#70AD47',y:6}]
                 }],
                 credits: {
                   enabled: false
