@@ -92,6 +92,11 @@
         });
         </script>
         <div id="rd-time-mgr-ave"></div>
+        <ul class="region-legend">
+          <li style="width:45.555%">East</li>
+          <li style="width:35.555%">West</li>
+          <li style="width:15.555%">LAMC</li>
+        </ul>
         <script>
           $(function () {
             $('#rd-time-mgr-ave').highcharts({
@@ -115,7 +120,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross', 'Wrast', 'Miranda', 'Moran', 'Holleron', 'Mexico', 'Brazil' ]
                 },
                 yAxis: {
                     title: {
@@ -138,7 +143,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, {color:'#70AD47', y:12}, 11, {color:'#70AD47', y:11}, 10, 9, 8, 7, 7, 7, {color:'#70AD47', y:7} ]
+                  data: [ 11, {color:'#70AD47', y:11}, 9, 7, 7, 12, {color:'#70AD47', y:12}, 10, 7, 8, {color:'#70AD47', y:7} ]
                 }],
                 credits: {
                   enabled: false
@@ -242,6 +247,11 @@
         });
         </script>
         <div id="rd-contact-mgr-ave"></div>
+        <ul class="region-legend" style="margin-left:110px;">
+          <li style="width:45.555%">East</li>
+          <li style="width:35.555%">West</li>
+          <li style="width:15.555%">LAMC</li>
+        </ul>
         <script>
           $(function () {
             $('#rd-contact-mgr-ave').highcharts({
@@ -265,7 +275,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Miranda', 'Wrast', 'Quigley', 'Moran', 'Holleron',  'Al-Shorafa', 'Young', 'Bradley', 'Ross', 'Mexico', 'Brazil' ]
+                  categories: [ 'AMS (All)', 'Quigley', 'Al-Shorafa', 'Young', 'Bradley', 'Ross', 'Miranda', 'Wrast', 'Moran', 'Holleron', 'Mexico', 'Brazil']
                 },
                 yAxis: {
                     title: {
@@ -288,7 +298,7 @@
                     }
                 },
                 series: [{
-                  data: [ {color:'#70AD47', y:17.9}, {color:'#70AD47', y:15.5}, 14.2, 13.9, 13.8, 13.3, 12.7, 11, 10.3, 5.7, 4.1 ]
+                  data: [ {color:'#496B86',y:12}, 14.2, 13.3, 12.7, 11.0, 10.3, {color:'#70AD47', y:17.9}, {color:'#70AD47', y:15.5}, 13.9, 13.8, 5.7, 4.1 ]
                 }],
                 credits: {
                   enabled: false

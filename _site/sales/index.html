@@ -81,6 +81,21 @@
   .toc a {
     color: #444;
   }
+  ul.region-legend {
+    margin:0 0 25px 65px;
+    list-style-type:none;
+  }
+  ul.region-legend li {
+    display: inline-block;
+    border:solid 1px #C0D0E0;
+    padding: 0;
+    margin:0;
+    border-top:none;
+    height:15px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 11px;
+  }
   @media only screen and (min-width: 1159px) {
     .toc {
       display: block;
@@ -290,6 +305,11 @@
         });
         </script>
         <div id="rd-time-mgr-ave"></div>
+        <ul class="region-legend">
+          <li style="width:45.555%">East</li>
+          <li style="width:35.555%">West</li>
+          <li style="width:15.555%">LAMC</li>
+        </ul>
         <script>
           $(function () {
             $('#rd-time-mgr-ave').highcharts({
@@ -313,7 +333,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross', 'Wrast', 'Miranda', 'Moran', 'Holleron', 'Mexico', 'Brazil' ]
                 },
                 yAxis: {
                     title: {
@@ -336,7 +356,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, {color:'#70AD47', y:12}, 11, {color:'#70AD47', y:11}, 10, 9, 8, 7, 7, 7, {color:'#70AD47', y:7} ]
+                  data: [ 11, {color:'#70AD47', y:11}, 9, 7, 7, 12, {color:'#70AD47', y:12}, 10, 7, 8, {color:'#70AD47', y:7} ]
                 }],
                 credits: {
                   enabled: false
@@ -440,6 +460,11 @@
         });
         </script>
         <div id="rd-contact-mgr-ave"></div>
+        <ul class="region-legend" style="margin-left:110px;">
+          <li style="width:45.555%">East</li>
+          <li style="width:35.555%">West</li>
+          <li style="width:15.555%">LAMC</li>
+        </ul>
         <script>
           $(function () {
             $('#rd-contact-mgr-ave').highcharts({
@@ -463,7 +488,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Miranda', 'Wrast', 'Quigley', 'Moran', 'Holleron',  'Al-Shorafa', 'Young', 'Bradley', 'Ross', 'Mexico', 'Brazil' ]
+                  categories: [ 'AMS (All)', 'Quigley', 'Al-Shorafa', 'Young', 'Bradley', 'Ross', 'Miranda', 'Wrast', 'Moran', 'Holleron', 'Mexico', 'Brazil']
                 },
                 yAxis: {
                     title: {
@@ -486,7 +511,7 @@
                     }
                 },
                 series: [{
-                  data: [ {color:'#70AD47', y:17.9}, {color:'#70AD47', y:15.5}, 14.2, 13.9, 13.8, 13.3, 12.7, 11, 10.3, 5.7, 4.1 ]
+                  data: [ {color:'#496B86',y:12}, 14.2, 13.3, 12.7, 11.0, 10.3, {color:'#70AD47', y:17.9}, {color:'#70AD47', y:15.5}, 13.9, 13.8, 5.7, 4.1 ]
                 }],
                 credits: {
                   enabled: false
@@ -513,7 +538,7 @@
 </div>
 <h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
   <section class="section">
-    <p class="section-title">Customer network size</p>
+    <p class="section-title">Customer network breadth</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
@@ -604,6 +629,11 @@
         });
         </script>
         <div id="rd-network-size-mgr-ave"></div>
+        <ul class="region-legend">
+          <li style="width:45.555%">East</li>
+          <li style="width:35.555%">West</li>
+          <li style="width:15.555%">LAMC</li>
+        </ul>
         <script>
           $(function () {
             $('#rd-network-size-mgr-ave').highcharts({
@@ -627,7 +657,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Young', 'Quigley', 'Miranda', 'Al-Shorafa', 'Moran', 'Holleron', 'Ross', 'Bradley', 'Mexico', 'Brazil' ]
+                  categories: [ 'Young', 'Quigley', 'Al-Shorafa', 'Ross', 'Bradley', 'Wrast', 'Miranda', 'Moran', 'Holleron', 'Mexico', 'Brazil' ]
                 },
                 yAxis: {
                     title: {
@@ -650,7 +680,7 @@
                     }
                 },
                 series: [{
-                  data: [ {color:'#70AD47', y:22}, {color:'#70AD47', y:19}, {color:'#70AD47', y:19}, 19, {color:'#70AD47', y:18}, 18, 17, 16, 15, 13, 12 ]
+                  data: [  {color:'#70AD47', y:19}, {color:'#70AD47', y:19}, {color:'#70AD47', y:18}, 16, 15, {color:'#70AD47', y:22}, 19, 18, 17, 13, 12 ]
                 }],
                 credits: {
                   enabled: false
@@ -663,7 +693,7 @@
         </script>
       </div>
     </div>
-    <p class="section-title">Customer network breadth</p>
+    <p class="section-title">Customer network size</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
@@ -754,6 +784,11 @@
         });
         </script>
         <div id="size-mgr-aves"></div>
+        <ul class="region-legend">
+          <li style="width:45.555%">East</li>
+          <li style="width:35.555%">West</li>
+          <li style="width:15.555%">LAMC</li>
+        </ul>
         <script>
           $(function () {
             $('#size-mgr-aves').highcharts({
@@ -777,7 +812,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Al-Shorafa', 'Quigley', 'Young', 'Moran', 'Miranda', 'Ross', 'Bradley', 'Holleron', 'Mexico', 'Brazil' ]
+                  categories: [ 'Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Brazil', 'Mexico' ]
                 },
                 yAxis: {
                     title: {
@@ -800,7 +835,7 @@
                     }
                 },
                 series: [{
-                  data: [ {color:'#70AD47', y:49}, {color:'#70AD47', y:47}, {color:'#70AD47', y:44}, {color:'#70AD47', y:41}, {color:'#70AD47', y:41}, 41, 34, 31, 31, 27, 26 ]
+                  data: [ {color:'#70AD47', y:47}, {color:'#70AD47', y:44}, {color:'#70AD47', y:41}, 34, 31, {color:'#70AD47', y:49}, {color:'#70AD47', y:41}, 41, 31, 26, 27 ]
                 }],
                 credits: {
                   enabled: false
@@ -859,7 +894,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'Club 115','East (All)', 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross' ]
                 },
                 yAxis: {
                     title: {
@@ -882,7 +917,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [ {color:'#FDC44C',y:11}, {color:'#496B86',y:9}, {color:'#70AD47',y:11}, 11, 9, 7, 7 ]
                 }],
                 credits: {
                   enabled: false
@@ -927,7 +962,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'East (All)', 'Al-Shorafa', 'Bradley', 'Quigley', 'Ross', 'Young' ]
                 },
                 yAxis: {
                     title: {
@@ -950,7 +985,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [ {color:'#496B86',y:12}, 13, 11, 14, 10, 13 ]
                 }],
                 credits: {
                   enabled: false
@@ -995,7 +1030,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'East (All)', 'Young', 'Quigley', 'Al-Shorafa',  'Ross', 'Bradley' ]
                 },
                 yAxis: {
                     title: {
@@ -1018,7 +1053,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [ {color:'#496B86',y:17}, 19, {color:'#70AD47',y:19}, {color:'#70AD47',y:18}, 16, 15 ]
                 }],
                 credits: {
                   enabled: false
@@ -1063,7 +1098,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'East (All)', 'Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley' ]
                 },
                 yAxis: {
                     title: {
@@ -1086,7 +1121,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [{color:'#496B86',y:40}, {color:'#70AD47',y:47}, {color:'#70AD47',y:44}, 41, 34, {color:'#70AD47',y:31} ]
                 }],
                 credits: {
                   enabled: false
@@ -1145,7 +1180,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'West (All)', 'Wrast', 'Miranda', 'Moran', 'Holleron' ]
                 },
                 yAxis: {
                     title: {
@@ -1168,7 +1203,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [{color:'#496B86',y:10}, 12, 12, 10, {color:'#70AD47',y:7} ]
                 }],
                 credits: {
                   enabled: false
@@ -1213,7 +1248,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'West (All)', 'Holleron', 'Miranda', 'Moran', 'Wrast' ]
                 },
                 yAxis: {
                     title: {
@@ -1236,7 +1271,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [{color:'#496B86',y:15}, 14, 18, 14, 16 ]
                 }],
                 credits: {
                   enabled: false
@@ -1281,7 +1316,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'West (All)', 'Wrast', 'Miranda', 'Moran', 'Holleron' ]
                 },
                 yAxis: {
                     title: {
@@ -1304,7 +1339,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [{color:'#496B86',y:19}, 22, {color:'#70AD47',y:19}, {color:'#70AD47',y:18}, {color:'#70AD47',y:17}]
                 }],
                 credits: {
                   enabled: false
@@ -1349,7 +1384,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: ['West (All)' ,'Wrast', 'Moran', 'Miranda', 'Holleron']
                 },
                 yAxis: {
                     title: {
@@ -1372,7 +1407,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [{color:'#496B86',y:40}, 49, {color:'#70AD47',y:41}, {color:'#70AD47',y:41}, {color:'#70AD47',y:31}]
                 }],
                 credits: {
                   enabled: false
@@ -1431,7 +1466,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'LAMC (All)', 'Mexico', 'Brazil', 'Other Country' ]
                 },
                 yAxis: {
                     title: {
@@ -1454,7 +1489,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [ {color:'#496B86',y:7}, 8, {color:'#70AD47',y:7}, 3 ]
                 }],
                 credits: {
                   enabled: false
@@ -1499,7 +1534,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: ['LAMC (All)', 'Brazil', 'Mexico']
                 },
                 yAxis: {
                     title: {
@@ -1522,7 +1557,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [{color:'#496B86',y:5},4,6]
                 }],
                 credits: {
                   enabled: false
@@ -1535,7 +1570,7 @@
         </script>
       </div>
     </div>
-    <p class="section-title">Customer Network Size</p>
+    <p class="section-title">Customer network size</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
@@ -1567,7 +1602,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: ['LAMC (All)','Mexico','Brazil','Other Country']
                 },
                 yAxis: {
                     title: {
@@ -1590,7 +1625,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [{color:'#496B86',y:12},{color:'#70AD47',y:13},{color:'#70AD47',y:12},{color:'#70AD47',y:6}]
                 }],
                 credits: {
                   enabled: false
@@ -1635,7 +1670,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Miranda', 'Al-Shorafa',  'Quigley', 'Moran', 'Young', 'Mexico', 'Bradley', 'Ross', 'Holleron', 'Brazil' ]
+                  categories: [ 'LAMC (All)', 'Mexico', 'Brazil', 'Other Country']
                 },
                 yAxis: {
                     title: {
@@ -1658,7 +1693,7 @@
                     }
                 },
                 series: [{
-                  data: [ 12, 12, 11, 11, 10, 9, 8, 7, 7, 7, 7 ]
+                  data: [{color:'#496B86',y:25},{color:'#70AD47',y:27},{color:'#70AD47',y:26},{color:'#70AD47',y:7}]
                 }],
                 credits: {
                   enabled: false
@@ -1710,6 +1745,9 @@
                     max: 40,
                     title: {
                         text: 'Hours'
+                    },
+                    labels: {
+                      enabled: false
                     }
                 },
                 legend: {
@@ -1717,8 +1755,11 @@
                 },
                 plotOptions: {
                     series: {
-                        stacking: 'normal'
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: true
                     }
+                  }
                 },
                 series: [{
                     name: 'Customer',
@@ -1805,11 +1846,7 @@
                     column: {
                         stacking: 'normal',
                         dataLabels: {
-                            enabled: true,
-                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
-                            style: {
-                                textShadow: '0 0 3px black'
-                            }
+                            enabled: true
                         }
                     },
                     series: {
@@ -1886,11 +1923,7 @@
                     column: {
                         stacking: 'normal',
                         dataLabels: {
-                            enabled: true,
-                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
-                            style: {
-                                textShadow: '0 0 3px black'
-                            }
+                            enabled: true
                         }
                     },
                     series: {
@@ -1967,11 +2000,7 @@
                     column: {
                         stacking: 'normal',
                         dataLabels: {
-                            enabled: true,
-                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
-                            style: {
-                                textShadow: '0 0 3px black'
-                            }
+                            enabled: true
                         }
                     },
                     series: {
@@ -2048,11 +2077,7 @@
                     column: {
                         stacking: 'normal',
                         dataLabels: {
-                            enabled: true,
-                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
-                            style: {
-                                textShadow: '0 0 3px black'
-                            }
+                            enabled: true
                         }
                     },
                     series: {

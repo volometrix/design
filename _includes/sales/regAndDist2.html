@@ -1,7 +1,7 @@
 {% include sales/headerRow.html %}
 <h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
   <section class="section">
-    <p class="section-title">Customer network size</p>
+    <p class="section-title">Customer network breadth</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
@@ -92,6 +92,11 @@
         });
         </script>
         <div id="rd-network-size-mgr-ave"></div>
+        <ul class="region-legend">
+          <li style="width:45.555%">East</li>
+          <li style="width:35.555%">West</li>
+          <li style="width:15.555%">LAMC</li>
+        </ul>
         <script>
           $(function () {
             $('#rd-network-size-mgr-ave').highcharts({
@@ -115,7 +120,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Young', 'Quigley', 'Miranda', 'Al-Shorafa', 'Moran', 'Holleron', 'Ross', 'Bradley', 'Mexico', 'Brazil' ]
+                  categories: [ 'Young', 'Quigley', 'Al-Shorafa', 'Ross', 'Bradley', 'Wrast', 'Miranda', 'Moran', 'Holleron', 'Mexico', 'Brazil' ]
                 },
                 yAxis: {
                     title: {
@@ -138,7 +143,7 @@
                     }
                 },
                 series: [{
-                  data: [ {color:'#70AD47', y:22}, {color:'#70AD47', y:19}, {color:'#70AD47', y:19}, 19, {color:'#70AD47', y:18}, 18, 17, 16, 15, 13, 12 ]
+                  data: [  {color:'#70AD47', y:19}, {color:'#70AD47', y:19}, {color:'#70AD47', y:18}, 16, 15, {color:'#70AD47', y:22}, 19, 18, 17, 13, 12 ]
                 }],
                 credits: {
                   enabled: false
@@ -151,7 +156,7 @@
         </script>
       </div>
     </div>
-    <p class="section-title">Customer network breadth</p>
+    <p class="section-title">Customer network size</p>
     <div class="row">
       <div class="col-xs-3">
         <p>&nbsp;</p>
@@ -242,6 +247,11 @@
         });
         </script>
         <div id="size-mgr-aves"></div>
+        <ul class="region-legend">
+          <li style="width:45.555%">East</li>
+          <li style="width:35.555%">West</li>
+          <li style="width:15.555%">LAMC</li>
+        </ul>
         <script>
           $(function () {
             $('#size-mgr-aves').highcharts({
@@ -265,7 +275,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Wrast', 'Al-Shorafa', 'Quigley', 'Young', 'Moran', 'Miranda', 'Ross', 'Bradley', 'Holleron', 'Mexico', 'Brazil' ]
+                  categories: [ 'Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Brazil', 'Mexico' ]
                 },
                 yAxis: {
                     title: {
@@ -288,7 +298,7 @@
                     }
                 },
                 series: [{
-                  data: [ {color:'#70AD47', y:49}, {color:'#70AD47', y:47}, {color:'#70AD47', y:44}, {color:'#70AD47', y:41}, {color:'#70AD47', y:41}, 41, 34, 31, 31, 27, 26 ]
+                  data: [ {color:'#70AD47', y:47}, {color:'#70AD47', y:44}, {color:'#70AD47', y:41}, 34, 31, {color:'#70AD47', y:49}, {color:'#70AD47', y:41}, 41, 31, 26, 27 ]
                 }],
                 credits: {
                   enabled: false
