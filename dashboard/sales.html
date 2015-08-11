@@ -90,6 +90,7 @@ report-title: Account Engagement Report
   ul.region-legend {
     margin:0 0 25px 65px;
     list-style-type:none;
+    display: none;
   }
   ul.region-legend li {
     display: inline-block;
@@ -117,7 +118,8 @@ report-title: Account Engagement Report
     /* Print */
 
     @media print {
-      #instructions {
+      #instructions,
+      .toc {
         display: none;
       }
       h1 {
@@ -135,6 +137,11 @@ report-title: Account Engagement Report
         width: 100%;
         margin: 0;
         padding: 0;
+      }
+      .section {
+        page-break-after: always !important;
+        border-bottom:none;
+        margin-bottom:0;
       }
 /*      .tab-pane {
         page-break-before: always !important;

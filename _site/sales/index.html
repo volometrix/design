@@ -84,6 +84,7 @@
   ul.region-legend {
     margin:0 0 25px 65px;
     list-style-type:none;
+    display: none;
   }
   ul.region-legend li {
     display: inline-block;
@@ -111,7 +112,8 @@
     /* Print */
 
     @media print {
-      #instructions {
+      #instructions,
+      .toc {
         display: none;
       }
       h1 {
@@ -129,6 +131,11 @@
         width: 100%;
         margin: 0;
         padding: 0;
+      }
+      .section {
+        page-break-after: always !important;
+        border-bottom:none;
+        margin-bottom:0;
       }
 /*      .tab-pane {
         page-break-before: always !important;
@@ -202,7 +209,7 @@
         </div>
       </div>
       <br id="page-1">
-      <div class="row" style="margin-top:0;padding:15px 0 0 0;">
+      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
       <span class="h4">Account Engagement Report</span><br>
@@ -526,7 +533,7 @@
     </div>
   </section>
       <br id="page-2">
-      <div class="row" style="margin-top:0;padding:15px 0 0 0;">
+      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
       <span class="h4">Account Engagement Report</span><br>
@@ -850,7 +857,7 @@
     </div>
   </section>
       <br id="page-3">
-      <div class="row" style="margin-top:0;padding:15px 0 0 0;">
+      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
       <span class="h4">Account Engagement Report</span><br>
@@ -1136,7 +1143,7 @@
     </div>
   </section>
       <br id="page-4">
-      <div class="row" style="margin-top:0;padding:15px 0 0 0;">
+      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
       <span class="h4">Account Engagement Report</span><br>
@@ -1422,7 +1429,7 @@
     </div>
   </section>
       <br id="page-5">
-      <div class="row" style="margin-top:0;padding:15px 0 0 0;">
+      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
       <span class="h4">Account Engagement Report</span><br>
@@ -1708,7 +1715,7 @@
     </div>
   </section>
       <br id="page-6">
-      <div class="row" style="margin-top:0;padding:15px 0 0 0;">
+      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
       <span class="h4">Account Engagement Report</span><br>
