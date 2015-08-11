@@ -80,6 +80,7 @@
   }
   .toc a {
     color: #444;
+    text-decoration: underline;
   }
   ul.region-legend {
     margin:0 0 25px 65px;
@@ -115,9 +116,10 @@
   .row > .symbol-legend {
     position:absolute;
     bottom:15px;
-    left:15px
+    left:15px;
+    display: none
   }
-  @media only screen and (min-width: 1159px) {
+  @media only screen and (min-width: 1275px) {
     .toc {
       display: block;
       position:fixed;
@@ -125,7 +127,7 @@
       right:0;
       border-left:solid 1px #eee;
       border-bottom: solid 1px #eee; 
-      padding:25px;
+      padding:15px;
     }
   }
 
@@ -216,14 +218,32 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="toc">
-            <strong>TOC</strong>
-            <ol style="margin-left:15px;">
-              <li><a href="#p1">Region and Dist. 1</a></li>
-              <li><a href="#p2">Region and Dist. 2</a></li>
-              <li><a href="#p3">A Week in the Life</a></li>
-              <li><a href="#p4">Account Coverage</a></li>
-              <li><a href="#p5">Appendix</a></li>
-            </ol>
+            <strong>Contents</strong>
+            <ul class="list-unstyled" style="margin-left:0;">
+              <li><a href="#p1">Page 1</a>
+                <ul>
+                  <li>Meeting and Email Time</li>
+                  <li>Unique Accounts Contacted</li>
+                </ul>
+              </li>
+              <li><a href="#p2">Page 2</a>
+                  <ul>
+                    <li>Accts Within Network</li>
+                    <li>Acct Contacts Within Network</li>
+                  </ul>
+              </li>
+              <li><a href="#p3">Page 3</a>
+                  <ul>
+                    <li>A Week in the Life</li>
+                    <li>Acct Coverage</li>
+                  </ul>
+              </li>
+              <li><a href="#p4">Page 4</a>
+                  <ul>
+                    <li>Definitions</li>
+                  </ul>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -286,7 +306,7 @@
                   title: {
                     text: null
                   },
-                  categories: ['East','West','LAMC','AMS (All)']
+                  categories: ['East','West','LAMC']
                 },
                 plotOptions: {
                     series: {
@@ -298,32 +318,16 @@
                 },
                 series: [{
                   name: 'April',
-                  data: [ 
-                    { y:8 },
-                    { y:8 }, 
-                    { y:4 }  
-                  ]
+                  data: [8,8,4]
                 },{
                   name: 'May',
-                  data: [ 
-                    { y:10 },
-                    { y:10 }, 
-                    { y:9 }
-                  ]
+                  data: [10,10,9]
                 },{
                   name: 'June',
-                  data: [ 
-                    { y:10 },
-                    { y:10 }, 
-                    { y:8 }  
-                  ]
+                  data: [10,10,8]
                 },{
                   name: 'July',
-                  data: [ 
-                    { y:9 },
-                    { y:11 }, 
-                    { y:7 } 
-                  ]
+                  data: [9,11,8]
                 }],
                 credits: {
                   enabled: false
@@ -468,32 +472,16 @@
                 },
                 series: [{
                   name: 'April',
-                  data: [ 
-                    { y:11 },
-                    { y:13 }, 
-                    { y:3 }  
-                  ]
+                  data: [11,13,3,10]
                 },{
                   name: 'May',
-                  data: [ 
-                    { y:14 },
-                    { y:16 }, 
-                    { y:5 }
-                  ]
+                  data: [14,16,5,13]
                 },{
                   name: 'June',
-                  data: [ 
-                    { y:13 },
-                    { y:16 }, 
-                    { y:5 }  
-                  ]
+                  data: [13,16,5,12]
                 },{
                   name: 'July',
-                  data: [ 
-                    { y:12 },
-                    { y:15 }, 
-                    { y:5 } 
-                  ]
+                  data: [12,15,5,12]
                 }],
                 credits: {
                   enabled: false
@@ -657,32 +645,16 @@
                 },
                 series: [{
                   name: 'April',
-                  data: [ 
-                    { y:17 },
-                    { y:18 }, 
-                    { y:9 }  
-                  ]
+                  data: [17,18,9]
                 },{
                   name: 'May',
-                  data: [ 
-                    { y:18 },
-                    { y:19 }, 
-                    { y:12 }
-                  ]
+                  data: [18,19,12]
                 },{
                   name: 'June',
-                  data: [ 
-                    { y:19 },
-                    { y:20 }, 
-                    { y:14 }  
-                  ]
+                  data: [19,20,14]
                 },{
                   name: 'July',
-                  data: [ 
-                    { y:16 },
-                    { y:18 }, 
-                    { y:11 } 
-                  ]
+                  data: [16,18,11]
                 }],
                 credits: {
                   enabled: false
@@ -828,32 +800,16 @@
                 },
                 series: [{
                   name: 'April',
-                  data: [ 
-                    { y:38 },
-                    { y:39 }, 
-                    { y:18 }  
-                  ]
+                  data: [38,39,18]
                 },{
                   name: 'May',
-                  data: [ 
-                    { y:42 },
-                    { y:40 }, 
-                    { y:25 }
-                  ]
+                  data: [42,40,25]
                 },{
                   name: 'June',
-                  data: [ 
-                    { y:44 },
-                    { y:45 }, 
-                    { y:30 }  
-                  ]
+                  data: [44,45,30]
                 },{
                   name: 'July',
-                  data: [ 
-                    { y:36 },
-                    { y:38 }, 
-                    { y:24 } 
-                  ]
+                  data: [36,38,24]
                 }],
                 credits: {
                   enabled: false
@@ -956,9 +912,9 @@
     <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
   </div>
 </div>
-<h3 style="text-align:center">A Week In The Life July 2015</h3><br>
+<h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
   <section class="section">
-    <p class="section-title">Summary</p>
+    <p class="section-title">A Week in the Life July 2015</p>
     <div class="row">
       <div class="col-xs-12">
         <!-- <p>&nbsp;</p>
@@ -1033,21 +989,7 @@
 
       </div>
     </div>
-
-  </section>
-      <br id="p4">
-      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
-  <div class="col-xs-12">
-    <p class="pull-right" style="text-align:right;">
-      <span class="h4">Account Engagement Report</span><br>
-      <span><strong>July 2015</strong></span>
-    </p>
-    <p><img src="/design/images/volo-logo.svg" alt="Volometrix">&nbsp;&nbsp;
-    <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
-  </div>
-</div>
-<h3 style="text-align:center">Account Coverage July 2015</h3><br>
-  <section class="section"><p class="section-title">Account Coverage</p>
+    <p class="section-title">Account Coverage</p>
     <div class="row">
       <!-- <div class="col-xs-3">
         <p>&nbsp;</p>
@@ -1363,8 +1305,9 @@
         </script>
       </div>
     </div>
+
   </section>
-      <br id="p5">
+      <br id="p4">
       <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
@@ -1375,9 +1318,8 @@
     <img src="/design/images/symc-logo.svg" alt="Symantec"></p>
   </div>
 </div>
-<h3 style="text-align:center">Appendix</h3><br>
+<h3 style="text-align:center">Definitions</h3><br>
   <section class="section">
-    <p class="section-title">Definitions</p>
     <div class="row">
       <div class="col-xs-8">
       	<dl>
@@ -1390,16 +1332,6 @@
       		<dt>Cumulative Engaged</dt>
       		<dd>Running total of Accounts with whom Symantec/Region has engaged since April 15.</dd>
       	</dl>
-      </div>
-    </div>
-    <p class="section-title">Symbols</p>
-    <div class="row">
-      <div class="col-xs-8">
-      	<ul class="symbol-legend">
-      		<li><span class="legend-color" style="background:#FDC44C"></span> indicates current month</li>
-      		<li><span class="legend-color" style="background:#496B86"></span> indicates informational element not part of the current set or a summary element</li>
-      		<li><span class="legend-color" style="background:#70AD47"></span> indicates a goal was met</li>
-      	</ul>
       </div>
     </div>
   </section>
