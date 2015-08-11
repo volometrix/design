@@ -61,6 +61,10 @@
     font-size: 36px;
     font-weight: 200;
   }
+  .header-row {
+    margin-top:0;
+    padding:15px 0 0 0;
+  }
   .section-title {
     margin-top: 1px;
     padding: 6px;
@@ -102,7 +106,7 @@
     list-style-type: none;
     margin-left:0;
     font-size: 11px;
-    font-weight: 300;
+    font-weight: 500;
   }
   .symbol-legend .legend-color {
     display: inline-block;
@@ -117,7 +121,6 @@
     position:absolute;
     bottom:15px;
     left:15px;
-    display: none
   }
   @media only screen and (min-width: 1275px) {
     .toc {
@@ -154,19 +157,16 @@
         margin: 0;
         padding: 0;
       }
+       .header-row {
+        margin-top:0;
+        padding:0 0 0 0;
+      }
       .section {
-        page-break-after: always !important;
+        page-break-after: auto !important;
         border-bottom:none;
         margin-bottom:0;
+        padding-bottom:0;
       }
-/*      .tab-pane {
-        page-break-before: always !important;
-        page-break-after: always !important;
-      }
-      #print-wrapper  .container {
-        width: 595px;
-        margin:0;
-      }*/
       .col-xs-8 {
         width: 300px;
         float:left;
@@ -248,7 +248,7 @@
         </div>
       </div>
       <br id="p1">
-      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
+      <div class="row header-row">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
       <span class="h4">Account Engagement Report</span><br>
@@ -274,7 +274,7 @@
             $('#rd-time-reg-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
@@ -286,9 +286,9 @@
                 },
                 legend: {
                     enabled: true,
-                      itemStyle: {
-                         fontWeight: 'normal',
-                         fontSize: '11px'
+                    itemStyle: {
+                       fontWeight: 'normal',
+                       fontSize: '11px'
                     }
                 },
                 yAxis: {
@@ -349,7 +349,7 @@
             $('#rd-time-mgr-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
@@ -360,11 +360,7 @@
                     }
                 },
                 legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
+                  enabled: false
                 },
                 xAxis: {
                   categories: [ 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross', 'Wrast', 'Miranda', 'Moran', 'Holleron', 'Mexico', 'Brazil' ]
@@ -385,7 +381,7 @@
                       value: 10.5,
                       dashStyle: 'dot',
                       label: {
-                        text: 'Goal',
+                        text: 'BM',
                         align: 'right',
                         x: 0
                     }
@@ -413,10 +409,6 @@
         });
         </script>
       </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-      </ul>
     </div>
     <p class="section-title">Unique Accounts Contacted</p>
     <div class="row">
@@ -432,7 +424,7 @@
             $('#rd-contact-reg-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
@@ -443,7 +435,11 @@
                     }
                 },
                 legend: {
-                    enabled: true
+                    enabled: true,
+                    itemStyle: {
+                       fontWeight: 'normal',
+                       fontSize: '11px'
+                    }
                 },
                 yAxis: {
                     title: {
@@ -503,7 +499,7 @@
             $('#rd-contact-mgr-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
@@ -514,11 +510,7 @@
                     }
                 },
                 legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
+                  enabled: false
                 },
                 xAxis: {
                   categories: ['AMS (All)', 'Quigley', 'Al-Shorafa', 'Young', 'Bradley', 'Ross', 'Miranda', 'Wrast', 'Moran', 'Holleron', 'Mexico', 'Brazil' ]
@@ -539,7 +531,7 @@
                       value: 16,
                       dashStyle: 'dot',
                       label: {
-                        text: 'Goal',
+                        text: 'BM',
                         align: 'right',
                         x: 0
                     }
@@ -567,15 +559,10 @@
         });
         </script>
       </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
     </div>
   </section>
       <br id="p2">
-      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
+      <div class="row header-row">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
       <span class="h4">Account Engagement Report</span><br>
@@ -595,13 +582,13 @@
         <p>Reps averaged <strong>16 accounts</strong> in their network.</p>
       </div>
       <div class="col-xs-9">
-        <div id="rd-network-size-reg-ave"></div>
+        <div id="rd-network-size-reg-ave"></div><hr>
         <script>
           $(function () {
             $('#rd-network-size-reg-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
@@ -676,11 +663,11 @@
             $('#rd-network-size-mgr-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Monthly Average by District',
+                    text: 'July Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -708,7 +695,7 @@
                       value: 18,
                       dashStyle: 'dot',
                       label: {
-                        text: 'Goal',
+                        text: 'BM',
                         align: 'right',
                         x: 0
                     }
@@ -736,10 +723,6 @@
         });
         </script>
       </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-      </ul>
     </div>
     <p class="section-title">Account Contacts Within Rep's Network</p>
     <div class="row">
@@ -749,13 +732,13 @@
         <p>Reps averaged <strong>34 contacts</strong>.</p>
       </div>
       <div class="col-xs-9">
-        <div id="size-regional-aves"></div>
+        <div id="size-regional-aves"></div><hr>
         <script>
           $(function () {
             $('#size-regional-aves').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
@@ -831,7 +814,7 @@
             $('#size-mgr-aves').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
@@ -842,11 +825,7 @@
                     }
                 },
                 legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
+                  enabled: false
                 },
                 xAxis: {
                   categories: ['Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Brazil', 'Mexico']
@@ -867,7 +846,7 @@
                       value: 40,
                       dashStyle: 'dot',
                       label: {
-                        text: 'Goal',
+                        text: 'BM',
                         align: 'right',
                         x: 0
                     }
@@ -895,14 +874,10 @@
         });
         </script>
       </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-      </ul>
     </div>
   </section>
       <br id="p3">
-      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
+      <div class="row header-row">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
       <span class="h4">Account Engagement Report</span><br>
@@ -917,17 +892,15 @@
     <p class="section-title">A Week in the Life July 2015</p>
     <div class="row">
       <div class="col-xs-12">
-        <!-- <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p> -->
         <div id="awl-time-chart"></div>
         <script>
           $(function () {
             $('#awl-time-chart').highcharts({
                 chart: {
-                    type: 'bar'
+                    type: 'bar',
+                    height: 400
                 },
-                colors: ['#E2A712','#C04A1B','#496B86','#608CAE','#7FA5C4','#AFC6D9','#919191'],
+                colors: ['#919191','#466882','#608CAE','#7FA5C4','#AFC6D9','#EDBD43','#D39700'],
                 title: {
                     text: null
                 },
@@ -945,7 +918,11 @@
                     }
                 },
                 legend: {
-                    reversed: true
+                    reversed: true,
+                    itemStyle: {
+                       fontWeight: 'normal',
+                       fontSize: '11px'
+                    }
                 },
                 plotOptions: {
                     series: {
@@ -986,16 +963,11 @@
             });
         });
         </script>
-
       </div>
     </div>
+    <br>
     <p class="section-title">Account Coverage</p>
     <div class="row">
-      <!-- <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div> -->
       <div class="col-xs-3" style="padding-right:0;">
         <div id="ac-chart-east"></div>
         <script>
@@ -1003,7 +975,8 @@
             $('#ac-chart-east').highcharts({
                 chart: {
                     type: 'column',
-                    margin: [0,0,50,0]
+                    margin: [0,0,50,0],
+                    height: 400
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
@@ -1305,10 +1278,20 @@
         </script>
       </div>
     </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-12" style="text-align:center;">
+        <ul class="symbol-legend list-inline">
+          <li><span class="legend-color" style="background:#CBCBCB"></span> Contacted</li>
+          <li><span class="legend-color" style="background:#919191"></span> Engaged</li>
+          <li><span class="legend-color" style="background:#70AD47;width:12px;border-radius:100%"></span> Cumulative Engaged</li>
+        </ul>
+      </div>
+    </div>
 
   </section>
       <br id="p4">
-      <div class="row header-row" style="margin-top:0;padding:15px 0 0 0;">
+      <div class="row header-row">
   <div class="col-xs-12">
     <p class="pull-right" style="text-align:right;">
       <span class="h4">Account Engagement Report</span><br>

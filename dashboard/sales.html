@@ -67,6 +67,10 @@ report-title: Account Engagement Report
     font-size: 36px;
     font-weight: 200;
   }
+  .header-row {
+    margin-top:0;
+    padding:15px 0 0 0;
+  }
   .section-title {
     margin-top: 1px;
     padding: 6px;
@@ -108,7 +112,7 @@ report-title: Account Engagement Report
     list-style-type: none;
     margin-left:0;
     font-size: 11px;
-    font-weight: 300;
+    font-weight: 500;
   }
   .symbol-legend .legend-color {
     display: inline-block;
@@ -123,7 +127,6 @@ report-title: Account Engagement Report
     position:absolute;
     bottom:15px;
     left:15px;
-    display: none
   }
   @media only screen and (min-width: 1275px) {
     .toc {
@@ -160,19 +163,16 @@ report-title: Account Engagement Report
         margin: 0;
         padding: 0;
       }
+       .header-row {
+        margin-top:0;
+        padding:0 0 0 0;
+      }
       .section {
-        page-break-after: always !important;
+        page-break-after: auto !important;
         border-bottom:none;
         margin-bottom:0;
+        padding-bottom:0;
       }
-/*      .tab-pane {
-        page-break-before: always !important;
-        page-break-after: always !important;
-      }
-      #print-wrapper  .container {
-        width: 595px;
-        margin:0;
-      }*/
       .col-xs-8 {
         width: 300px;
         float:left;

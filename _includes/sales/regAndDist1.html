@@ -15,7 +15,7 @@
             $('#rd-time-reg-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
@@ -27,9 +27,9 @@
                 },
                 legend: {
                     enabled: true,
-                      itemStyle: {
-                         fontWeight: 'normal',
-                         fontSize: '11px'
+                    itemStyle: {
+                       fontWeight: 'normal',
+                       fontSize: '11px'
                     }
                 },
                 yAxis: {
@@ -90,7 +90,7 @@
             $('#rd-time-mgr-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
@@ -101,11 +101,7 @@
                     }
                 },
                 legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
+                  enabled: false
                 },
                 xAxis: {
                   categories: [ 'Al-Shorafa', 'Quigley', 'Young', 'Bradley', 'Ross', 'Wrast', 'Miranda', 'Moran', 'Holleron', 'Mexico', 'Brazil' ]
@@ -126,7 +122,7 @@
                       value: 10.5,
                       dashStyle: 'dot',
                       label: {
-                        text: 'Goal',
+                        text: 'BM',
                         align: 'right',
                         x: 0
                     }
@@ -154,10 +150,6 @@
         });
         </script>
       </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-      </ul>
     </div>
     <p class="section-title">Unique Accounts Contacted</p>
     <div class="row">
@@ -173,7 +165,7 @@
             $('#rd-contact-reg-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
@@ -184,7 +176,11 @@
                     }
                 },
                 legend: {
-                    enabled: true
+                    enabled: true,
+                    itemStyle: {
+                       fontWeight: 'normal',
+                       fontSize: '11px'
+                    }
                 },
                 yAxis: {
                     title: {
@@ -244,7 +240,7 @@
             $('#rd-contact-mgr-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
@@ -255,11 +251,7 @@
                     }
                 },
                 legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
+                  enabled: false
                 },
                 xAxis: {
                   categories: ['AMS (All)', 'Quigley', 'Al-Shorafa', 'Young', 'Bradley', 'Ross', 'Miranda', 'Wrast', 'Moran', 'Holleron', 'Mexico', 'Brazil' ]
@@ -280,7 +272,7 @@
                       value: 16,
                       dashStyle: 'dot',
                       label: {
-                        text: 'Goal',
+                        text: 'BM',
                         align: 'right',
                         x: 0
                     }
@@ -308,10 +300,5 @@
         });
         </script>
       </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
-      </ul>
     </div>
   </section>

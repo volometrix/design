@@ -9,13 +9,13 @@
         <p>Reps averaged <strong>16 accounts</strong> in their network.</p>
       </div>
       <div class="col-xs-9">
-        <div id="rd-network-size-reg-ave"></div>
+        <div id="rd-network-size-reg-ave"></div><hr>
         <script>
           $(function () {
             $('#rd-network-size-reg-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
@@ -90,11 +90,11 @@
             $('#rd-network-size-mgr-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
-                    text: 'Monthly Average by District',
+                    text: 'July Average by District',
                     style: {
                       'color': '#444444',
                       'font-size': '14px'
@@ -122,7 +122,7 @@
                       value: 18,
                       dashStyle: 'dot',
                       label: {
-                        text: 'Goal',
+                        text: 'BM',
                         align: 'right',
                         x: 0
                     }
@@ -150,10 +150,6 @@
         });
         </script>
       </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-      </ul>
     </div>
     <p class="section-title">Account Contacts Within Rep's Network</p>
     <div class="row">
@@ -163,13 +159,13 @@
         <p>Reps averaged <strong>34 contacts</strong>.</p>
       </div>
       <div class="col-xs-9">
-        <div id="size-regional-aves"></div>
+        <div id="size-regional-aves"></div><hr>
         <script>
           $(function () {
             $('#size-regional-aves').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
@@ -245,7 +241,7 @@
             $('#size-mgr-aves').highcharts({
                 chart: {
                     type: 'column',
-                    height: 220
+                    height: 185
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
@@ -256,11 +252,7 @@
                     }
                 },
                 legend: {
-                    itemStyle: {
-                        'color': '#444444',
-                        'fontSize': '11px'
-                    },
-                    enabled: false
+                  enabled: false
                 },
                 xAxis: {
                   categories: ['Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Brazil', 'Mexico']
@@ -281,7 +273,7 @@
                       value: 40,
                       dashStyle: 'dot',
                       label: {
-                        text: 'Goal',
+                        text: 'BM',
                         align: 'right',
                         x: 0
                     }
@@ -309,9 +301,5 @@
         });
         </script>
       </div>
-      <ul class="symbol-legend">
-        <li><span class="legend-color" style="background:#FDC44C"></span> Current month</li>
-        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
-      </ul>
     </div>
   </section>

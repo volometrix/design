@@ -4,17 +4,15 @@
     <p class="section-title">A Week in the Life July 2015</p>
     <div class="row">
       <div class="col-xs-12">
-        <!-- <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p> -->
         <div id="awl-time-chart"></div>
         <script>
           $(function () {
             $('#awl-time-chart').highcharts({
                 chart: {
-                    type: 'bar'
+                    type: 'bar',
+                    height: 400
                 },
-                colors: ['#E2A712','#C04A1B','#496B86','#608CAE','#7FA5C4','#AFC6D9','#919191'],
+                colors: ['#919191','#466882','#608CAE','#7FA5C4','#AFC6D9','#EDBD43','#D39700'],
                 title: {
                     text: null
                 },
@@ -32,7 +30,11 @@
                     }
                 },
                 legend: {
-                    reversed: true
+                    reversed: true,
+                    itemStyle: {
+                       fontWeight: 'normal',
+                       fontSize: '11px'
+                    }
                 },
                 plotOptions: {
                     series: {
@@ -73,16 +75,11 @@
             });
         });
         </script>
-
       </div>
     </div>
+    <br>
     <p class="section-title">Account Coverage</p>
     <div class="row">
-      <!-- <div class="col-xs-3">
-        <p>&nbsp;</p>
-        <p><span class="h3">41</span><strong>%</strong> met of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
-        <p>Reps averaged <strong>8.8 hours</strong> with customers.</p>
-      </div> -->
       <div class="col-xs-3" style="padding-right:0;">
         <div id="ac-chart-east"></div>
         <script>
@@ -90,7 +87,8 @@
             $('#ac-chart-east').highcharts({
                 chart: {
                     type: 'column',
-                    margin: [0,0,50,0]
+                    margin: [0,0,50,0],
+                    height: 400
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
@@ -390,6 +388,16 @@
             });
         });
         </script>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-12" style="text-align:center;">
+        <ul class="symbol-legend list-inline">
+          <li><span class="legend-color" style="background:#CBCBCB"></span> Contacted</li>
+          <li><span class="legend-color" style="background:#919191"></span> Engaged</li>
+          <li><span class="legend-color" style="background:#70AD47;width:12px;border-radius:100%"></span> Cumulative Engaged</li>
+        </ul>
       </div>
     </div>
 
