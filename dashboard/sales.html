@@ -76,6 +76,8 @@ report-title: Account Engagement Report
     padding: 6px;
     font-weight: bold;
     background: #f7f7f7;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
     border-top: solid 1px #ddd;
     border-bottom: solid 1px #ddd;
   }
@@ -119,6 +121,8 @@ report-title: Account Engagement Report
     width:16px;
     height:12px;
     background: #ccc;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
   .row {
     position: relative;
@@ -213,8 +217,8 @@ report-title: Account Engagement Report
     }
     @media print and (color) {
       * {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
     }
     </style>
