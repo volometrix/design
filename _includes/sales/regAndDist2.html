@@ -9,13 +9,14 @@
         <p>Reps averaged <strong>16 accounts</strong> in their network.</p>
       </div>
       <div class="col-xs-9">
-        <div id="rd-network-size-reg-ave"></div><hr>
+        <div id="rd-network-size-reg-ave"></div>
+        <hr class="separator">
         <script>
           $(function () {
             $('#rd-network-size-reg-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 185
+                    height: 180
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
@@ -81,16 +82,38 @@
         </script>
         <div id="rd-network-size-mgr-ave"></div>
         <ul class="region-legend">
-          <li style="width:45.555%">East</li>
-          <li style="width:35.555%">West</li>
+          <li style="width:48.888%">East</li>
+          <li style="width:32.555%">West</li>
           <li style="width:15.555%">LAMC</li>
         </ul>
+        <div style="text-align:center">
+          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <svg width="162px" height="16px" viewBox="0 0 162 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+            <title>DistrictLegend</title>
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+              <text id="Goal-Met" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                <tspan x="23.2096" y="12">Goal Met</tspan>
+              </text>
+              <path d="M2,2 L18,2 L18,14 L2,14 L2,2 Z" id="Fill-125-Copy-5" fill="#70AD47" sketch:type="MSShapeGroup"></path>
+              <g id="Group" sketch:type="MSLayerGroup" transform="translate(81.000000, 2.000000)">
+                <text id="Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                  <tspan x="21.2096" y="10">Benchmark</tspan>
+                </text>
+                <circle id="Oval-1-Copy" fill="#919191" sketch:type="MSShapeGroup" cx="15.5" cy="6.5" r="1.5"></circle>
+                <circle id="Oval-1-Copy-2" fill="#919191" sketch:type="MSShapeGroup" cx="8.5" cy="6.5" r="1.5"></circle>
+                <circle id="Oval-1-Copy-3" fill="#919191" sketch:type="MSShapeGroup" cx="1.5" cy="6.5" r="1.5"></circle>
+              </g>
+            </g>
+          </svg>
+        </div>
         <script>
           $(function () {
             $('#rd-network-size-mgr-ave').highcharts({
                 chart: {
                     type: 'column',
-                    height: 185
+                    height: 180
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
@@ -104,7 +127,7 @@
                     enabled: false
                 },
                 xAxis: {
-                  categories: [ 'Young', 'Quigley', 'Al-Shorafa', 'Ross', 'Bradley', 'Wrast', 'Miranda', 'Moran', 'Holleron', 'Mexico', 'Brazil' ]
+                  categories: ['AMS (All)', 'Ross', 'Young', 'Quigley', 'Al-Shorafa', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Mexico', 'Brazil']
                 },
                 yAxis: {
                     title: {
@@ -120,12 +143,7 @@
                       color: '#919191',
                       width: 2,
                       value: 18,
-                      dashStyle: 'dot',
-                      label: {
-                        text: 'BM',
-                        align: 'right',
-                        x: 0
-                    }
+                      dashStyle: 'dot'
                   }]
                 },
                 plotOptions: {
@@ -138,7 +156,7 @@
                     }
                 },
                 series: [{
-                  data: [17, 16, 16, {color:'#70AD47', y:18}, 13, {color:'#70AD47', y:22}, 17, {color:'#70AD47', y:18}, 16, 13, 11 ]
+                  data: [ 16, {color:'#70AD47', y:18}, 17, 16, 16, 13, {color:'#70AD47', y:22}, {color:'#70AD47', y:18}, 17, 16, 13, 11 ]
                 }],
                 credits: {
                   enabled: false
@@ -159,13 +177,14 @@
         <p>Reps averaged <strong>34 contacts</strong>.</p>
       </div>
       <div class="col-xs-9">
-        <div id="size-regional-aves"></div><hr>
+        <div id="size-regional-aves"></div>
+        <hr class="separator">
         <script>
           $(function () {
             $('#size-regional-aves').highcharts({
                 chart: {
                     type: 'column',
-                    height: 185
+                    height: 180
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
                 title: {
@@ -232,16 +251,38 @@
         </script>
         <div id="size-mgr-aves"></div>
         <ul class="region-legend">
-          <li style="width:45.555%">East</li>
-          <li style="width:35.555%">West</li>
+          <li style="width:48.888%">East</li>
+          <li style="width:32.555%">West</li>
           <li style="width:15.555%">LAMC</li>
         </ul>
+        <div style="text-align:center">
+          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <svg width="162px" height="16px" viewBox="0 0 162 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+            <title>DistrictLegend</title>
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+              <text id="Goal-Met" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                <tspan x="23.2096" y="12">Goal Met</tspan>
+              </text>
+              <path d="M2,2 L18,2 L18,14 L2,14 L2,2 Z" id="Fill-125-Copy-5" fill="#70AD47" sketch:type="MSShapeGroup"></path>
+              <g id="Group" sketch:type="MSLayerGroup" transform="translate(81.000000, 2.000000)">
+                <text id="Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                  <tspan x="21.2096" y="10">Benchmark</tspan>
+                </text>
+                <circle id="Oval-1-Copy" fill="#919191" sketch:type="MSShapeGroup" cx="15.5" cy="6.5" r="1.5"></circle>
+                <circle id="Oval-1-Copy-2" fill="#919191" sketch:type="MSShapeGroup" cx="8.5" cy="6.5" r="1.5"></circle>
+                <circle id="Oval-1-Copy-3" fill="#919191" sketch:type="MSShapeGroup" cx="1.5" cy="6.5" r="1.5"></circle>
+              </g>
+            </g>
+          </svg>
+        </div>
         <script>
           $(function () {
             $('#size-mgr-aves').highcharts({
                 chart: {
                     type: 'column',
-                    height: 185
+                    height: 180
                 },
                 colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
                 title: {
@@ -255,7 +296,7 @@
                   enabled: false
                 },
                 xAxis: {
-                  categories: ['Al-Shorafa', 'Quigley', 'Young', 'Ross', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Brazil', 'Mexico']
+                  categories: ['AMS (All)', 'Al-Shorafa', 'Ross', 'Young', 'Quigley', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Mexico', 'Brazil']
                 },
                 yAxis: {
                     title: {
@@ -271,12 +312,7 @@
                       color: '#919191',
                       width: 2,
                       value: 40,
-                      dashStyle: 'dot',
-                      label: {
-                        text: 'BM',
-                        align: 'right',
-                        x: 0
-                    }
+                      dashStyle: 'dot'
                   }]
                 },
                 plotOptions: {
@@ -289,7 +325,7 @@
                     }
                 },
                 series: [{
-                  data: [{color:'#70AD47', y:42}, 35, 36, 37, 26, {color:'#70AD47', y:46}, {color:'#70AD47', y:42}, 35, 27, 24, 29]
+                  data: [ 34, {color:'#70AD47', y:42}, 37, 36, 35, 26, {color:'#70AD47', y:46}, {color:'#70AD47', y:42}, 35, 27, 29, 24 ]
                 }],
                 credits: {
                   enabled: false
