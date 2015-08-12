@@ -25,3 +25,7 @@ collections:
 
 # Build settings
 markdown: kramdown
+
+# Cherry-pick what goes to github
+exclude: ['/cen/','/charts/','/comps/','/dashboard/','/data/','/email/','/FB/','/network/','/otherModules/','/pdf/','/product/','about.md','brand.html','charts.html','pie.html','product.html','theme.html','_posts/2015-05-01-Comps.md']
+include: ['colors.html','enterprise.html','executive.html','index.html','manager.html','personal-goals.html','sales.html','time.html']
