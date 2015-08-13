@@ -26,6 +26,6 @@ collections:
 # Build settings
 markdown: kramdown
 
-# Cherry-pick what goes to github: ,'/data/' ,'theme.html'
-exclude: ['/cen/','/charts/','/comps/','/dashboard/','/email/','/FB/','/network/','/otherModules/','/pdf/','/product/','about.md','brand.html','pie.html','product.html','_posts/2015-05-01-Comps.md']
+# Cherry-pick what goes to github: ,'/data/' ,'theme.html' ,'/network/'
+exclude: ['/cen/','/charts/','/comps/','/dashboard/','/email/','/FB/','/otherModules/','/pdf/','/product/','about.md','brand.html','pie.html','product.html','_posts/2015-05-01-Comps.md']
 include: ['colors.html','enterprise.html','executive.html','index.html','manager.html','personal-goals.html','sales-fake-data.html','time.html','meetings.html','charts.html']

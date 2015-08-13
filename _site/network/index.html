@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
-      Personal Dashboard
+      Network
       </title>
   <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
   <link rel="stylesheet" href="/design/css/main.css">
-  <link rel="canonical" href="https://volometrix.github.io/design/">
+  <link rel="canonical" href="https://volometrix.github.io/design/network/">
   <link rel="alternate" type="application/rss+xml" title="Personal Dashboard" href="https://volometrix.github.io/design/feed.xml" />
   <link rel="stylesheet" href="/design/css/bootstrap.min.css">
   <link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
@@ -150,7 +150,7 @@
 
     <a class="site-title" href="/design/">
       
-      Personal Dashboard
+      Network
       
     </a>
 
@@ -223,76 +223,96 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>Design</h1>
-      <p class="lead">Principles, guidelines and assets for designing and building Volometrix products</p>
-      <p><small>Updated 2015-08-13 16:25:01 -0700</small></p>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h5><a href="/design/product/">Product</a></h5>
-      <ul class="list-unstyled">
-        
-        <li><a href="/design/product#charts-section">Charts</a></li>
-        
-        <li><a href="/design/product#colors-section">Colors</a></li>
-        
-        <li><a href="/design/product#grid-section">Grid</a></li>
-        
-        <li><a href="/design/product#icons-section">Icons</a></li>
-        
-        <li><a href="/design/product#layout-section">Layout</a></li>
-        
-        <li><a href="/design/product#typography-section">Typography</a></li>
-        
-        <li><a href="/design/product#writing style-section">Writing style</a></li>
-        
-        <li><a href="/design/product#components-section">Components</a></li>
-        
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h5><a href="/design/brand/">Brand</a></h5>
-      <ul class="list-unstyled">
-        
-        <li><a href="/design/brand#logo-section">Logo</a></li>
-        
-        <li><a href="/design/brand#colors-section">Colors</a></li>
-        
-        <li><a href="/design/brand#typography-section">Typography</a></li>
-        
-        <li><a href="/design/brand#copywriting-section">Copywriting</a></li>
-        
-        <li><a href="/design/brand#illustration-section">Illustration</a></li>
-        
-        <li><a href="/design/brand#photography-section">Photography</a></li>
-        
-        <li><a href="/design/brand#screenshots-section">Screenshots</a></li>
-        
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Method</h2>
-      <p>Copy here</p>
-    </div>
-    <div class="col-md-4">
-      <h4>Approach</h4>
-    </div>
-    <div class="col-md-4">
-      <h4>Personas</h4>
-    </div>
-    <div class="col-md-4">
-      <h4>Resources</h4>
-    </div>
-  </div>
-</div>
+        <style>
+	@import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Serif:b|PT+Serif:i|PT+Sans|PT+Sans:b);
+	body {
+		font-family: "PT Serif", serif;
+		background: #fcfcfa;
+		color: #333;
+	}
+	h1,h2,h3,h4,h5 {
+		font-family: "PT Sans", sans-serif;
+	}
+	p {
+		max-width: 550px;
+	}
+	.node {
+		stroke: #fff;
+		stroke-width: 1.5px;
+	}
+	.link {
+		stroke: #999;
+		stroke-opacity: .6;
+	}
+</style>
+<body>
+	<h1>D3</h1>
+	<p>This simple force-directed graph shows meeting organizers. A physical simulation of charged particles and springs places related attendees in closer proximity, while unrelated attendees are farther apart.</p>
+	<div id="d3"></div>
+	<script>
+	var width = 960,
+			height = 500;
 
+	var color = d3.scale.category20();
+
+	var force = d3.layout.force()
+			.charge(-120)
+			.linkDistance(30)
+			.size([width,height]);
+
+	var svg = d3.select('#d3').append('svg')
+			.attr('width',width)
+			.attr('height',height);
+
+	d3.json('data/d3.meetings.json', function(error,graph){
+		if (error) throw error;
+
+		force
+			.nodes(graph.nodes)
+			.links(graph.links)
+			.start();
+
+		var link = svg.selectAll('.link')
+			.data(graph.links)
+		.enter().append('line')
+			.attr('class','link')
+			.style('stroke-width', function(d) {return Math.sqrt(d.value); });
+
+		var node = svg.selectAll('.node')
+			.data(graph.nodes)
+		.enter().append('circle')
+			.attr('class','node')
+			.attr('r', 5)
+			.style('fill', function(d) {return color(d.group); })
+			.call(force.drag);
+
+		node.append('title')
+			.text(function(d) {return d.name;});
+
+		force.on('tick',function(){
+			link.attr('x1',function(d){ return d.source.x; })
+					.attr('y1',function(d){ return d.source.y; })
+					.attr('x2',function(d){ return d.target.x; })
+					.attr('y2',function(d){ return d.target.y; });
+			node.attr('cx', function(d) {return d.x; })
+					.attr('cy', function(d) {return d.y; });
+		});
+	});
+	</script>
+	<script src="/design/javascript/sigma.min.js"></script>
+	<script src="/design/javascript/sigma.parsers.json.js"></script>
+	<h1>Sigma</h1>
+	<p>The following example shows how simple it is to use sigma to display a JSON encoded graph file.</p>
+	<div id="sigma" style="max-width:400px;height:200px;margin:auto"></div>
+	<script>
+	  sigma.parsers.json('data/sigma.meetings.json', {
+	    container: 'sigma',
+	    settings: {
+	      defaultNodeColor: '#ec5148'
+	    }
+	  });
+	</script>
+</body>
       </div>
     </div>
 

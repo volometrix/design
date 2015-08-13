@@ -1,7 +1,7 @@
 ---
 layout:
 title:
-permalink: /meetings/
+permalink: /network/
 page-title: Our Meetings
 ---
 {% include db-header.html %}
@@ -159,10 +159,10 @@ line.link {
     </div>
     <div class="row">
       <div class="col-md-3">
-        <div id="song_selection" class="control">
-          <h3>Song</h3>
+        <div id="song_selection" class="control hidden">
+          <h5>Song</h5>
           <select id="song_select" class="form-control">
-            <option value="/call_me_al.json">You Can Call Me Al</option>
+            <option value="call_me_al.json">You Can Call Me Al</option>
             <option value="sledgehammer_2_rounds.json">Sledgehammer</option>
             <option value="poker_face.json">Poker Face</option>
             <option value="jolene.json">Jolene</option>
@@ -173,14 +173,14 @@ line.link {
         </div>
         <div id="controls">
           <div id="layouts" class="control">
-            <h3>Layout</h3>
+            <h5>Layout</h5>
             <div class="btn-group">
               <a id="force" class="btn btn-sm btn-default active">Force Directed</a>
               <a id="radial" class="btn btn-sm btn-default">Artists</a>
             </div>
           </div>
           <div id="filters" class="control">
-            <h3>Filter</h3>
+            <h5>Filter</h5>
             <div class="btn-group">
             <a id="all" class="btn btn-default btn-sm active">All</a>
             <a class="btn btn-default btn-sm" id="popular">Popular</a>
@@ -188,7 +188,7 @@ line.link {
             </div>
           </div>
           <div id="sorts" class="control">
-            <h3>Sort</h3>
+            <h5>Sort</h5>
             <div class="btn-group">
               <a id="songs" class="btn btn-default btn-sm active">Songs</a>
               <a class="btn btn-default btn-sm" id="links">Links</a>
@@ -700,43 +700,7 @@ line.link {
               });
             });
           }).call(this);
-
           </script>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-            <p>Example data from <a href="http://www.last.fm/api/show/track.getSimilar">last.fm</a>. Some songs include additional links for effect.<br/>Popular songs are defined as those with playcounts above the median for all songs in network.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-{% highlight javascript %}
-{
-  "nodes": [
-    {
-      "name": "node 1",
-      "artist": "artist name",
-      "id": "unique_id_1",
-      "playcount": 123
-    },
-    {
-      "name": "node 2",
-      # ...
-    }
-  ],
-  "links": [
-    {
-      "source": "unique_id_1",
-      "target": "unique_id_2"
-    },
-    {
-      # ...
-    }
-  ]
-}
-
-{% endhighlight %}
         </div>
       </div>
     </div>

@@ -1,124 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="../../favicon.ico">
-  
-  <title>Our Meetings</title>
-
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="/design/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
-  <link rel="stylesheet" href="/design/css/prism.css">
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="/design/javascript/jquery-2.1.3.min.js"></script>
-  <script src="/design/javascript/jquery.cookie.min.js"></script>
-  <script src="/design/javascript/bootstrap.min.js"></script>
-  <script src="/design/javascript/highcharts.js"></script>
-  <script src="/design/javascript/exporting.js"></script>
-  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
-  <script src="/design/javascript/drilldown.js"></script>
-  <script src="/design/javascript/jquery.dataTables.min.js"></script>
-  <script src="/design/javascript/dataTables.bootstrap.js"></script>
-  <script src="/design/javascript/d3.min.js"></script>
-  <script src="/design/javascript/data.js"></script>
-  <script src="/design/javascript/jquery.sparkline.js"></script>
-  <script src="/design/javascript/toolkit.js"></script>
-  <style>
-    body {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    background: #f9f9f9;
-    color: #555;
-  }
-
-  .btn-default {
-    border-color: #ddd;
-  }
-
-  .theme-dropdown .dropdown-menu {
-    position: static;
-    display: block;
-    margin-bottom: 20px;
-  }
-
-  .theme-showcase > p > .btn {
-    margin: 5px 0;
-  }
-
-  .theme-showcase .navbar .container {
-    width: auto;
-  }
-
-  /* Bootstrap overrides */
-  .panel-body {
-    /*min-height: 350px;*/
-    position: relative;
-  }
-  .chart {
-    position: absolute;
-    bottom:0;
-    left:0;
-    right:0;
-  }
-  .panel .panel-heading {
-    background: #fff;
-    border-bottom: none;
-  }
-  .modal .modal-footer {
-    text-align: left;
-  }
-  .goal-met-true {
-    color: #A6D53A;
-  }
-  .goal-met-false {
-    color: #FC9430;
-  }
-  .figure {
-    font-size: 48px;
-    font-weight: 300;
-  }
-  </style>
-</head>
-<body role="document">
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Volometrix</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class=""><a href="#">METRICS</a></li>
-          <li><a href="#about">COLLABORATION</a></li>
-          <li><a href="#contact">TOPICS</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-header">Nav header</li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+---
+layout:
+title:
+permalink: /network/
+page-title: Our Meetings
+---
+{% include db-header.html %}
 <style>
 body {
   padding-top: 50px;
@@ -273,10 +159,10 @@ line.link {
     </div>
     <div class="row">
       <div class="col-md-3">
-        <div id="song_selection" class="control">
-          <h3>Song</h3>
+        <div id="song_selection" class="control hidden">
+          <h5>Song</h5>
           <select id="song_select" class="form-control">
-            <option value="/call_me_al.json">You Can Call Me Al</option>
+            <option value="call_me_al.json">You Can Call Me Al</option>
             <option value="sledgehammer_2_rounds.json">Sledgehammer</option>
             <option value="poker_face.json">Poker Face</option>
             <option value="jolene.json">Jolene</option>
@@ -287,14 +173,14 @@ line.link {
         </div>
         <div id="controls">
           <div id="layouts" class="control">
-            <h3>Layout</h3>
+            <h5>Layout</h5>
             <div class="btn-group">
               <a id="force" class="btn btn-sm btn-default active">Force Directed</a>
               <a id="radial" class="btn btn-sm btn-default">Artists</a>
             </div>
           </div>
           <div id="filters" class="control">
-            <h3>Filter</h3>
+            <h5>Filter</h5>
             <div class="btn-group">
             <a id="all" class="btn btn-default btn-sm active">All</a>
             <a class="btn btn-default btn-sm" id="popular">Popular</a>
@@ -302,7 +188,7 @@ line.link {
             </div>
           </div>
           <div id="sorts" class="control">
-            <h3>Sort</h3>
+            <h5>Sort</h5>
             <div class="btn-group">
               <a id="songs" class="btn btn-default btn-sm active">Songs</a>
               <a class="btn btn-default btn-sm" id="links">Links</a>
@@ -823,33 +709,36 @@ line.link {
             <p>Example data from <a href="http://www.last.fm/api/show/track.getSimilar">last.fm</a>. Some songs include additional links for effect.<br/>Popular songs are defined as those with playcounts above the median for all songs in network.</p>
         </div>
       </div>
-      <div class="row">
+    <!--   <div class="row ">
         <div class="col-md-12">
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
-  <span class="s2">&quot;nodes&quot;</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;node 1&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;artist&quot;</span><span class="o">:</span> <span class="s2">&quot;artist name&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;unique_id_1&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;playcount&quot;</span><span class="o">:</span> <span class="mi">123</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;node 2&quot;</span><span class="p">,</span>
-      <span class="err">#</span> <span class="p">...</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;unique_id_1&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;unique_id_2&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="err">#</span> <span class="p">...</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">}</span></code></pre></div>
+{% highlight javascript %}
+{
+  "nodes": [
+    {
+      "name": "node 1",
+      "artist": "artist name",
+      "id": "unique_id_1",
+      "playcount": 123
+    },
+    {
+      "name": "node 2",
+      # ...
+    }
+  ],
+  "links": [
+    {
+      "source": "unique_id_1",
+      "target": "unique_id_2"
+    },
+    {
+      # ...
+    }
+  ]
+}
+
+{% endhighlight %}
         </div>
-      </div>
+      </div> -->
     </div>
 </body>
 </html>
