@@ -1,0 +1,291 @@
+{% include sales/headerRow.html %}
+<h3 style="text-align:center">West Region Summary for July 2015</h3><br>
+  <section class="section">
+    <p class="section-title">Meeting and Email Time with Customer</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">50</span><strong>%</strong> of sales reps met the benchmark of <strong>10.5 hours</strong>.</p>
+        <p>Reps averaged <strong>11.1 hours</strong> with customers.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="wr-time-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#wr-time-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Manager Averages',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'West (All)', 'Wrast', 'Miranda', 'Moran', 'Holleron' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Avg. hours per week',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        color: '#919191',
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [{color:'#496B86',y:10}, 12, 12, 10, {color:'#70AD47',y:7} ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
+    </div>
+    <p class="section-title">Unique Accounts Created</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">43</span><strong>%</strong> met of sales reps met the benchmark of <strong>16 accounts</strong>.</p>
+        <p>Reps averaged <strong>15 accounts</strong>.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="wr-contact-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#wr-contact-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Monthly Average By District',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'West (All)', 'Holleron', 'Miranda', 'Moran', 'Wrast' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of accounts',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        color: '#919191',
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [{color:'#496B86',y:15}, 14, 18, 14, 16 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
+    </div>
+    <p class="section-title">Accounts Within Rep's Network</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">43</span><strong>%</strong> of sales reps met the benchmark of <strong>16 accounts</strong>.</p>
+        <p>Reps averaged <strong>38 accounts</strong>.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="wr-network-breadth-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#wr-network-breadth-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Monthly Average by District',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: ['West (All)' ,'Wrast', 'Moran', 'Miranda', 'Holleron']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of accounts',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        color: '#919191',
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [{color:'#496B86',y:40}, 49, {color:'#70AD47',y:41}, {color:'#70AD47',y:41}, {color:'#70AD47',y:31}]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
+    </div>
+    <p class="section-title">Account Contacts Within Rep's Network</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">46</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong>.</p>
+        <p>Reps averaged <strong>18 accounts</strong>.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="wr-network-size-mgr-ave"></div>
+        <script>
+          $(function () {
+            $('#wr-network-size-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'Monthly Average by District',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    },
+                    enabled: false
+                },
+                xAxis: {
+                  categories: [ 'West (All)', 'Wrast', 'Miranda', 'Moran', 'Holleron' ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of accounts',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        color: '#919191',
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [{color:'#496B86',y:19}, 22, {color:'#70AD47',y:19}, {color:'#70AD47',y:18}, {color:'#70AD47',y:17}]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+      <ul class="symbol-legend">
+        <li><span class="legend-color" style="background:#70AD47"></span> Goal was met</li>
+        <li><span class="legend-color" style="background:#496B86"></span> Informational element</li>
+      </ul>
+    </div>
+  </section>

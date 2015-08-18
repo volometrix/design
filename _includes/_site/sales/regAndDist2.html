@@ -1,0 +1,335 @@
+{% include sales/headerRow.html %}
+<h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
+  <section class="section">
+    <p class="section-title">Accounts Within Rep's Network</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">35</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong> in their network.</p>
+        <p>Reps averaged <strong>16 accounts</strong> in their network.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="rd-network-size-reg-ave"></div>
+        <hr class="separator">
+        <script>
+          $(function () {
+            $('#rd-network-size-reg-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 180
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
+                title: {
+                    text: 'Monthly Average by Region',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    enabled: true,
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'No. of accounts',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    }
+                },
+                xAxis: {
+                  title: {
+                    text: null
+                  },
+                  categories: ['East','West','LAMC','AMS (All)']
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  name: 'April',
+                  data: [17,18,9]
+                },{
+                  name: 'May',
+                  data: [18,19,12]
+                },{
+                  name: 'June',
+                  data: [19,20,14]
+                },{
+                  name: 'July',
+                  data: [16,18,11]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+             });
+        });
+        </script>
+        <div id="rd-network-size-mgr-ave"></div>
+        <ul class="region-legend">
+          <li style="width:48.888%">East</li>
+          <li style="width:32.555%">West</li>
+          <li style="width:15.555%">LAMC</li>
+        </ul>
+        <div style="text-align:center">
+          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <svg width="221px" height="16px" viewBox="0 0 221 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+              <text id="Achieved-Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                <tspan x="23.2096" y="12">Achieved Benchmark</tspan>
+              </text>
+              <path d="M2,2 L18,2 L18,14 L2,14 L2,2 Z" id="Fill-125-Copy-5" fill="#70AD47" sketch:type="MSShapeGroup"></path>
+              <g id="Group" sketch:type="MSLayerGroup" transform="translate(142.000000, 2.000000)">
+                <text id="Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                  <tspan x="21.2096" y="10">Benchmark</tspan>
+                </text>
+                <circle id="Oval-1-Copy" fill="#919191" sketch:type="MSShapeGroup" cx="15.5" cy="6.5" r="1.5"></circle>
+                <circle id="Oval-1-Copy-2" fill="#919191" sketch:type="MSShapeGroup" cx="8.5" cy="6.5" r="1.5"></circle>
+                <circle id="Oval-1-Copy-3" fill="#919191" sketch:type="MSShapeGroup" cx="1.5" cy="6.5" r="1.5"></circle>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <script>
+          $(function () {
+            $('#rd-network-size-mgr-ave').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 180
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'July Average by District',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                xAxis: {
+                  categories: ['AMS (All)', 'Ross', 'Young', 'Quigley', 'Al-Shorafa', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Mexico', 'Brazil']
+                },
+                yAxis: {
+                    title: {
+                        text: 'No. of accounts',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    },
+                    plotLines: [{
+                      color: '#919191',
+                      width: 2,
+                      value: 18,
+                      dashStyle: 'dot'
+                  }]
+                },
+                plotOptions: {
+                    series: {
+                        color: '#919191',
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [ 16, {color:'#70AD47', y:18}, 17, 16, 16, 13, {color:'#70AD47', y:22}, {color:'#70AD47', y:18}, 17, 16, 13, 11 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+    </div>
+    <p class="section-title">Account Contacts Within Rep's Network</p>
+    <div class="row">
+      <div class="col-xs-3">
+        <p>&nbsp;</p>
+        <p><span class="h3">32</span><strong>%</strong> of sales reps met the benchmark of <strong>40 customer contacts</strong> in their network.</p>
+        <p>Reps averaged <strong>34 contacts</strong>.</p>
+      </div>
+      <div class="col-xs-9">
+        <div id="size-regional-aves"></div>
+        <hr class="separator">
+        <script>
+          $(function () {
+            $('#size-regional-aves').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 180
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#FDC44C' ],
+                title: {
+                    text: 'Monthly Average by Region',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                    enabled: true,
+                    itemStyle: {
+                        'color': '#444444',
+                        'fontSize': '11px'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'No. of contacts',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    },
+
+                },
+                xAxis: {
+                  title: {
+                    text: null
+                  },
+                  categories: ['East','West','LAMC','AMS (All)']
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  name: 'April',
+                  data: [38,39,18]
+                },{
+                  name: 'May',
+                  data: [42,40,25]
+                },{
+                  name: 'June',
+                  data: [44,45,30]
+                },{
+                  name: 'July',
+                  data: [36,38,24]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+             });
+        });
+        </script>
+        <div id="size-mgr-aves"></div>
+        <ul class="region-legend">
+          <li style="width:48.888%">East</li>
+          <li style="width:32.555%">West</li>
+          <li style="width:15.555%">LAMC</li>
+        </ul>
+        <div style="text-align:center">
+          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <svg width="221px" height="16px" viewBox="0 0 221 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+              <text id="Achieved-Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                <tspan x="23.2096" y="12">Achieved Benchmark</tspan>
+              </text>
+              <path d="M2,2 L18,2 L18,14 L2,14 L2,2 Z" id="Fill-125-Copy-5" fill="#70AD47" sketch:type="MSShapeGroup"></path>
+              <g id="Group" sketch:type="MSLayerGroup" transform="translate(142.000000, 2.000000)">
+                <text id="Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                  <tspan x="21.2096" y="10">Benchmark</tspan>
+                </text>
+                <circle id="Oval-1-Copy" fill="#919191" sketch:type="MSShapeGroup" cx="15.5" cy="6.5" r="1.5"></circle>
+                <circle id="Oval-1-Copy-2" fill="#919191" sketch:type="MSShapeGroup" cx="8.5" cy="6.5" r="1.5"></circle>
+                <circle id="Oval-1-Copy-3" fill="#919191" sketch:type="MSShapeGroup" cx="1.5" cy="6.5" r="1.5"></circle>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <script>
+          $(function () {
+            $('#size-mgr-aves').highcharts({
+                chart: {
+                    type: 'column',
+                    height: 180
+                },
+                colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                title: {
+                    text: 'July Average by District',
+                    style: {
+                      'color': '#444444',
+                      'font-size': '14px'
+                    }
+                },
+                legend: {
+                  enabled: false
+                },
+                xAxis: {
+                  categories: ['AMS (All)', 'Al-Shorafa', 'Ross', 'Young', 'Quigley', 'Bradley', 'Wrast', 'Moran', 'Miranda', 'Holleron', 'Mexico', 'Brazil']
+                },
+                yAxis: {
+                    title: {
+                        text: 'No. of contacts',
+                        style: {
+                        'font-size': '11px'
+                      }
+                    },
+                    labels: {
+                      enabled: true
+                    },
+                    plotLines: [{
+                      color: '#919191',
+                      width: 2,
+                      value: 40,
+                      dashStyle: 'dot'
+                  }]
+                },
+                plotOptions: {
+                    series: {
+                        color: '#919191',
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    }
+                },
+                series: [{
+                  data: [ 34, {color:'#70AD47', y:42}, 37, 36, 35, 26, {color:'#70AD47', y:46}, {color:'#70AD47', y:42}, 35, 27, 29, 24 ]
+                }],
+                credits: {
+                  enabled: false
+                },
+                exporting: {
+                  enabled: false
+                }
+            });
+        });
+        </script>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,128 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+         <div class="panel-title">
+            <span class="h5">Email Time</span>
+            <a href="#" data-toggle="modal" data-target="#emailModal" class="pull-right btn btn-default btn-xs">
+                details
+            </a>    
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <p>Be aware of the amount of time you spend sending and receiving emails compared to your colleagues.</p>
+        <div>
+            <script>
+            $(function () {
+            Highcharts.setOptions(Highcharts.theme);
+            $('#email-chart').highcharts({
+                chart: {
+                    type: 'areaspline',
+                    height: 185
+                },
+                title: {
+                    text: ''
+                },
+                colors: ['#3BB5EA', '#A6CEE3'],
+                // colors: ['#3BB5EA', '#979797'],
+                xAxis: {
+                    categories: ['Mo', 'Tu', 'We', 'Tr', 'Fr']
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+                },
+                legend: {
+                    enabled: true
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: false
+                    },
+                },
+                series: [{
+                    name: 'You',
+                    marker: {
+                        radius: 4
+                    },
+                    data: [9, 10, 6, 7, 8].sort(function(){ return .5 - Math.random() })
+                }, {
+                    name: 'Peer',
+                    marker: {
+                        radius: 3
+                    },
+                    dashStyle: 'dot',
+                    type: 'spline',
+                    color: '#666',
+                    data: [10, 6, 8, 9, 7].sort(function(){ return .5 - Math.random() })
+                }],
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                }
+            });
+        });
+        </script>
+        <div class="chart-description">
+            <span class="figure">3.3</span> hours with email<br>
+            <strong>2.8</strong> peer average
+        </div>
+        <div id="email-chart" class="chart"></div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+             <h5 class="modal-title" id="myModalLabel">Email Time Details</h5>
+
+        </div>
+        <div class="modal-body">
+             <h5>Here are all the meetings you attended this week.</h5>
+
+            <br>
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>Person</th>
+                        <th>Sent</th>
+                        <th>Received</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>

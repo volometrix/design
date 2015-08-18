@@ -1,0 +1,134 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+         <div class="panel-title">
+            <span class="h5">Weekly Meetings</span>
+            <a href="#" data-toggle="modal" data-target="#weekly-meetings-modal" class="pull-right btn btn-default btn-xs">
+                Meeting effectiveness
+            </a>    
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <p>Number of meetings attended.</p>
+        <div>
+            <script>
+            $(function () {
+            $('#weekly-meetings-chart').highcharts({
+                chart: {
+                    type: 'spline',
+                    height: 185
+                },
+                title: {
+                    text: ''
+                },
+                colors: ['#3BB5EA', '#A6CEE3'],
+                xAxis: {
+                    categories: ['Week 1', '2', '3', 'Week 4'],
+                    title : {
+                        text: 'Trend'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Meetings Attended'
+                    }
+                },
+                legend: {
+                    enabled: true
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: false
+                    }, 
+                    series: {
+                        marker: {
+                            radius: 3
+                        }
+                    }
+                },
+                series: [{
+                    name: 'You',
+                    marker: {
+                        radius: 3
+                    },
+                    type: 'areaspline',
+                    data: [9, 10, 6, 7].sort(function(){ return .5 - Math.random() })
+                }, {
+                    name: 'Peer',
+                    color: '#666',
+                    marker: {
+                        radius: 0
+                    },
+                    dashStyle: 'dash',
+                    data: [10, 6, 8, 9].sort(function(){ return .5 - Math.random() })
+                }],
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                }
+            });
+        });
+        </script>
+        <div class="chart-description">
+            <span class="figure">22</span> average meetings attended<br>
+            <strong>21</strong> peer average
+        </div>
+        <div id="weekly-meetings-chart" class="chart"></div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="weekly-meetings-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+             <h5 class="modal-title" id="myModalLabel">Meeting Effectiveness Details</h5>
+
+        </div>
+        <div class="modal-body">
+             <h5>Here are all the meetings you attended this week.</h5>
+
+            <br>
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>Person</th>
+                        <th>Sent</th>
+                        <th>Received</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                    <tr>
+                        <td>Kent, Lead Engineer</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>20.1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>

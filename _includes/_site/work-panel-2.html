@@ -1,0 +1,177 @@
+<style>
+      
+  .goal-met-true {
+    color: #A6D53A;
+  }
+  .goal-met-false {
+    color: #FC9430;
+  }
+  .figure {
+    font-size: 64px;
+    font-weight: 200;
+  }
+   .days-chart, .days-chart-legend {
+    position: absolute;
+    top:105px;
+    text-align: center;
+    left:50%;
+    margin-left: -195px;
+    width:350px;
+  }
+  .days-chart-vis {
+    margin-top:75px;
+  }
+  .days-chart .timeline {
+    background: #fff url('{{ site.baseurl }}/images/days-chart-bkd.png') no-repeat 0 12.5px !important;
+    margin: 0 -2px;
+  }
+  .days-chart.work-week-days .timeline {
+    width: 10%;
+  }
+  .days-chart.full-week-days .timeline {
+    width: 5%;
+  }
+  .days-chart .work-day {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .work-day.key,
+  .days-chart .goal-met-false.key {
+    height: 12px;
+    width: 12px;
+  }
+  .days-chart li {
+    display:inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 25px;
+    white-space: nowrap;
+  }
+  .days-chart .day {
+    width: 25px;
+    margin:0 -1px;
+    border-radius: 100%;
+    background-color: #d7d7d7;
+  }
+  .days-chart .sep {
+    width:10%;
+    background: #fff url(' {{ site.baseurl }}/images/days-chart-bkd.png') no-repeat 0 12.5px;
+    margin:0 -2px;
+  }
+  .days-chart .goal-met-true {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .goal-met-false {
+    background-color: #FFC960;
+    background-image: -webkit-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: -o-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: linear-gradient(#FFC960 0%, #FFA00C 100%);
+  }
+  .figure {
+    font-size: 38px;
+    font-weight: 300; 
+  }
+  .day-label {
+    font-size: 11px;
+    color: #555555;
+    position: absolute;
+    bottom:-20px;
+    width:100%;
+    text-align: center;
+    text-align: -webkit-center;
+    display: block;
+  }
+  .days-chart-legend {
+    top: 275px;
+  }
+</style>
+<div class="panel panel-default">
+      <div class="panel-heading">
+            <div class="panel-title">
+                  <span class="h5">Work Time</span>
+                  <a href="#" data-toggle="modal" data-target="#workModal" class="pull-right btn btn-default btn-xs">
+                        <small>details</small>
+                  </a>    
+            </div>
+
+      </div>
+      <div class="panel-body">
+            <div class="panel-subtitle">
+                  <p>Ensure you have ample time scheduled to work and think. Your goal is <strong>4 days</strong> with one or more two-hour blocks with no meetings</p>
+            </div>	
+            <div class="chart-wrapper">   
+                  <div class="chart-description">
+                        <span class="big figure">1</span>
+                        day with a two-hour block
+                  </div>
+                  <div class="days-chart days-chart-vis work-week-days">
+                        <ul>
+                              <li class="day work-day goal-met-false">
+                                    <span class="day-label">Mo</span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day work-day goal-met-false">
+                                    <span class="day-label">Tu</span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day work-day goal-met-true">
+                                    <span class="day-label">We</span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day work-day goal-met-false">
+                                    <span class="day-label">Th</span>
+                              </li>
+                              <li class="timeline"></li>
+                              <li class="day  work-day goal-met-false">
+                                    <span class="day-label">Fr</span>
+                              </li>
+                        </ul>
+                  </div>
+                  <br>
+                  <br>
+                  <ul class="days-chart days-chart-legend x-hidden">
+                        <li class="day work-day key"></li>
+                        <li>&nbsp;</li>
+                        <li><small>two hour block available</small></li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li class="day goal-met-false key"></li>
+                        <li>&nbsp;</li>
+                        <li><small>no focus time</small></li>
+                  </ul>
+            </div>
+      </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="workModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="myModalLabel">Think/Work Time Details</h5>
+
+                  </div>
+                  <div class="modal-body">
+                        <h5>You had 4 days with a free two-hour block.</h5>
+                        <p>Set a goal of <input type="text" style="width:35px;text-align:center;" /> days.<br><small>(Type a number between 0 and 5)</small></p>
+                        <div>
+
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                  </div>
+            </div>
+      </div>
+</div>

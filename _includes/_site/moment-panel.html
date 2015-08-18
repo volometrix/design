@@ -1,0 +1,21 @@
+<div id="moment-panel" class="moment" style="text-align:center;display:none;">
+  <h1 class="moment-greeting">
+    Hello, Kelsey
+  </h1>
+  <p>Did you feel more productive last week?</p>
+  <div class="btn-group" role="group" aria-label="...">
+    <a id="moment-yes" href="#" class="btn btn-default">Yes</a>&nbsp;&nbsp;<a id="moment-no" href="#" class="btn btn-default">No</a>
+  </div>
+  <p>What is your focus for this week?</p>
+  <p><input id="moment-input" type="text" style="border:none;background:transparent;border-bottom:solid 1px #555;"></p>
+  <p><a href="#" id="moment-save" class="btn btn-default">Save</a></p>
+  <script>
+    $(function(){
+      $('#moment-panel').slideDown('slow');
+      $('#moment-input').focus().css('text-align','center');
+      $('#moment-save').click(function(){
+        $('#moment-panel').slideUp();
+      });
+    });
+  </script>
+</div>

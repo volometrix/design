@@ -1,0 +1,128 @@
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <span class="h5">How productive did you feel last week?</span>
+      <a href="#" data-toggle="modal" data-target="#balanceModal"  class="pull-right btn btn-default btn-xs">
+        details
+      </a>    
+    </div>
+
+  </div>
+  <div class="panel-body">
+    <div class="panel-subtitle">
+      <p>Select an option below based on how you spent your time last week.</p>
+    </div>	
+    <div class="chart-wrapper">   
+      <div class="productivity-lykert" style="text-align:center;">
+        <p>
+          <strong>Very unproductive</strong>
+          <input type="radio" name="productivity-rating" value="1" readonly>
+          <input type="radio" name="productivity-rating" value="2">
+          <input type="radio" name="productivity-rating" value="3">
+          <input type="radio" name="productivity-rating" value="4">
+          <input type="radio" name="productivity-rating" value="5">
+          <strong>Very productive</strong>
+        </p>
+      </div>
+      <div>
+        <script>
+        $(function () {
+          Highcharts.setOptions(Highcharts.theme);
+          $('#productivity-four-week-trend-chart').highcharts({
+            chart: {
+              type: 'column',
+              height: 185
+            },
+            title: {
+              text: null
+            },
+            xAxis: {
+              categories: ['Week 1', '2', '3', 'Week 4']
+            },
+            yAxis: {
+              max:5,
+              title: {
+                text: 'Rating'
+              },
+            },
+            legend: {
+              enabled: false  
+            },
+            plotOptions: {
+              line: {
+                dataLabels: {
+                  enabled: false
+                },
+                enableMouseTracking: false
+              },
+            },
+            series: [{
+              name: 'Rating',
+              data: [3,4,6,1],
+            }],
+            credits: {
+              enabled: false
+            },
+            exporting: {
+              enabled: false
+            }
+          }, function(chart){
+            $.each(chart.series[0].data,function(i,data){
+              switch(data.y) {
+                case 1:
+                data.graphic.attr({ fill: '#E31A1C' });
+                break;
+                case 2:
+                data.graphic.attr({ fill: '#FB9A99' });
+                break;
+                case 3:
+                data.graphic.attr({ fill: '#FB9330' });
+                break;
+                case 4:
+                data.graphic.attr({ fill: '#A6D53A' });
+                break;
+                default:
+                data.graphic.attr({ fill: '#33A02C' });
+              }
+            });
+          });
+        });
+        </script>
+<div id="productivity-four-week-trend-chart"></div>
+<div class="productivity-rating-legend" style="text-align:center;position:absolute;bottom:15px;left:0;right:0;">
+  <p>
+    <strong><small>Very unproductive</small></strong>
+    <span style="width:15px;height:15px;border-radius:100%;background:#E31A1C;display:inline-block;">&nbsp;</span>
+    <span style="width:15px;height:15px;border-radius:100%;background:#FB9A99;display:inline-block;">&nbsp;</span>
+    <span style="width:15px;height:15px;border-radius:100%;background:#FB9330;display:inline-block;">&nbsp;</span>
+    <span style="width:15px;height:15px;border-radius:100%;background:#A6D53A;display:inline-block;">&nbsp;</span>
+    <span style="width:15px;height:15px;border-radius:100%;background:#33A02C;display:inline-block;">&nbsp;</span>
+    <strong><small>Very productive</small></strong>
+  </p>
+</div>
+</div>
+</div>     
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title" id="myModalLabel">Modal</h5>
+      </div>
+      <div class="modal-body">
+        <h5>Title</h5>
+        <p>Body</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

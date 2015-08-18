@@ -1,0 +1,45 @@
+
+<script>
+	$(function () {
+    $('#line-chart').highcharts({
+        chart: {
+            type: 'line',
+            height: 175
+        },
+        title: {
+            text: 'Email'
+        },
+        colors: ['#3BB5EA', '#979797'],
+        subtitle: {
+            text: 'The time you spend sending and receiving email messages.'
+        },
+        xAxis: {
+            categories: ['Mo', 'Tu', 'We', 'Tr', 'Fr']
+        },
+        yAxis: {
+            title: {
+                text: 'Time'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: false
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: 'you',
+            data: [7.0, 6.9, 9.5, 14.5, 18.4]
+        }, {
+            name: 'peers',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9]
+        }],
+        credits: {
+            enabled: false
+        }
+    });
+});
+</script>
+<div id="line-chart"></div>
