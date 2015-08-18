@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html id="top">
+{% include head.html %}
+<script src="{{ site.baseurl }}/javascript/isotope.pkgd.min.js"></script>
+<style>
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+  padding-top:40px;
+  font-size: 13px;
+}
+.row-offcanvas {
+  position: relative;
+}
+footer {
+  padding: 30px 0;
+}
+@media screen and (min-width: 768px) {
+  #sidebar {
+    position: fixed;
+    left:0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+  }
+  .row-offcanvas-right {
+    right: 0;
+  }
+  .row-offcanvas-left {
+    left: 0;
+  }
+  .row-offcanvas-right .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+  .row-offcanvas-left .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+} 
+.list-nav .list-group-item ul {
+  list-style-type: none;
+  margin-left:15px;
+  display: none;
+}
+.list-nav .list-group-item a {
+  display: block;
+  outline: none;
+}
+.list-nav .list-group-item:first-child  ul {
+  display: block;
+}
+.list-nav .list-group-item  > a {
+  text-transform: uppercase;
+  color: #666;
+  font-size: 80%;
+  font-weight: bold;
+}
+</style>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Volometrix</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="#">METRICS</a></li>
+          <li><a href="#about">COLLABORATION</a></li>
+          <li><a href="#contact">TOPICS</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RELATIONSHIPS <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row row-offcanvas row-offcanvas-right" style="position:absolute;right:30px;left:26%;">
+      <div class="col-sm-12">
+        <p class="pull-left visible-xs">
+          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+        <div class="row">
+          <div class="col-xs-12">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <ul class="list-group list-nav">
+          <li class="list-group-item">
+            <a href="{{ site.baseurl }}/sales/#top" class="active">Dashboard</a>
+            <ul>
+              <li><a href="{{ site.baseurl }}/sales/#summary">Overview</a></li>
+              <li><a href="#">Meeting Investment</a></li>
+              <li><a href="#">Organizational Load</a></li>
+              <li><a href="#">Meeting Quality</a></li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Teams</a>
+            <ul>
+              <li><a href="#">Overview</a></li>
+              <li><a href="#">Meeting Investment</a></li>
+              <li><a href="#">Organizational Load</a></li>
+              <li><a href="#">Meeting Quality</a></li>
+              <li><a href="#">Top Investment Meetings</a></li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Meetings</a>
+            <ul>
+              <li><a href="#">Overview</a></li>
+              <li><a href="#">Redundancy</a></li>
+              <li><a href="#">Low Engagement</a></li>
+              <li><a href="#">Large Meetings</a></li>
+              <li><a href="#">Long Meetings</a></li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Your Information</a>
+            <ul>
+              <li><a href="#">Overview</a></li>
+              <li><a href="#">Meeting Hours</a></li>
+              <li><a href="#">Meeting Effectiveness</a></li>
+              <li><a href="#">Email Hours</a></li>
+              <li><a href="#">Organizational Load</a></li>
+              <li><a href="#">After-hours Work</a></li>
+            </ul>
+          </li>
+        </div>
+      </div>
+    </div>
+    <script>
+    $(function () {
+      $('[data-toggle="offcanvas"]').click(function () {
+        $('.row-offcanvas').toggleClass('active')
+      });
+      $('.list-nav > li > a').click(function(){
+        // if ($(this).attr('class') !== 'active') {
+          // $('.list-nav li ul').slideUp();
+          $(this).next().slideToggle();
+          // $('.list-nav li a').removeClass('active');
+          // $(this).addClass('active');
+        // }
+      });
+    });
+    </script> 
+  </body>
+</html>
