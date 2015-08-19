@@ -1,0 +1,122 @@
+<h4>Account Coverage</h4>
+<div class="col-md-6">
+<p><span class="h1">350</span> accounts contacted</p>
+<table class="table table-condensed table-hover local-nav-table">
+  <tr>
+    <td><a href="#" id="" class="local-nav-link active">Accounts contacted</a></td>
+    <td style="text-align:right;">30% <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 20%</span></td>
+  </tr>
+  <tr>
+    <td><a id="avg-duration-trigger" href="#">Accounts engaged</a></td>
+    <td style="text-align:right;">17% <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
+  </tr>
+  <tr>
+    <td><a id="avg-attendees-trigger" href="#">Cumulative</a></td>
+    <td style="text-align:right;">10% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
+  </tr>
+  <tr>
+    <td><a id="avg-attendees-trigger" href="#">CSIOs contacted</a></td>
+    <td style="text-align:right;">23% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
+  </tr>
+</table>
+<div id="team-acct-coverage"></div>
+<script>
+  $(function () {
+    Highcharts.setOptions(Highcharts.theme);
+    $('#team-acct-coverage').highcharts({
+        chart: {
+            type: 'line',
+            height: 175
+        },
+        title: {
+            text: null
+        },
+        xAxis: {
+            categories: ['1', '2', '3', '4'],
+            title: {
+              text: 'Weeks'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Accounts contacted'
+            }
+        },
+        series: [{
+            name: 'Your region',
+            data: [8, 7, 4, 5]
+        }, {
+            name: 'Club 115',
+            data: [4, 5, 4, 3]
+        }], 
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        }
+    });
+});
+</script>
+</div>
+<div class="col-md-6">
+<div id="team-acct-accounts"></div>
+<script>
+$(function () {
+  $('#team-acct-accounts').highcharts({
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: 0,
+      plotShadow: false
+    },
+    title: {
+      text: '<span class="h1">710</span><br>total accounts',
+      align: 'center',
+      verticalAlign: 'middle',
+      // y: 40
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        dataLabels: {
+          enabled: true,
+          distance: -50,
+          style: {
+            fontWeight: 'bold',
+            color: 'white',
+            textShadow: '0px 1px 2px black'
+          }
+        },
+        // startAngle: -90,
+        // endAngle: 90,
+        // center: ['50%', '75%']
+      }
+    },
+    series: [{
+      type: 'pie',
+      name: 'Percentage of accounts',
+      innerSize: '50%',
+      data: [
+      ['Contacted', 33.333],
+      ['Engaged', 33.333],
+      ['Cold', 33.333],
+      {
+        name: 'Proprietary or Undetectable',
+        y: 0.2,
+        dataLabels: {
+          enabled: false
+        }
+      }]
+    }],
+    exporting: {
+      enabled: false
+    },
+    credits: {
+      enabled: false
+    }
+  });
+});
+</script>
+</div>
