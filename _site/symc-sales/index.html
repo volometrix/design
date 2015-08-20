@@ -362,8 +362,9 @@ body {
   <div class="col-lg-12" id="acct-coverage-section">
     <div class="panel panel-default">
       <div class="panel-body">
-        <p class="module-heading">Account Coverage</p>
-<p><span class="h1">350</span> <strong>accounts contacted</strong></p>
+        <div class="col-sm-4">
+<p class="module-heading">Account Coverage</p>
+<p><span class="h1">350</span> accounts contacted</p>
 <table class="table table-condensed table-module-detail">
   <tr>
     <th></th>
@@ -392,7 +393,7 @@ body {
     </td>
   </tr>
   <tr>
-    <td>CISOs contacted</td>
+    <td>CSIOs contacted</td>
     <td style="text-align:right;">23%</td>
     <td style="text-align:right;">
       <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span>
@@ -400,44 +401,124 @@ body {
   </tr>
 </table>
 <div id="acct-coverage-trend"></div>
-  <script>
-    $(function () {
-      Highcharts.setOptions(Highcharts.theme);
-      $('#acct-coverage-trend').highcharts({
-          chart: {
-              type: 'line',
-              height: 175
-          },
-          title: {
-              text: null
-          },
-          xAxis: {
-              categories: ['1', '2', '3', '4'],
-              title: {
-                text: 'Weeks'
-              }
-          },
-          yAxis: {
-              title: {
-                  text: 'Accts contacted'
-              }
-          },
-          series: [{
-              name: 'Your region',
-              data: [8, 7, 4, 5]
-          }, {
-              name: 'Club 115',
-              data: [4, 5, 4, 3]
-          }], 
-          credits: {
-              enabled: false
-          },
-          exporting: {
-              enabled: false
-          }
-      });
+<script>
+  $(function () {
+    Highcharts.setOptions(Highcharts.theme);
+    $('#acct-coverage-trend').highcharts({
+        chart: {
+            type: 'line',
+            height: 175
+        },
+        title: {
+            text: null
+        },
+        xAxis: {
+            categories: ['1', '2', '3', '4'],
+            title: {
+              text: 'Weeks'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Contacts / acct'
+            }
+        },
+        series: [{
+            name: 'Your region',
+            data: [8, 7, 4, 5]
+        }, {
+            name: 'Club 115',
+            data: [4, 5, 4, 3]
+        }], 
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        }
+    });
+});
+</script>
+</div>
+<div class="col-md-8">
+<p class="module-heading">Accounts Contacted: District Overview</p>
+<div id="accts-contacted"></div>
+<script>
+$(function () {
+  $('#accts-contacted').highcharts({
+    chart: {
+      height: 335
+    },
+    title: {
+      text: ''
+    },
+    tooltip: {
+      shared: true,
+      useHTML: true,
+      headerFormat: '<span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top">',
+      pointFormat: ' {point.y}%',
+      footerFormat: '</i></span>'
+    },
+    xAxis: {
+      categories: ['District 2', 'District 5', 'District 3', 'District 1', 'District 4'],
+      title: {
+        text: null
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Total investment ($MM)'
+      },
+      plotLines: [{
+        color: '#000000',
+        width: 1,
+        value: 500,
+        zIndex:10,
+        label: {
+          text: 'Goal',
+          align: 'right',
+          x: 0
+        }
+      }]
+    },
+    legend: {
+      enabled: false
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: false
+        },
+        enableMouseTracking: false,
+      },
+      series: {
+        marker: {
+          enabled: true,
+          radius: 2
+        }
+      }
+    },
+    series: [{
+      type: 'column',
+      color: '#A6D53A',
+      data: [ 
+      { y:250 },
+      { y:350 },
+      { y:375 },
+      { y:450 },
+      { y:680, color: '#666666'}
+      ]
+    }],
+    credits: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    }
   });
-  </script>
+});
+</script>
+</div>
       </div> 
     </div>
   </div>
@@ -848,7 +929,7 @@ $(function () {
       <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span>
     </td>
   </tr>
-</table>
+</table>3
 <div id="team-acct-coverage"></div>
 <script>
   $(function () {
@@ -1205,11 +1286,11 @@ $(function () {
     </td>
   </tr>
 </table>
-<div id="acct-coverage-trend"></div>
+<div id="mtgs-coverage-trend"></div>
   <script>
     $(function () {
       Highcharts.setOptions(Highcharts.theme);
-      $('#acct-coverage-trend').highcharts({
+      $('#mtgs-coverage-trend').highcharts({
           chart: {
               type: 'line',
               height: 175
@@ -1250,127 +1331,106 @@ $(function () {
   <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-body">
-        <p class="module-heading">Account Contacted: District Overview</p>
-        <div id="acct-coverage-contacted"></div>
-        <script>
-        $(function () {
-          $('#acct-coverage-contacted').highcharts({
-            chart: {
-              height: 335
-            },
-            title: {
-              text: ''
-            },
-            tooltip: {
-              shared: true,
-              useHTML: true,
-              headerFormat: '<span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top">',
-              pointFormat: ' {point.y}%',
-              footerFormat: '</i></span>'
-            },
-            xAxis: {
-              categories: ['District 2', 'District 5', 'District 3', 'District 1', 'District 4'],
+        <p class="module-heading">YoY Account Coverage</p>
+<div id="mtg-yoy-trend"></div>
+  <script>
+    $(function () {
+      Highcharts.setOptions(Highcharts.theme);
+      $('#mtg-yoy-trend').highcharts({
+          chart: {
+              type: 'line',
+              height: 395
+          },
+          title: {
+              text: null
+          },
+          xAxis: {
+              categories: ['Jan', 'Feb', 'Mar', 'Apr','May','Jun','Jul','Aug'],
               title: {
                 text: null
               }
-            },
-            yAxis: {
+          },
+          yAxis: {
               title: {
-                text: 'Total Investment ($MM)'
-              },
-              plotLines: [{
-                color: '#000000',
-                width: 1,
-                value: 500,
-                zIndex:10,
-                label: {
-                  text: 'Goal',
-                  align: 'right',
-                  x: 0
-                }
-              }]
-            },
-            legend: {
-              enabled: false
-            },
-            plotOptions: {
-              line: {
-                dataLabels: {
-                  enabled: false
-                },
-                enableMouseTracking: false,
-              },
-              series: {
-                marker: {
-                  enabled: true,
-                  radius: 2
-                }
+                  text: 'Accts contacted or engaged'
               }
-            },
-            series: [{
-              type: 'line',
-              color: '#A6D53A',
-              data: [ 
-              { y:250 },
-              { y:350 },
-              { y:375 },
-              { y:450 },
-              { y:680, color: '#666666'}
-              ]
-            }],
-            credits: {
+          },
+          series: [{
+              name: 'Your region',
+              data: [18, 17, 24, 35, 20, 50, 40, 70]
+          }, {
+              name: 'Previous year comparison',
+              data: [20, 25, 30, 25, 50, 70, 60, 40]
+          }], 
+          credits: {
               enabled: false
-            },
-            exporting: {
+          },
+          exporting: {
               enabled: false
-            }
-          });
-        });
-        </script>
+          }
+      });
+  });
+  </script>
       </div>
     </div>
   </div>
 </div>
-
 <div class="row">
   <div class="col-lg-12" id="meeting-team-metrics-section">
     <div class="panel panel-default">
       <div class="panel-body">
-        <p class="module-heading">Behavioral Metrics</p>
+        <p class="module-heading">Account Information</p>
 <table class="table">
   <thead>
     <tr>
-      <th>Rep Name</th>
+      <th>Account Name</th>
       <th>Region</th>
-      <th>District</th>
-      <th>Accounts Engaged</th>
-      <th>Time w Customer</th>
+      <th>Status</th>
+      <th>Group Needed</th>
+      <th>Last Contacteedd</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>First Last</td>
+      <td>Company Name</td>
       <td>East</td>
-      <td>District</td>
-      <td>12</td>
-      <td>6 hours</td>
-    </tr>
+      <td>Engaged</td>
+      <td>ISR</td>
+      <td>5 days</td>
+    </tr>    
     <tr>
-      <td>First Last</td>
+      <td>Company Name</td>
       <td>East</td>
-      <td>District</td>
-      <td>12</td>
-      <td>6 hours</td>
-    </tr>
+      <td>Engaged</td>
+      <td>ISR</td>
+      <td>5 days</td>
+    </tr>    
     <tr>
-      <td>First Last</td>
+      <td>Company Name</td>
       <td>East</td>
-      <td>District</td>
-      <td>12</td>
-      <td>6 hours</td>
+      <td>Engaged</td>
+      <td>ISR</td>
+      <td>5 days</td>
+    </tr>    
+    <tr>
+      <td>Company Name</td>
+      <td>East</td>
+      <td>Engaged</td>
+      <td>ISR</td>
+      <td>5 days</td>
+    </tr>    
+    <tr>
+      <td>Company Name</td>
+      <td>East</td>
+      <td>Engaged</td>
+      <td>ISR</td>
+      <td>5 days</td>
     </tr>
   </tbody>
 </table>
+<p style="text-align:center;">
+  <button class="btn btn-primary btn-sm">Load More</button>
+</p>
       </div>
     </div>
   </div>

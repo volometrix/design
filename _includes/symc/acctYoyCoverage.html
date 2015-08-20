@@ -1,0 +1,40 @@
+<p class="module-heading">YoY Account Coverage</p>
+<div id="acct-yoy-trend"></div>
+  <script>
+    $(function () {
+      Highcharts.setOptions(Highcharts.theme);
+      $('#acct-yoy-trend').highcharts({
+          chart: {
+              type: 'line',
+              height: 395
+          },
+          title: {
+              text: null
+          },
+          xAxis: {
+              categories: ['Jan', 'Feb', 'Mar', 'Apr','May','Jun','Jul','Aug'],
+              title: {
+                text: null
+              }
+          },
+          yAxis: {
+              title: {
+                  text: 'Accts contacted or engaged'
+              }
+          },
+          series: [{
+              name: 'Your region',
+              data: [18, 17, 24, 35, 20, 50, 40, 70]
+          }, {
+              name: 'Previous year comparison',
+              data: [20, 25, 30, 25, 50, 70, 60, 40]
+          }], 
+          credits: {
+              enabled: false
+          },
+          exporting: {
+              enabled: false
+          }
+      });
+  });
+  </script>

@@ -1,0 +1,76 @@
+<p class="module-heading">Account Coverage</p>
+<p><span class="h1">350</span> <strong>accounts contacted</strong></p>
+<table class="table table-condensed table-module-detail">
+  <tr>
+    <th></th>
+    <th style="text-align:right;"><small>% benchmark</small></th>
+    <th style="text-align:right;"><small>last period</small></th>
+  </tr>
+  <tr class="selected">
+    <td>Accounts contacted</td>
+    <td style="text-align:right;">30%</td>
+    <td style="text-align:right;">
+      <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 20%</span>
+    </td>
+  </tr>
+  <tr>
+    <td>Accounts engaged</td>
+    <td style="text-align:right;">17%</td>
+    <td style="text-align:right;">
+      <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 10%</span>
+    </td>
+  </tr>
+  <tr>
+    <td>Cumulative</td>
+    <td style="text-align:right;">10%</td>
+    <td style="text-align:right;">
+      <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span>
+    </td>
+  </tr>
+  <tr>
+    <td>CISOs contacted</td>
+    <td style="text-align:right;">23%</td>
+    <td style="text-align:right;">
+      <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span>
+    </td>
+  </tr>
+</table>
+<div id="mtgs-coverage-trend"></div>
+  <script>
+    $(function () {
+      Highcharts.setOptions(Highcharts.theme);
+      $('#mtgs-coverage-trend').highcharts({
+          chart: {
+              type: 'line',
+              height: 175
+          },
+          title: {
+              text: null
+          },
+          xAxis: {
+              categories: ['1', '2', '3', '4'],
+              title: {
+                text: 'Weeks'
+              }
+          },
+          yAxis: {
+              title: {
+                  text: 'Accts contacted'
+              }
+          },
+          series: [{
+              name: 'Your region',
+              data: [8, 7, 4, 5]
+          }, {
+              name: 'Club 115',
+              data: [4, 5, 4, 3]
+          }], 
+          credits: {
+              enabled: false
+          },
+          exporting: {
+              enabled: false
+          }
+      });
+  });
+  </script>
