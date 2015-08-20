@@ -171,33 +171,43 @@ body {
     display: block;
     padding: 20px;
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: auto;
     background-color: #f5f5f5;
     border-right: 1px solid #ddd;
   }
 }
-.nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
+@media (min-width: 1200px) {
+  .team-teams {
+    height:985px;
+  }
 }
-.nav-sidebar > li > a {
-  padding-right: 20px;
+.nav-sidebar {
+  margin-right: -21px;
+  margin-bottom: 20px;
+  margin-left:  -20px;
+}
+.nav-sidebar li a {
+  padding-right:20px;
   padding-left: 20px;
-  font-size: 80%;
+  -webkit-transition: all 0.05s ease;
+  transition: all 0.05s ease;
+}
+.nav-sidebar li ul {
+  margin-left: -15px;
+  padding-left:15px;
 }
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #f9f9f9;
+  background-color: #fff;
   border-left: solid 5px #000;
   padding-left: 5px;
   margin-left: -5px;
 }
 .nav-local {
   list-style-type: none;
-  margin-left:0;
+  margin-left: 0;
 }
 .nav-local li {
   display: block;
@@ -210,21 +220,28 @@ body {
 .nav-local li a {
   display: block;
 }
+.nav-local li a:hover,
 .nav-local li:hover {
-  background-color: #f9f9f9;
+  background-color: #fff;
+  text-decoration: none;
 }
 .nav-local li.active {
-  padding-left:10px;
+  padding-left: 10px;
   border-left: solid 5px #3BB5EA;
 }
 .list-nav .list-nav-item ul {
   list-style-type: none;
-  _display: none;
+  _display: none; /* Uncomment for hiding initially */
 }
 .list-nav .list-nav-item a {
   display: block;
   outline: none;
   line-height: 2;
+
+}
+.list-nav .list-nav-item a:hover {
+  text-decoration: none;
+  background: #F9F9F9;
 }
 .list-nav .list-nav-item:first-child  ul {
   display: block;
@@ -280,7 +297,7 @@ body {
   display: inline-block;
 }
 </style>
-<body id="top">
+<body id="top" class="dark-theme">
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -290,7 +307,7 @@ body {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><img src="https://volometrix.github.io//design/images/logo.png"></a>
+      <a class="navbar-brand" href="#">Volometrix</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -331,15 +348,15 @@ body {
             <li><a href="#team-teams-section">Overview</a></li>
             <li><a href="#team-region-section">Account Coverage</a></li>
             <li><a href="#team-network-section">Network</a></li>
-            <li><a href="#team-time-sction">Time Spent</a></li>
-            <li><a href="#team-metrics-sction">Behavioral Metrics</a></li>
+            <li><a href="#team-time-section">Time Spent</a></li>
+            <li><a href="#team-metrics-section">Behavioral Metrics</a></li>
           </ul>
         </li>
         <li class="list-nav-item">
           <a href="#">Meetings</a>
           <ul>
             <li><a href="#meeting-acct-coverage-section">Account Coverage</a></li>
-            <li><a href="#">QTD Acccount Coverage</a></li>
+            <li><a href="#meeting-yoy-section">YoY Acccount Coverage</a></li>
             <li><a href="#meeting-team-metrics-section">Account Information</a></li>
           </ul>
         </li>
@@ -856,7 +873,7 @@ $(function () {
 <h3>Teams</h3>
 <div class="row">
   <div class="col-lg-4" id="team-teams-section">
-    <div class="panel panel-default" style="height:985px;">
+    <div class="panel panel-default team-teams">
       <div class="panel-body">
         <table class="table table-condensed table-module-detail" style="margin-left:-10px;margin-right:-10px;">
   <tr>
@@ -1328,7 +1345,7 @@ $(function () {
       </div>
     </div>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-8" id="meeting-yoy-section">
     <div class="panel panel-default">
       <div class="panel-body">
         <p class="module-heading">YoY Account Coverage</p>
