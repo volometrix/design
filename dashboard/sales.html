@@ -4,7 +4,7 @@ title:
 permalink: /symc-sales/
 page-title: Sales v5
 ---
-<h4>Sales Productivity</h4>
+<h3>Sales Productivity</h3>
 <div class="row">
   <div class="col-lg-12" id="acct-coverage-section">
     <div class="panel panel-default">
@@ -35,7 +35,7 @@ page-title: Sales v5
 <h3>Teams</h3>
 <div class="row">
   <div class="col-lg-4" id="team-teams-section">
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="height:985px;">
       <div class="panel-body">
         {% include symc/teamTeams.html %}
       </div>
@@ -44,7 +44,7 @@ page-title: Sales v5
   <div class="col-lg-8" id="team-region-section">
     <div class="panel panel-default">
       <div class="panel-body">
-        {% include symc/teamRegion.html %}
+        {% include symc/teamAcctCoverage.html %}
       </div>
     </div>
     <div class="row">
@@ -68,19 +68,103 @@ page-title: Sales v5
 </div>
 <h3>Meetings</h3>
 <div class="row">
-  <div class="col-lg-12" id="meeting-acct-coverage-section">
+  <div class="col-md-4" id="meeting-acct-coverage-section">
     <div class="panel panel-default">
       <div class="panel-body">
         {% include symc/acctCoverage.html %}
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-12" id="meeting-team-metrics-section">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          {% include symc/teamMetrics.html %}
-        </div>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="module-heading">Account Contacted: District Overview</p>
+        <div id="acct-coverage-contacted"></div>
+        <script>
+        $(function () {
+          $('#acct-coverage-contacted').highcharts({
+            chart: {
+              height: 335
+            },
+            title: {
+              text: ''
+            },
+            tooltip: {
+              shared: true,
+              useHTML: true,
+              headerFormat: '<span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top">',
+              pointFormat: ' {point.y}%',
+              footerFormat: '</i></span>'
+            },
+            xAxis: {
+              categories: ['District 2', 'District 5', 'District 3', 'District 1', 'District 4'],
+              title: {
+                text: null
+              }
+            },
+            yAxis: {
+              title: {
+                text: 'Total Investment ($MM)'
+              },
+              plotLines: [{
+                color: '#000000',
+                width: 1,
+                value: 500,
+                zIndex:10,
+                label: {
+                  text: 'Goal',
+                  align: 'right',
+                  x: 0
+                }
+              }]
+            },
+            legend: {
+              enabled: false
+            },
+            plotOptions: {
+              line: {
+                dataLabels: {
+                  enabled: false
+                },
+                enableMouseTracking: false,
+              },
+              series: {
+                marker: {
+                  enabled: true,
+                  radius: 2
+                }
+              }
+            },
+            series: [{
+              type: 'line',
+              color: '#A6D53A',
+              data: [ 
+              { y:250 },
+              { y:350 },
+              { y:375 },
+              { y:450 },
+              { y:680, color: '#666666'}
+              ]
+            }],
+            credits: {
+              enabled: false
+            },
+            exporting: {
+              enabled: false
+            }
+          });
+        });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12" id="meeting-team-metrics-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {% include symc/teamMetrics.html %}
       </div>
     </div>
   </div>

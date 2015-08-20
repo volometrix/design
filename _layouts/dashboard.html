@@ -102,22 +102,23 @@ body {
 .module-heading {
   font-weight: bold;
   text-transform: uppercase;
+  line-height: 2;
+  padding:0 0 15px 0;
+  color: #666;
 }
 .list-nav .list-nav-item a.active,
 .local-nav-link.active {
   border-left: solid 5px #3BB5EA !important;
   padding-left: 15px;
 }
-.local-nav-table a {
-  display: block;
-}
-.local-nav-link.active {
-  margin-left: -10px;
-  padding-left: 5px;
-}
-.local-nav-table tr,
-.local-nav-table td {
+.table-module-detail,
+.table-module-detail th,
+.table-module-detail tr,
+.table-module-detail td {
   border:none !important;
+}
+.table-module-detail tr.selected {
+  border-left:solid 5px #3BB5EA !important;
 }
 @media (min-width: 768px) {
   .main {
