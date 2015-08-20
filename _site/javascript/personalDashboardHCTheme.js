@@ -3,31 +3,24 @@
              '#fdbf6f', '#fc9430', '#cab2d6', '#6a3d9a'],
     chart: {
         backgroundColor: '#fff'
-        // {
-        //     linearGradient: [0, 0, 500, 500],
-        //     stops: [
-        //         [0, 'rgb(255, 255, 255)'],
-        //         [1, 'rgb(240, 240, 255)']
-        //     ]
-        // },
     },
     title: {
         style: {
-            color: '#000',
-            font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+            color: '#111',
+            font: 'bold 16px Helvetica, Arial, sans-serif'
         }
     },
     subtitle: {
         style: {
             color: '#666666',
-            font: 'bold 12px "Trebuchet MS", Verdana, sans-serif'
+            font: 'bold 12px Helvetica, Arial, sans-serif'
         }
     },
 
     legend: {
         itemStyle: {
-            font: '9pt Trebuchet MS, Verdana, sans-serif',
-            color: 'black'
+            font: 'normal 9pt Helvetica, Arial, sans-serif'
+            color: '#666'
         },
         itemHoverStyle:{
             color: 'gray'

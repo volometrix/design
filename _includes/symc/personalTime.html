@@ -1,0 +1,70 @@
+
+<div id="personal-time" style="min-width: 310px; height: 95px; margin: 15px auto">
+
+  <script>
+  $(function () {
+    Highcharts.setOptions(Highcharts.symcTheme);
+    $('#personal-time').highcharts({
+      chart: {
+        type: 'bar',
+        margin: [5,5,50,5],
+        spacing: [2,2,2,2],
+        backgroundColor: 'rgba(255,255,255,0.1)'
+      },
+      colors: ['#919191','#466882','#608CAE','#7FA5C4','#AFC6D9','#EDBD43','#D39700'],
+      credits:{enabled:false},
+      exporting:{enabled:false},
+      title: {
+        text: ''
+      },
+      xAxis: {
+        categories: ['your']
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: ''
+        }
+      },
+      legend: {
+        reversed: true
+      },
+      tooltip: {
+        borderColor: '#999999',
+        useHTML: true,
+        headerFormat: '<table>',
+        pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
+        '<td style="text-align: right"><b>{point.y}% (00h)</b></td></tr>',
+        footerFormat: '</table>'
+      },
+      plotOptions: {
+        series: {
+          stacking: 'percent'
+        }
+      },
+      series: [{
+        name: 'Customer',
+        data: [50]
+      }, {
+        name: 'Other External',
+        data: [35]
+      }, {
+        name: 'Other Internal',
+        data: [35]
+      }, {
+        name: 'SE',
+        data: [35]
+      }, {
+        name: 'Within group',
+        data: [35]
+      }, {
+        name: 'PM and services',
+        data: [35]
+      }, {
+        name: 'Not in meetings/email',
+        data: [25]
+      }]
+    });
+});
+</script>
+</div>

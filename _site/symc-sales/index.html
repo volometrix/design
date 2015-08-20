@@ -143,6 +143,7 @@
 <style>
 body {
   padding-top: 50px;
+  background: #eee;
 }
 .sub-header {
   padding-bottom: 10px;
@@ -153,6 +154,12 @@ body {
 }
 .sidebar {
   display: none;
+}
+.panel {
+  border-radius: 3px;
+}
+.panel-body {
+  padding:15px;
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -166,7 +173,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #f5f5f5;
-    border-right: 1px solid #eee;
+    border-right: 1px solid #ddd;
   }
 }
 .nav-sidebar {
@@ -183,14 +190,36 @@ body {
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #f9f9f9;
   border-left: solid 5px #000;
   padding-left: 5px;
   margin-left: -5px;
 }
+.nav-local {
+  list-style-type: none;
+  margin-left:0;
+}
+.nav-local li {
+  display: block;
+  line-height: 2;
+  margin-bottom: 5px;
+  padding: 5px 15px;
+  margin-left:-15px;
+  margin-right:-15px;
+}
+.nav-local li a {
+  display: block;
+}
+.nav-local li:hover {
+  background-color: #f9f9f9;
+}
+.nav-local li.active {
+  padding-left:10px;
+  border-left: solid 5px #3BB5EA;
+}
 .list-nav .list-nav-item ul {
   list-style-type: none;
-  display: none;
+  _display: none;
 }
 .list-nav .list-nav-item a {
   display: block;
@@ -208,6 +237,10 @@ body {
 }
 .main {
   padding: 20px;
+}
+.module-heading {
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .list-nav .list-nav-item a.active,
 .local-nav-link.active {
@@ -234,6 +267,17 @@ body {
 .main .page-header {
   margin-top: 0;
 }
+.abbr-badge {
+  background: #666;
+  border-radius: 50px;
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+}
 </style>
 <body id="top">
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -245,7 +289,7 @@ body {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Volometrix</a>
+      <a class="navbar-brand" href="#"><img src="/design/images/logo.png"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -275,7 +319,6 @@ body {
         <li class="list-nav-item">
           <a href="#top" class="active">Dashboard</a>
           <ul>
-            <!-- <li><a href="#acct-overview-section">Overview</a></li> -->
             <li><a href="#acct-coverage-section">Account Coverage</a></li>
             <li><a href="#acct-network-section">Network</a></li>
             <li><a href="#acct-time-spent-section">Time Spent</a></li>
@@ -284,59 +327,59 @@ body {
         <li class="list-nav-item">
           <a href="#">Teams</a>
           <ul>
-            <li><a href="#team-region-section">Region</a></li>
-            <li><a href="#team-district-section">District</a></li>
-            <li><a href="#team-exec-section">Accounts Executive</a></li>
+            <li><a href="#team-teams-section">Overview</a></li>
+            <li><a href="#team-region-section">Account Coverage</a></li>
+            <li><a href="#team-network-section">Network</a></li>
+            <li><a href="#team-time-sction">Time Spent</a></li>
+            <li><a href="#team-metrics-sction">Behavioral Metrics</a></li>
           </ul>
         </li>
         <li class="list-nav-item">
           <a href="#">Meetings</a>
           <ul>
-            <li><a href="#">Overview</a></li>
-            <li><a href="#">Redundancy</a></li>
-            <li><a href="#">Low Engagement</a></li>
-            <li><a href="#">Large Meetings</a></li>
-            <li><a href="#">Long Meetings</a></li>
+            <li><a href="#meeting-acct-coverage-section">Account Coverage</a></li>
+            <li><a href="#">QTD Acccount Coverage</a></li>
+            <li><a href="#meeting-team-metrics-section">Account Information</a></li>
           </ul>
         </li>
         <li class="list-nav-item">
-          <a href="#">Your Information</a>
+          <a href="#">Personal View</a>
           <ul>
-            <li><a href="#">Overview</a></li>
-            <li><a href="#">Meeting Hours</a></li>
-            <li><a href="#">Meeting Effectiveness</a></li>
-            <li><a href="#">Email Hours</a></li>
-            <li><a href="#">Organizational Load</a></li>
-            <li><a href="#">After-hours Work</a></li>
+            <li><a href="#personal-time-section">Summary</a></li>
+            <li><a href="#personal-cust-time-section">Time with Customer</a></li>
+            <li><a href="#personal-cust-size-section">Customer Network Size</a></li>
+            <li><a href="#personal-cust-breadth-section">Customer Network Breadth</a></li>
+            <li><a href="#personal-acct-coverage-section">Account Coverage</a></li>
+            <li><a href="#internal-mtg-hrs-section">Internal Meeting Hours</a></li>
           </ul>
         </li>
       </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <h3 class="page-header">Sales Productivity Dashboard</h3>
-<div class="row panel panel-default" id="acct-coverage-section">
-  <div class="panel-body">
-    <div class="col-sm-4">
-<h4>Account Coverage</h4>
+<div class="row">
+  <div class="col-lg-12" id="acct-coverage-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-sm-4">
+<p class="module-heading">Account Coverage</p>
 <p><span class="h1">350</span> accounts contacted</p>
-<table class="table table-condensed table-hover local-nav-table">
-  <tr>
-    <td><a href="#" id="" class="local-nav-link active">Accounts contacted</a></td>
-    <td style="text-align:right;">30% <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 20%</span></td>
-  </tr>
-  <tr>
-    <td><a id="avg-duration-trigger" href="#">Accounts engaged</a></td>
-    <td style="text-align:right;">17% <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
-  </tr>
-  <tr>
-    <td><a id="avg-attendees-trigger" href="#">Cumulative</a></td>
-    <td style="text-align:right;">10% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
-  </tr>
-  <tr>
-    <td><a id="avg-attendees-trigger" href="#">CSIOs contacted</a></td>
-    <td style="text-align:right;">23% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
-  </tr>
-</table>
+
+<ul class="nav-local">
+  <li class="active">
+    <a href="#">Accounts contacted<span class="pull-right">30% <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 20%</span></span></a>
+  </li>
+  <li>
+    <a href="#">Accounts engaged<span class="pull-right">17% <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></span></a>
+  </li>
+  <li>
+    <a href="#">Cumulative<span class="pull-right">10% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></span></a>
+  </li>
+  <li>
+    <a href="#">CSIOs contacted<span class="pull-right">23% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></span></a>
+  </li>
+</ul>
+
 <div id="acct-coverage-trend"></div>
 <script>
   $(function () {
@@ -378,7 +421,7 @@ body {
 </script>
 </div>
 <div class="col-md-8">
-<h4>Account Contacted: District Overview</h4>
+<p class="module-heading">Account Contacted: District Overview</p>
 <div id="acct-coverage-contacted"></div>
 <script>
 $(function () {
@@ -456,12 +499,16 @@ $(function () {
 });
 </script>
 </div>
-  </div> 
+      </div> 
+    </div>
+  </div>
 </div>
-<div class="row panel panel-default" id="acct-network-section">
-  <div class="panel-body">
-    <div class="col-sm-4">
-<h4>Network</h4>
+<div class="row" id="acct-network-section">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-sm-4">
+<p class="module-heading">Network</p>
 <p><span class="h1">12</span> contacts per account</p>
 <table class="table table-condensed table-hover local-nav-table">
   <tr>
@@ -522,7 +569,7 @@ $(function () {
 </script>
 </div>
 <div class="col-md-8">
-<h4>Contacts per Account: District Overview</h4>
+<p class="module-heading">Contacts per Account: District Overview</p>
 <div id="acct-network-contacted"></div>
 <script>
 $(function () {
@@ -600,12 +647,16 @@ $(function () {
 });
 </script>
 </div>
-  </div> 
+      </div> 
+    </div>
+  </div>
 </div>
-<div class="row panel panel-default" id="acct-time-spent-section">
-  <div class="panel-body">
-    <div class="col-sm-4">
-<h4>Time Spent</h4>
+<div class="row" id="acct-time-spent-section">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-sm-4">
+<p class="module-heading">Time Spent</p>
 <p><span class="h1">4</span> hour per week per customer</p>
 <table class="table table-condensed table-hover local-nav-table">
   <tr>
@@ -666,7 +717,7 @@ $(function () {
 </script>
 </div>
 <div class="col-md-8">
-<h4>Time Spent: District Overview</h4>
+<p class="module-heading">Time Spent: District Overview</p>
 <div id="acct-time-spent-contacted"></div>
 <script>
 $(function () {
@@ -744,40 +795,38 @@ $(function () {
 });
 </script>
 </div>
-  </div> 
+      </div> 
+    </div>
+  </div>
 </div>
 <h3>Teams</h3>
 <div class="row">
-  <div class="col-md-4 panel panel-default">
-    <div class="panel-body">
-      <span class="h3">East</span><br> 
-    200<br>
-    <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span>
+  <div class="col-lg-4" id="team-teams-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <ul class="nav-local">
+	<li class="active">
+		<span class="abbr-badge">E</span> East  <span class="pull-right">200 <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></span>
+	</li>
+	<li>
+		<span class="abbr-badge">W</span> West <span class="pull-right">200 <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></span>
+	</li>
+	<li>
+		<span class="abbr-badge">LA</span> Latin America <span class="pull-right">200 <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></span>
+	</li>
+</ul>
+      </div>
     </div>
   </div>
-  <div class="col-md-4 panel panel-default">
-    <div class="panel-body">
-      <span class="h3">West</span><br> 
-    200<br>
-    <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span>
-    </div>
-  </div>
-  <div class="col-md-4 panel panel-default">
-    <div class="panel-body">
-      <span class="h3">Latin America</span><br> 
-    200<br>
-    <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span>
-    </div>
-  </div>
-</div>
-<div class="row panel panel-default" id="team-region-section">
-  <div class="panel-body">
-    <h4>Account Coverage</h4>
+  <div class="col-lg-8" id="team-region-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="module-heading">Account Coverage</p>
 <div class="col-md-6">
 <p><span class="h1">350</span> accounts contacted</p>
 <table class="table table-condensed table-hover local-nav-table">
   <tr>
-    <td><a href="#" id="" class="local-nav-link active">Accounts contacted</a></td>
+    <td><a href="#" class="local-nav-link active">Accounts contacted</a></td>
     <td style="text-align:right;">30% <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 20%</span></td>
   </tr>
   <tr>
@@ -796,7 +845,7 @@ $(function () {
 <div id="team-acct-coverage"></div>
 <script>
   $(function () {
-    Highcharts.setOptions(Highcharts.theme);
+    Highcharts.setOptions(Highcharts.symcTheme);
     $('#team-acct-coverage').highcharts({
         chart: {
             type: 'line',
@@ -894,9 +943,811 @@ $(function () {
 });
 </script>
 </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6" id="team-network-section">
+        <div class="panel panel-default">
+  <div class="panel-body">
+    <p class="module-heading">Network</p>
+    <p><span class="h1">350</span> accounts contacted</p>
+    <table class="table table-condensed table-hover local-nav-table">
+      <tr>
+        <td><a href="#" id="" class="local-nav-link active">Accounts contacted</a></td>
+        <td style="text-align:right;">30% <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 20%</span></td>
+      </tr>
+      <tr>
+        <td><a id="avg-duration-trigger" href="#">Accounts engaged</a></td>
+        <td style="text-align:right;">17% <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
+      </tr>
+      <tr>
+        <td><a id="avg-attendees-trigger" href="#">Cumulative</a></td>
+        <td style="text-align:right;">10% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
+      </tr>
+      <tr>
+        <td><a id="avg-attendees-trigger" href="#">CSIOs contacted</a></td>
+        <td style="text-align:right;">23% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
+      </tr>
+    </table>
+    <div id="team-network-trend"></div>
+    <script>
+      $(function () {
+        Highcharts.setOptions(Highcharts.theme);
+        $('#team-network-trend').highcharts({
+            chart: {
+                type: 'line',
+                height: 175
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                categories: ['1', '2', '3', '4'],
+                title: {
+                  text: 'Weeks'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Accounts contacted'
+                }
+            },
+            series: [{
+                name: 'Your region',
+                data: [8, 7, 4, 5]
+            }, {
+                name: 'Club 115',
+                data: [4, 5, 4, 3]
+            }], 
+            credits: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            }
+        });
+    });
+    </script>
   </div>
 </div>
+      </div>
+      <div class="col-lg-6" id="team-time-section">
+        <div class="panel panel-default">
+  <div class="panel-body">
+    <p class="module-heading"><h4>Time Spent</h4></p>
+    <p><span class="h1">350</span> accounts contacted</p>
+    <table class="table table-condensed table-hover local-nav-table">
+      <tr>
+        <td><a href="#" id="" class="local-nav-link active">Accounts contacted</a></td>
+        <td style="text-align:right;">30% <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 20%</span></td>
+      </tr>
+      <tr>
+        <td><a id="avg-duration-trigger" href="#">Accounts engaged</a></td>
+        <td style="text-align:right;">17% <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
+      </tr>
+      <tr>
+        <td><a id="avg-attendees-trigger" href="#">Cumulative</a></td>
+        <td style="text-align:right;">10% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
+      </tr>
+      <tr>
+        <td><a id="avg-attendees-trigger" href="#">CSIOs contacted</a></td>
+        <td style="text-align:right;">23% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></td>
+      </tr>
+    </table>
+    <div id="team-time-trend"></div>
+    <script>
+    $(function () {
+      Highcharts.setOptions(Highcharts.theme);
+      $('#team-time-trend').highcharts({
+        chart: {
+          type: 'line',
+          height: 175
+        },
+        title: {
+          text: null
+        },
+        xAxis: {
+          categories: ['1', '2', '3', '4'],
+          title: {
+            text: 'Weeks'
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'Accounts contacted'
+          }
+        },
+        series: [{
+          name: 'Your region',
+          data: [8, 7, 4, 5]
+        }, {
+          name: 'Club 115',
+          data: [4, 5, 4, 3]
+        }], 
+        credits: {
+          enabled: false
+        },
+        exporting: {
+          enabled: false
+        }
+      });
+    });
+    </script>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12" id="team-metrics-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="module-heading">Behavioral Metrics</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Rep Name</th>
+      <th>Region</th>
+      <th>District</th>
+      <th>Accounts Engaged</th>
+      <th>Time w Customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+    </div>
+  </div>
+</div>
+<h3>Meetings</h3>
+<div class="row">
+  <div class="col-lg-12" id="meeting-acct-coverage-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-sm-4">
+<p class="module-heading">Account Coverage</p>
+<p><span class="h1">350</span> accounts contacted</p>
 
+<ul class="nav-local">
+  <li class="active">
+    <a href="#">Accounts contacted<span class="pull-right">30% <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 20%</span></span></a>
+  </li>
+  <li>
+    <a href="#">Accounts engaged<span class="pull-right">17% <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></span></a>
+  </li>
+  <li>
+    <a href="#">Cumulative<span class="pull-right">10% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></span></a>
+  </li>
+  <li>
+    <a href="#">CSIOs contacted<span class="pull-right">23% <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span></span></a>
+  </li>
+</ul>
+
+<div id="acct-coverage-trend"></div>
+<script>
+  $(function () {
+    Highcharts.setOptions(Highcharts.theme);
+    $('#acct-coverage-trend').highcharts({
+        chart: {
+            type: 'line',
+            height: 175
+        },
+        title: {
+            text: null
+        },
+        xAxis: {
+            categories: ['1', '2', '3', '4'],
+            title: {
+              text: 'Weeks'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Accounts contacted'
+            }
+        },
+        series: [{
+            name: 'Your region',
+            data: [8, 7, 4, 5]
+        }, {
+            name: 'Club 115',
+            data: [4, 5, 4, 3]
+        }], 
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        }
+    });
+});
+</script>
+</div>
+<div class="col-md-8">
+<p class="module-heading">Account Contacted: District Overview</p>
+<div id="acct-coverage-contacted"></div>
+<script>
+$(function () {
+  $('#acct-coverage-contacted').highcharts({
+    chart: {
+      height: 300
+    },
+    title: {
+      text: ''
+    },
+    tooltip: {
+      shared: true,
+      useHTML: true,
+      headerFormat: '<span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top">',
+      pointFormat: ' {point.y}%',
+      footerFormat: '</i></span>'
+    },
+    xAxis: {
+      categories: ['District 2', 'District 5', 'District 3', 'District 1', 'District 4'],
+      title: {
+        text: null
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Average Time with Customer'
+      },
+      plotLines: [{
+        color: '#000000',
+        width: 1,
+        value: 500,
+        zIndex:10,
+        label: {
+          text: 'Goal',
+          align: 'right',
+          x: 0
+        }
+      }]
+    },
+    legend: {
+      enabled: false
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: false
+        },
+        enableMouseTracking: false,
+      },
+      series: {
+        marker: {
+          enabled: true,
+          radius: 2
+        }
+      }
+    },
+    series: [{
+      type: 'column',
+      color: '#A6D53A',
+      data: [ 
+      { y:250 },
+      { y:350 },
+      { y:375 },
+      { y:450 },
+      { y:680, color: '#666666'}
+      ]
+    }],
+    credits: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    }
+  });
+});
+</script>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12" id="meeting-team-metrics-section">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class="module-heading">Behavioral Metrics</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Rep Name</th>
+      <th>Region</th>
+      <th>District</th>
+      <th>Accounts Engaged</th>
+      <th>Time w Customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h3>Personal View</h3>
+<div class="row">
+  <div class="col-lg-12" id="personal-time-section">
+    
+<div id="personal-time" style="min-width: 310px; height: 95px; margin: 15px auto">
+
+  <script>
+  $(function () {
+    Highcharts.setOptions(Highcharts.symcTheme);
+    $('#personal-time').highcharts({
+      chart: {
+        type: 'bar',
+        margin: [5,5,50,5],
+        spacing: [2,2,2,2],
+        backgroundColor: 'rgba(255,255,255,0.1)'
+      },
+      colors: ['#919191','#466882','#608CAE','#7FA5C4','#AFC6D9','#EDBD43','#D39700'],
+      credits:{enabled:false},
+      exporting:{enabled:false},
+      title: {
+        text: ''
+      },
+      xAxis: {
+        categories: ['your']
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: ''
+        }
+      },
+      legend: {
+        reversed: true
+      },
+      tooltip: {
+        borderColor: '#999999',
+        useHTML: true,
+        headerFormat: '<table>',
+        pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
+        '<td style="text-align: right"><b>{point.y}% (00h)</b></td></tr>',
+        footerFormat: '</table>'
+      },
+      plotOptions: {
+        series: {
+          stacking: 'percent'
+        }
+      },
+      series: [{
+        name: 'Customer',
+        data: [50]
+      }, {
+        name: 'Other External',
+        data: [35]
+      }, {
+        name: 'Other Internal',
+        data: [35]
+      }, {
+        name: 'SE',
+        data: [35]
+      }, {
+        name: 'Within group',
+        data: [35]
+      }, {
+        name: 'PM and services',
+        data: [35]
+      }, {
+        name: 'Not in meetings/email',
+        data: [25]
+      }]
+    });
+});
+</script>
+</div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4" id="personal-cust-time-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="module-heading">Time with Customer</p>
+<div style="text-align:center;margin:15px 0;">
+  <span class="figure">16</span> average meeting hours<br>
+  <strong>19</strong> peer average
+</div>
+<div id="per-cust-time"></div>
+<script>
+$(function () {
+  $('#per-cust-time').highcharts({
+    chart: {
+      height: 185
+    },
+    title: {
+      text: ''
+    },
+    xAxis: {
+      categories: ['1', '2', '3', '4'],
+      title: {
+        text: 'Weeks'
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Hours with customer'
+      },
+      plotLines: [{
+        color: '#000000',
+        width: 1,
+        value: 15,
+        label: {
+          text: 'Benchmark',
+          align: 'left',
+          x: 0
+        }
+      }]
+    },
+    legend: {
+      enabled: true
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: false
+        },
+        enableMouseTracking: false,
+      }, 
+      series: {
+        marker: {
+          enabled: true,
+          radius: 4
+        }
+      }
+    },
+    series: [{
+      name: 'You',
+      type: 'line',
+      data: [ 12, 19, 10, 16].sort(function(){ return .5 - Math.random() })
+    }, {
+      name: 'Peer',
+      type: 'line',
+      data: [10, 16, 18, 9].sort(function(){ return .5 - Math.random() })
+    }],
+    credits: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    }
+  });
+});
+</script>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4" id="personal-cust-size-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="module-heading">Customer Network Size</p>
+<div style="text-align:center;margin:15px 0;">
+  <span class="figure">16</span> average meeting hours<br>
+  <strong>19</strong> peer average
+</div>
+<div id="per-cust-net"></div>
+<script>
+$(function () {
+  $('#per-cust-net').highcharts({
+    chart: {
+      height: 185
+    },
+    title: {
+      text: ''
+    },
+    xAxis: {
+      categories: ['1', '2', '3', '4'],
+      title: {
+        text: 'Weeks'
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Hours with customer'
+      },
+      plotLines: [{
+        color: '#000000',
+        width: 1,
+        value: 15,
+        label: {
+          text: 'Benchmark',
+          align: 'left',
+          x: 0
+        }
+      }]
+    },
+    legend: {
+      enabled: true
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: false
+        },
+        enableMouseTracking: false,
+      }, 
+      series: {
+        marker: {
+          enabled: true,
+          radius: 4
+        }
+      }
+    },
+    series: [{
+      name: 'You',
+      type: 'line',
+      data: [ 12, 19, 10, 16].sort(function(){ return .5 - Math.random() })
+    }, {
+      name: 'Peer',
+      type: 'line',
+      data: [10, 16, 18, 9].sort(function(){ return .5 - Math.random() })
+    }],
+    credits: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    }
+  });
+});
+</script>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4" id="personal-cust-breadth-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="module-heading">Customer Network Breadth</p>
+<div style="text-align:center;margin:15px 0;">
+  <span class="figure">16</span> average meeting hours<br>
+  <strong>19</strong> peer average
+</div>
+<div id="per-cust-breadth"></div>
+<script>
+$(function () {
+  $('#per-cust-breadth').highcharts({
+    chart: {
+      height: 185
+    },
+    title: {
+      text: ''
+    },
+    xAxis: {
+      categories: ['1', '2', '3', '4'],
+      title: {
+        text: 'Weeks'
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Hours with customer'
+      },
+      plotLines: [{
+        color: '#000000',
+        width: 1,
+        value: 15,
+        label: {
+          text: 'Benchmark',
+          align: 'left',
+          x: 0
+        }
+      }]
+    },
+    legend: {
+      enabled: true
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: false
+        },
+        enableMouseTracking: false,
+      }, 
+      series: {
+        marker: {
+          enabled: true,
+          radius: 4
+        }
+      }
+    },
+    series: [{
+      name: 'You',
+      type: 'line',
+      data: [ 12, 19, 10, 16].sort(function(){ return .5 - Math.random() })
+    }, {
+      name: 'Peer',
+      type: 'line',
+      data: [10, 16, 18, 9].sort(function(){ return .5 - Math.random() })
+    }],
+    credits: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    }
+  });
+});
+</script>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4" id="personal-acct-coverage-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="module-heading">Account Coverage</p>
+<div style="text-align:center;margin:15px 0;">
+  <span class="figure">16</span> average meeting hours<br>
+  <strong>19</strong> peer average
+</div>
+<div id="per-acct-coverage"></div>
+<script>
+$(function () {
+  $('#per-acct-coverage').highcharts({
+    chart: {
+      height: 185
+    },
+    title: {
+      text: ''
+    },
+    xAxis: {
+      categories: ['1', '2', '3', '4'],
+      title: {
+        text: 'Weeks'
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Hours with customer'
+      },
+      plotLines: [{
+        color: '#000000',
+        width: 1,
+        value: 15,
+        label: {
+          text: 'Benchmark',
+          align: 'left',
+          x: 0
+        }
+      }]
+    },
+    legend: {
+      enabled: true
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: false
+        },
+        enableMouseTracking: false,
+      }, 
+      series: {
+        marker: {
+          enabled: true,
+          radius: 4
+        }
+      }
+    },
+    series: [{
+      name: 'You',
+      type: 'line',
+      data: [ 12, 19, 10, 16].sort(function(){ return .5 - Math.random() })
+    }, {
+      name: 'Peer',
+      type: 'line',
+      data: [10, 16, 18, 9].sort(function(){ return .5 - Math.random() })
+    }],
+    credits: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    }
+  });
+});
+</script>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4" id="personal-mtg-hrs-section">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="module-heading">Internal Meeting Hours</p>
+<div style="text-align:center;margin:15px 0;">
+  <span class="figure">16</span> average meeting hours<br>
+  <strong>19</strong> peer average
+</div>
+<div id="per-int-mtg-hrs"></div>
+<script>
+$(function () {
+  $('#per-int-mtg-hrs').highcharts({
+    chart: {
+      height: 185
+    },
+    title: {
+      text: ''
+    },
+    xAxis: {
+      categories: ['1', '2', '3', '4'],
+      title: {
+        text: 'Weeks'
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Hours with customer'
+      },
+      plotLines: [{
+        color: '#000000',
+        width: 1,
+        value: 15,
+        label: {
+          text: 'Benchmark',
+          align: 'left',
+          x: 0
+        }
+      }]
+    },
+    legend: {
+      enabled: true
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: false
+        },
+        enableMouseTracking: false,
+      }, 
+      series: {
+        marker: {
+          enabled: true,
+          radius: 4
+        }
+      }
+    },
+    series: [{
+      name: 'You',
+      type: 'line',
+      data: [ 12, 19, 10, 16].sort(function(){ return .5 - Math.random() })
+    }, {
+      name: 'Peer',
+      type: 'line',
+      data: [10, 16, 18, 9].sort(function(){ return .5 - Math.random() })
+    }],
+    credits: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    }
+  });
+});
+</script>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   </div>
 </div>
@@ -905,7 +1756,8 @@ $(function () {
     $('[data-toggle="offcanvas"]').click(function () {
       $('.row-offcanvas').toggleClass('active')
     });
-    $('.list-nav > li > a').click(function(){
+    $('.list-nav > li > a').click(function(e){
+        e.preventDefault();
         $(this).next().slideToggle();
         $('.list-nav li a').removeClass('active');
         $(this).addClass('active');
@@ -916,7 +1768,7 @@ $(function () {
     });
     var scrollToElement = function(el, ms){
       $('html,body').animate({
-        scrollTop: $(el).offset().top -50
+        scrollTop: $(el).offset().top -65
       }, 'slow');
     }
   });

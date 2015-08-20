@@ -4,6 +4,7 @@
 <style>
 body {
   padding-top: 50px;
+  background: #eee;
 }
 .sub-header {
   padding-bottom: 10px;
@@ -14,6 +15,12 @@ body {
 }
 .sidebar {
   display: none;
+}
+.panel {
+  border-radius: 3px;
+}
+.panel-body {
+  padding:15px;
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -27,7 +34,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #f5f5f5;
-    border-right: 1px solid #eee;
+    border-right: 1px solid #ddd;
   }
 }
 .nav-sidebar {
@@ -44,14 +51,36 @@ body {
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #f9f9f9;
   border-left: solid 5px #000;
   padding-left: 5px;
   margin-left: -5px;
 }
+.nav-local {
+  list-style-type: none;
+  margin-left:0;
+}
+.nav-local li {
+  display: block;
+  line-height: 2;
+  margin-bottom: 5px;
+  padding: 5px 15px;
+  margin-left:-15px;
+  margin-right:-15px;
+}
+.nav-local li a {
+  display: block;
+}
+.nav-local li:hover {
+  background-color: #f9f9f9;
+}
+.nav-local li.active {
+  padding-left:10px;
+  border-left: solid 5px #3BB5EA;
+}
 .list-nav .list-nav-item ul {
   list-style-type: none;
-  display: none;
+  _display: none;
 }
 .list-nav .list-nav-item a {
   display: block;
@@ -69,6 +98,10 @@ body {
 }
 .main {
   padding: 20px;
+}
+.module-heading {
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .list-nav .list-nav-item a.active,
 .local-nav-link.active {
@@ -95,6 +128,17 @@ body {
 .main .page-header {
   margin-top: 0;
 }
+.abbr-badge {
+  background: #666;
+  border-radius: 50px;
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+}
 </style>
 <body id="top">
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -106,7 +150,7 @@ body {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Volometrix</a>
+      <a class="navbar-brand" href="#"><img src="{{ site.baseurl }}/images/logo.png"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -134,9 +178,8 @@ body {
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar list-nav">
         <li class="list-nav-item">
-          <a href="#top" class="active">Dashboard</a>
+          <a href="#top" class="active">Summary</a>
           <ul>
-            <!-- <li><a href="#acct-overview-section">Overview</a></li> -->
             <li><a href="#acct-coverage-section">Account Coverage</a></li>
             <li><a href="#acct-network-section">Network</a></li>
             <li><a href="#acct-time-spent-section">Time Spent</a></li>
@@ -145,30 +188,30 @@ body {
         <li class="list-nav-item">
           <a href="#">Teams</a>
           <ul>
-            <li><a href="#team-region-section">Region</a></li>
-            <li><a href="#team-district-section">District</a></li>
-            <li><a href="#team-exec-section">Accounts Executive</a></li>
+            <li><a href="#team-teams-section">Overview</a></li>
+            <li><a href="#team-region-section">Account Coverage</a></li>
+            <li><a href="#team-network-section">Network</a></li>
+            <li><a href="#team-time-sction">Time Spent</a></li>
+            <li><a href="#team-metrics-sction">Behavioral Metrics</a></li>
           </ul>
         </li>
         <li class="list-nav-item">
           <a href="#">Meetings</a>
           <ul>
-            <li><a href="#">Overview</a></li>
-            <li><a href="#">Redundancy</a></li>
-            <li><a href="#">Low Engagement</a></li>
-            <li><a href="#">Large Meetings</a></li>
-            <li><a href="#">Long Meetings</a></li>
+            <li><a href="#meeting-acct-coverage-section">Account Coverage</a></li>
+            <li><a href="#">QTD Acccount Coverage</a></li>
+            <li><a href="#meeting-team-metrics-section">Account Information</a></li>
           </ul>
         </li>
         <li class="list-nav-item">
-          <a href="#">Your Information</a>
+          <a href="#">Personal View</a>
           <ul>
-            <li><a href="#">Overview</a></li>
-            <li><a href="#">Meeting Hours</a></li>
-            <li><a href="#">Meeting Effectiveness</a></li>
-            <li><a href="#">Email Hours</a></li>
-            <li><a href="#">Organizational Load</a></li>
-            <li><a href="#">After-hours Work</a></li>
+            <li><a href="#personal-time-section">Summary</a></li>
+            <li><a href="#personal-cust-time-section">Time with Customer</a></li>
+            <li><a href="#personal-cust-size-section">Customer Network Size</a></li>
+            <li><a href="#personal-cust-breadth-section">Customer Network Breadth</a></li>
+            <li><a href="#personal-acct-coverage-section">Account Coverage</a></li>
+            <li><a href="#internal-mtg-hrs-section">Internal Meeting Hours</a></li>
           </ul>
         </li>
       </ul>
@@ -183,7 +226,8 @@ body {
     $('[data-toggle="offcanvas"]').click(function () {
       $('.row-offcanvas').toggleClass('active')
     });
-    $('.list-nav > li > a').click(function(){
+    $('.list-nav > li > a').click(function(e){
+        e.preventDefault();
         $(this).next().slideToggle();
         $('.list-nav li a').removeClass('active');
         $(this).addClass('active');
@@ -194,7 +238,7 @@ body {
     });
     var scrollToElement = function(el, ms){
       $('html,body').animate({
-        scrollTop: $(el).offset().top -50
+        scrollTop: $(el).offset().top -65
       }, 'slow');
     }
   });

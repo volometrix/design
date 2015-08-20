@@ -1,0 +1,71 @@
+<p class="module-heading">Account Coverage</p>
+<div style="text-align:center;margin:15px 0;">
+  <span class="figure">16</span> average meeting hours<br>
+  <strong>19</strong> peer average
+</div>
+<div id="per-acct-coverage"></div>
+<script>
+$(function () {
+  $('#per-acct-coverage').highcharts({
+    chart: {
+      height: 185
+    },
+    title: {
+      text: ''
+    },
+    xAxis: {
+      categories: ['1', '2', '3', '4'],
+      title: {
+        text: 'Weeks'
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Hours with customer'
+      },
+      plotLines: [{
+        color: '#000000',
+        width: 1,
+        value: 15,
+        label: {
+          text: 'Benchmark',
+          align: 'left',
+          x: 0
+        }
+      }]
+    },
+    legend: {
+      enabled: true
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: false
+        },
+        enableMouseTracking: false,
+      }, 
+      series: {
+        marker: {
+          enabled: true,
+          radius: 4
+        }
+      }
+    },
+    series: [{
+      name: 'You',
+      type: 'line',
+      data: [ 12, 19, 10, 16].sort(function(){ return .5 - Math.random() })
+    }, {
+      name: 'Peer',
+      type: 'line',
+      data: [10, 16, 18, 9].sort(function(){ return .5 - Math.random() })
+    }],
+    credits: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    }
+  });
+});
+</script>
