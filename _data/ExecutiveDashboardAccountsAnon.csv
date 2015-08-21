@@ -1,0 +1,17 @@
+Name,Region,District,ContactedCISO,Status,Time,Highlight,Color
+Company,East,District,Yes,Contacted,6,,
+Company,East,District,No,Engaged,8,badge,alert-warning
+Company,East,District,Yes ,Cold,2,,
+Company Cola,East,District,Yes,Cold,7,,
+Company,East,District,Yes,Engaged,8,,
+Company,East,District,No,Engaged,1,badge,alert-warning
+Company,East,District,No,Cold,2,badge,alert-warning
+Company,East,District,Yes,Cold,6,,
+Company,East,District,Yes,Contacted,9,,
+Company,East,District,Yes,Engaged,8,,
+Company,East,District,No,Contacted,4,badge,alert-warning
+Company,East,District,Yes,Contacted,6,,
+Company,East,District,No,Engaged,3,badge,alert-warning
+Company,East,District,No,Cold,1,badge,alert-warning
+Company,East,District,No,Contacted,5,badge,alert-warning
+Company,East,District,Yes,Engaged,3,,
