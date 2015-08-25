@@ -2,7 +2,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="{{ site.baseurl }}/">
+    <!-- <a class="site-title" href="{{ site.baseurl }}/">
       {% if page.title %}
       {{ page.title }}
       {% elsif page.report-title %}
@@ -10,7 +10,7 @@
       {% else %}
       {{ site.title }}
       {% endif %}
-    </a>
+    </a> -->
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -24,7 +24,7 @@
       <div class="trigger">
         {% for page in site.pages %}
           {% if page.title %}
-          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          <!-- <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a> -->
           {% endif %}
         {% endfor %}
       </div>

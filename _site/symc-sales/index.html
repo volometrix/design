@@ -29,6 +29,7 @@
   <script src="/design/javascript/jquery.dataTables.min.js"></script>
   <script src="/design/javascript/dataTables.bootstrap.js"></script>
   <script src="/design/javascript/jquery.sparkline.js"></script>
+  <script src="/design/javascript/toolkit.js"></script>
   <style>
     .panel .panel-heading {
       background: #fff;
@@ -374,7 +375,7 @@ body {
       </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h3>Sales Productivity</h3>
+      <h3>Sales Productivity</h3><br>
 <div class="row">
   <div class="col-lg-12" id="acct-coverage-section">
     <div class="panel panel-default">
@@ -389,34 +390,37 @@ body {
     <th style="text-align:right;"><small>last period</small></th>
   </tr>
   <tr class="selected">
-    <td>Accounts contacted</td>
+    <td><a href="#">Accounts contacted</a></td>
     <td style="text-align:right;">30%</td>
     <td style="text-align:right;">
       <span class="badge alert-success"><i class="glyphicon glyphicon-triangle-bottom"></i> 20%</span>
     </td>
   </tr>
   <tr>
-    <td>Accounts engaged</td>
+    <td><a href="#">Accounts engaged</a></td>
     <td style="text-align:right;">17%</td>
     <td style="text-align:right;">
       <span class="badge alert-warning"><i class="glyphicon glyphicon-triangle-top"></i> 10%</span>
     </td>
   </tr>
   <tr>
-    <td>Cumulative</td>
+    <td><a href="#">Cumulative</a></td>
     <td style="text-align:right;">10%</td>
     <td style="text-align:right;">
       <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span>
     </td>
   </tr>
   <tr>
-    <td>CSIOs contacted</td>
+    <td><a href="#">CSIOs contacted</a></td>
     <td style="text-align:right;">23%</td>
     <td style="text-align:right;">
       <span class="badge alert-danger"><i class="glyphicon glyphicon-triangle-top"></i> 20%</span>
     </td>
   </tr>
 </table>
+<script>
+
+</script>
 <div id="acct-coverage-trend"></div>
 <script>
   $(function () {
@@ -1457,7 +1461,7 @@ $(function () {
 <div class="row">
   <div class="col-lg-12" id="personal-time-section">
     
-<div id="personal-time" style="min-width: 310px; height: 95px; margin: 15px auto">
+<div id="personal-time" style="min-width: 310px; height: 95px; margin: 15px auto 25px auto">
 
   <script>
   $(function () {
@@ -1917,6 +1921,12 @@ $(function () {
     </div>
   </div>
 </div>
+<script>
+  $(function(){
+    $('.row > div').addClass('show-code')
+    $('.show-code').showCode();
+  });
+</script>
     </div>
   </div>
 </div>
@@ -1942,6 +1952,5 @@ $(function () {
     }
   });
   </script> 
-  <script type="text/javascript" src="/design/javascript/toolkit.js"></script>
   </body>
 </html>

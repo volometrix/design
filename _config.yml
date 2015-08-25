@@ -28,4 +28,5 @@ markdown: kramdown
 
 # Cherry-pick what goes to github: ,'/data/' ,'theme.html' ,'/network/'
 exclude: ['/cen/','/charts/','/comps/','/dashboard/','/email/','/FB/','/otherModules/','/pdf/','/product/','about.md','brand.html','pie.html','product.html','_posts/2015-05-01-Comps.md']
-include: ['colors.html','enterprise.html','executive.html','index.html','manager.html','personal-goals.html','sales.html','sales-fake-data.html','time.html','meetings.html','charts.html']
+# include: ['colors.html','enterprise.html','executive.html','index.html','manager.html','personal-goals.html','sales.html','sales-fake-data.html','time.html','meetings.html','charts.html']
+include: ['index.html','sales.html']
