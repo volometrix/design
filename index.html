@@ -4,44 +4,14 @@ layout: default
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <p>:)</p>
-      <!-- <h1>Design</h1>
-      <p class="lead">Principles, guidelines and assets for designing and building Volometrix products</p>
-      <p><small>Updated {{ site.time }}</small></p> -->
-    </div>
-  </div>
-  <!-- <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h5><a href="{{ site.baseurl }}/product/">Product</a></h5>
-      <ul class="list-unstyled">
-        {% for section in site.data.product-nav %}
-        <li><a href="{{ site.baseurl }}/product#{{ section.name }}-section">{{ section.name | capitalize }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h5><a href="{{ site.baseurl }}/brand/">Brand</a></h5>
-      <ul class="list-unstyled">
-        {% for section in site.data.brand-nav %}
-        <li><a href="{{ site.baseurl }}/brand#{{ section.name }}-section">{{ section.name | capitalize }}</a></li>
+      <h1>Dashboards</h1>
+      <ul class="list-unstyled" style="margin-left:0;">
+        {% for page in site.pages %}
+          {% if page.title %}
+          <li style="margin-left:0;"><a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+          {% endif %}
         {% endfor %}
       </ul>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Method</h2>
-      <p>Copy here</p>
-    </div>
-    <div class="col-md-4">
-      <h4>Approach</h4>
-    </div>
-    <div class="col-md-4">
-      <h4>Personas</h4>
-    </div>
-    <div class="col-md-4">
-      <h4>Resources</h4>
-    </div>
-  </div> -->
 </div>

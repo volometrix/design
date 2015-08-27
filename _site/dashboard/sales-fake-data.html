@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <!-- Personal Dashboard -->
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  <link rel="stylesheet" href="/design/css/main.css">
+  <link rel="canonical" href="https://volometrix.github.io/design/dashboard/sales-fake-data.html">
+  <link rel="alternate" type="application/rss+xml" title="Personal Dashboard" href="https://volometrix.github.io/design/feed.xml" />
+  <link rel="stylesheet" href="/design/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="/design/css/prism.css">
+  <script src="/design/javascript/jquery-2.1.3.min.js"></script>
+  <script src="/design/javascript/bootstrap.min.js"></script>
+  <script src="/design/javascript/highcharts.js"></script>
+  <script src="/design/javascript/exporting.js"></script>
+  <script src="/design/javascript/drilldown.js"></script>
+  <script src="/design/javascript/data.js"></script>
+  <script src="/design/javascript/highcharts-more.js"></script>
+  <script src="/design/javascript/d3.v3.4.8.js"></script>
+  <script src="/design/javascript/dimple.v2.0.0.min.js"></script>
+  <script src="/design/javascript/jquery.cookie.min.js"></script>
+  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
+  <script src="/design/javascript/jquery.dataTables.min.js"></script>
+  <script src="/design/javascript/dataTables.bootstrap.js"></script>
+  <script src="/design/javascript/jquery.sparkline.js"></script>
+  <style>
+  body {
+    color: #444;
+    font-size: 13px;
+    margin:0 0 350px 0;
+    padding:0;
+  }
+  .container {
+    max-width: 850px;
+  }
+  .nav {
+    margin-top: 0;
+    padding:0;
+  }
+  .masthead {
+    text-align: center;
+    margin: 15px 0;
+    padding: 25px 0 15px 0;
+    border-top: solid 1px #eee;
+  }
+  .masthead .report-title {
+    margin:15px auto 0 auto;
+  }
+  th {
+    background: #f9f9f9;
+  }
+  table td.metric {
+    width:50%;
+  }
+  .figure {
+    font-size: 36px;
+    font-weight: 200;
+  }
+  .header-row {
+    margin-top:0;
+    padding:15px 0 0 0;
+  }
+  .section-title {
+    margin-top: 1px;
+    padding: 6px;
+    font-weight: bold;
+    background: #f7f7f7;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    border-top: solid 1px #ddd;
+    border-bottom: solid 1px #ddd;
+  }
+  .section {
+    border-bottom: solid 5px #eee;
+    padding-bottom:15px;
+    margin-bottom: 15px;
+    min-height: 969px;
+  }
+  .separator {
+    margin-top:5px;
+  }
+  .toc {
+    display: none;
+  }
+  .toc a {
+    color: #444;
+    text-decoration: underline;
+  }
+  ul.region-legend {
+    margin:0 0 25px 107px;
+    list-style-type:none;
+  }
+  ul.region-legend li {
+    display: inline-block;
+    border:solid 1px #C0D0E0;
+    padding: 0;
+    margin:0;
+    border-top:none;
+    height:15px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 11px;
+  }
+  .symbol-legend {
+    list-style-type: none;
+    margin-left:0;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .symbol-legend .legend-color {
+    display: inline-block;
+    width:16px;
+    height:12px;
+    background: #ccc;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .row {
+    position: relative;
+  }
+  .row > .symbol-legend {
+    position:absolute;
+    bottom:15px;
+    left:15px;
+  }
+  @media only screen and (min-width: 1275px) {
+    .toc {
+      display: block;
+      position:fixed;
+      top:0;
+      right:0;
+      border-left:solid 1px #eee;
+      border-bottom: solid 1px #eee; 
+      padding:15px;
+    }
+  }
+
+    /* Print */
+
+    @media print {
+      #instructions,
+      .toc {
+        display: none;
+      }
+      h1 {
+        color: #000;
+        background: none;
+      }
+      h1, h2, h3 {
+        page-break-after: avoid;
+      }
+      .figure {
+        font-size: 36px;
+        font-weight: 300;
+      }
+      body, article {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+       .header-row {
+        margin-top:0;
+        padding:0 0 0 0;
+      }
+      .section {
+        page-break-after: auto !important;
+        border-bottom:none;
+        margin-bottom:0;
+        padding-bottom:0;
+      }
+      .col-xs-8 {
+        width: 300px;
+        float:left;
+      }
+      .nav-container {
+        display: none;
+      }
+      .masthead {
+        padding:0;
+      }
+      .masthead .report-title {
+        font-size: 24px;
+        font-weight: 300;
+      }
+      .masthead .report-subtitle {
+        font-size: 18px;
+        font-weight: 300;
+      }
+
+      #print-container .table {
+        font-size: 11px;
+      }
+      .box {
+        padding:0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }    
+      table.table th,
+      table.table td {
+        padding: 3px 4px !important;
+        margin:0 !important;
+        line-height: 1;
+      }
+      @page {
+        margin: 2cm;
+      }
+    }
+    @media print and (color) {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="toc">
+            <strong>Contents</strong>
+            <ul class="list-unstyled" style="margin-left:0;">
+              <li><a href="#p1">Page 1</a>
+                <ul>
+                  <li>Meeting and Email Time</li>
+                  <li>Unique Accounts Contacted</li>
+                </ul>
+              </li>
+              <li><a href="#p2">Page 2</a>
+                  <ul>
+                    <li>Accts Within Network</li>
+                    <li>Acct Contacts Within Network</li>
+                  </ul>
+              </li>
+              <li><a href="#p3">Page 3</a>
+                  <ul>
+                    <li>A Week in the Life</li>
+                    <li>Acct Coverage</li>
+                  </ul>
+              </li>
+              <li><a href="#p4">Page 4</a>
+                  <ul>
+                    <li>Definitions</li>
+                  </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br id="p1">
+      <div class="row header-row">
+        <div class="col-xs-12">
+          <p class="pull-right" style="text-align:right;">
+            <span class="h4">Account Engagement Report</span><br>
+            <span><strong>July 2015</strong></span>
+          </p>
+          <p><span class="h3">Branding</span></p>
+        </div>
+      </div>
+      <h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
+        <section class="section">        
+          <p class="section-title">Meeting and Email Time with Customer</p>
+          <div class="row">
+            <div class="col-xs-3">
+              <p>&nbsp;</p>
+              <p><span class="h3">42</span><strong>%</strong> of sales reps met the benchmark of <strong>11 hours</strong>.</p>
+              <p>Reps averaged <strong>10 hours</strong> with customers.</p>
+            </div>
+            <div class="col-xs-9">
+              <div id="rd-time-reg-ave"></div>
+              <hr class="separator">
+              <script>
+                $(function () {
+                  $('#rd-time-reg-ave').highcharts({
+                      chart: {
+                          type: 'column',
+                          height: 180
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#FC9430' ],
+                      title: {
+                          text: 'Monthly Average by Region',
+                          style: {
+                            'color': '#444444',
+                            'font-size': '14px'
+                          }
+                      },
+                      legend: {
+                          enabled: true,
+                          itemStyle: {
+                             fontWeight: 'normal',
+                             fontSize: '11px'
+                          }
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'Avg. hours/week',
+                              style: {
+                              'font-size': '11px'
+                            }
+                          },
+                          labels: {
+                            enabled: true
+                          }
+                      },
+                      xAxis: {
+                        title: {
+                          text: null
+                        },
+                        categories: ['Dist. A','Dist B.','Dist C.']
+                      },
+                      plotOptions: {
+                          series: {
+                              dataLabels: {
+                                  enabled: true,
+                                  allowOverlap: true
+                              }
+                          }
+                      },
+                      series: [{
+                        name: 'April',
+                        data: [8,8,4]
+                      },{
+                        name: 'May',
+                        data: [10,10,2]
+                      },{
+                        name: 'June',
+                        data: [10,10,8]
+                      },{
+                        name: 'July',
+                        data: [2,11,8]
+                      }],
+                      credits: {
+                        enabled: false
+                      },
+                      exporting: {
+                        enabled: false
+                      }
+                   });
+              });
+              </script>
+              <div id="rd-time-mgr-ave"></div>
+              <ul class="region-legend">
+                <li style="width:48.888%">Dist. A</li>
+                <li style="width:32.555%">Dist. B</li>
+                <li style="width:15.555%">Dist. C</li>
+              </ul>
+              <div style="text-align:center">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg width="221px" height="16px" viewBox="0 0 221 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                    <text id="Achieved-Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                      <tspan x="23.2096" y="12">Achieved Benchmark</tspan>
+                    </text>
+                    <path d="M2,2 L18,2 L18,14 L2,14 L2,2 Z" id="Fill-125-Copy-5" fill="#70AD47" sketch:type="MSShapeGroup"></path>
+                    <g id="Group" sketch:type="MSLayerGroup" transform="translate(142.000000, 2.000000)">
+                      <text id="Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                        <tspan x="21.2096" y="10">Benchmark</tspan>
+                      </text>
+                      <circle id="Oval-1-Copy" fill="#919191" sketch:type="MSShapeGroup" cx="15.5" cy="6.5" r="1.5"></circle>
+                      <circle id="Oval-1-Copy-2" fill="#919191" sketch:type="MSShapeGroup" cx="8.5" cy="6.5" r="1.5"></circle>
+                      <circle id="Oval-1-Copy-3" fill="#919191" sketch:type="MSShapeGroup" cx="1.5" cy="6.5" r="1.5"></circle>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <script>
+                $(function () {
+                  $('#rd-time-mgr-ave').highcharts({
+                      chart: {
+                          type: 'column',
+                          height: 180
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                      title: {
+                          text: 'July Average by District',
+                          style: {
+                            'color': '#444444',
+                            'font-size': '14px'
+                          }
+                      },
+                      legend: {
+                        enabled: false
+                      },
+                      xAxis: {
+                        categories: ['AMS (All)', 'Team Lead D', 'Team Lead C', 'Team Lead B', 'Team Lead E', 'Team Lead A',  'Team Lead H', 'Team Lead F', 'Team Lead G', 'Team Lead I', 'Team Lead J', 'Team Lead K']
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'Avg. hours/week',
+                              style: {
+                              'font-size': '11px'
+                            }
+                          },
+                          labels: {
+                            enabled: true
+                          },
+                          plotLines: [{
+                            color: '#919191',
+                            width: 2,
+                            value: 11,
+                            dashStyle: 'dot'
+                        }]
+                      },
+                      plotOptions: {
+                          series: {
+                              color: '#919191',
+                              dataLabels: {
+                                  enabled: true,
+                                  allowOverlap: true
+                              }
+                          }
+                      },
+                      series: [{
+                        data: [ 2, 9, 10, 10, 4, 4, {color:'#70AD47', y:15}, {color:'#70AD47', y:12}, 10, 4, 2, 8 ]
+                      }],
+                      credits: {
+                        enabled: false
+                      },
+                      exporting: {
+                        enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+          </div>
+          <p class="section-title">Unique Accounts Contacted</p>
+          <div class="row">
+            <div class="col-xs-3">
+              <p>&nbsp;</p>
+              <p><span class="h3">25</span><strong>%</strong> of sales reps met the benchmark of <strong>20</strong> unique accounts contacted per week.</p>
+              <p>Reps averaged <strong>12</strong> unique accounts contacted per week.</p>
+            </div>
+            <div class="col-xs-9">
+              <div id="rd-contact-reg-ave"></div>
+              <hr class="separator">
+              <script>
+                $(function () {
+                  $('#rd-contact-reg-ave').highcharts({
+                      chart: {
+                          type: 'column',
+                          height: 180
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#FC9430' ],
+                      title: {
+                          text: 'Monthly Average by Region',
+                          style: {
+                            'color': '#444444',
+                            'font-size': '14px'
+                          }
+                      },
+                      legend: {
+                          enabled: true,
+                          itemStyle: {
+                             fontWeight: 'normal',
+                             fontSize: '11px'
+                          }
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'Avg. contacted/week',
+                              style: {
+                              'font-size': '11px'
+                            }
+                          },
+                          labels: {
+                            enabled: true
+                          }
+                      },
+                      xAxis: {
+                        title: {
+                          text: null
+                        },
+                        categories: ['Dist. A','Dist. B','Dist. C','All']
+                      },
+                      plotOptions: {
+                          series: {
+                              dataLabels: {
+                                  enabled: true,
+                                  allowOverlap: true
+                              }
+                          }
+                      },
+                      series: [{
+                        name: 'April',
+                        data: [10,14,4,11]
+                      },{
+                        name: 'May',
+                        data: [13,15,6,11]
+                      },{
+                        name: 'June',
+                        data: [12,17,6,13]
+                      },{
+                        name: 'July',
+                        data: [11,14,4,13]
+                      }],
+                      credits: {
+                        enabled: false
+                      },
+                      exporting: {
+                        enabled: false
+                      }
+                   });
+              });
+              </script>
+              <div id="rd-contact-mgr-ave"></div>
+              <ul class="region-legend">
+                <li style="width:48.888%">Dist. A</li>
+                <li style="width:32.555%">Dist. B</li>
+                <li style="width:15.555%">Dist. C</li>
+              </ul>
+              <div style="text-align:center">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg width="221px" height="16px" viewBox="0 0 221 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                    <text id="Achieved-Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                      <tspan x="23.2096" y="12">Achieved Benchmark</tspan>
+                    </text>
+                    <path d="M2,2 L18,2 L18,14 L2,14 L2,2 Z" id="Fill-125-Copy-5" fill="#70AD47" sketch:type="MSShapeGroup"></path>
+                    <g id="Group" sketch:type="MSLayerGroup" transform="translate(142.000000, 2.000000)">
+                      <text id="Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                        <tspan x="21.2096" y="10">Benchmark</tspan>
+                      </text>
+                      <circle id="Oval-1-Copy" fill="#919191" sketch:type="MSShapeGroup" cx="15.5" cy="6.5" r="1.5"></circle>
+                      <circle id="Oval-1-Copy-2" fill="#919191" sketch:type="MSShapeGroup" cx="8.5" cy="6.5" r="1.5"></circle>
+                      <circle id="Oval-1-Copy-3" fill="#919191" sketch:type="MSShapeGroup" cx="1.5" cy="6.5" r="1.5"></circle>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <script>
+                $(function () {
+                  $('#rd-contact-mgr-ave').highcharts({
+                      chart: {
+                          type: 'column',
+                          height: 180
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                      title: {
+                          text: 'July Average by District',
+                          style: {
+                            'color': '#444444',
+                            'font-size': '14px'
+                          }
+                      },
+                      legend: {
+                        enabled: false
+                      },
+                      xAxis: {
+                        categories: ['AMS (All)', 'Team Lead D', 'Team Lead C', 'Team Lead A', 'Team Lead E', 'Team Lead B', 'Team Lead H', 'Team Lead F', 'Team Lead I', 'Team Lead G', 'Team Lead J', 'Team Lead K']
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'Avg. contacted/week',
+                              style: {
+                              'font-size': '11px'
+                            }
+                          },
+                          labels: {
+                            enabled: true
+                          },
+                          plotLines: [{
+                            color: '#919191',
+                            width: 2,
+                            value: 20,
+                            dashStyle: 'dot'
+                        }]
+                      },
+                      plotOptions: {
+                          series: {
+                              color: '#919191',
+                              dataLabels: {
+                                  enabled: true,
+                                  allowOverlap: true
+                              }
+                          }
+                      },
+                      series: [{
+                        data: [ 11, 14, 12, 10, 11, 11, {color:'#70AD47', y:20}, 17, 12, 15, 6, 5 ]
+                      }],
+                      credits: {
+                        enabled: false
+                      },
+                      exporting: {
+                        enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+          </div>
+        </section>
+      <br id="p2">
+      <div class="row header-row">
+        <div class="col-xs-12">
+          <p class="pull-right" style="text-align:right;">
+            <span class="h4">Account Engagement Report</span><br>
+            <span><strong>July 2015</strong></span>
+          </p>
+          <p><span class="h3">Branding</span></p>
+        </div>
+      </div>
+      <h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
+        <section class="section">
+          <p class="section-title">Accounts Within Rep's Network</p>
+          <div class="row">
+            <div class="col-xs-3">
+              <p>&nbsp;</p>
+              <p><span class="h3">36</span><strong>%</strong> of sales reps met the benchmark of <strong>18 accounts</strong> in their network.</p>
+              <p>Reps averaged <strong>15 accounts</strong> in their network.</p>
+            </div>
+            <div class="col-xs-9">
+              <div id="rd-network-size-reg-ave"></div>
+              <hr class="separator">
+              <script>
+                $(function () {
+                  $('#rd-network-size-reg-ave').highcharts({
+                      chart: {
+                          type: 'column',
+                          height: 180
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#FC9430' ],
+                      title: {
+                          text: 'Monthly Average by Region',
+                          style: {
+                            'color': '#444444',
+                            'font-size': '14px'
+                          }
+                      },
+                      legend: {
+                          enabled: true,
+                          itemStyle: {
+                              'color': '#444444',
+                              'fontSize': '11px'
+                          }
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'No. of accounts',
+                              style: {
+                              'font-size': '11px'
+                            }
+                          },
+                          labels: {
+                            enabled: true
+                          }
+                      },
+                      xAxis: {
+                        title: {
+                          text: null
+                        },
+                        categories: ['Dist. A','Dist. B','Dist. C','All']
+                      },
+                      plotOptions: {
+                          series: {
+                              dataLabels: {
+                                  enabled: true,
+                                  allowOverlap: true
+                              }
+                          }
+                      },
+                      series: [{
+                        name: 'April',
+                        data: [16,19,10]
+                      },{
+                        name: 'May',
+                        data: [16,18,14]
+                      },{
+                        name: 'June',
+                        data: [18,21,14]
+                      },{
+                        name: 'July',
+                        data: [16,19,11]
+                      }],
+                      credits: {
+                        enabled: false
+                      },
+                      exporting: {
+                        enabled: false
+                      }
+                   });
+              });
+              </script>
+              <div id="rd-network-size-mgr-ave"></div>
+              <ul class="region-legend">
+                <li style="width:48.888%">Dist. A</li>
+                <li style="width:32.555%">Dist. B</li>
+                <li style="width:15.555%">Dist. C</li>
+              </ul>
+              <div style="text-align:center">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg width="221px" height="16px" viewBox="0 0 221 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                    <text id="Achieved-Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                      <tspan x="23.2096" y="12">Achieved Benchmark</tspan>
+                    </text>
+                    <path d="M2,2 L18,2 L18,14 L2,14 L2,2 Z" id="Fill-125-Copy-5" fill="#70AD47" sketch:type="MSShapeGroup"></path>
+                    <g id="Group" sketch:type="MSLayerGroup" transform="translate(142.000000, 2.000000)">
+                      <text id="Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                        <tspan x="21.2096" y="10">Benchmark</tspan>
+                      </text>
+                      <circle id="Oval-1-Copy" fill="#919191" sketch:type="MSShapeGroup" cx="15.5" cy="6.5" r="1.5"></circle>
+                      <circle id="Oval-1-Copy-2" fill="#919191" sketch:type="MSShapeGroup" cx="8.5" cy="6.5" r="1.5"></circle>
+                      <circle id="Oval-1-Copy-3" fill="#919191" sketch:type="MSShapeGroup" cx="1.5" cy="6.5" r="1.5"></circle>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <script>
+                $(function () {
+                  $('#rd-network-size-mgr-ave').highcharts({
+                      chart: {
+                          type: 'column',
+                          height: 180
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                      title: {
+                          text: 'July Average by District',
+                          style: {
+                            'color': '#444444',
+                            'font-size': '14px'
+                          }
+                      },
+                      legend: {
+                          enabled: false
+                      },
+                      xAxis: {
+                        categories: ['AMS (All)', 'Team Lead A', 'Team Lead B', 'Team Lead C', 'Team Lead D', 'Team Lead E', 'Team Lead F', 'Team Lead G', 'Team Lead H', 'Team Lead I', 'Team Lead J', 'Team Lead K']
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'No. of accounts',
+                              style: {
+                              'font-size': '11px'
+                            }
+                          },
+                          labels: {
+                            enabled: true
+                          },
+                          plotLines: [{
+                            color: '#919191',
+                            width: 2,
+                            value: 18,
+                            dashStyle: 'dot'
+                        }]
+                      },
+                      plotOptions: {
+                          series: {
+                              color: '#919191',
+                              dataLabels: {
+                                  enabled: true,
+                                  allowOverlap: true
+                              }
+                          }
+                      },
+                      series: [{
+                        data: [ 15, {color:'#70AD47', y:18}, 16, 17, 15, 12, {color:'#70AD47', y:22}, {color:'#70AD47', y:18}, 16, 17, 13, 10 ]
+                      }],
+                      credits: {
+                        enabled: false
+                      },
+                      exporting: {
+                        enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+          </div>
+          <p class="section-title">Account Contacts Within Rep's Network</p>
+          <div class="row">
+            <div class="col-xs-3">
+              <p>&nbsp;</p>
+              <p><span class="h3">33</span><strong>%</strong> of sales reps met the benchmark of <strong>40 customer contacts</strong> in their network.</p>
+              <p>Reps averaged <strong>35 contacts</strong>.</p>
+            </div>
+            <div class="col-xs-9">
+              <div id="size-regional-aves"></div>
+              <hr class="separator">
+              <script>
+                $(function () {
+                  $('#size-regional-aves').highcharts({
+                      chart: {
+                          type: 'column',
+                          height: 180
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#FC9430' ],
+                      title: {
+                          text: 'Monthly Average by Region',
+                          style: {
+                            'color': '#444444',
+                            'font-size': '14px'
+                          }
+                      },
+                      legend: {
+                          enabled: true,
+                          itemStyle: {
+                              'color': '#444444',
+                              'fontSize': '11px'
+                          }
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'No. of contacts',
+                              style: {
+                              'font-size': '11px'
+                            }
+                          },
+                          labels: {
+                            enabled: true
+                          },
+
+                      },
+                      xAxis: {
+                        title: {
+                          text: null
+                        },
+                        categories: ['Dist. A','Dist. B','Dist. C','All']
+                      },
+                      plotOptions: {
+                          series: {
+                              dataLabels: {
+                                  enabled: true,
+                                  allowOverlap: true
+                              }
+                          }
+                      },
+                      series: [{
+                        name: 'April',
+                        data: [39,38,17]
+                      },{
+                        name: 'May',
+                        data: [42,41,25]
+                      },{
+                        name: 'June',
+                        data: [42,45,30]
+                      },{
+                        name: 'July',
+                        data: [34,36,24]
+                      }],
+                      credits: {
+                        enabled: false
+                      },
+                      exporting: {
+                        enabled: false
+                      }
+                   });
+              });
+              </script>
+              <div id="size-mgr-aves"></div>
+              <ul class="region-legend">
+                <li style="width:48.888%">Dist. A</li>
+                <li style="width:32.555%">Dist. B</li>
+                <li style="width:15.555%">Dist. C</li>
+              </ul>
+              <div style="text-align:center">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg width="221px" height="16px" viewBox="0 0 221 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                    <text id="Achieved-Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                      <tspan x="23.2096" y="12">Achieved Benchmark</tspan>
+                    </text>
+                    <path d="M2,2 L18,2 L18,14 L2,14 L2,2 Z" id="Fill-125-Copy-5" fill="#70AD47" sketch:type="MSShapeGroup"></path>
+                    <g id="Group" sketch:type="MSLayerGroup" transform="translate(142.000000, 2.000000)">
+                      <text id="Benchmark" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                        <tspan x="21.2096" y="10">Benchmark</tspan>
+                      </text>
+                      <circle id="Oval-1-Copy" fill="#919191" sketch:type="MSShapeGroup" cx="15.5" cy="6.5" r="1.5"></circle>
+                      <circle id="Oval-1-Copy-2" fill="#919191" sketch:type="MSShapeGroup" cx="8.5" cy="6.5" r="1.5"></circle>
+                      <circle id="Oval-1-Copy-3" fill="#919191" sketch:type="MSShapeGroup" cx="1.5" cy="6.5" r="1.5"></circle>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <script>
+                $(function () {
+                  $('#size-mgr-aves').highcharts({
+                      chart: {
+                          type: 'column',
+                          height: 180
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                      title: {
+                          text: 'July Average by District',
+                          style: {
+                            'color': '#444444',
+                            'font-size': '14px'
+                          }
+                      },
+                      legend: {
+                        enabled: false
+                      },
+                      xAxis: {
+                        categories: ['AMS (All)', 'Team Lead D', 'Team Lead A', 'Team Lead B', 'Team Lead C', 'Team Lead E', 'Team Lead F', 'Team Lead G', 'Team Lead H', 'Team Lead I', 'Team Lead J', 'Team Lead K']
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'No. of contacts',
+                              style: {
+                              'font-size': '11px'
+                            }
+                          },
+                          labels: {
+                            enabled: true
+                          },
+                          plotLines: [{
+                            color: '#919191',
+                            width: 2,
+                            value: 40,
+                            dashStyle: 'dot'
+                        }]
+                      },
+                      plotOptions: {
+                          series: {
+                              color: '#919191',
+                              dataLabels: {
+                                  enabled: true,
+                                  allowOverlap: true
+                              }
+                          }
+                      },
+                      series: [{
+                        data: [ 32, {color:'#70AD47', y:42}, 36, 37, 35, 25, {color:'#70AD47', y:46}, {color:'#70AD47', y:42}, 34, 28, 26, 21 ]
+                      }],
+                      credits: {
+                        enabled: false
+                      },
+                      exporting: {
+                        enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+          </div>
+        </section>
+      <br id="p3">
+      <div class="row header-row">
+        <div class="col-xs-12">
+          <p class="pull-right" style="text-align:right;">
+            <span class="h4">Account Engagement Report</span><br>
+            <span><strong>July 2015</strong></span>
+          </p>
+          <p><span class="h3">Branding</span></p>
+        </div>
+      </div>
+      <h3 style="text-align:center">Region and District Summary for July 2015</h3><br>
+        <section class="section">
+          <p class="section-title">A Week in the Life July 2015</p>
+          <div class="row">
+            <div class="col-xs-12">
+              <div id="awl-time-chart"></div>
+              <script>
+                $(function () {
+                  $('#awl-time-chart').highcharts({
+                      chart: {
+                          type: 'bar',
+                          height: 400
+                      },
+                      colors: ['#919191','#466882','#608CAE','#7FA5C4','#AFC6D9','#EDBD43','#D39700'],
+                      title: {
+                          text: null
+                      },
+                      xAxis: {
+                          categories: ['Dist. D', 'Dist. A', 'Dist. B', 'Dist. C']
+                      },
+                      yAxis: {
+                          min: 0,
+                          max: 40,
+                          title: {
+                              text: 'Hours'
+                          },
+                          labels: {
+                            enabled: false
+                          }
+                      },
+                      legend: {
+                          reversed: true,
+                          itemStyle: {
+                             fontWeight: 'normal',
+                             fontSize: '11px'
+                          }
+                      },
+                      plotOptions: {
+                          series: {
+                              stacking: 'normal',
+                              dataLabels: {
+                                  enabled: true
+                          }
+                        }
+                      },
+                      series: [{
+                          name: 'Not in Meetings/Email',
+                          data: [12, 14, 9, 15]
+                      },{
+                          name: 'PM and Services',
+                          data: [null, 2, 1, 0.5]
+                      },{
+                          name: 'Within Group',
+                          data: [null, 4, 3, 1]
+                      },{
+                          name: 'SE',
+                          data: [null, 4, 5, 3]
+                      },{
+                          name: 'Other Internal',
+                          data: [14, 4, 3, 8]
+                      },{
+                          name: 'Other External',
+                          data: [2, 3, 4, 3]
+                      },{
+                          name: 'Customer',
+                          data: [11, 8, 9,8]
+                      }],
+                      exporting: {
+                        enabled: false
+                      },
+                      credits: {
+                        enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+          </div>
+          <br>
+          <p class="section-title">Account Coverage</p>
+          <div class="row">
+            <div class="col-xs-3" style="padding-right:0;">
+              <div id="ac-chart-east"></div>
+              <script>
+              $(function () {
+                  $('#ac-chart-east').highcharts({
+                      chart: {
+                          type: 'column',
+                          margin: [0,0,50,0],
+                          height: 400
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                      title: {
+                        text: null
+                      },
+                      xAxis: {
+                          categories: ['April', 'May' ,'June', 'July']
+                      },
+                      yAxis: {
+                          min: 0,
+                          max: 1750,
+                          title: {
+                              text: null
+                          },
+                          labels: {
+                            enabled: false
+                          }
+                      },
+                      legend: {
+                        enabled: false
+                      },
+                      tooltip: {
+                          formatter: function () {
+                              return '<b>' + this.x + '</b><br/>' +
+                                  this.series.name + ': ' + this.y + '<br/>' +
+                                  'Total: ' + this.point.stackTotal;
+                          }
+                      },
+                      plotOptions: {
+                          column: {
+                              stacking: 'normal',
+                              dataLabels: {
+                                  enabled: true
+                              }
+                          },
+                          series: {
+                            groupPadding: 0
+                        }
+                      },
+                      series: [{
+                        name: 'Contacted',
+                        data: [ 473, 468, 446, 378 ]
+                      },{
+                        name: 'Engaged',
+                        data: [ 283, 346, 347, 336 ]
+                      },{
+                        name: 'Cumulative Engaged',
+                        type: 'spline',
+                        lineWidth: 0,
+                        color: '#70AD47',
+                        marker: {
+                          radius: 8
+                        },
+                        data: [ 282, 451, 546, 619 ]
+                      }],
+                      exporting: {
+                        enabled: false
+                      },
+                      credits: {
+                        enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+            <div class="col-xs-3" style="padding-left:0;padding-right:0;">
+              <div id="ac-chart-west"></div>
+              <script>
+              $(function () {
+                  $('#ac-chart-west').highcharts({
+                      chart: {
+                          type: 'column',
+                          margin: [0,0,50,0]
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                      title: {
+                          text: null
+                      },
+                      xAxis: {
+                          categories: ['April', 'May' ,'June', 'July']
+                      },
+                      yAxis: {
+                          min: 0,
+                          max:1750,
+                          title: {
+                              text: null
+                          },
+                          labels: {
+                            enabled: false
+                          }
+                      },
+                      legend: {
+                        enabled: false
+                      },
+                      tooltip: {
+                          formatter: function () {
+                              return '<b>' + this.x + '</b><br/>' +
+                                  this.series.name + ': ' + this.y + '<br/>' +
+                                  'Total: ' + this.point.stackTotal;
+                          }
+                      },
+                      plotOptions: {
+                          column: {
+                              stacking: 'normal',
+                              dataLabels: {
+                                  enabled: true
+                              }
+                          },
+                          series: {
+                            groupPadding: 0
+                        }
+                      },
+                      series: [{
+                        name: 'Contacted',
+                        data: [ 381, 369, 355, 322 ]
+                      },{
+                        name: 'Engaged',
+                        data: [ 152, 157, 156, 126 ]
+                      },{
+                        name: 'Cumulative Engaged',
+                        type: 'spline',
+                        lineWidth: 0,
+                        color: '#70AD47',
+                        marker: {
+                          radius: 8
+                        },
+                        data: [ 228, 366, 442, 500 ]
+                      }],
+                      exporting: {
+                        enabled: false
+                      },
+                      credits: {
+                        enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+            <div class="col-xs-3" style="padding-left:0;padding-right:0;">
+              <div id="ac-chart-lamc"></div>
+              <script>
+              $(function () {
+                  $('#ac-chart-lamc').highcharts({
+                      chart: {
+                          type: 'column',
+                          margin: [0,0,50,0]
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                      title: {
+                          text: null
+                      },
+                      xAxis: {
+                          categories: ['April', 'May' ,'June', 'July']
+                      },
+                      yAxis: {
+                          min: 0,
+                          max: 1750,
+                          title: {
+                              text: null
+                          },
+                          labels: {
+                            enabled: false
+                          }
+                      },
+                      legend: {
+                        enabled: false
+                      },
+                      tooltip: {
+                          formatter: function () {
+                              return '<b>' + this.x + '</b><br/>' +
+                                  this.series.name + ': ' + this.y + '<br/>' +
+                                  'Total: ' + this.point.stackTotal;
+                          }
+                      },
+                      plotOptions: {
+                          column: {
+                              stacking: 'normal',
+                              dataLabels: {
+                                  enabled: true
+                              }
+                          },
+                          series: {
+                            groupPadding: 0
+                        }
+                      },
+                      series: [{
+                        name: 'Contacted',
+                        data: [ 153, 158, 157, 127 ]
+                      },{
+                        name: 'Engaged',
+                        data: [ 91, 144, 155, 117 ]
+                      },{
+                        name: 'Cumulative Engaged',
+                        type: 'spline',
+                        lineWidth: 0,
+                        color: '#70AD47',
+                        marker: {
+                          radius: 8
+                        },
+                        data: [ 91, 181, 231, 253 ]
+                      }],
+                      exporting: {
+                        enabled: false
+                      },
+                      credits: {
+                        enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+            <div class="col-xs-3" style="padding-left:0;">
+              <div id="ac-chart-all"></div>
+              <script>
+              $(function () {
+                  $('#ac-chart-all').highcharts({
+                      chart: {
+                          type: 'column',
+                          margin: [0,0,50,0]
+                      },
+                      colors: [ '#CBCBCB','#919191','#6C6C6C','#4A4A4A' ],
+                      title: {
+                        text: null
+                      },
+                      xAxis: {
+                          categories: ['April', 'May' ,'June', 'July']
+                      },
+                      yAxis: {
+                          min: 0,
+                          max: 1750,
+                          title: {
+                              text: null
+                          },
+                          labels: {
+                            enabled: false
+                          }
+                      },
+                      legend: {
+                        enabled: false
+                      },
+                      tooltip: {
+                          formatter: function () {
+                              return '<b>' + this.x + '</b><br/>' +
+                                  this.series.name + ': ' + this.y + '<br/>' +
+                                  'Total: ' + this.point.stackTotal;
+                          }
+                      },
+                      plotOptions: {
+                          column: {
+                              stacking: 'normal',
+                              dataLabels: {
+                                  enabled: true
+                              }
+                          },
+                          series: {
+                            groupPadding: 0
+                        }
+                      },
+                      series: [{
+                        name: 'Contacted',
+                        data: [ 807, 851, 749, 720 ]
+                      },{
+                        name: 'Engaged',
+                        data: [ 506, 690, 481, 500 ]
+                      },{
+                        name: 'Cumulative Engaged',
+                        type: 'spline',
+                        lineWidth: 0,
+                        color: '#70AD47',
+                        marker: {
+                          radius: 8
+                        },
+                        data: [ 284, 454, 548, 617 ]
+                      }],
+                      exporting: {
+                        enabled: false
+                      },
+                      credits: {
+                        enabled: false
+                      }
+                  });
+              });
+              </script>
+            </div>
+            <ul class="region-legend" style="margin-left:15px;">
+              <li style="width:24.222%">Dist. A</li>
+              <li style="width:24.222%">Dist. B</li>
+              <li style="width:24.222%">Dist. C</li>
+              <li style="width:24.222%">All</li>
+            </ul>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-xs-12" style="text-align:center;">
+              <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+              <svg width="292px" height="16px" viewBox="0 0 292 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <title>AccountCoverageLegend</title>
+                <desc>Created with Sketch.</desc>
+                <defs></defs>
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                  <text id="Contacted" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                    <tspan x="23.2096" y="12">Contacted</tspan>
+                  </text>
+                  <path d="M2,2 L18,2 L18,14 L2,14 L2,2 Z" id="Fill-125-Copy-2" fill="#CBCBCB" sketch:type="MSShapeGroup"></path>
+                  <text id="Engaged" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                    <tspan x="113.2096" y="12">Engaged</tspan>
+                  </text>
+                  <path d="M92,2 L108,2 L108,14 L92,14 L92,2 Z" id="Fill-125-Copy-4" fill="#919191" sketch:type="MSShapeGroup"></path>
+                  <text id="Cumulative-Engaged" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="11" font-weight="normal" fill="#333333">
+                    <tspan x="186.2096" y="12">Cumulative Engaged</tspan>
+                  </text>
+                  <circle id="Oval-1" fill="#70AD47" sketch:type="MSShapeGroup" cx="177" cy="8" r="6"></circle>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </section>
+      <br id="p4">
+      <div class="row header-row">
+        <div class="col-xs-12">
+          <p class="pull-right" style="text-align:right;">
+            <span class="h4">Account Engagement Report</span><br>
+            <span><strong>July 2015</strong></span>
+          </p>
+          <p><span class="h3">Branding</span></p>
+        </div>
+      </div>
+      <h3 style="text-align:center">Definitions</h3><br>
+        <section class="section">
+          <div class="row">
+            <div class="col-xs-8">
+              <dl>
+                <dt>Accounts Contacted</dt>
+                <dd>Accounts to whom Symantec/Region sent an email or with whom they met, but collaboration wasn't substantiative enough to qualify as &#8220;engaged&#8221;</dd>
+                <br>
+                <dt>Accounts Engaged</dt>
+                <dd>Accounts with whom Symantec/Region had at least one (1) meeting and spent at least 30 minutes during the period.</dd>
+                <br>
+                <dt>Cumulative Engaged</dt>
+                <dd>Running total of Accounts with whom Symantec/Region has engaged since April 15.</dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+      Personal Dashboard
+      </title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  <link rel="stylesheet" href="/design/css/main.css">
+  <link rel="canonical" href="https://volometrix.github.io/design/brand/">
+  <link rel="alternate" type="application/rss+xml" title="Personal Dashboard" href="https://volometrix.github.io/design/feed.xml" />
+  <link rel="stylesheet" href="/design/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/design/css/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="/design/css/prism.css">
+  <script src="/design/javascript/jquery-2.1.3.min.js"></script>
+  <script src="/design/javascript/bootstrap.min.js"></script>
+  <script src="/design/javascript/highcharts.js"></script>
+  <script src="/design/javascript/exporting.js"></script>
+  <script src="/design/javascript/drilldown.js"></script>
+  <script src="/design/javascript/data.js"></script>
+  <script src="/design/javascript/highcharts-more.js"></script>
+  <script src="/design/javascript/d3.v3.4.8.js"></script>
+  <script src="/design/javascript/dimple.v2.0.0.min.js"></script>
+  <script src="/design/javascript/jquery.cookie.min.js"></script>
+  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
+  <script src="/design/javascript/jquery.dataTables.min.js"></script>
+  <script src="/design/javascript/dataTables.bootstrap.js"></script>
+  <script src="/design/javascript/jquery.sparkline.js"></script>
+  <script src="/design/javascript/toolkit.js"></script>
+  <style>
+    .panel .panel-heading {
+      background: #fff;
+      border-bottom:none;
+      padding-bottom:0;
+    }
+    
+  .goal-met-true {
+    color: #A6D53A;
+  }
+  .goal-met-false {
+    color: #FC9430;
+  }
+  .figure {
+    font-size: 64px;
+    font-weight: 200;
+  }
+   .days-chart, .days-chart-legend {
+    position: absolute;
+    top:105px;
+    text-align: center;
+    left:50%;
+    margin-left: -195px;
+    width:350px;
+  }
+  .days-chart-vis {
+    margin-top:75px;
+  }
+  .days-chart .timeline {
+    background: #fff url('/design/images/days-chart-bkd.png') no-repeat 0 12.5px !important;
+    margin: 0 -2px;
+  }
+  .days-chart.work-week-days .timeline {
+    width: 10%;
+  }
+  .days-chart.full-week-days .timeline {
+    width: 5%;
+  }
+  .days-chart .work-day {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .work-day.key,
+  .days-chart .goal-met-false.key {
+    height: 12px;
+    width: 12px;
+  }
+  .days-chart li {
+    display:inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 25px;
+    white-space: nowrap;
+  }
+  .days-chart .day {
+    width: 25px;
+    margin:0 -1px;
+    border-radius: 100%;
+    background-color: #d7d7d7;
+  }
+  .days-chart .sep {
+    width:10%;
+    background: #fff url(' /design/images/days-chart-bkd.png') no-repeat 0 12.5px;
+    margin:0 -2px;
+  }
+  .days-chart .goal-met-true {
+    background-color: #ABE200;
+    background-image: -webkit-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: -o-linear-gradient(#ABE200 0%, #9BCE00 100%);
+    background-image: linear-gradient(#ABE200 0%, #9BCE00 100%);
+  }
+  .days-chart .goal-met-false {
+    background-color: #FFC960;
+    background-image: -webkit-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: -o-linear-gradient(#FFC960 0%, #FFA00C 100%);
+    background-image: linear-gradient(#FFC960 0%, #FFA00C 100%);
+  }
+  .figure {
+    font-size: 38px;
+    font-weight: 300; 
+  }
+  .day-label {
+    font-size: 11px;
+    color: #555555;
+    position: absolute;
+    bottom:-20px;
+    width:100%;
+    text-align: center;
+    text-align: -webkit-center;
+    display: block;
+  }
+  .days-chart-legend {
+    top: 275px;
+  }
+  .toggle-code {
+    display: none;
+  }
+  .show-code {
+    position:relative;
+    overflow: visible;
+  }
+  .show-code:hover .toggle-code {
+    display: block;
+  }
+  </style>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <!-- <a class="site-title" href="/design/">
+      
+      Personal Dashboard
+      
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+      </div>
+    </nav> -->
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Product</h1>
+      <p class="lead">Principles, guidelines and assets for designing and building Volometrix products</p>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">This Section</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              
+              <li><a href="#logo-section">Logo</a></li>
+              
+              <li><a href="#colors-section">Colors</a></li>
+              
+              <li><a href="#typography-section">Typography</a></li>
+              
+              <li><a href="#copywriting-section">Copywriting</a></li>
+              
+              <li><a href="#illustration-section">Illustration</a></li>
+              
+              <li><a href="#photography-section">Photography</a></li>
+              
+              <li><a href="#screenshots-section">Screenshots</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+    	<h2>The Volometrix Brand</h2>
+			<p>This guide serves as a resource to bring together all our brands underneath the Volometrix umbrella and to define their visual and stylistic elements.</p>
+			<p>It will provide you with the tools, assets, and guidance you need for designing and producing dynamic and powerful communications with a degree of flexibility.</p>
+			<h3>Who this site is for</h3>
+			<p>This site provides guidance to anyone creating Volometrix marketing or brand assets – most likely the Volometrix marketing team, agencies working with Volometrix, or press.
+			</p>
+			<h3>What we're about</h3>
+			<p>At volometrix, we believe in the power of teams. Teams are responsible for some of the world's greatest accomplishments – putting people in space, unraveling DNA, and building computers small and cheap enough to fit in the pockets of a billion people.
+			</p>
+			<p>Volometrix exists to unlock the potential in every team. Our products help them create, share and communicate better. As a result, our customers move from "imagined" to "done" faster.
+			</p>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <footer>
+  <script src="/design/javascript/toolkit.js"></script>
+  <script src="/design/javascript/personalDashboardHCTheme.js"></script>
+  <script src="/design/javascript/prism.js"></script>
+</footer>
+
+  </body>
+
+</html>
