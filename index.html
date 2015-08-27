@@ -4,13 +4,17 @@ layout: default
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Dashboards</h1>
+      <h3>Dashboards</h3>
       <ul class="list-unstyled" style="margin-left:0;">
         {% for page in site.pages %}
           {% if page.title %}
-          <li style="margin-left:0;"><a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+          <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
           {% endif %}
         {% endfor %}
+      </ul>
+      <h3>Other</h3>
+      <ul class="list-unstyled" style="margin-left:0;">
+        <li><a href="{{ site.baseurl }}/Email/">Email</a></li>
       </ul>
     </div>
   </div>
